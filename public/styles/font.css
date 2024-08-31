@@ -1,0 +1,63 @@
+@font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/SpaceGroteskMedium.ttf");
+    font-family: "Space Grotesk";
+    font-weight: 500;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/EpilogueRomanRegular.ttf");
+    font-family: "Epilogue";
+    font-weight: 400;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/EpilogueRomanMedium.ttf");
+    font-family: "Epilogue";
+    font-weight: 500;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/EpilogueRomanBold.ttf");
+    font-family: "Epilogue";
+    font-weight: 700;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/EpilogueRomanSemiBold.ttf");
+    font-family: "Epilogue";
+    font-weight: 600;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/PoppinsRegular.ttf");
+    font-family: "Poppins";
+    font-weight: 400;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/DMSansBold.ttf");
+    font-family: "DM Sans";
+    font-weight: 700;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/DMSansRegular.ttf");
+    font-family: "DM Sans";
+    font-weight: 400;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("./../fonts/PoppinsSemiBold.ttf");
+    font-family: "Poppins";
+    font-weight: 600;
+  }
