@@ -14,6 +14,16 @@ export default function SignUpPage() {
   const [displayedWord, setDisplayedWord] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const [formData, setFormData] = useState({
+    email: "",
+    fullName: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   useEffect(() => {
     const timeout = setTimeout(
       () => {
@@ -43,8 +53,49 @@ export default function SignUpPage() {
     return () => clearTimeout(timeout);
   }, [displayedWord, isDeleting]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3001/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSuccess("Registration successful");
+        setError("");
+        // Redirect or perform further actions as needed
+      } else {
+        setError(result.message || "An error occurred");
+        setSuccess("");
+      }
+    } catch (err) {
+      setError("An error occurred while registering");
+      setSuccess("");
+    }
+  };
+
   return (
-    <div className="w-full bg-gray-10">
+    <div className="w-full h-screen bg-gray-10 flex flex-col">
       <div className="mt-8 flex flex-col items-start gap-28 md:gap-[84px] sm:gap-14">
         <Link href="/">
           <Text
@@ -65,7 +116,6 @@ export default function SignUpPage() {
                 alt="Saly Image"
                 className="mt-[60px] h-[568px] w-[46%] self-end object-contain md:w-full md:self-auto"
               />
-
               <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch">
                 <Heading
                   size="heading7xl"
@@ -74,7 +124,6 @@ export default function SignUpPage() {
                 >
                   Sign Up to
                 </Heading>
-
                 <Heading
                   size="text9xl"
                   as="h3"
@@ -106,10 +155,7 @@ export default function SignUpPage() {
                 >
                   If you do not have an account register
                 </Text>
-                <Link
-                  href="/login"
-                  target="_blank"
-                >
+                <Link href="/login" target="_blank">
                   <Text
                     as="p"
                     className="ml-1.5 mt-1.5 !font-poppins !text-adsy_com-black md:ml-0"
@@ -127,81 +173,92 @@ export default function SignUpPage() {
             <Text
               size="text7xl"
               as="p"
-              className="self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px]"
+              className="ml-[4rem] self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px]"
             >
               Sign Up
             </Text>
-
-            <div className="mt-6 flex w-[82%] flex-col items-start md:w-full">
+            <form className="mt-6 flex w-[82%] flex-col items-start md:w-full" onSubmit={handleSubmit}>
               <Input
                 shape="round"
                 type="email"
-                name="Email or Phone Input"
-                placeholder="  Enter Email "
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
+                name="email"
+                placeholder="Enter Email"
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins flex items-center justify-center text-center mt-[1rem]"
+                style={{ paddingLeft: '1rem' }}
+                value={formData.email}
+                onChange={handleChange}
               />
               <Input
                 shape="round"
                 type="text"
-                name="name"
-                placeholder="  Name"
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
+                name="fullName"
+                placeholder="Name"
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins flex items-center justify-center text-center mt-[1rem]"
+                style={{ paddingLeft: '1rem' }}
+                value={formData.fullName}
+                onChange={handleChange}
               />
               <Input
                 shape="round"
                 type="text"
-                name=" phoneNumber"
-                placeholder="  Contact Number"
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
+                name="phoneNumber"
+                placeholder="Contact Number"
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins flex items-center justify-center text-center mt-[1rem]"
+                style={{ paddingLeft: '1rem' }}
+                value={formData.phoneNumber}
+                onChange={handleChange}
               />
               <Input
                 color="blue 50"
                 shape="round"
                 type="password"
-                name="Password Input"
-                placeholder="  Password"
+                name="password"
+                placeholder="Password"
                 suffix={
                   <Image
                     src="/images/invisible.png"
                     width={16}
                     height={16}
-                    alt="Invisible 1"
+                    alt="Invisible Icon"
                     className="h-[16px] w-[16px] mr-[1rem]"
                   />
                 }
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
+                style={{ paddingLeft: '1rem' }}
+                value={formData.password}
+                onChange={handleChange}
               />
               <Input
                 color="blue 50"
                 shape="round"
                 type="password"
-                name="Password Input"
-                placeholder="  Confirm Password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
                 suffix={
                   <Image
                     src="/images/invisible.png"
                     width={16}
                     height={16}
-                    alt="Invisible 1"
+                    alt="Invisible Icon"
                     className="h-[16px] w-[16px] mr-[1rem]"
                   />
                 }
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
+                style={{ paddingLeft: '1rem' }}
+                value={formData.confirmPassword}
+                onChange={handleChange}
               />
-              <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
-                <Text
-                  size="textsm"
-                  as="p"
-                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[9rem]"
-                >
-                  Forgot password ?
-                </Text>
-              </div>
+              {error && (
+                <p className="mt-2 text-red-500">{error}</p>
+              )}
+              {success && (
+                <p className="mt-2 text-green-500">{success}</p>
+              )}
               <Button
-                color="indigo_A400"
-                size="2xl"
-                className="mt-6 w-[60%] rounded-lg font-poppins font-medium text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
-                style={{ backgroundColor: "#3861FB" }}
+                shape="round"
+                type="submit"
+                color="blue"
+                className="mt-4 w-[60%] bg-[#3861FB] h-[60px] font-semibold text-white"
               >
                 Register
               </Button>
@@ -213,28 +270,28 @@ export default function SignUpPage() {
                   or continue with
                 </Text>
               </Link>
-            </div>
-            <div className="mt-11 flex ml-[-14rem]">
-              <Image
+            </form>
+            <div className="mt-6 flex flex-row items-center justify-center w-full ml-[-15rem]">
+            <Image
                 src="/images/Facebook2.png"
                 width={40}
                 height={40}
-                alt="Facebook Icon"
-                className="h-[40px] w-[40px] object-cover"
+                alt="Apple Icon"
+                className="ml-[1rem] h-[40px] w-[40px] object-cover"
               />
               <Image
                 src="/images/apple.png"
                 width={40}
                 height={40}
-                alt="Favorite Icon"
-                className="ml-4 h-[40px] w-[40px]"
+                alt="Apple Icon"
+                className="ml-[1rem] h-[40px] w-[40px] object-cover"
               />
               <Image
                 src="/images/google.png"
                 width={40}
                 height={40}
                 alt="Google Icon"
-                className="ml-[12px] h-[40px] w-[40px]"
+                className="ml-[1rem] h-[40px] w-[40px] object-cover"
               />
             </div>
           </div>

@@ -8,10 +8,10 @@ const shapes = {
 
 const variants = {
   fill: {
-    blue_gray_900_01: "bg-blue_gray-900_01 shadow-xl text-gray-10",
-    gray_10: "bg-gray-10 text-adsy_com-black",
-    gray_50_01: "bg-gray-50_01",
-    principal_blue: "bg-principal_blue text-gray-10",
+    blue_gray_900_01: "bg-blue_gray-900_01 shadow-xl text-gray-10 hover:bg-white hover:text-blue_gray-900_01",
+    gray_10: "bg-gray-10 text-adsy_com-black hover:bg-white hover:text-gray-10",
+    gray_50_01: "bg-gray-50_01 hover:bg-white",
+    principal_blue: "bg-principal_blue text-gray-10 hover:bg-white hover:text-principal_blue",
   },
 };
 
@@ -39,7 +39,7 @@ const Button = ({
     <button
       className={`${className} flex flex-row items-center justify-center text-center cursor-pointer whitespace-nowrap ${
         shape && shapes[shape]
-      } ${size && sizes[size]} ${variant && variants[variant][color]}`}
+      } ${size && sizes[size]} ${variant && variants[variant][color]} transition-colors duration-300`}
       {...restProps}
     >
       {!!leftIcon && leftIcon}

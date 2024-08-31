@@ -7,12 +7,19 @@ import { Input } from "../common/Input";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import axios from "axios";
+import Cookies from "js-cookie"; // Import js-cookie
+import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
 
 export default function LoginOnePage() {
   const words = ["Sales", "Leads", "Revenue", "Engagement"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter(); // Initialize the router
 
   useEffect(() => {
     const timeout = setTimeout(
@@ -38,13 +45,37 @@ export default function LoginOnePage() {
         });
       },
       isDeleting ? 200 : 300
-    ); // Adjust the delay as needed
+    );
 
     return () => clearTimeout(timeout);
   }, [displayedWord, isDeleting]);
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3001/api/login", {
+        email,
+        password,
+      });
+
+      const { token } = response.data;
+
+      // Set the token as a cookie
+      Cookies.set("authToken", token, { expires: 7 });
+
+      // Check if running on the client-side before redirecting
+      if (typeof window !== "undefined") {
+        router.push("/");
+      }
+    } catch (error) {
+      setErrorMessage(
+        error.response?.data?.message || "An error occurred"
+      );
+    }
+  };
+
   return (
-    <div className="w-full bg-gray-10">
+    <div className="w-full h-screen bg-gray-10 flex flex-col">
       <div className="mt-8 flex flex-col items-start gap-28 md:gap-[84px] sm:gap-14">
         <Link href="/">
           <Text
@@ -127,18 +158,21 @@ export default function LoginOnePage() {
             <Text
               size="text7xl"
               as="p"
-              className="self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px]"
+              className="ml-[4rem] self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px]"
             >
               Log In
             </Text>
 
-            <div className="mt-6 flex w-[82%] flex-col items-start md:w-full">
+            <form onSubmit={handleLogin} className="mt-6 flex w-[82%] flex-col items-start md:w-full">
               <Input
                 shape="round"
                 type="email"
                 name="Email or Phone Input"
                 placeholder="  Enter email or Phone Number"
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins "
+                style={{ paddingLeft: '1rem' }}
               />
               <Input
                 color="blue 50"
@@ -155,8 +189,16 @@ export default function LoginOnePage() {
                     className="h-[16px] w-[16px] mr-[1rem]"
                   />
                 }
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] "
+                style={{ paddingLeft: '1rem' }}
               />
+              {errorMessage && (
+                <Text as="p" className="text-red-500 mt-2">
+                  {errorMessage}
+                </Text>
+              )}
               <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
                 <Text
                   size="textsm"
@@ -182,28 +224,28 @@ export default function LoginOnePage() {
                   or continue with
                 </Text>
               </Link>
-            </div>
-            <div className="mt-11 flex ml-[-14rem]">
-              <Image
+            </form>
+            <div className="mt-6 flex flex-row items-center justify-center w-full ml-[-15rem]">
+            <Image
                 src="/images/Facebook2.png"
                 width={40}
                 height={40}
-                alt="Facebook Icon"
-                className="h-[40px] w-[40px] object-cover"
+                alt="Apple Icon"
+                className="ml-[1rem] h-[40px] w-[40px] object-cover"
               />
               <Image
                 src="/images/apple.png"
                 width={40}
                 height={40}
-                alt="Favorite Icon"
-                className="ml-4 h-[40px] w-[40px]"
+                alt="Apple Icon"
+                className="ml-[1rem] h-[40px] w-[40px] object-cover"
               />
               <Image
                 src="/images/google.png"
                 width={40}
                 height={40}
                 alt="Google Icon"
-                className="ml-[12px] h-[40px] w-[40px]"
+                className="ml-[1rem] h-[40px] w-[40px] object-cover"
               />
             </div>
           </div>

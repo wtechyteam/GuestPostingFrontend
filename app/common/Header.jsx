@@ -49,12 +49,12 @@ export default function Header({ ...props }) {
                       How It Works 
                     </Text>
                     <Image
-                  src="/images/CaretDown.png"
-                  width={16}
-                  height={14}
-                  alt="Arrow Down"
-                  className="h-[14px] w-[16px] mt-[0.35rem]"
-                />
+                      src="/images/CaretDown.png"
+                      width={16}
+                      height={14}
+                      alt="Arrow Down"
+                      className="h-[14px] w-[16px] mt-[0.35rem]"
+                    />
                   </button>
                   {isDropdownOpen && (
                     <ul className="absolute top-full left-0 mt-2 w-48 bg-gray-50_02 border border-gray-300 shadow-lg rounded-lg">
@@ -128,21 +128,25 @@ export default function Header({ ...props }) {
               options={dropDownOptions}
               className="w-[26%] gap-1.5 text-black" // Ensure options are black
             />
-            <Link href="/login">
-              <Button
-                size="md"
-                className="rounded-[24px] min-w-[92px] ml-3.5 font-medium"
-              >
-                Login
-              </Button>
+            <Link href="/login" legacyBehavior>
+              <a className="block">
+                <Button
+                  size="md"
+                  className="rounded-[24px] min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white hover:bg-white hover:text-blue-500 transition-colors duration-300"
+                >
+                  Login
+                </Button>
+              </a>
             </Link>
-            <Link href="/signup">
-              <Button
-                size="md"
-                className="rounded-[24px] min-w-[110px] ml-2 font-medium"
-              >
-                Sign Up
-              </Button>
+            <Link href="/signup" legacyBehavior>
+              <a className="block">
+                <Button
+                  size="md"
+                  className="rounded-[24px] min-w-[110px] ml-2 font-medium bg-blue-500 text-white hover:bg-white hover:text-blue-500 transition-colors duration-300"
+                >
+                  Sign Up
+                </Button>
+              </a>
             </Link>
           </div>
         </div>
