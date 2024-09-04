@@ -65,7 +65,7 @@ export default function LoginOnePage() {
 
       // Check if running on the client-side before redirecting
       if (typeof window !== "undefined") {
-        router.push("/");
+        router.push("/dashboardBuyer");
       }
     } catch (error) {
       setErrorMessage(
