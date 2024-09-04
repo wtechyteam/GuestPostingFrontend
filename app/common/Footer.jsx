@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
-import { Img } from "./Img";
 import { Input } from "./Input";
 import { Text } from "./Text";
 import Link from "next/link";
 import React from "react";
 
-export default function Footer( props ) {
+export default function Footer(props) {
   return (
     <footer
       {...props}
@@ -217,17 +216,18 @@ export default function Footer( props ) {
               placeholder={"  Email address"}
               suffix={
                 <div className="rounded-[50%] h-[50px] w-[54px] flex items-center justify-center bg-principal_blue">
-                  <Img
-                    src="img_arrowleft_gray_10.svg"
+                  <Image
+                    src="/images/arrowDown.png"
                     width={16}
                     height={14}
-                    alt="Arrow Left"
-                    className="rounded-[50%] p-[18px] w-[26px] h-[14px]"
+                    alt="Arrow Right"
+                    className="rounded-[50%] w-[16px] h-[14px]" 
                   />
                 </div>
               }
-              className=" mr-1.5"
+              className="mr-1.5"
             />
+
             <Text
               size="textmd"
               as="p"

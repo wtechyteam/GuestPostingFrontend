@@ -8,7 +8,7 @@ export default function BuyerInfoSection({ descriptionText, learnMoreButton = "L
     return (
         <div
             {...props}
-            className={`flex items-center w-[50%] md:w-full relative transition-all duration-300 
+            className={`flex items-center w-[50%] md:w-full relative 
                 hover:border-2 hover:border-[#1C817D] hover:rounded-2xl 
                 hover:bg-[#1C817D] p-4`}
             style={{ borderColor: 'transparent' }} // Initial style
@@ -19,7 +19,7 @@ export default function BuyerInfoSection({ descriptionText, learnMoreButton = "L
                 <Text
                     size="text7xl"
                     as="p"
-                    className="leading-[58px] z-[2] text-[39.13px] relative font-normal transition-colors duration-300"
+                    className="leading-[58px] z-[2] text-[39.13px] relative font-normal"
                     style={{ color: isHovered ? '#FFFFFF' : '#000000' }} // Change color based on hover state
                 >
                     <span className="font-bold">

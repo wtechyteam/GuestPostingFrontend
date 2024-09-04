@@ -32,7 +32,7 @@ export default function MainContentSection() {
                                     size="sm"
                                     className={`rounded-[5px] min-w-[250px] tracking-[0.20px] font-medium ${
                                         activeTab === 'buyer'
-                                            ? 'bg-white text-blue-500 border border-blue-500' // White background and blue text for active tab with border
+                                            ? 'bg-white text-blue-500 border border-blue-500' 
                                             : 'bg-blue-500 text-white'
                                     }`}
                                     onClick={() => setActiveTab('buyer')}>
@@ -43,7 +43,7 @@ export default function MainContentSection() {
                                     size="sm"
                                     className={`rounded-[5px] min-w-[250px] tracking-[0.20px] font-medium ${
                                         activeTab === 'seller'
-                                            ? 'bg-white text-blue-500 border border-blue-500' // White background and blue text for active tab with border
+                                            ? 'bg-white text-blue-500 border border-blue-500' 
                                             : 'bg-blue-500 text-white'
                                     }`}
                                     onClick={() => setActiveTab('seller')}>

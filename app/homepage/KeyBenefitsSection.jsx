@@ -127,80 +127,82 @@ export default function KeyBenefitsSection() {
             <div className="flex-1 md:self-stretch">
               <div className="flex flex-col items-center">
                 <div className="gap-[30px] w-[86%] flex flex-col items-start self-end md:w-full">
-                  <Heading
-                    size="heading2xl"
-                    as="h4"
-                    className="sm:text-[22px] md:text-[24px] text-[26.08px] font-bold !text-adsy_com-black mb-[1rem]"
-                  >
-                    Streamline Team Collaboration
-                  </Heading>
+                <Heading
+  size="heading2xl"
+  as="h4"
+  className="heading-left sm:text-[22px] md:text-[24px] text-[26.08px] font-bold !text-adsy_com-black mb-[1rem] ml-[-3.5rem]"
+>
+  Streamline Team Collaboration
+</Heading>
+
                   
                 </div>
-                <div className="gap-[34px] mx-6 flex flex-col items-start self-stretch md:mx-0">
-                <div
-                  onClick={() => handleSelect(0)}
-                  className={`rounded-[12px] p-3 cursor-pointer transition-shadow duration-300 ${
-                    selectedIndex === 0 ? 'shadow-lg' : 'hover:shadow-lg'
-                  }`}
-                >
-                  <Text
-                    size="text4xl"
-                    as="p"
-                    className="leading-[27px] text-[18.26px] w-[84%] !font-poppins2 font-normal !text-adsy_com-black md:w-full"
-                  >
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
-                  </Text>
-                </div>
+                <div className="gap-[34px] mx-6 flex flex-col items-end self-stretch md:mx-0 ml-[4.2rem]">
+  <div
+    onClick={() => handleSelect(0)}
+    className={`rounded-[12px] p-3 cursor-pointer transition-shadow duration-300 ${
+      selectedIndex === 0 ? 'shadow-lg' : 'hover:shadow-lg'
+    }  `}
+  >
+    <Text
+      size="text4xl"
+      as="p"
+      className="leading-[27px] text-[18.26px] w-[84%] !font-poppins2 font-normal !text-adsy_com-black md:w-full mr-[2rem]"
+    >
+      It is a long established fact that a reader will be distracted
+      by the readable content of a page when looking at its layout.
+    </Text>
+  </div>
 
-                <div
-                  onClick={() => handleSelect(1)}
-                  className={`rounded-[12px] p-3 cursor-pointer transition-shadow duration-300 ${
-                    selectedIndex === 1 ? 'shadow-lg' : 'hover:shadow-lg'
-                  }`}
-                >
-                  <Text
-                    size="text4xl"
-                    as="p"
-                    className="leading-[27px] text-[18.26px] w-[84%] !font-poppins2 font-normal !text-adsy_com-black md:w-full"
-                  >
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
-                  </Text>
-                </div>
+  <div
+    onClick={() => handleSelect(1)}
+    className={`rounded-[12px] p-3 cursor-pointer transition-shadow duration-300 ${
+      selectedIndex === 1 ? 'shadow-lg' : 'hover:shadow-lg'
+    } mr-[16px]`}
+  >
+    <Text
+      size="text4xl"
+      as="p"
+      className="leading-[27px] text-[18.26px] w-[84%] !font-poppins2 font-normal !text-adsy_com-black md:w-full"
+    >
+      It is a long established fact that a reader will be distracted
+      by the readable content of a page when looking at its layout.
+    </Text>
+  </div>
 
-                <div
-                  onClick={() => handleSelect(2)}
-                  className={`rounded-[12px] p-3 cursor-pointer transition-shadow duration-300 ${
-                    selectedIndex === 2 ? 'shadow-lg' : 'hover:shadow-lg'
-                  }`}
-                >
-                  <Text
-                    size="text4xl"
-                    as="p"
-                    className="leading-[27px] text-[18.26px] w-[84%] !font-poppins2 font-normal !text-adsy_com-black md:w-full"
-                  >
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
-                  </Text>
-                </div>
+  <div
+    onClick={() => handleSelect(2)}
+    className={`rounded-[12px] p-3 cursor-pointer transition-shadow duration-300 ${
+      selectedIndex === 2 ? 'shadow-lg' : 'hover:shadow-lg'
+    }  mr-[40px]`}
+  >
+    <Text
+      size="text4xl"
+      as="p"
+      className="leading-[27px] text-[18.26px] w-[84%] !font-poppins2 font-normal !text-adsy_com-black md:w-full"
+    >
+      It is a long established fact that a reader will be distracted
+      by the readable content of a page when looking at its layout.
+    </Text>
+  </div>
 
-                <div
-                  onClick={() => handleSelect(3)}
-                  className={`rounded-[12px] p-3 cursor-pointer transition-shadow duration-300 ${
-                    selectedIndex === 3 ? 'shadow-lg' : 'hover:shadow-lg'
-                  }`}
-                >
-                  <Text
-                    size="text4xl"
-                    as="p"
-                    className="leading-[27px] text-[18.26px] w-[84%] !font-poppins2 font-normal !text-adsy_com-black md:w-full"
-                  >
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
-                  </Text>
-                </div>
-              </div>
+  <div
+    onClick={() => handleSelect(3)}
+    className={`rounded-[12px] p-3 cursor-pointer transition-shadow duration-300 ${
+      selectedIndex === 3 ? 'shadow-lg' : 'hover:shadow-lg'
+    } mr-[40px]`}
+  >
+    <Text
+      size="text4xl"
+      as="p"
+      className="leading-[27px] text-[18.26px] w-[84%] !font-poppins2 font-normal !text-adsy_com-black md:w-full"
+    >
+      It is a long established fact that a reader will be distracted
+      by the readable content of a page when looking at its layout.
+    </Text>
+  </div>
+</div>
+
             </div>
                 
               </div>

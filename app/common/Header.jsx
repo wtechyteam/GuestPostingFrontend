@@ -60,14 +60,14 @@ export default function Header({ ...props }) {
                     <ul className="absolute top-full left-0 mt-2 w-48 bg-gray-50_02 border border-gray-300 shadow-lg rounded-lg">
                       <li>
                         <Link href="/for-buyer" legacyBehavior>
-                          <a className="block px-4 py-2 text-[16px] !font-spacegrotesk2 font-medium !text-black-70_ hover:italic">
+                          <a className="block px-4 py-2 text-[16px] !font-spacegrotesk2 font-medium !text-black-70_">
                             For Buyer
                           </a>
                         </Link>
                       </li>
                       <li>
                         <Link href="/for-seller" legacyBehavior>
-                          <a className="block px-4 py-2 text-[16px] !font-spacegrotesk2 font-medium !text-black-70_ hover:italic">
+                          <a className="block px-4 py-2 text-[16px] !font-spacegrotesk2 font-medium !text-black-70_">
                             For Seller
                           </a>
                         </Link>
@@ -132,7 +132,7 @@ export default function Header({ ...props }) {
               <a className="block">
                 <Button
                   size="md"
-                  className="rounded-[24px] min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white hover:bg-white hover:text-blue-500 transition-colors duration-300"
+                  className="rounded-[24px] min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white transition-colors duration-300"
                 >
                   Login
                 </Button>
@@ -142,7 +142,7 @@ export default function Header({ ...props }) {
               <a className="block">
                 <Button
                   size="md"
-                  className="rounded-[24px] min-w-[110px] ml-2 font-medium bg-blue-500 text-white hover:bg-white hover:text-blue-500 transition-colors duration-300"
+                  className="rounded-[24px] min-w-[110px] ml-2 font-medium bg-principal_blue text-white transition-colors duration-300"
                 >
                   Sign Up
                 </Button>

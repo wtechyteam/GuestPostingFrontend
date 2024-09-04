@@ -42,21 +42,22 @@ export default function BlogSection() {
               Blog
             </Heading>
             <div className="flex flex-1 items-center justify-end self-end px-3">
-              <Heading
-                size="headinglg"
-                as="h5"
-                className="text-[20px] !font-poppins2 font-semibold !text-adsy_com-black"
-              >
-                More News
-              </Heading>
-              <Image
-                src="/images/Frame.png"
-                width={28}
-                height={28}
-                alt="Arrow Image"
-                className="h-[28px]"
-              />
-            </div>
+  <Heading
+    size="headinglg"
+    as="h5"
+    className="text-[20px] !font-poppins2 font-semibold !text-adsy_com-black"
+  >
+    More News
+  </Heading>
+  <Image
+    src="/images/Frame.png"
+    width={28}
+    height={28}
+    alt="Arrow Image"
+    className="h-[28px] ml-2" // Added margin-left
+  />
+</div>
+
           </div>
           <div className="mt-[-6px] relative mx-auto flex w-full md:mr-0 md:flex-col">
             <Slider

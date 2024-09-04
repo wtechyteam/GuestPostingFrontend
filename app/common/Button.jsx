@@ -8,10 +8,11 @@ const shapes = {
 
 const variants = {
   fill: {
-    blue_gray_900_01: "bg-blue_gray-900_01 shadow-xl text-gray-10 hover:bg-white hover:text-blue_gray-900_01",
-    gray_10: "bg-gray-10 text-adsy_com-black hover:bg-white hover:text-gray-10",
-    gray_50_01: "bg-gray-50_01 hover:bg-white",
-    principal_blue: "bg-principal_blue text-gray-10 hover:bg-white hover:text-principal_blue",
+    blue_gray_900_01: "bg-blue_gray-900_01 shadow-xl text-gray-10", 
+    gray_10: "bg-gray-10 text-adsy_com-black",
+    gray_50_01: "bg-gray-50_01",
+    principal_blue: "bg-principal_blue text-gray-10",
+    blue_hover_white: "bg-principal_blue text-white", 
   },
 };
 
