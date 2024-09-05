@@ -138,10 +138,12 @@ export default function UserProfile3({
   onClick={fetchAllProducts}
   color="indigo_a400"
   size="md"
-  className="min-w-[134px] min-h-[20px] rounded-xl font-bold text-white bg-indigo-a400 text-sm"
+  className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]"  
 >
   {buyPostButton}
 </Button>
+
+
 
 
             <Image
@@ -165,6 +167,7 @@ export default function UserProfile3({
         <div className="self-stretch">
           <div className="flex flex-col gap-4">
             <div className="mr-3.5 flex items-start md:mr-0 md:flex-col">
+              
               <div className="flex w-[16%] flex-col gap-4 md:w-full">
                 <div className="flex flex-col items-start gap-0.5">
                   <Text
@@ -197,6 +200,10 @@ export default function UserProfile3({
                   </Heading>
                 </div>
               </div>
+
+
+
+
               <div className="border-l border-gray-300 h-full"></div>
               <div className="flex w-[12%] flex-col items-start md:w-full">
                 <Text
@@ -243,6 +250,7 @@ export default function UserProfile3({
                   </Heading>
                 </div>
               </div>
+
               <div className="border-l border-gray-300 h-full"></div>
               <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
                 <div className="flex flex-1 flex-col items-start self-center">
@@ -300,12 +308,16 @@ export default function UserProfile3({
                     </Text>
                     <Heading
                       as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
+                      className="text-adsy_com-black font-bold text-[11.5px] mb-[1rem]"
                     >
                       {tasksWithInitialDomainValue}
                     </Heading>
                   </div>
                 </div>
+
+
+
+
                 <div className="border-l border-gray-300 h-full"></div>
                 <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
                   <div className="flex flex-col items-start gap-0.5 self-stretch">
@@ -331,6 +343,11 @@ export default function UserProfile3({
                     </Text>
                   </div>
                 </div>
+
+
+
+
+
                 <div className="border-l-[2px] border-gray-300 h-full"></div>
                 <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
                   <div className="flex flex-1 flex-col items-start gap-1.5 self-center">
@@ -364,6 +381,8 @@ export default function UserProfile3({
                     </div>
                   </div>
                 </div>
+
+
                 <div className="border-l border-gray-300 h-full"></div>
                 <div className="flex flex-1 flex-col items-start gap-5 px-[30px] md:self-stretch sm:px-5">
                   <div className="flex flex-col items-start gap-0.5 self-stretch">

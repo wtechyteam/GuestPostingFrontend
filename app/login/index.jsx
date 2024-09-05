@@ -57,12 +57,13 @@ export default function LoginOnePage() {
         email,
         password,
       });
-
-      const { token } = response.data;
-
-      // Set the token as a cookie
+  
+      const { token, user } = response.data;
+  
+      // Set the token and fullName as cookies
       Cookies.set("authToken", token, { expires: 7 });
-
+      Cookies.set("fullName", user.fullName, { expires: 7 });
+  
       // Check if running on the client-side before redirecting
       if (typeof window !== "undefined") {
         router.push("/dashboardBuyer");
@@ -73,6 +74,7 @@ export default function LoginOnePage() {
       );
     }
   };
+  
 
   return (
     <div className="w-full h-screen bg-gray-10 flex flex-col">

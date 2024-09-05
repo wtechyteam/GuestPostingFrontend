@@ -51,6 +51,7 @@ module.exports = {
           "900_0f": "#0d0a2c0f",
           "900_33": "#06182c33",
         },
+        custom_blue: "#a4b5f5",
         green: { 50: "#def8dd", 600: "#34a853", 800: "#0aad0a" },
         indigo: {
           50: "#e7e8f2",

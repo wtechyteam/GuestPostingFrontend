@@ -10,16 +10,35 @@ import {
   sidebarClasses,
 } from "react-pro-sidebar";
 import Image from "next/image";
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 export default function Sidebar1({ ...props }) {
+  const router = useRouter();
+  const handleLogout = async () => {
+    try {
+      // Make a request to the logout API
+      await axios.post('http://localhost:3001/api/logout');
+  
+      // Clear cookies related to authentication
+      Cookies.remove('authToken');
+      Cookies.remove('fullName');
+  
+      // Redirect to the login page or home page
+      router.push('/login');
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  };
+
   return (
     <Sidebar
       {...props}
       width="282px !important"
       rootStyles={{ [`${sidebarClasses.container}`]: { gap: 6 } }}
-      className={`${props.className} flex flex-col h-screen gap-1.5 top-0 bg-gray-10 !sticky overflow-auto`}
+      className={`${props.className} flex flex-col h-screen gap-1.5 bg-gray-10 fixed top-0 left-0 overflow-auto`}
     >
-    
       <Heading size="label_regular" as="p" className="ml-6 !text-gray-400">
         Dashboard
       </Heading>
@@ -53,6 +72,7 @@ export default function Sidebar1({ ...props }) {
                 className="h-[20px] w-[20px]"
               />
             }
+                                                                                                                                                                                                            
           >
             Dashboard
           </MenuItem>
@@ -68,7 +88,8 @@ export default function Sidebar1({ ...props }) {
             }
             label="Profile Information"
           >
-            <MenuItem>Submenu Item</MenuItem>
+            <MenuItem className="pl-4">Profile Details</MenuItem>
+            <MenuItem className="pl-4">Account Settings</MenuItem>
           </SubMenu>
           <SubMenu
             icon={
@@ -82,7 +103,9 @@ export default function Sidebar1({ ...props }) {
             }
             label="Order Management"
           >
-            <MenuItem>Submenu Item</MenuItem>
+            <MenuItem className="pl-4">Order History </MenuItem>
+            <MenuItem className="pl-4">Order Status </MenuItem>
+            <MenuItem className="pl-4">Order List </MenuItem>
           </SubMenu>
           <SubMenu
             icon={
@@ -96,7 +119,9 @@ export default function Sidebar1({ ...props }) {
             }
             label="Payment Information"
           >
-            <MenuItem>Submenu Item</MenuItem>
+            <MenuItem className="pl-4">Transaction History </MenuItem>
+            <MenuItem className="pl-4">Billing Information </MenuItem>
+            <MenuItem className="pl-4">Payment Method </MenuItem>
           </SubMenu>
           <MenuItem
             icon={
@@ -123,7 +148,9 @@ export default function Sidebar1({ ...props }) {
             }
             label="Notifications"
           >
-            <MenuItem>Submenu Item</MenuItem>
+            <MenuItem className="pl-4">Seller Message </MenuItem>
+            <MenuItem className="pl-4">Promotions/Discount </MenuItem>
+            <MenuItem className="pl-4">Order Updates </MenuItem>
           </SubMenu>
           <SubMenu
             icon={
@@ -137,7 +164,8 @@ export default function Sidebar1({ ...props }) {
             }
             label="Support"
           >
-            <MenuItem>Submenu Item</MenuItem>
+           <MenuItem className="pl-4">FAQs </MenuItem>
+           <MenuItem className="pl-4">Customer Query </MenuItem>
           </SubMenu>
           <SubMenu
             icon={
@@ -151,13 +179,13 @@ export default function Sidebar1({ ...props }) {
             }
             label="Setting"
           >
-            <MenuItem>Submenu Item</MenuItem>
+            <MenuItem className="pl-4">Currency </MenuItem>
+            <MenuItem className="pl-4">Language </MenuItem>
           </SubMenu>
-         
         </div>
-        
-        <div className="mt-[19rem]">
-        <MenuItem
+
+        <div className="mt-[15rem]">
+          <MenuItem
             icon={
               <Image
                 src="/images/logout.png"
@@ -168,15 +196,12 @@ export default function Sidebar1({ ...props }) {
               />
             }
             className="self-start"
+            onClick={handleLogout}
           >
             Logout
           </MenuItem>
-          
         </div>
       </Menu>
     </Sidebar>
   );
 }
-
-
-0
