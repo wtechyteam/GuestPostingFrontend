@@ -1,79 +1,80 @@
-  import { Heading } from "./Heading";
-  import { Text } from "./Text";
-  import { Img } from "./Img";
-  import { Button } from "./Button";
-  import axios from "axios";
-  import React, { useEffect, useState } from 'react';
-  import Image from "next/image";
-  const fetchAllProducts = async () => {
-    try {
-      const result = await axios.get('http://localhost:3001/api/api/products');
-      console.log('Result:', result.data);
-  
-      // Assuming you want to get the language of the first product
-      if (result.data.length > 0) {
-        return result.data[0].language;
-      }
-      return 'Language not available';
-    } catch (error) {
-      console.error('Error fetching products:', error);
-      return 'Error fetching language';
+import { Heading } from "./Heading";
+import { Text } from "./Text";
+import { Img } from "./Img";
+import { Button } from "./Button";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+const fetchAllProducts = async () => {
+  try {
+    const result = await axios.get("http://localhost:3001/api/api/products");
+    console.log("Result:", result.data);
+
+    // Assuming you want to get the language of the first product
+    if (result.data.length > 0) {
+      return result.data[0].language;
     }
-  };
-  
-  export default function UserProfile3({
-    urlIsHiddenText = "URL is hidden",
-    contributorText,
-    artText,
-    healthText,
-    businessText,
-    buyPostButton = "Buy Post",
-    contentPlacementText = "Content placement",
-    priceText = "$3,640.87",
-    writingPlacementText = "Writing & Placement",
-    writingPriceText = "$3,705.81",
-    mozDAText = "Moz DA",
-    mozDAValue = "92",
-    semrushDAText = "Semrush DA",
-    semrushDAValue = "79",
-    ahrefsDRRangeText = "Ahrefs DR Range",
-    ahrefsDRRangeValue = "94",
-    completionRateText = "Completion rate",
-    completionRateValue = "Up to 88.24%",
-    avgLifetimeOfLinksText = "Avg lifetime of links",
-    avgLifetimeOfLinksValue = "Up to 100.00%",
-    tatText = "TAT",
-    tatValue = "N/A",
-    tasksWithInitialDomainText = "Tasks with Initial Domain & Price",
-    tasksWithInitialDomainValue = "100.00%",
-    ahrefsorganicTrafficText = "Ahrefs Organic Traffic",
-    ahrefsOrganicTrafficValue = "1,801,273",
-    totalTrafficText = (
-      <>
-        Total traffic
-        <br />
-        <span>Not provided</span>
-      </>
-    ),
-    languageText = "Language",
-    countryText = "Country",
-    countryValue = "Germany",
-    linksText = "Links",
-    linksValue = "Dofollow",
-    markedSponsoredByText = "Marked Sponsored by",
-    markedSponsoredByValue = "No",
-    ...props
-  }) {    const [languageValue, setLanguageValue] = useState('Loading...');
-  
-    useEffect(() => {
-      const fetchLanguage = async () => {
-        const language = await fetchAllProducts();
-        setLanguageValue(language);
-      };
-  
-      fetchLanguage();
-    }, []);
-   {
+    return "Language not available";
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return "Error fetching language";
+  }
+};
+
+export default function UserProfile3({
+  urlIsHiddenText = "URL is hidden",
+  contributorText = "Contributor",
+  artText = "Art",
+  healthText = "Health",
+  businessText = "Business",
+  buyPostButton = "Buy Post",
+  contentPlacementText = "Content placement",
+  priceText = "$3,640.87",
+  writingPlacementText = "Writing & Placement",
+  writingPriceText = "$3,705.81",
+  mozDAText = "Moz DA",
+  mozDAValue = "92",
+  semrushDAText = "Semrush DA",
+  semrushDAValue = "79",
+  ahrefsDRRangeText = "Ahrefs DR Range",
+  ahrefsDRRangeValue = "94",
+  completionRateText = "Completion rate",
+  completionRateValue = "Up to 88.24%",
+  avgLifetimeOfLinksText = "Avg lifetime of links",
+  avgLifetimeOfLinksValue = "Up to 100.00%",
+  tatText = "TAT",
+  tatValue = "N/A",
+  tasksWithInitialDomainText = "Tasks with Initial Domain & Price",
+  tasksWithInitialDomainValue = "100.00%",
+  ahrefsorganicTrafficText = "Ahrefs Organic Traffic",
+  ahrefsOrganicTrafficValue = "1,801,273",
+  totalTrafficText = (
+    <>
+      Total traffic
+      <br />
+      <span>Not provided</span>
+    </>
+  ),
+  languageText = "Language",
+  countryText = "Country",
+  countryValue = "Germany",
+  linksText = "Links",
+  linksValue = "Dofollow",
+  markedSponsoredByText = "Marked Sponsored by",
+  markedSponsoredByValue = "No",
+  ...props
+}) {
+  const [languageValue, setLanguageValue] = useState("Loading...");
+
+  useEffect(() => {
+    const fetchLanguage = async () => {
+      const language = await fetchAllProducts();
+      setLanguageValue(language);
+    };
+
+    fetchLanguage();
+  }, []);
+  {
     return (
       <div
         {...props}
@@ -81,34 +82,51 @@
       >
         <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
           <div className="flex flex-1 items-center justify-center md:self-stretch">
-            <Text size="textxl" as="p" className="text-adsy_com-black">
+            <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem]">
               {urlIsHiddenText}
             </Text>
-            <div className="flex self-end rounded-[3px] bg-gray-500 p-0.5">
+            <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
               {!!contributorText ? (
-                <Text size="textxs" as="p" className="text-adsy_com-black font-semibold text-[4.83px]">
+                <Text
+                  size="textxs"
+                  as="p"
+                  className="text-adsy_com-black font-semibold text-[8.83px]"
+                >
                   {contributorText}
                 </Text>
               ) : null}
             </div>
+
             <div className="flex flex-1 gap-[9px] px-2.5">
-              <div className="flex w-[8%] justify-center rounded-lg border border-solid border-blue_gray-50 bg-gray-10 p-0.5">
+              <div className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5">
                 {!!artText ? (
-                  <Text size="texts" as="p" className="text-adsy_com-black text-[8.68px]">
+                  <Text
+                    size="texts"
+                    as="p"
+                    className="text-adsy_com-black text-[8.83px]"
+                  >
                     {artText}
                   </Text>
                 ) : null}
               </div>
-              <div className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-0.5">
+              <div className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5">
                 {!!healthText ? (
-                  <Text size="texts" as="p" className="text-adsy_com-black text-[8.68px]">
+                  <Text
+                    size="texts"
+                    as="p"
+                    className="text-adsy_com-black text-[8.83px]"
+                  >
                     {healthText}
                   </Text>
                 ) : null}
               </div>
-              <div className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10">
+              <div className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5">
                 {!!businessText ? (
-                  <Text size="texts" as="p" className="text-adsy_com-black text-[8.68px]">
+                  <Text
+                    size="texts"
+                    as="p"
+                    className="text-adsy_com-black text-[8.83px]"
+                  >
                     {businessText}
                   </Text>
                 ) : null}
@@ -116,15 +134,14 @@
             </div>
           </div>
           <div className="flex items-center">
-            <Button
-              onClick={fetchAllProducts}
-              color="indigo_a400"
-              size="md"
-              className="min-w-[136px] rounded-lg font-bold text-white bg-indigo-a400"
-            >
-              {buyPostButton}
-            </Button>
-          
+          <Button
+  onClick={fetchAllProducts}
+  color="indigo_a400"
+  size="md"
+  className="min-w-[134px] min-h-[20px] rounded-xl font-bold text-white bg-indigo-a400 text-sm"
+>
+  {buyPostButton}
+</Button>
 
 
             <Image
@@ -144,74 +161,133 @@
             />
           </div>
         </div>
+        <hr className="mt-[-0.8rem] border-gray-300 w-full" />
         <div className="self-stretch">
           <div className="flex flex-col gap-4">
             <div className="mr-3.5 flex items-start md:mr-0 md:flex-col">
               <div className="flex w-[16%] flex-col gap-4 md:w-full">
                 <div className="flex flex-col items-start gap-0.5">
-                  <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
+                  <Text
+                    size="textlg"
+                    as="p"
+                    className="text-adsy_com-black text-[11.5px]"
+                  >
                     {contentPlacementText}
                   </Text>
-                  <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                  <Heading
+                    as="p"
+                    className="text-adsy_com-black font-bold text-[11.5px]"
+                  >
                     {priceText}
                   </Heading>
                 </div>
                 <div className="flex flex-col items-start gap-0.5">
-                  <Text size="textlg" as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                  <Text
+                    size="textlg"
+                    as="p"
+                    className="text-adsy_com-black font-bold text-[11.5px]"
+                  >
                     {writingPlacementText}
                   </Text>
-                  <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                  <Heading
+                    as="p"
+                    className="text-adsy_com-black font-bold text-[11.5px]"
+                  >
                     {writingPriceText}
                   </Heading>
                 </div>
               </div>
+              <div className="border-l border-gray-300 h-full"></div>
               <div className="flex w-[12%] flex-col items-start md:w-full">
-                <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
                   {mozDAText}
                 </Text>
-                <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
                   {mozDAValue}
                 </Heading>
                 <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
-                  <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
+                  <Text
+                    size="textlg"
+                    as="p"
+                    className="text-adsy_com-black text-[11.5px]"
+                  >
                     {semrushDAText}
                   </Text>
-                  <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                  <Heading
+                    as="p"
+                    className="text-adsy_com-black font-bold text-[11.5px]"
+                  >
                     {semrushDAValue}
                   </Heading>
                 </div>
                 <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                  <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
+                  <Text
+                    size="textlg"
+                    as="p"
+                    className="text-adsy_com-black text-[11.5px]"
+                  >
                     {ahrefsDRRangeText}
                   </Text>
-                  <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                  <Heading
+                    as="p"
+                    className="text-adsy_com-black font-bold text-[11.5px]"
+                  >
                     {ahrefsDRRangeValue}
                   </Heading>
                 </div>
               </div>
+              <div className="border-l border-gray-300 h-full"></div>
               <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
                 <div className="flex flex-1 flex-col items-start self-center">
                   <div className="flex flex-col items-start gap-1 self-stretch">
-                    <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
+                    <Text
+                      size="textlg"
+                      as="p"
+                      className="text-adsy_com-black text-[11.5px]"
+                    >
                       {completionRateText}
                     </Text>
-                    <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                    <Heading
+                      as="p"
+                      className="text-adsy_com-black font-bold text-[11.5px]"
+                    >
                       {completionRateValue}
                     </Heading>
                   </div>
                   <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
-                    <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
+                    <Text
+                      size="textlg"
+                      as="p"
+                      className="text-adsy_com-black text-[11.5px]"
+                    >
                       {avgLifetimeOfLinksText}
                     </Text>
-                    <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                    <Heading
+                      as="p"
+                      className="text-adsy_com-black font-bold text-[11.5px]"
+                    >
                       {avgLifetimeOfLinksValue}
                     </Heading>
                   </div>
 
-                  <Text size="textlg" as="p" className="mt-3.5 text-adsy_com-black text-[11.5px]">
+                  <Text
+                    size="textlg"
+                    as="p"
+                    className="mt-3.5 text-adsy_com-black text-[11.5px]"
+                  >
                     {tatText}
                   </Text>
-                  <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                  <Heading
+                    as="p"
+                    className="text-adsy_com-black font-bold text-[11.5px]"
+                  >
                     {tatValue}
                   </Heading>
                   <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
@@ -222,65 +298,105 @@
                     >
                       {tasksWithInitialDomainText}
                     </Text>
-                    <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
+                    <Heading
+                      as="p"
+                      className="text-adsy_com-black font-bold text-[11.5px]"
+                    >
                       {tasksWithInitialDomainValue}
                     </Heading>
-                    
-                  
                   </div>
-                  </div>
-                  <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
-  <div className="flex flex-col items-start gap-0.5 self-stretch">
-    <Text size="textmd" as="p" className="text-adsy_com-black text-[10.5px] font-normal">
-      {ahrefsorganicTrafficText}
-    </Text>
-    <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
-      {ahrefsOrganicTrafficValue}
-    </Heading>
-    <Text size="textmd" as="p" className="text-adsy_com-black text-[10.5px] font-normal mt-4">
-      {totalTrafficText}
-    </Text>
-  </div>
-</div>
-
-
+                </div>
+                <div className="border-l border-gray-300 h-full"></div>
                 <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
-                <div className="flex flex-1 flex-col items-start gap-1.5 self-center">
-                  <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
-                    {languageText}
-                  </Text>
-                  <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
-                    {languageValue}
-                  </Heading>
-                  <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
-                    <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
-                      {countryText}
+                  <div className="flex flex-col items-start gap-0.5 self-stretch">
+                    <Text
+                      size="textmd"
+                      as="p"
+                      className="text-adsy_com-black text-[10.5px] font-normal"
+                    >
+                      {ahrefsorganicTrafficText}
                     </Text>
-                    <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
-                      {countryValue}
+                    <Heading
+                      as="p"
+                      className="text-adsy_com-black font-bold text-[11.5px]"
+                    >
+                      {ahrefsOrganicTrafficValue}
+                    </Heading>
+                    <Text
+                      size="textmd"
+                      as="p"
+                      className="text-adsy_com-black text-[10.5px] font-normal mt-4"
+                    >
+                      {totalTrafficText}
+                    </Text>
+                  </div>
+                </div>
+                <div className="border-l-[2px] border-gray-300 h-full"></div>
+                <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
+                  <div className="flex flex-1 flex-col items-start gap-1.5 self-center">
+                    <Text
+                      size="textlg"
+                      as="p"
+                      className="text-adsy_com-black text-[11.5px]"
+                    >
+                      {languageText}
+                    </Text>
+                    <Heading
+                      as="p"
+                      className="text-adsy_com-black font-bold text-[11.5px]"
+                    >
+                      {languageValue}
+                    </Heading>
+                    <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
+                      <Text
+                        size="textlg"
+                        as="p"
+                        className="text-adsy_com-black text-[11.5px]"
+                      >
+                        {countryText}
+                      </Text>
+                      <Heading
+                        as="p"
+                        className="text-adsy_com-black font-bold text-[11.5px]"
+                      >
+                        {countryValue}
+                      </Heading>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-l border-gray-300 h-full"></div>
+                <div className="flex flex-1 flex-col items-start gap-5 px-[30px] md:self-stretch sm:px-5">
+                  <div className="flex flex-col items-start gap-0.5 self-stretch">
+                    <Text
+                      size="textlg"
+                      as="p"
+                      className="text-adsy_com-black text-[11.5px]"
+                    >
+                      {linksText}
+                    </Text>
+                    <Heading
+                      as="p"
+                      className="text-adsy_com-black text-[11.5px] font-bold"
+                    >
+                      {linksValue}
                     </Heading>
                   </div>
+                  <div className="flex flex-col items-start gap-1.5 self-stretch">
+                    <Text
+                      size="textlg"
+                      as="p"
+                      className="text-adsy_com-black font-bold text-[11.5px]"
+                    >
+                      {markedSponsoredByText}
+                    </Text>
+                    <Heading
+                      as="p"
+                      className="text-adsy_com-black font-bold text-[11.5px]"
+                    >
+                      {markedSponsoredByValue}
+                    </Heading>
                   </div>
-                  </div>
-                  <div className="flex flex-1 flex-col items-start gap-5 px-[30px] md:self-stretch sm:px-5">
-  <div className="flex flex-col items-start gap-0.5 self-stretch">
-    <Text size="textlg" as="p" className="text-adsy_com-black text-[11.5px]">
-      {linksText}
-    </Text>
-    <Heading as="p" className="text-adsy_com-black text-[11.5px] font-bold">
-      {linksValue}
-    </Heading>
-  </div>
-  <div className="flex flex-col items-start gap-1.5 self-stretch">
-    <Text size="textlg" as="p" className="text-adsy_com-black font-bold text-[11.5px]">
-      {markedSponsoredByText}
-    </Text>
-    <Heading as="p" className="text-adsy_com-black font-bold text-[11.5px]">
-      {markedSponsoredByValue}
-    </Heading>
-  </div>
-</div>
-
+                </div>
               </div>
             </div>
           </div>
