@@ -30,9 +30,9 @@ export default function UserProfilesContainer() {
       {languages.map((language, index) => (
         <UserProfile3
           key={index}
-          // Pass relevant props including the language
+        
           language={language}
-          // Pass other necessary props for UserProfile3
+          
         />
       ))}
     </div>

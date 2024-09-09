@@ -22,7 +22,7 @@ export default function MainContentSection() {
                 <div className="h-[942px] relative self-stretch">
                     <div
                         className="h-[874px] absolute left-0 right-0 top-0 m-auto flex-1"
-                        style={{ backgroundColor: 'rgba(28, 129, 125, 0.2)' }}
+                        style={{ backgroundColor: '#D8EBFF' }}
                     />
                     <div className="gap-[26px] absolute bottom-0 left-0 right-0 top-0 m-auto flex h-max flex-1 flex-col items-center px-14 md:px-5">
                         <div className="rounded-[10px] w-[38%] flex justify-center md:w-full">

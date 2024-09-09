@@ -184,7 +184,7 @@ export default function Sidebar1({ ...props }) {
           </SubMenu>
         </div>
 
-        <div className="mt-[15rem]">
+        <div className="mt-[21rem]">
           <MenuItem
             icon={
               <Image

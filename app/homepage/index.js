@@ -16,6 +16,10 @@ import MainContentSection from "./MainContentSection";
 import TrustedBySection from "./TrustedBySection";
 import React from "react";
 import Image from "next/image";
+import HomeFaq from "./HomeFaq";
+import TabsSection from "./TabsSection";
+import ReversedTabsSection from "./ReversedTabsSection";
+import HomeSection4 from "./homeSection4";
 
 export default function DesktopTwoPage() {
   const [sliderState4, setSliderState4] = React.useState(0);
@@ -88,8 +92,15 @@ export default function DesktopTwoPage() {
 
       {/* Key benefits section */}
       <KeyBenefitsSection />
+      <TabsSection/>
+      <HomeSection4 />
+      <TabsSection isReversed={true}/>
+    
+      
 
-      <div className="mt-[148px]">
+      <HomeFaq/>
+
+      <div className="mt-[40px]">
         {/* Brand statistics section */}
         <BrandStatisticsSection />
         <div className="z-[5] mb-[18px] mt-[-294px] relative flex flex-col items-center py-10 sm:py-5">
