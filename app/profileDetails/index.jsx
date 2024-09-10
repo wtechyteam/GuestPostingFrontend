@@ -1,17 +1,14 @@
 "use client";
-
-import { Img } from "../common/Img";
-import { SelectBox } from "../common/SelectBox";
-import { Text } from "../common/Text";
-import { Heading } from "../common/Heading";
-import { Button } from "../common/Button";
-import { Input } from "../common/Input";
+import React, { useState } from "react";
 import Image from "next/image";
 import Sidebar1 from "../common/Sidebar1";
-
 import Link from "next/link";
 import Cookies from "js-cookie";
-import React, { useState } from "react";
+import { Heading } from "../common/Heading";
+import { Text } from "../common/Text";
+import { SelectBox } from "../common/SelectBox";
+import HowItWorks from "./HowItWorks";
+import { Input } from "./../common/Input";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -19,20 +16,49 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function DashboardPage() {
+export default function ProfileDetailsPage() {
   const fullName = Cookies.get("fullName");
 
-  // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
+  const [editableContent, setEditableContent] = useState({
+    name: "John Smith",
+    location: "India",
+    email: "abcd@gmail.com",
+    dob: "08 July, 2006",
+    contact: "999 9999 999",
+  });
+  const [isEditing, setIsEditing] = useState(false);
 
-  // Toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
 
+  const toggleHowItWorks = () => {
+    setHowItWorksVisible(!isHowItWorksVisible);
+  };
+
+  const handleInputChange = (e, field) => {
+    setEditableContent({ ...editableContent, [field]: e.target.value });
+  };
+
+  const handleEditProfile = () => {
+    setIsEditing(true);
+  };
+
+  const handleSave = () => {
+    setIsEditing(false);
+    // Add your save logic here
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+    // Reset the editable content or perform any cancel logic
+  };
+
   return (
-    <div className="w-full bg-gray-10 overflow-x-hidden">
-      <div className="flex flex-col items-end bg-gray-50_01">
+    <div className="w-full h-100% bg-gray-10 overflow-x-hidden">
+      <div className="flex flex-col items-end bg-gray-50_01 ">
         <header className="flex w-[100%] items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
           <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
             <div className="flex w-[100%] flex-col items-start sm:w-full">
@@ -102,7 +128,6 @@ export default function DashboardPage() {
               </Link>
 
               <div className="relative">
-                {/* Profile Image and Click Handler */}
                 <div
                   className="flex flex-col items-center rounded-[20px] bg-warning-200 p-1 cursor-pointer"
                   onClick={toggleDropdown}
@@ -116,16 +141,15 @@ export default function DashboardPage() {
                   />
                 </div>
 
-                {/* Dropdown Menu */}
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <Link href="/profile-settings" legacyBehavior>
-                      <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      <a className="block px-4 py-2 !text-gray-900 hover:bg-gray-100">
                         Profile Settings
                       </a>
                     </Link>
                     <Link href="/logout" legacyBehavior>
-                      <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      <a className="block px-4 py-2 !text-gray-900 hover:bg-gray-100">
                         Logout
                       </a>
                     </Link>
@@ -138,141 +162,185 @@ export default function DashboardPage() {
 
         <div className="flex items-start justify-start gap-7 self-stretch">
           <Sidebar1 />
+
           <div className="mt-[26px] flex flex-1 flex-col gap-[22px]">
-<div className="flex items-center justify-center rounded-md bg-gray-50 px-3.5 shadow-bs1">
-<div className="flex flex-1 items-start gap-[22px]">
-<div className="flex items-center gap-[18px] self-center">
-<Text size="text9xl" as="p" className="!text-[41.14px]">
-?
-</Text>
-<div className="h-[66px] w-[2px] bg-white-a700" />
-</div>
-<Heading size="heading2xl" as="h1" className="mt-[18px]">
-How it works?
-</Heading>
-</div>
-<Img src="img_vector_blue_gray_900.svg" width={10} height={3} alt="Vector" className="h-[3px]" />
-</div>
-<div className="rounded-[20px] bg-white-a700 p-3.5 shadow-sm">
-<div className="mt-2 flex flex-col items-center gap-[50px]">
-<div className="ml-[34px] mr-7 flex items-center justify-between gap-5 self-stretch md:mx-0 md:flex-col">
-<div className="h-[154px] w-[154px] rounded-[76px] bg-blue_gray-100_01" />
-<Text size="text6xl" as="p" className="w- [78%] leading-5 md:w-full">
-It is a long established fact that a reader will be distracted by the readable content of a page
-when looking at its layout. its to Boost Your Business With Collaborator
-</Text>
-</div>
-<div className="mx-4 flex items-center gap-2 self-stretch md:mx-0">
-<Button
-size="xl"
-variant="outline"
-shape="round"
-color="undefined_undefined"
-className="min-w-[188px] font-semibold">
-John Smith
-</Button>
-<Button size="md" variant="outline" color="undefined_undefined" className="w-[38px] rounded-[18px]">
-<Img src="img_vector_black_900.svg" width={16} height={16} />
-</Button>
-</div>
-<div className="mx-4 self-stretch md:mx-0">
-<div className="flex items-start md:flex-col">
-<div className="flex w-[42%] flex-col gap-12 md:w-full">
-<div className="flex items-center gap-2.5">
-<div className="flex w-[78%] items-start gap-4">
-<Heading size="heading2xl" as="h2" className="mt-1 !font-bold">
-Location:
-</Heading>
-<Input
-shape="round"
-color="undefined_undefined"
-name="country"
-placeholder={`India`}
-className="self-center"
-/>
-</div>
-<Img src="img_menu.svg" width={38} height={38} alt="Menu" className="h-[38px] w-[38px]" />
-</div>
-<div className="flex items-center gap-2.5">
-<div className="flex w-[78%] items-start justify-between gap-5">
-<Heading size="heading2xl" as="h3" className="mt-1 !font-bold">
-DOB:
-</Heading>
-<Button
-size="xl"
-variant="outline"
-shape="round"
-color="undefined_undefined"
-className="min-w-[188px] self-center">
-08 July, 2006
-</Button>
-</div>
-<Img src="img_menu.svg" width={38} height={38} alt="Menu" className="h-[38px] w-[38px]" />
-</div>
-</div>
-<div className="flex flex-1 flex-col items-start gap-[60px] self-center px-12 md:self-stretch md:px-5 sm:gap-[30px] ">
-<div className="ml-[18px] mr-8 self-stretch md:mx-0">
-<div className="flex flex-col gap-12">
-<div className="flex items-start justify-center">
-<Heading size="heading2xl" as="h4" className="mt-1 !font-bold">
-Email:
-</Heading>
-<div className="flex flex-1 items-center justify-end gap-3 self-center">
-<Button
-size="xl"
-variant="outline"
-shape="round"
-color="undefined_undefined"
-className="min-w-[244px]">
-abcd@gmail.com
-</Button>
-<Button
-size="md"
-variant="outline"
-color="undefined_undefined"
-className="w-[38px] rounded-[18px]">
-<Img src="img_vector_black_900.svg" width={16} height={16} />
-</Button>
-</div>
-</div>
-<div className="flex items-center justify-center sm:flex-col">
-<Heading size="heading2xl" as="h5" className="mt-1 self-start font-bold sm:self-auto">
-Contact No.
-</Heading>
-<Input
-shape="round"
-color="undefined undefined"
-name="frame43961"
-placeholder={`999 9999 999`}
-className="ml-5 sm:ml-0"
-/>
+            <HowItWorks
+              isHowItWorksVisible={isHowItWorksVisible}
+              toggleHowItWorks={toggleHowItWorks}
+            />
 
-<Button
-size="md"
-variant="outline"
-color="undefined undefined"
-className="ml-1.5 w- [38px] rounded- [18px] sm:ml-0">
-<Img src="img_vector_black_900.svg" width={16} height={16} />
-</Button>
-</div>
-</div>
-</div>
-<Button size="lg" shape="round" className="min-w-[72px]">
-Save
-</Button>
-</div>
-</div>
-</div>
-<Heading size="text5xl" as="h6" className="self-end !text-blue-700_01 underline">
-Explore Services...
-</Heading>
-</div>
-</div>
-</div>
-</div>
-</div>
+            <div className="rounded-[20px] bg-white p-6 shadow-lg flex flex-col items-center mb-6 min-h-[700px] w-[1580px]">
+              <div className="relative flex items-start w-full mb-4">
+                <Image
+                  src="/images/Rectangle 1695.png"
+                  width={154}
+                  height={154}
+                  alt="Profile Image"
+                  className="rounded-full mr-8"
+                />
 
+                <div className="max-w-lg mt-10 ml-8 sm:mt-0">
+                  <Text
+                    size="text6xl"
+                    as="p"
+                    className="!text-gray-900 leading-normal"
+                  >
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is to Boost Your Business With Collaborator.
+                  </Text>
+                </div>
+
+                {!isEditing && (
+                  <button
+                    className="absolute bottom-20 right-4 rounded-lg bg-blue-500 text-white py-2 px-6 sm:right-0 sm:bottom-0"
+                    onClick={handleEditProfile}
+                  >
+                    Edit Profile
+                  </button>
+                )}
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 w-full mt-4">
+                <div className="flex items-center">
+                  <label className="text-gray-700 font-semibold mr-2">
+                    Name:
+                  </label>
+                  <input
+                    type="text"
+                    value={editableContent.name}
+                    onChange={(e) => handleInputChange(e, "name")}
+                    className={`p-2 border ${
+                      isEditing ? "!bg-white" : "!bg-gray-300"
+                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center ml-11 sm:ml-0`}
+                    disabled={!isEditing}
+                  />
+                  {isEditing && (
+                    <Image
+                      src="/images/Group 25818.png"
+                      width={20}
+                      height={20}
+                      alt="Name Icon"
+                      className="ml-2"
+                    />
+                  )}
+                </div>
+
+                <div className="flex items-center">
+                  <label className="text-gray-700 font-semibold mr-2">
+                    Email:
+                  </label>
+                  <input
+                    type="email"
+                    value={editableContent.email}
+                    onChange={(e) => handleInputChange(e, "email")}
+                    className={`p-2 border ${
+                      isEditing ? "!bg-white" : "!bg-gray-300"
+                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center sm:ml-0 ml-14`}
+                    disabled={!isEditing}
+                  />
+                  {isEditing && (
+                    <Image
+                      src="/images/Group 25818.png"
+                      width={20}
+                      height={20}
+                      alt="Email Icon"
+                      className="ml-2"
+                    />
+                  )}
+                </div>
+
+                <div className="flex items-center">
+                  <label className="text-gray-700 font-semibold mr-2">
+                    Location:
+                  </label>
+                  <input
+                    type="text"
+                    value={editableContent.location}
+                    onChange={(e) => handleInputChange(e, "location")}
+                    className={`p-2 border ${
+                      isEditing ? "!bg-white" : "!bg-gray-300"
+                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center ml-[-1] sm:ml-0 ml-5`}
+                    disabled={!isEditing}
+                  />
+                  {isEditing && (
+                    <Image
+                      src="/images/Group 25818.png"
+                      width={20}
+                      height={20}
+                      alt="Location Icon"
+                      className="ml-2"
+                    />
+                  )}
+                </div>
+
+                <div className="flex items-center">
+                  <label className="text-gray-700 font-semibold mr-2">
+                    Date of Birth:
+                  </label>
+                  <input
+                    type="date"
+                    value={editableContent.dob}
+                    onChange={(e) => handleInputChange(e, "dob")}
+                    className={`p-2 border ${
+                      isEditing ? "!bg-white" : "!bg-gray-300"
+                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center sm:ml-0 `}
+                    disabled={!isEditing}
+                  />
+                  {isEditing && (
+                    <Image
+                      src="/images/Group 25818.png"
+                      width={24}
+                      height={24}
+                      alt="DOB Icon"
+                      className="ml-2"
+                    />
+                  )}
+                </div>
+
+                <div className="flex items-center">
+                  <label className="text-gray-700 font-semibold mr-2">
+                    Contact:
+                  </label>
+                  <input
+                    type="text"
+                    value={editableContent.contact}
+                    onChange={(e) => handleInputChange(e, "contact")}
+                    className={`p-2 border ${
+                      isEditing ? "!bg-white" : "!bg-gray-300"
+                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center sm:ml-0 ml-6`}
+                    disabled={!isEditing}
+                  />
+                  {isEditing && (
+                    <Image
+                      src="/images/Group 25818.png"
+                      width={24}
+                      height={24}
+                      alt="Contact Icon"
+                      className="ml-2"
+                    />
+                  )}
+                </div>
+              </div>
+
+              {isEditing && (
+                <div className="flex mt-4 gap-4">
+                  <button
+                    className="rounded-lg bg-blue-500 text-white py-2 px-6"
+                    onClick={handleSave}
+                  >
+                    Save
+                  </button>
+                  <button
+                    className="rounded-lg bg-gray-300 text-gray-700 py-2 px-6"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      
+      </div>
+    </div>
   );
 }
