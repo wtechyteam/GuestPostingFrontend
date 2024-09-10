@@ -8,16 +8,10 @@ import Image from "next/image";
 const fetchAllProducts = async () => {
   try {
     const result = await axios.get("http://localhost:3001/api/api/products");
-    console.log("Result:", result.data);
-
-    // Assuming you want to get the language of the first product
-    if (result.data.length > 0) {
-      return result.data[0].language;
-    }
-    return "Language not available";
+    return result.data;
   } catch (error) {
     console.error("Error fetching products:", error);
-    return "Error fetching language";
+    return [];
   }
 };
 
@@ -51,11 +45,12 @@ export default function UserProfile3({
   totalTrafficText = (
     <>
       Total traffic
-      <br />
-      <span>Not provided</span>
+      
     </>
   ),
+  totalTrafficValue="Not Provided",
   languageText = "Language",
+  language="German",
   countryText = "Country",
   countryValue = "Germany",
   linksText = "Links",
@@ -63,17 +58,26 @@ export default function UserProfile3({
   markedSponsoredByText = "Marked Sponsored by",
   markedSponsoredByValue = "No",
   ...props
-}) {
-  const [languageValue, setLanguageValue] = useState("Loading...");
+}) {const [productData, setProductData] = useState(null);
 
-  useEffect(() => {
-    const fetchLanguage = async () => {
-      const language = await fetchAllProducts();
-      setLanguageValue(language);
-    };
+useEffect(() => {
+  const fetchData = async () => {
+    const products = await fetchAllProducts();
+    if (products.length > 0) {
+      setProductData(products[0]); 
+    }
+  };
+  fetchData();
+}, []);
 
-    fetchLanguage();
-  }, []);
+if (!productData) {
+  return <div>Loading...</div>;
+}
+
+
+// Split tags string into an array
+const tagArray = productData.tags.split(", ").map(tag => tag.trim());
+
   {
     return (
       <div
@@ -83,7 +87,7 @@ export default function UserProfile3({
         <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
           <div className="flex flex-1 items-center justify-center md:self-stretch">
             <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem]">
-              {urlIsHiddenText}
+            {productData.URL || "URL is hidden"}
             </Text>
             <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
               {!!contributorText ? (
@@ -98,40 +102,21 @@ export default function UserProfile3({
             </div>
 
             <div className="flex flex-1 gap-[9px] px-2.5">
-              <div className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5">
-                {!!artText ? (
-                  <Text
-                    size="texts"
-                    as="p"
-                    className="text-adsy_com-black text-[8.83px]"
-                  >
-                    {artText}
-                  </Text>
-                ) : null}
+            {tagArray.map((tag, index) => (
+              <div
+                key={index}
+                className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5"
+              >
+                <Text
+                  size="texts"
+                  as="p"
+                  className="text-adsy_com-black text-[8.83px]"
+                >
+                  {tag}
+                </Text>
               </div>
-              <div className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5">
-                {!!healthText ? (
-                  <Text
-                    size="texts"
-                    as="p"
-                    className="text-adsy_com-black text-[8.83px]"
-                  >
-                    {healthText}
-                  </Text>
-                ) : null}
-              </div>
-              <div className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5">
-                {!!businessText ? (
-                  <Text
-                    size="texts"
-                    as="p"
-                    className="text-adsy_com-black text-[8.83px]"
-                  >
-                    {businessText}
-                  </Text>
-                ) : null}
-              </div>
-            </div>
+            ))}
+          </div>
           </div>
           <div className="flex items-center">
           <Button
@@ -181,7 +166,7 @@ export default function UserProfile3({
                     as="p"
                     className="text-adsy_com-black font-bold text-[11.5px]"
                   >
-                    {priceText}
+                    {productData.contentPlacement ||priceText}
                   </Heading>
                 </div>
                 <div className="flex flex-col items-start gap-0.5">
@@ -196,7 +181,7 @@ export default function UserProfile3({
                     as="p"
                     className="text-adsy_com-black font-bold text-[11.5px]"
                   >
-                    {writingPriceText}
+                    {productData.writingAndPlacement || writingPriceText}
                   </Heading>
                 </div>
               </div>
@@ -217,7 +202,7 @@ export default function UserProfile3({
                   as="p"
                   className="text-adsy_com-black font-bold text-[11.5px]"
                 >
-                  {mozDAValue}
+                  {productData.mozDA || mozDAValue}
                 </Heading>
                 <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
                   <Text
@@ -231,7 +216,7 @@ export default function UserProfile3({
                     as="p"
                     className="text-adsy_com-black font-bold text-[11.5px]"
                   >
-                    {semrushDAValue}
+                    {productData.semrushDA || semrushDAValue}
                   </Heading>
                 </div>
                 <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
@@ -246,7 +231,7 @@ export default function UserProfile3({
                     as="p"
                     className="text-adsy_com-black font-bold text-[11.5px]"
                   >
-                    {ahrefsDRRangeValue}
+                    {productData.ahrefsDRrange || ahrefsDRRangeValue}
                   </Heading>
                 </div>
               </div>
@@ -266,7 +251,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {completionRateValue}
+                      {productData.completionRate || completionRateValue}
                     </Heading>
                   </div>
                   <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
@@ -281,7 +266,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {avgLifetimeOfLinksValue}
+                      {productData.avgLifetimeOfLinks || avgLifetimeOfLinksValue}
                     </Heading>
                   </div>
 
@@ -296,7 +281,7 @@ export default function UserProfile3({
                     as="p"
                     className="text-adsy_com-black font-bold text-[11.5px]"
                   >
-                    {tatValue}
+                    {productData.tat || tatValue}
                   </Heading>
                   <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
                     <Text
@@ -310,7 +295,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px] mb-[1rem]"
                     >
-                      {tasksWithInitialDomainValue}
+                      {productData.taskDomainPrice || tasksWithInitialDomainValue}
                     </Heading>
                   </div>
                 </div>
@@ -332,7 +317,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {ahrefsOrganicTrafficValue}
+                      {productData.ahrefsOrganicTraffic || ahrefsOrganicTrafficValue}
                     </Heading>
                     <Text
                       size="textmd"
@@ -341,6 +326,12 @@ export default function UserProfile3({
                     >
                       {totalTrafficText}
                     </Text>
+                    <Heading
+                      as="p"
+                      className="text-adsy_com-black font-bold text-[11.5px]"
+                    >
+                      {productData.totalTraffic || totalTrafficValue}
+                    </Heading>
                   </div>
                 </div>
 
@@ -362,7 +353,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {languageValue}
+                      {productData.language || language}
                     </Heading>
                     <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
                       <Text
@@ -376,7 +367,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {countryValue}
+                        {productData.country || countryValue}
                       </Heading>
                     </div>
                   </div>
@@ -397,7 +388,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black text-[11.5px] font-bold"
                     >
-                      {linksValue}
+                      {productData.links || linksValue}
                     </Heading>
                   </div>
                   <div className="flex flex-col items-start gap-1.5 self-stretch">
@@ -412,7 +403,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {markedSponsoredByValue}
+                      {productData.markedSponsoredBy ? "Yes" : "No"}
                     </Heading>
                   </div>
                 </div>

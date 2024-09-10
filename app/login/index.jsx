@@ -18,7 +18,12 @@ export default function LoginOnePage() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+const togglePasswordVisibility = () => {
+  setIsPasswordVisible(!isPasswordVisible);
+}
   const router = useRouter(); // Initialize the router
 
   useEffect(() => {
@@ -64,7 +69,7 @@ export default function LoginOnePage() {
       Cookies.set("authToken", token, { expires: 7 });
       Cookies.set("fullName", user.fullName, { expires: 7 });
   
-      // Check if running on the client-side before redirecting
+      
       if (typeof window !== "undefined") {
         router.push("/dashboardBuyer");
       }
@@ -141,7 +146,7 @@ export default function LoginOnePage() {
                 </Text>
                 <Link
                   href="/signup"
-                  target="_blank"
+                 
                 >
                   <Text
                     as="p"
@@ -170,7 +175,7 @@ export default function LoginOnePage() {
                 shape="round"
                 type="email"
                 name="Email or Phone Input"
-                placeholder="  Enter email or Phone Number"
+                placeholder="  Enter Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins "
@@ -179,16 +184,17 @@ export default function LoginOnePage() {
               <Input
                 color="blue 50"
                 shape="round"
-                type="password"
+                type={isPasswordVisible ? "text" : "password"} 
                 name="Password Input"
                 placeholder="  Password"
                 suffix={
                   <Image
-                    src="/images/invisible.png"
+                    src={isPasswordVisible ? "/images/Frame 43967.png" : "/images/invisible.png"} // Toggle icon
                     width={16}
                     height={16}
-                    alt="Invisible 1"
-                    className="h-[16px] w-[16px] mr-[1rem]"
+                    alt="Visibility Icon"
+                    className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
+                    onClick={togglePasswordVisibility} // Toggle password visibility on click
                   />
                 }
                 value={password}

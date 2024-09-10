@@ -26,10 +26,13 @@ export default function PublisherSearchSection() {
         >
           <div className="mr-4 md:mr-0">
             <div className="flex flex-col items-start gap-[18px]">
-            <Heading size="text-[10rem]" as="h1" className="text-adsy_com-black font-semibold text-[24px]">
-  Search for Publishers
-</Heading>
-
+              <Heading
+                size="text-[10rem]"
+                as="h1"
+                className="text-adsy_com-black font-semibold text-[24px]"
+              >
+                Search for Publishers
+              </Heading>
 
               <div className="flex justify-between gap-5 self-stretch md:flex-col">
                 <TabList className="flex flex-wrap gap-4 ">
@@ -74,25 +77,23 @@ export default function PublisherSearchSection() {
                     className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3"
                   />
 
-<SelectBox
-  size="xs"
-  shape="square"
-  indicator={
-    <Image
-      src="/images/CaretDown.png"
-      width={10}
-      height={8}
-      alt="Vector"
-      className="h-[8px] w-[10px]"
-    />
-  }
-  name="Filter Dropdown"
-  placeholder={`Filter`}
-  options={dropDownOptions}
-  className="w-[6%] gap-1.5 text-adsy_com-black md:w-full rounded-[14px] border border-gray-300"
-/>
-
-
+                  <SelectBox
+                    size="xs"
+                    shape="square"
+                    indicator={
+                      <Image
+                        src="/images/CaretDown.png"
+                        width={10}
+                        height={8}
+                        alt="Vector"
+                        className="h-[8px] w-[10px]"
+                      />
+                    }
+                    name="Filter Dropdown"
+                    placeholder={`Filter`}
+                    options={dropDownOptions}
+                    className="w-[6%] gap-1.5 text-adsy_com-black md:w-full rounded-[14px] border border-gray-300"
+                  />
                 </div>
               </div>
             </div>
@@ -105,8 +106,8 @@ export default function PublisherSearchSection() {
               <div className="w-full">
                 <div className="flex flex-col gap-1">
                   <UserProfile3 />
-                  {/* <UserProfile3 />
-                  <UserProfile3 /> */}
+  
+                  <UserProfile3 /> 
                 </div>
               </div>
             </TabPanel>

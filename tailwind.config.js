@@ -52,6 +52,7 @@ module.exports = {
           "900_33": "#06182c33",
         },
         custom_blue: "#a4b5f5",
+        alice_blue: '#F0F8FF',
         green: { 50: "#def8dd", 600: "#34a853", 800: "#0aad0a" },
         indigo: {
           50: "#e7e8f2",
@@ -61,12 +62,14 @@ module.exports = {
           a200: "#515de1",
           a400: "#3861fb",
         },
+        
         light_blue: {
           600: "#00a1e0",
           800: "#016fd0",
           "300_a2": "#4abff2a2",
           a200: "#36c5f0",
         },
+        
         light_green: { 500: "#95bf47", 800: "#5e8e3e" },
         neutral_colors: { color_300: "#f0f0f6" },
         orange: { a700: "#ff5d00" },
@@ -99,6 +102,9 @@ module.exports = {
         poppins2:"Poppins",
         dmsans2:"DM Sans",
 
+      },
+      boxShadow: {
+        'grey-shadow': '0 4px 8px rgba(0, 0, 0, 0.3)', // Customize the shadow here
       },
       backgroundImage: {
         "gradient4":"linear-gradient(187deg,#1c817da2,#4abff2a2)",

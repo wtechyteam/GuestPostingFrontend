@@ -32,7 +32,7 @@ export default function KeyBenefitsSection() {
               <SellerInfoSection learnMoreButton="Learn More" />
             </div>
           </div>
-          <div className="mt-[182px] ml-6 flex items-center md:ml-0 md:flex-col">
+          {/* <div className="mt-[182px] ml-6 flex items-center md:ml-0 md:flex-col">
             <div className="gap-[26px] flex flex-1 flex-col items-start md:self-stretch">
               <Heading
                 size="heading2xl"
@@ -206,9 +206,9 @@ export default function KeyBenefitsSection() {
             </div>
                 
               </div>
-            </div>
+            </div>*/}
           </div>
-        </div>
+        </div> 
       
     </>
   );

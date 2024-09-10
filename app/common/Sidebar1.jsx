@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { Img } from "./Img";
 import { Heading } from "./Heading";
 import {
@@ -62,6 +62,7 @@ export default function Sidebar1({ ...props }) {
         className="flex flex-col flex-grow self-stretch"
       >
         <div className="flex flex-col gap-1">
+          <Link href="/dashboardBuyer">
           <MenuItem
             icon={
               <Image
@@ -76,6 +77,7 @@ export default function Sidebar1({ ...props }) {
           >
             Dashboard
           </MenuItem>
+          </Link>
           <SubMenu
             icon={
               <Image
@@ -88,7 +90,8 @@ export default function Sidebar1({ ...props }) {
             }
             label="Profile Information"
           >
-            <MenuItem className="pl-4">Profile Details</MenuItem>
+            <Link href="/profileDetails"><MenuItem className="pl-4">Profile Details</MenuItem></Link>
+            
             <MenuItem className="pl-4">Account Settings</MenuItem>
           </SubMenu>
           <SubMenu
@@ -103,9 +106,9 @@ export default function Sidebar1({ ...props }) {
             }
             label="Order Management"
           >
-            <MenuItem className="pl-4">Order History </MenuItem>
-            <MenuItem className="pl-4">Order Status </MenuItem>
-            <MenuItem className="pl-4">Order List </MenuItem>
+            <Link href="/orderManagement"> <MenuItem className="pl-4">Order History </MenuItem></Link>
+            <Link href="/orderManagement"> <MenuItem className="pl-4">Order Status </MenuItem></Link>
+            <Link href="/orderManagement"> <MenuItem className="pl-4">Order List </MenuItem></Link>
           </SubMenu>
           <SubMenu
             icon={
@@ -119,10 +122,11 @@ export default function Sidebar1({ ...props }) {
             }
             label="Payment Information"
           >
-            <MenuItem className="pl-4">Transaction History </MenuItem>
-            <MenuItem className="pl-4">Billing Information </MenuItem>
-            <MenuItem className="pl-4">Payment Method </MenuItem>
+           <Link href="/paymentInfo"> <MenuItem className="pl-4">Transaction History </MenuItem></Link>
+           <Link href="/paymentInfo"> <MenuItem className="pl-4">Billing Information </MenuItem></Link>
+           <Link href="/paymentInfo"><MenuItem className="pl-4">Payment Method </MenuItem></Link>
           </SubMenu>
+          <Link href="/wishlist">
           <MenuItem
             icon={
               <Image
@@ -136,6 +140,7 @@ export default function Sidebar1({ ...props }) {
           >
             Wishlist
           </MenuItem>
+          </Link>
           <SubMenu
             icon={
               <Image
@@ -148,9 +153,9 @@ export default function Sidebar1({ ...props }) {
             }
             label="Notifications"
           >
-            <MenuItem className="pl-4">Seller Message </MenuItem>
-            <MenuItem className="pl-4">Promotions/Discount </MenuItem>
-            <MenuItem className="pl-4">Order Updates </MenuItem>
+            <Link href="/notifications"><MenuItem className="pl-4">Seller Message </MenuItem></Link>
+            <Link href="/notifications"><MenuItem className="pl-4">Promotions/Discount </MenuItem></Link>
+            <Link href="/notifications"><MenuItem className="pl-4">Order Updates </MenuItem></Link>
           </SubMenu>
           <SubMenu
             icon={
@@ -164,8 +169,8 @@ export default function Sidebar1({ ...props }) {
             }
             label="Support"
           >
-           <MenuItem className="pl-4">FAQs </MenuItem>
-           <MenuItem className="pl-4">Customer Query </MenuItem>
+            <Link href="/support"><MenuItem className="pl-4">FAQs </MenuItem></Link>
+            <Link href="/support"><MenuItem className="pl-4">Customer Query </MenuItem></Link>
           </SubMenu>
           <SubMenu
             icon={
@@ -184,7 +189,7 @@ export default function Sidebar1({ ...props }) {
           </SubMenu>
         </div>
 
-        <div className="mt-[15rem]">
+        <div className="mt-[21rem]">
           <MenuItem
             icon={
               <Image

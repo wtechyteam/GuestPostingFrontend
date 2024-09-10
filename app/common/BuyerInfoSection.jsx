@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { Button } from "./Button";
 import { Text } from "./Text";
 import React, { useState } from "react";
 
-export default function BuyerInfoSection({ descriptionText, learnMoreButton = "Learn More", ...props }) {
+export default function BuyerInfoSection({ descriptionText, learnMoreButton = "Sign Up", ...props }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -10,7 +11,7 @@ export default function BuyerInfoSection({ descriptionText, learnMoreButton = "L
             {...props}
             className={`flex items-center w-[50%] md:w-full relative 
                 hover:border-2 hover:border-[#1C817D] hover:rounded-2xl 
-                hover:bg-[#1C817D] p-4`}
+                hover:bg-blue-100 p-4`}
             style={{ borderColor: 'transparent' }} // Initial style
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -20,7 +21,7 @@ export default function BuyerInfoSection({ descriptionText, learnMoreButton = "L
                     size="text7xl"
                     as="p"
                     className="leading-[58px] z-[2] text-[39.13px] relative font-normal"
-                    style={{ color: isHovered ? '#FFFFFF' : '#000000' }} // Change color based on hover state
+                    style={{ color: isHovered ? '#000000' : '#000000' }} // Change color based on hover state
                 >
                     <span className="font-bold">
                         <>
@@ -38,9 +39,11 @@ export default function BuyerInfoSection({ descriptionText, learnMoreButton = "L
                         </>
                     </span>
                 </Text>
+                <Link href="/signup">
                 <Button size="lg" shape="round" className="!rounded-[28px] min-w-[162px] mt-[34px] relative font-medium">
                     {learnMoreButton}
                 </Button>
+                </Link> 
             </div>
         </div>
     );

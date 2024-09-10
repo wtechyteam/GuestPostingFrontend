@@ -1,18 +1,30 @@
 "use client";
 import { Text } from "./../common/Text";
-import { Img } from "./../common/Img";
 import { Button } from "./../common/Button";
 import { Heading } from "./../common/Heading";
 import { Input } from "../common/Input";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
   const words = ["Sales", "Leads", "Revenue", "Engagement"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const router = useRouter(); 
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+
+const togglePasswordVisibility = () => {
+  setIsPasswordVisible(!isPasswordVisible);
+}
+const toggleConfirmPasswordVisibility = () => {
+  setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+};
 
   const [formData, setFormData] = useState({
     email: "",
@@ -48,7 +60,7 @@ export default function SignUpPage() {
         });
       },
       isDeleting ? 200 : 300
-    ); // Adjust the delay as needed
+    ); 
 
     return () => clearTimeout(timeout);
   }, [displayedWord, isDeleting]);
@@ -60,40 +72,33 @@ export default function SignUpPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-
+  
     try {
-      const response = await fetch("http://localhost:3001/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          email: formData.email,
-          password: formData.password,
-        }),
+      const response = await axios.post("http://localhost:3001/api/signup", {
+        fullName: formData.fullName,
+        email: formData.email,
+        password: formData.password,
       });
+  
+      const { token, user } = response.data;
+  
+      // Set the token and fullName as cookies
+      Cookies.set("authToken", token, { expires: 7 });
+      Cookies.set("fullName", user.fullName, { expires: 7 });
+       setSuccess("Registration successful");
+      setError("");
 
-      const result = await response.json();
-
-      if (response.ok) {
-        setSuccess("Registration successful");
-        setError("");
-        // Redirect or perform further actions as needed
-      } else {
-        setError(result.message || "An error occurred");
-        setSuccess("");
-      }
-    } catch (err) {
-      setError("An error occurred while registering");
+      router.push("/dashboardBuyer");
+    } catch (error) {
+      setError(error.response?.data?.message || "An error occurred while registering");
       setSuccess("");
     }
   };
-
   return (
     <div className="w-full h-screen bg-gray-10 flex flex-col">
       <div className="mt-8 flex flex-col items-start gap-28 md:gap-[84px] sm:gap-14">
@@ -155,7 +160,7 @@ export default function SignUpPage() {
                 >
                   If you do not have an account register
                 </Text>
-                <Link href="/login" target="_blank">
+                <Link href="/login">
                   <Text
                     as="p"
                     className="ml-1.5 mt-1.5 !font-poppins !text-adsy_com-black md:ml-0"
@@ -209,45 +214,47 @@ export default function SignUpPage() {
                 onChange={handleChange}
               />
               <Input
-                color="blue 50"
-                shape="round"
-                type="password"
-                name="password"
-                placeholder="Password"
-                suffix={
-                  <Image
-                    src="/images/invisible.png"
-                    width={16}
-                    height={16}
-                    alt="Invisible Icon"
-                    className="h-[16px] w-[16px] mr-[1rem]"
-                  />
-                }
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
-                style={{ paddingLeft: '1rem' }}
-                value={formData.password}
-                onChange={handleChange}
-              />
-              <Input
-                color="blue 50"
-                shape="round"
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                suffix={
-                  <Image
-                    src="/images/invisible.png"
-                    width={16}
-                    height={16}
-                    alt="Invisible Icon"
-                    className="h-[16px] w-[16px] mr-[1rem]"
-                  />
-                }
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
-                style={{ paddingLeft: '1rem' }}
-                value={formData.confirmPassword}
-                onChange={handleChange}
-              />
+  color="blue 50"
+  shape="round"
+  type={isPasswordVisible ? "text" : "password"} // Toggle input type
+  name="password"
+  placeholder="Password"
+  suffix={
+    <Image
+      src={isPasswordVisible ? "/images/Frame 43967.png" : "/images/invisible.png"} // Toggle icon
+      width={16}
+      height={16}
+      alt="Visibility Icon"
+      className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
+      onClick={togglePasswordVisibility} // Toggle password visibility on click
+    />
+  }
+  className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
+  style={{ paddingLeft: '1rem' }}
+  value={formData.password}
+  onChange={handleChange}
+/>
+<Input
+  color="blue 50"
+  shape="round"
+  type={isConfirmPasswordVisible ? "text" : "password"} // Toggle input type for confirm password
+  name="confirmPassword"
+  placeholder="Confirm Password"
+  suffix={
+    <Image
+      src={isConfirmPasswordVisible ? "/images/Frame 43967.png" : "/images/invisible.png"} // Toggle icon for confirm password
+      width={16}
+      height={16}
+      alt="Visibility Icon"
+      className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
+      onClick={toggleConfirmPasswordVisibility} // Toggle confirm password visibility on click
+    />
+  }
+  className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
+  style={{ paddingLeft: '1rem' }}
+  value={formData.confirmPassword}
+  onChange={handleChange}
+/>
               {error && (
                 <p className="mt-2 text-red-500">{error}</p>
               )}

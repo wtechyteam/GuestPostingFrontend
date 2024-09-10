@@ -38,7 +38,7 @@ export default function CollaborationSection() {
   }, [displayedWord, isDeleting]);
 
   return (
-    <div className="bg-[url(/images/Desktop.png)] py-[76px] h-[746px] bg-cover bg-no-repeat md:h-auto md:py-10 px-5 md:px-10"> {/* Added padding */}
+    <div className="bg-[url(/images/flow1.gif)] py-[76px] h-[746px] bg-cover bg-no-repeat md:h-auto md:py-10 px-5 md:px-10"> {/* Added padding */}
       <div>
         <div className="flex items-center justify-center md:flex-col">
           <div className="w-[40%] flex flex-col items-start md:w-full md:px-5">
