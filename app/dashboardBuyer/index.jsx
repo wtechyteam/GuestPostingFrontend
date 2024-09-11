@@ -12,6 +12,7 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import HowItWorks from "./HowItWorks";
+import { useRouter } from 'next/navigation';  
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -21,15 +22,28 @@ const dropDownOptions = [
 
 export default function DashboardPage() {
   const fullName = Cookies.get("fullName");
+  const router = useRouter();  // Initialize the router
+
+  const handleLogout = () => {
+    // Add your logout logic here, e.g., clear cookies or call an API
+    Cookies.remove('fullName');
+    
+    // Redirect to the login page after logout
+    router.push('/login');
+  };
 
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
+
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
-
+  const toggleHowItWorks = () => {
+    setHowItWorksVisible(!isHowItWorksVisible);
+  };
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
       <div className="flex flex-col items-end bg-gray-50_01">
@@ -124,11 +138,12 @@ export default function DashboardPage() {
                         Profile Settings
                       </a>
                     </Link>
-                    <Link href="/logout" legacyBehavior>
-                      <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        Logout
-                      </a>
-                    </Link>
+                    <button
+                    onClick={handleLogout}
+                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
                   </div>
                 )}
               </div>
@@ -139,7 +154,10 @@ export default function DashboardPage() {
         <div className="flex items-start justify-start gap-7 self-stretch">
           <Sidebar1 />
           <div className="mt-[18px] flex flex-1 flex-col gap-7">
-            <HowItWorks/>
+          <HowItWorks
+              isHowItWorksVisible={isHowItWorksVisible}
+              toggleHowItWorks={toggleHowItWorks}
+            />
             <OrderSummarySection />
             <PublisherSearchSection />
           </div>

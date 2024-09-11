@@ -169,7 +169,9 @@ export default function ProfileDetailsPage() {
               toggleHowItWorks={toggleHowItWorks}
             />
 
-            <div className="rounded-[20px] bg-white p-6 shadow-lg flex flex-col items-center mb-6 min-h-[700px] w-[1580px]">
+            <div className="rounded-[20px] bg-white p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1580px]">
+            <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">Profile Details</h1>
+
               <div className="relative flex items-start w-full mb-4">
                 <Image
                   src="/images/Rectangle 1695.png"

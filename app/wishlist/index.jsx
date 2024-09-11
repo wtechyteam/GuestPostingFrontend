@@ -169,6 +169,7 @@ export default function Wishlist() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
+             <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">Wishlist</h1>
 
 
   <PublisherSearchSection/>

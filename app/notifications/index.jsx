@@ -181,7 +181,7 @@ export default function NotificationPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-
+           <h1 className="text-3xl font-bold text-gray-700 !text-left">Notifications</h1>
             <div className="mt-6">
               <div className="flex">
                 <button
@@ -220,24 +220,25 @@ export default function NotificationPage() {
               </div>
 
               <div className="mt-4">
-                {activeTab === "tab1" && (
-                  <div className="bg-white shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
-                    <Text size="textmd" as="p">
-                      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
-                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
-                          <Suspense fallback={<div>Loading feed...</div>}>
-                            {data.map((d, index) => (
-                              <TextContentRow
-                                {...d}
-                                key={"viewhierarchy" + index}
-                              />
-                            ))}
-                          </Suspense>
-                        </div>
-                      </div>
-                    </Text>
-                  </div>
-                )}
+              {activeTab === "tab1" && (
+  <div className="bg-white shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+    <Text size="textmd" as="p">
+      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
+        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+          <Suspense fallback={<div>Loading feed...</div>}>
+            {data.map((d, index) => (
+              <TextContentRow
+                {...d}
+                key={"viewhierarchy" + index}
+              />
+            ))}
+             </Suspense>
+        </div>
+      </div>
+    </Text>
+    </div>
+)}
+
                 {activeTab === "tab2" && (
                   <div className="bg-white shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
                     <Text size="textmd" as="p">

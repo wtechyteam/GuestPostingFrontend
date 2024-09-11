@@ -92,7 +92,7 @@ export default function Sidebar1({ ...props }) {
           >
             <Link href="/profileDetails"><MenuItem className="pl-4">Profile Details</MenuItem></Link>
             
-            <MenuItem className="pl-4">Account Settings</MenuItem>
+            {/* <MenuItem className="pl-4">Account Settings</MenuItem> */}
           </SubMenu>
           <SubMenu
             icon={
@@ -108,7 +108,7 @@ export default function Sidebar1({ ...props }) {
           >
             <Link href="/orderManagement"> <MenuItem className="pl-4">Order History </MenuItem></Link>
             <Link href="/orderManagement"> <MenuItem className="pl-4">Order Status </MenuItem></Link>
-            <Link href="/orderManagement"> <MenuItem className="pl-4">Order List </MenuItem></Link>
+            {/* <Link href="/orderManagement"> <MenuItem className="pl-4">Order List </MenuItem></Link> */}
           </SubMenu>
           <SubMenu
             icon={
@@ -123,7 +123,7 @@ export default function Sidebar1({ ...props }) {
             label="Payment Information"
           >
            <Link href="/paymentInfo"> <MenuItem className="pl-4">Transaction History </MenuItem></Link>
-           <Link href="/paymentInfo"> <MenuItem className="pl-4">Billing Information </MenuItem></Link>
+           {/* <Link href="/paymentInfo"> <MenuItem className="pl-4">Billing Information </MenuItem></Link> */}
            <Link href="/paymentInfo"><MenuItem className="pl-4">Payment Method </MenuItem></Link>
           </SubMenu>
           <Link href="/wishlist">
@@ -155,7 +155,7 @@ export default function Sidebar1({ ...props }) {
           >
             <Link href="/notifications"><MenuItem className="pl-4">Seller Message </MenuItem></Link>
             <Link href="/notifications"><MenuItem className="pl-4">Promotions/Discount </MenuItem></Link>
-            <Link href="/notifications"><MenuItem className="pl-4">Order Updates </MenuItem></Link>
+            {/* <Link href="/notifications"><MenuItem className="pl-4">Order Updates </MenuItem></Link> */}
           </SubMenu>
           <SubMenu
             icon={
@@ -170,23 +170,23 @@ export default function Sidebar1({ ...props }) {
             label="Support"
           >
             <Link href="/support"><MenuItem className="pl-4">FAQs </MenuItem></Link>
-            <Link href="/support"><MenuItem className="pl-4">Customer Query </MenuItem></Link>
+            {/* <Link href="/support"><MenuItem className="pl-4">Customer Query </MenuItem></Link> */}
           </SubMenu>
-          <SubMenu
+          <Link href="/settings">
+          <MenuItem
             icon={
               <Image
                 src="/images/PuzzlePiece.png"
                 width={20}
                 height={20}
-                alt="Puzzle Icon"
+                alt="Wishlist Icon"
                 className="h-[20px] w-[20px]"
               />
             }
-            label="Setting"
           >
-            <MenuItem className="pl-4">Currency </MenuItem>
-            <MenuItem className="pl-4">Language </MenuItem>
-          </SubMenu>
+            Settings
+          </MenuItem>
+          </Link>
         </div>
 
         <div className="mt-[21rem]">

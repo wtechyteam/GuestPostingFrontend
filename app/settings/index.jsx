@@ -1,17 +1,14 @@
 "use client";
-
-import { Img } from "../common/Img";
-import { SelectBox } from "../common/SelectBox";
-import { Text } from "../common/Text";
-import { Heading } from "../common/Heading";
-import TextContentRow from "../common/TextContentRow";
+import React, { useState } from "react";
 import Image from "next/image";
 import Sidebar1 from "../common/Sidebar1";
-import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
-import React, { useState } from "react";
-import { Suspense } from "react";
+import { Heading } from "../common/Heading";
+import { Text } from "../common/Text";
+import { SelectBox } from "../common/SelectBox";
+import HowItWorks from "./HowItWorks";
+import { Input } from "./../common/Input";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -19,72 +16,49 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function NotificationPage() {
+export default function ProfileDetailsPage() {
   const fullName = Cookies.get("fullName");
 
-  // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
+  const [editableContent, setEditableContent] = useState({
+    name: "John Smith",
+    location: "India",
+    email: "abcd@gmail.com",
+    dob: "08 July, 2006",
+    contact: "999 9999 999",
+  });
+  const [isEditing, setIsEditing] = useState(false);
 
-  // New state to handle active tab
-  const [activeTab, setActiveTab] = useState("tab1");
-
-  // Toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
+
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
 
-  const data = [
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-  ];
+  const handleInputChange = (e, field) => {
+    setEditableContent({ ...editableContent, [field]: e.target.value });
+  };
+
+  const handleEditProfile = () => {
+    setIsEditing(true);
+  };
+
+  const handleSave = () => {
+    setIsEditing(false);
+    // Add your save logic here
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+    // Reset the editable content or perform any cancel logic
+  };
 
   return (
-    <div className="w-full bg-gray-10 overflow-x-hidden">
-      <div className="flex flex-col items-end bg-gray-50_01">
+    <div className="w-full h-100% bg-gray-10 overflow-x-hidden">
+      <div className="flex flex-col items-end bg-gray-50_01 ">
         <header className="flex w-[100%] items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
           <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
             <div className="flex w-[100%] flex-col items-start sm:w-full">
@@ -170,12 +144,12 @@ export default function NotificationPage() {
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <Link href="/profile-settings" legacyBehavior>
-                      <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      <a className="block px-4 py-2 !text-gray-900 hover:bg-gray-100">
                         Profile Settings
                       </a>
                     </Link>
                     <Link href="/logout" legacyBehavior>
-                      <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      <a className="block px-4 py-2 !text-gray-900 hover:bg-gray-100">
                         Logout
                       </a>
                     </Link>
@@ -188,39 +162,79 @@ export default function NotificationPage() {
 
         <div className="flex items-start justify-start gap-7 self-stretch">
           <Sidebar1 />
+
           <div className="mt-[26px] flex flex-1 flex-col gap-[22px]">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-           <h1 className="text-3xl font-bold text-gray-700 !text-left">Support</h1>
-            <div className="mt-2">
-              
-              <div className="mt-4">
-                {activeTab === "tab1" && (
-                  <div className="bg-white shadow-lg rounded-[14px] min-h-[480px] w-[1580px]">
-                    <Text size="textmd" as="p">
-                      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
-                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
-                          <Suspense fallback={<div>Loading feed...</div>}>
-                            {data.map((d, index) => (
-                              <TextContentRow
-                                {...d}
-                                key={"viewhierarchy" + index}
-                              />
-                            ))}
-                          </Suspense>
-                        </div>
-                      </div>
-                    </Text>
-                  </div>
-                )}
-               
-              </div>
+              <div className="rounded-[20px] bg-white p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1580px]">
+     
+        <h1 className="text-3xl font-bold mb-4 text-gray-700">Profile Settings</h1>
+        <div className="border-b border-gray-200 mb-6">
+          <ul className="flex">
+            <li className="mr-6">
+              <a href="#" className="text-blue-600 font-semibold">Account settings</a>
+            </li>
+            <li className="mr-6">
+              <a href="#" className="text-gray-600">Contact info</a>
+            </li>
+            <li className="mr-6">
+              <a href="#" className="text-gray-600">Notification settings</a>
+            </li>
+            <li>
+              <a href="#" className="text-gray-600">Billing details</a>
+            </li>
+          </ul>
+        </div>
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold mb-4 text-gray-700">Link Accounts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+              <span className="text-gray-600 font-semibold">Facebook account</span>
+              <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Link Account</button>
             </div>
+            <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+              <span className="text-gray-600 font-semibold">Google account</span>
+              <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Link Account</button>
+            </div>
+          </div>
+        </div>
+        <div className="mb-8">
+          <label className="block text-gray-700 font-semibold mb-2">Account email *</label>
+          <input
+            type="email"
+            value="wtechy@gmail.com"
+            className="w-full bg-gray-100 p-4 text-gray-700 rounded-lg border border-gray-200"
+            disabled
+          />
+        </div>
+        <div className="mb-8">
+          <label className="block text-gray-700 font-semibold mb-2">Password *</label>
+          <input
+            type="password"
+            value="******"
+            className="w-full bg-gray-100 p-4 rounded-lg border text-gray-700 border-gray-200"
+            disabled
+          />
+        </div>
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-xl font-semibold text-gray-700">My account and all personal data</h2>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">Delete</button>
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold mb-4 text-gray-700">Two-factor authentication</h2>
+          <div className="flex items-center">
+            <p className="text-gray-600 mr-4">Two-factor authentication is an enhanced security measure. Once enabled, you will be required to give two types of identification when you log into Adsy. Google Authenticator is supported.</p>
+            <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Enable</button>
           </div>
         </div>
       </div>
     </div>
+            </div>
+    </div>
+    </div>
+   
+   
   );
 }

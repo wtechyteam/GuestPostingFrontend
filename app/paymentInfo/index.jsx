@@ -181,6 +181,7 @@ export default function NotificationPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
+             <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">Payment Information</h1>
 
             
           </div>

@@ -184,6 +184,7 @@ export default function NotificationPage() {
             />
 
             <div className="mt-6">
+            <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">Order Management</h1>
               <div className="flex">
                 <button
                   onClick={() => setActiveTab("tab1")}
@@ -219,7 +220,7 @@ export default function NotificationPage() {
                 >
                   Order Status
                 </button>
-                <button
+                {/* <button
                   onClick={() => setActiveTab("tab3")}
                   className={`py-2 px-4 rounded-full shadow-md border ${
                     activeTab === "tab3"
@@ -234,7 +235,7 @@ export default function NotificationPage() {
                   }}
                 >
                   Order List
-                </button>
+                </button> */}
               </div>
 
               <div className="mt-4">
