@@ -2,7 +2,7 @@ import React from "react";
 import Page from ".";
 
 export const metadata = {
-  title: "Notifications - Your Personal Relik Dashboard",
+  title: "Order Management - Your Personal Relik Dashboard",
   description:
     "Get a comprehensive view of your Relik analytics. Manage orders, payments, and more from your personalized dashboard. Explore our advanced filtering options.",
 

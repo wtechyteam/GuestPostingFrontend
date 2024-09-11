@@ -26,13 +26,13 @@ export default function PublisherSearchSection() {
         >
           <div className="mr-4 md:mr-0">
             <div className="flex flex-col items-start gap-[18px]">
-              <Heading
+              {/* <Heading
                 size="text-[10rem]"
                 as="h1"
                 className="text-adsy_com-black font-semibold text-[24px]"
               >
                 Search for Publishers
-              </Heading>
+              </Heading> */}
 
               <div className="flex justify-between gap-5 self-stretch md:flex-col">
                 <TabList className="flex flex-wrap gap-4 ">

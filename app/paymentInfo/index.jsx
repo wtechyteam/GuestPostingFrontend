@@ -4,30 +4,71 @@ import { Img } from "../common/Img";
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
-import { Button } from "../common/Button";
-import { Input } from "../common/Input";
+import TextContentRow from "../common/TextContentRow";
 import Image from "next/image";
 import Sidebar1 from "../common/Sidebar1";
+import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
+import { Suspense } from "react";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
-  { label: "option2", value: "option2" },
-  { label: "option3", value: "option3" },
+  { label: "English", value: "option2" },
+  { label: "English", value: "option3" },
 ];
 
-export default function PaymentInfo() {
+export default function NotificationPage() {
   const fullName = Cookies.get("fullName");
 
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
+
+  // New state to handle active tab
+  const [activeTab, setActiveTab] = useState("tab1");
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
+  const toggleHowItWorks = () => {
+    setHowItWorksVisible(!isHowItWorksVisible);
+  };
+
+  const data = [
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+  ];
 
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
@@ -84,7 +125,7 @@ export default function PaymentInfo() {
                   </div>
                 )}
                 name="Language Dropdown"
-                placeholder="English"
+                placeholder={`English`}
                 options={dropDownOptions}
                 defaultValue={dropDownOptions[0]}
                 className="flex-grow rounded-lg font-publicsans bg-gray-100 px-4 py-2 my-2"
@@ -101,7 +142,6 @@ export default function PaymentInfo() {
               </Link>
 
               <div className="relative">
-                {/* Profile Image and Click Handler */}
                 <div
                   className="flex flex-col items-center rounded-[20px] bg-warning-200 p-1 cursor-pointer"
                   onClick={toggleDropdown}
@@ -115,7 +155,6 @@ export default function PaymentInfo() {
                   />
                 </div>
 
-                {/* Dropdown Menu */}
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <Link href="/profile-settings" legacyBehavior>
@@ -137,19 +176,13 @@ export default function PaymentInfo() {
 
         <div className="flex items-start justify-start gap-7 self-stretch">
           <Sidebar1 />
-          <div className="mt-[26px] flex flex-1 items-center justify-center rounded-md bg-gray-200 px-3.5 py-4 shadow-bs1">
-            <div className="flex flex-1 items-start gap-[22px]">
-              <div className="flex items-center gap-[18px] self-center">
-                <Text size="text9xl" as="p" className="!text-[41.14px]">
-                  ?
-                </Text>
-                <div className="h-[66px] w-[2px] bg-gray-600" />
-              </div>
-              <Heading size="heading2xl" as="h1" className="mt-[18px] text-black">
-                How it works?
-              </Heading>
-            </div>
-            <Img src="img_vector_blue_gray_900.svg" width={10} height={3} alt="Vector" className="h-[3px]" />
+          <div className="mt-[26px] flex flex-1 flex-col gap-[22px]">
+            <HowItWorks
+              isHowItWorksVisible={isHowItWorksVisible}
+              toggleHowItWorks={toggleHowItWorks}
+            />
+
+            
           </div>
         </div>
       </div>

@@ -12,14 +12,14 @@ export default function TextContentRow({
       <div {...props} className={`${props.className} flex flex-col items-center gap-7 flex-1`}>
         <div className="ml-8 flex items-center justify-center self-stretch sm:ml-0">
           <div className="flex flex-1 flex-col items-start gap-0.5 sm:gap-0.5">
-            <Heading size="textxl" as="p" className="sm:text-[15px]">
+            <Heading size="textxl" as="p" className="sm:text-[15px] !text-gray-900 font-bold">
               {longText}
             </Heading>
             <Text size="textmd" as="p" className="w- [76%] !font-poppins leading-[21px] !text-gray-700 sm:w-full">
               {descriptionText}
             </Text>
           </div>
-          <Heading size="headings" as="p" className="!font-poppins text-gray-700_01 underline">
+          <Heading size="headings" as="p" className="!font-poppins !text-gray-700 underline">
             {dateText}
           </Heading>
         </div>

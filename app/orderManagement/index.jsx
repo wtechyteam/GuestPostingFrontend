@@ -4,14 +4,15 @@ import { Img } from "../common/Img";
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
+
 import Image from "next/image";
 import Sidebar1 from "../common/Sidebar1";
-import OrderSummarySection from "./OrderSummarySection";
-import PublisherSearchSection from "./PublisherSearchSection";
+import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
-import HowItWorks from "./HowItWorks";
+import { Suspense } from "react";
+import PublisherSearchSection from "./PublisherSearchSection";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -19,16 +20,56 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function DashboardPage() {
+export default function NotificationPage() {
   const fullName = Cookies.get("fullName");
 
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
+
+  // New state to handle active tab
+  const [activeTab, setActiveTab] = useState("tab1");
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
+  const toggleHowItWorks = () => {
+    setHowItWorksVisible(!isHowItWorksVisible);
+  };
+
+  const data = [
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+  ];
 
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
@@ -102,7 +143,6 @@ export default function DashboardPage() {
               </Link>
 
               <div className="relative">
-                {/* Profile Image and Click Handler */}
                 <div
                   className="flex flex-col items-center rounded-[20px] bg-warning-200 p-1 cursor-pointer"
                   onClick={toggleDropdown}
@@ -116,7 +156,6 @@ export default function DashboardPage() {
                   />
                 </div>
 
-                {/* Dropdown Menu */}
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <Link href="/profile-settings" legacyBehavior>
@@ -138,10 +177,88 @@ export default function DashboardPage() {
 
         <div className="flex items-start justify-start gap-7 self-stretch">
           <Sidebar1 />
-          <div className="mt-[18px] flex flex-1 flex-col gap-7">
-            <HowItWorks/>
-            <OrderSummarySection />
-            <PublisherSearchSection />
+          <div className="mt-[26px] flex flex-1 flex-col gap-[22px]">
+            <HowItWorks
+              isHowItWorksVisible={isHowItWorksVisible}
+              toggleHowItWorks={toggleHowItWorks}
+            />
+
+            <div className="mt-6">
+              <div className="flex">
+                <button
+                  onClick={() => setActiveTab("tab1")}
+                  className={`py-2 px-4 rounded-full shadow-md border ${
+                    activeTab === "tab1"
+                      ? "text-blue-500 bg-white border-black"
+                      : "text-gray-600 bg-gray-100 border-black"
+                  }`}
+                  style={{
+                    boxShadow:
+                      activeTab === "tab1"
+                        ? "0 4px 6px rgba(0, 0, 0, 0.1)"
+                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
+                    marginRight: "12px",
+                  }}
+                >
+                  Order History
+                </button>
+                <button
+                  onClick={() => setActiveTab("tab2")}
+                  className={`py-2 px-4 rounded-full shadow-md border ${
+                    activeTab === "tab2"
+                      ? "text-blue-500 bg-white border-black"
+                      : "text-gray-600 bg-gray-100 border-black"
+                  }`}
+                  style={{
+                    boxShadow:
+                      activeTab === "tab2"
+                        ? "0 4px 6px rgba(0, 0, 0, 0.1)"
+                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
+                        marginRight: "12px",
+                  }}
+                >
+                  Order Status
+                </button>
+                <button
+                  onClick={() => setActiveTab("tab3")}
+                  className={`py-2 px-4 rounded-full shadow-md border ${
+                    activeTab === "tab3"
+                      ? "text-blue-500 bg-white border-black"
+                      : "text-gray-600 bg-gray-100 border-black"
+                  }`}
+                  style={{
+                    boxShadow:
+                      activeTab === "tab3"
+                        ? "0 4px 6px rgba(0, 0, 0, 0.1)"
+                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  Order List
+                </button>
+              </div>
+
+              <div className="mt-4">
+                {activeTab === "tab1" && (
+                  <div className="bg-white rounded-[14px] ">
+                    <PublisherSearchSection/>
+                  </div>
+                )}
+                {activeTab === "tab2" && (
+                 
+                    <div className="bg-white rounded-[14px] ">
+                    <PublisherSearchSection/>
+                  </div>
+                  
+                )}
+                {activeTab === "tab3" && (
+                 
+                 <div className="bg-white rounded-[14px] ">
+                 <PublisherSearchSection/>
+               </div>
+               
+             )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
