@@ -53,7 +53,8 @@ export default function UserProfile3({
   markedSponsoredByText = "Marked Sponsored by",
   markedSponsoredByValue = "No",
   ...props
-}) {
+}) 
+{
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {

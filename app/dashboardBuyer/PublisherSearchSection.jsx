@@ -107,7 +107,7 @@ export default function PublisherSearchSection() {
                 <div className="flex flex-col gap-1">
                   <UserProfile3 />
   
-                  <UserProfile3 /> 
+                 
                 </div>
               </div>
             </TabPanel>

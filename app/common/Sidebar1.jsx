@@ -39,15 +39,7 @@ export default function Sidebar1({ ...props }) {
       rootStyles={{ [`${sidebarClasses.container}`]: { gap: 6 } }}
       className={`${props.className} flex flex-col h-screen gap-1.5 bg-gray-10 fixed top-0 left-0 overflow-auto`}
     >
-      <div className="flex w-[100%] flex-col items-start sm:w-full">
-              <Image
-                src="/images/logo.png"
-                width={56}
-                height={32}
-                alt="Sidebar Logo"
-                className="ml-6 h-[32px] w-[56px] object-contain"
-              />
-            </div>
+     
       <Heading size="label_regular" as="p" className="ml-6 !text-gray-400">
         Dashboard
       </Heading>

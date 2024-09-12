@@ -82,13 +82,19 @@ export default function NotificationPage() {
         "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
       dateText: "12 Aug, 2024",
     },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
   
   ];
 
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
       <div className="flex flex-col items-end bg-gray-50_01">
-        <header className="flex w-[100%] items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
+        <header className="fixed top-0 left-0 w-[100%] z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
           <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
             <div className="flex w-[100%] flex-col items-start sm:w-full">
               <Image
@@ -191,8 +197,10 @@ export default function NotificationPage() {
         </header>
 
         <div className="flex items-start justify-start gap-7 self-stretch">
-          <Sidebar1 />
-          <div className="mt-[26px] flex flex-1 flex-col gap-[22px]">
+        <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
+            <Sidebar1 />
+          </div>
+          <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
@@ -229,12 +237,12 @@ export default function NotificationPage() {
               </div>
               <div className="mt-4">
                 {activeTab === "tab1" && (
-                  <div className="bg-white shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
                     <h2 className="text-xl font-semibold mb-10 text-gray-700 ">
                       Transaction History
                     </h2>
                     <Text size="textmd" as="p">
-                      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
+                      <div className="rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
                           <Suspense fallback={<div>Loading feed...</div>}>
                             {data.map((d, index) => (
@@ -251,7 +259,7 @@ export default function NotificationPage() {
                 )}
 
                 {activeTab === "tab2" && (
-                  <div className="bg-white shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
                     <h2 className="text-xl font-semibold mb-10 text-gray-700 ">
                       Promotions/Discount
                     </h2>

@@ -69,7 +69,7 @@ export default function ProfileDetailsPage() {
   return (
     <div className="w-full h-100% bg-gray-10 overflow-x-hidden">
       <div className="flex flex-col items-end bg-gray-50_01 ">
-        <header className="flex w-[100%] items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
+        <header className="fixed top-0 left-0 w-[100%] z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
           <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
             <div className="flex w-[100%] flex-col items-start sm:w-full">
               <Image
@@ -172,15 +172,18 @@ export default function ProfileDetailsPage() {
         </header>
 
         <div className="flex items-start justify-start gap-7 self-stretch">
-          <Sidebar1 />
+        {/* Fixed Sidebar */}
+        <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
+            <Sidebar1 />
+          </div>
 
-          <div className="mt-[26px] flex flex-1 flex-col gap-[22px]">
+          <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
 
-            <div className="rounded-[20px] bg-white p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1580px]">
+            <div className="rounded-[20px] bg-gray-10 p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1580px]">
             <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">Profile Details</h1>
 
               <div className="relative flex items-start w-full mb-4">
