@@ -37,6 +37,10 @@ export default function NotificationPage() {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
 
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   const data = [
     {
       longText: "It is a long established",
@@ -68,6 +72,7 @@ export default function NotificationPage() {
         "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
       dateText: "12 Aug, 2024",
     },
+    // ... other data entries
   ];
 
   return (
@@ -181,66 +186,64 @@ export default function NotificationPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-           <h1 className="text-3xl font-bold text-gray-700 !text-left">Notifications</h1>
+            <h1 className="text-3xl font-bold text-gray-700 !text-left">Notifications</h1>
             <div className="mt-6">
-              <div className="flex">
-                <button
-                  onClick={() => setActiveTab("tab1")}
-                  className={`py-2 px-4 rounded-full shadow-md border ${
-                    activeTab === "tab1"
-                      ? "text-blue-500 bg-white border-black"
-                      : "text-gray-600 bg-gray-100 border-black"
-                  }`}
-                  style={{
-                    boxShadow:
-                      activeTab === "tab1"
-                        ? "0 4px 6px rgba(0, 0, 0, 0.1)"
-                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
-                    marginRight: "12px",
-                  }}
-                >
-                  Transaction History
-                </button>
-                <button
-                  onClick={() => setActiveTab("tab2")}
-                  className={`py-2 px-4 rounded-full shadow-md border ${
-                    activeTab === "tab2"
-                      ? "text-blue-500 bg-white border-black"
-                      : "text-gray-600 bg-gray-100 border-black"
-                  }`}
-                  style={{
-                    boxShadow:
-                      activeTab === "tab2"
-                        ? "0 4px 6px rgba(0, 0, 0, 0.1)"
-                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
-                  }}
-                >
-                  Payment Method
-                </button>
+              <div className="border-b border-gray-200 mb-6">
+                <ul className="flex">
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab1"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab1")}
+                    >
+                      Transaction History
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab2"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab2")}
+                    >
+                      Promotions/Discount
+                    </button>
+                  </li>
+                </ul>
               </div>
-
               <div className="mt-4">
-              {activeTab === "tab1" && (
-  <div className="bg-white shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
-    <Text size="textmd" as="p">
-      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
-        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
-          <Suspense fallback={<div>Loading feed...</div>}>
-            {data.map((d, index) => (
-              <TextContentRow
-                {...d}
-                key={"viewhierarchy" + index}
-              />
-            ))}
-             </Suspense>
-        </div>
-      </div>
-    </Text>
-    </div>
-)}
+                {activeTab === "tab1" && (
+                  <div className="bg-white shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <h2 className="text-xl font-semibold mb-10 text-gray-700 ">
+                      Transaction History
+                    </h2>
+                    <Text size="textmd" as="p">
+                      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <TextContentRow
+                                {...d}
+                                key={"viewhierarchy" + index}
+                              />
+                            ))}
+                          </Suspense>
+                        </div>
+                      </div>
+                    </Text>
+                  </div>
+                )}
 
                 {activeTab === "tab2" && (
                   <div className="bg-white shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <h2 className="text-xl font-semibold mb-10 text-gray-700 ">
+                      Promotions/Discount
+                    </h2>
                     <Text size="textmd" as="p">
                       <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -263,5 +266,4 @@ export default function NotificationPage() {
         </div>
       </div>
     </div>
-  );
-}
+    )}

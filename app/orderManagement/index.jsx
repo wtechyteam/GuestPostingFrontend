@@ -4,14 +4,12 @@ import { Img } from "../common/Img";
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
-
 import Image from "next/image";
 import Sidebar1 from "../common/Sidebar1";
 import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
-import { Suspense } from "react";
 import PublisherSearchSection from "./PublisherSearchSection";
 
 const dropDownOptions = [
@@ -20,14 +18,12 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function NotificationPage() {
+export default function OrderPage() {
   const fullName = Cookies.get("fullName");
 
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
-
-  // New state to handle active tab
   const [activeTab, setActiveTab] = useState("tab1");
 
   // Toggle dropdown visibility
@@ -38,38 +34,9 @@ export default function NotificationPage() {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
 
-  const data = [
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-  ];
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
 
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
@@ -184,80 +151,56 @@ export default function NotificationPage() {
             />
 
             <div className="mt-6">
-            <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">Order Management</h1>
-              <div className="flex">
-                <button
-                  onClick={() => setActiveTab("tab1")}
-                  className={`py-2 px-4 rounded-full shadow-md border ${
-                    activeTab === "tab1"
-                      ? "text-blue-500 bg-white border-black"
-                      : "text-gray-600 bg-gray-100 border-black"
-                  }`}
-                  style={{
-                    boxShadow:
-                      activeTab === "tab1"
-                        ? "0 4px 6px rgba(0, 0, 0, 0.1)"
-                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
-                    marginRight: "12px",
-                  }}
-                >
-                  Order History
-                </button>
-                <button
-                  onClick={() => setActiveTab("tab2")}
-                  className={`py-2 px-4 rounded-full shadow-md border ${
-                    activeTab === "tab2"
-                      ? "text-blue-500 bg-white border-black"
-                      : "text-gray-600 bg-gray-100 border-black"
-                  }`}
-                  style={{
-                    boxShadow:
-                      activeTab === "tab2"
-                        ? "0 4px 6px rgba(0, 0, 0, 0.1)"
-                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
-                        marginRight: "12px",
-                  }}
-                >
-                  Order Status
-                </button>
-                {/* <button
-                  onClick={() => setActiveTab("tab3")}
-                  className={`py-2 px-4 rounded-full shadow-md border ${
-                    activeTab === "tab3"
-                      ? "text-blue-500 bg-white border-black"
-                      : "text-gray-600 bg-gray-100 border-black"
-                  }`}
-                  style={{
-                    boxShadow:
-                      activeTab === "tab3"
-                        ? "0 4px 6px rgba(0, 0, 0, 0.1)"
-                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
-                  }}
-                >
-                  Order List
-                </button> */}
+              <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
+                Order Management
+              </h1>
+              <div className="border-b border-gray-200 mb-6">
+                <ul className="flex">
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab1"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab1")}
+                    >
+                      Order History
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab2"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab2")}
+                    >
+                      Order Status
+                    </button>
+                  </li>
+                </ul>
               </div>
 
               <div className="mt-4">
                 {activeTab === "tab1" && (
-                  <div className="bg-white rounded-[14px] ">
-                    <PublisherSearchSection/>
+                  
+                  <div className="bg-white rounded-[14px]">
+                    <h2 className="text-xl font-semibold text-gray-700 ">
+                      Order History
+                    </h2>
+                    <PublisherSearchSection />
                   </div>
                 )}
                 {activeTab === "tab2" && (
-                 
-                    <div className="bg-white rounded-[14px] ">
-                    <PublisherSearchSection/>
+                  <div className="bg-white rounded-[14px]">
+                    <h2 className="text-xl font-semibold  text-gray-700 ">
+                      Order Status
+                    </h2>
+                    <PublisherSearchSection />
                   </div>
-                  
                 )}
-                {activeTab === "tab3" && (
-                 
-                 <div className="bg-white rounded-[14px] ">
-                 <PublisherSearchSection/>
-               </div>
-               
-             )}
               </div>
             </div>
           </div>

@@ -39,6 +39,15 @@ export default function Sidebar1({ ...props }) {
       rootStyles={{ [`${sidebarClasses.container}`]: { gap: 6 } }}
       className={`${props.className} flex flex-col h-screen gap-1.5 bg-gray-10 fixed top-0 left-0 overflow-auto`}
     >
+      <div className="flex w-[100%] flex-col items-start sm:w-full">
+              <Image
+                src="/images/logo.png"
+                width={56}
+                height={32}
+                alt="Sidebar Logo"
+                className="ml-6 h-[32px] w-[56px] object-contain"
+              />
+            </div>
       <Heading size="label_regular" as="p" className="ml-6 !text-gray-400">
         Dashboard
       </Heading>
@@ -78,22 +87,21 @@ export default function Sidebar1({ ...props }) {
             Dashboard
           </MenuItem>
           </Link>
-          <SubMenu
+          <Link href="/profileDetails">
+          <MenuItem
             icon={
               <Image
                 src="/images/User.png"
                 width={20}
                 height={20}
-                alt="User Icon"
+                alt="Wishlist Icon"
                 className="h-[20px] w-[20px]"
               />
             }
-            label="Profile Information"
           >
-            <Link href="/profileDetails"><MenuItem className="pl-4">Profile Details</MenuItem></Link>
-            
-            {/* <MenuItem className="pl-4">Account Settings</MenuItem> */}
-          </SubMenu>
+            Profile Details
+          </MenuItem>
+          </Link>
           <SubMenu
             icon={
               <Image

@@ -8,7 +8,7 @@ import { Heading } from "../common/Heading";
 import { Text } from "../common/Text";
 import { SelectBox } from "../common/SelectBox";
 import HowItWorks from "./HowItWorks";
-import { Input } from "./../common/Input";
+import { Input } from "../common/Input";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -16,7 +16,7 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function ProfileDetailsPage() {
+export default function SettingsPage() {
   const fullName = Cookies.get("fullName");
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -29,6 +29,9 @@ export default function ProfileDetailsPage() {
     contact: "999 9999 999",
   });
   const [isEditing, setIsEditing] = useState(false);
+
+  // State to manage active tab
+  const [activeTab, setActiveTab] = useState("account-settings");
 
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -54,6 +57,10 @@ export default function ProfileDetailsPage() {
   const handleCancel = () => {
     setIsEditing(false);
     // Reset the editable content or perform any cancel logic
+  };
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
   };
 
   return (
@@ -168,73 +175,225 @@ export default function ProfileDetailsPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-              <div className="rounded-[20px] bg-white p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1580px]">
-     
-        <h1 className="text-3xl font-bold mb-4 text-gray-700">Profile Settings</h1>
-        <div className="border-b border-gray-200 mb-6">
-          <ul className="flex">
-            <li className="mr-6">
-              <a href="#" className="text-blue-600 font-semibold">Account settings</a>
-            </li>
-            <li className="mr-6">
-              <a href="#" className="text-gray-600">Contact info</a>
-            </li>
-            <li className="mr-6">
-              <a href="#" className="text-gray-600">Notification settings</a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-600">Billing details</a>
-            </li>
-          </ul>
-        </div>
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4 text-gray-700">Link Accounts</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-              <span className="text-gray-600 font-semibold">Facebook account</span>
-              <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Link Account</button>
+            <div className="rounded-[20px] bg-white p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1580px]">
+              <h1 className="text-3xl font-bold mb-4 text-gray-700">
+                Profile Settings
+              </h1>
+              <div className="border-b border-gray-200 mb-6">
+                <ul className="flex">
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "account-settings"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("account-settings")}
+                    >
+                      Account settings
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "contact-info"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("contact-info")}
+                    >
+                      Contact info
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "notification-settings"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("notification-settings")}
+                    >
+                      Notification settings
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className={`${
+                        activeTab === "billing-details"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("billing-details")}
+                    >
+                      Billing details
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Content based on active tab */}
+              <div className="mb-8">
+                {activeTab === "account-settings" && (
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                      Link Accounts
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                        <span className="text-gray-600 font-semibold">
+                          Facebook account
+                        </span>
+                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
+                          Link Account
+                        </button>
+                      </div>
+                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                        <span className="text-gray-600 font-semibold">
+                          Google account
+                        </span>
+                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
+                          Link Account
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "contact-info" && (
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                      Personal Information
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-gray-600">Name:</label>
+                        <Input
+                          type="text"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.name}
+                          onChange={(e) => handleInputChange(e, "name")}
+                          disabled={!isEditing}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-gray-600">Location:</label>
+                        <Input
+                          type="text"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.location}
+                          onChange={(e) => handleInputChange(e, "location")}
+                          disabled={!isEditing}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-gray-600">Email:</label>
+                        <Input
+                          type="email"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.email}
+                          onChange={(e) => handleInputChange(e, "email")}
+                          disabled={!isEditing}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-gray-600">
+                          Date of Birth:
+                        </label>
+                        <Input
+                          type="text"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.dob}
+                          onChange={(e) => handleInputChange(e, "dob")}
+                          disabled={!isEditing}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-gray-600">
+                          Contact Number:
+                        </label>
+                        <Input
+                          type="text"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.contact}
+                          onChange={(e) => handleInputChange(e, "contact")}
+                          disabled={!isEditing}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "notification-settings" && (
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                      Notifications
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                        <span className="text-gray-600 font-semibold">
+                          Email Notifications
+                        </span>
+                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
+                          Enable
+                        </button>
+                      </div>
+                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                        <span className="text-gray-600 font-semibold">
+                          SMS Notifications
+                        </span>
+                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
+                          Enable
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "billing-details" && (
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                      Billing Details
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                        <span className="text-gray-600 font-semibold">
+                          Credit Card
+                        </span>
+                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
+                          Update
+                        </button>
+                      </div>
+                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                        <span className="text-gray-600 font-semibold">
+                          PayPal
+                        </span>
+                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
+                          Update
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="flex justify-end space-x-4">
+                <button
+                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="bg-blue-600 text-white px-4 py-2 rounded-md"
+                  onClick={handleSave}
+                >
+                  Save Changes
+                </button>
+              </div>
             </div>
-            <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-              <span className="text-gray-600 font-semibold">Google account</span>
-              <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Link Account</button>
-            </div>
-          </div>
-        </div>
-        <div className="mb-8">
-          <label className="block text-gray-700 font-semibold mb-2">Account email *</label>
-          <input
-            type="email"
-            value="wtechy@gmail.com"
-            className="w-full bg-gray-100 p-4 text-gray-700 rounded-lg border border-gray-200"
-            disabled
-          />
-        </div>
-        <div className="mb-8">
-          <label className="block text-gray-700 font-semibold mb-2">Password *</label>
-          <input
-            type="password"
-            value="******"
-            className="w-full bg-gray-100 p-4 rounded-lg border text-gray-700 border-gray-200"
-            disabled
-          />
-        </div>
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-xl font-semibold text-gray-700">My account and all personal data</h2>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">Delete</button>
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold mb-4 text-gray-700">Two-factor authentication</h2>
-          <div className="flex items-center">
-            <p className="text-gray-600 mr-4">Two-factor authentication is an enhanced security measure. Once enabled, you will be required to give two types of identification when you log into Adsy. Google Authenticator is supported.</p>
-            <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Enable</button>
           </div>
         </div>
       </div>
     </div>
-            </div>
-    </div>
-    </div>
-   
-   
   );
 }

@@ -38,12 +38,7 @@ export default function NotificationPage() {
   };
 
   const data = [
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
+    
     {
       longText: "It is a long established",
       descriptionText:
@@ -199,6 +194,9 @@ export default function NotificationPage() {
               <div className="mt-4">
                 {activeTab === "tab1" && (
                   <div className="bg-white shadow-lg rounded-[14px] min-h-[480px] w-[1580px]">
+                    <h2 className="text-xl font-semibold text-gray-700 ">
+                     FAQs
+                    </h2>
                     <Text size="textmd" as="p">
                       <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">

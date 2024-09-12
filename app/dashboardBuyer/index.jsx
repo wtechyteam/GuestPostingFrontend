@@ -151,10 +151,15 @@ export default function DashboardPage() {
           </div>
         </header>
 
-        <div className="flex items-start justify-start gap-7 self-stretch">
-          <Sidebar1 />
-          <div className="mt-[18px] flex flex-1 flex-col gap-7">
-          <HowItWorks
+        <div className="flex items-start">
+          {/* Fixed Sidebar */}
+          <div className="fixed top-0 left-0 h-full bg-white shadow-md z-20">
+            <Sidebar1 />
+          </div>
+
+          {/* Main Content */}
+          <div className="ml-[-1600px] mt-[18px] flex flex-1 flex-col gap-7">
+            <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
