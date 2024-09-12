@@ -116,7 +116,7 @@ export default function DashboardPage() {
               </Link>
 
               <div className="relative">
-                {/* Profile Image and Click Handler */}
+               
                 <div
                   className="flex flex-col items-center rounded-[20px] bg-warning-200 p-1 cursor-pointer"
                   onClick={toggleDropdown}
@@ -130,7 +130,7 @@ export default function DashboardPage() {
                   />
                 </div>
 
-                {/* Dropdown Menu */}
+               
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <Link href="/profile-settings" legacyBehavior>

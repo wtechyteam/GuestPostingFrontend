@@ -10,6 +10,7 @@ import { SelectBox } from "../common/SelectBox";
 import HowItWorks from "./HowItWorks";
 import { Input } from "./../common/Input";
 import PublisherSearchSection from "./PublisherSearchSection";
+import { useRouter } from 'next/navigation'; 
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -30,6 +31,15 @@ export default function Wishlist() {
     contact: "999 9999 999",
   });
   const [isEditing, setIsEditing] = useState(false);
+  const router = useRouter();  // Initialize the router
+
+  const handleLogout = () => {
+    // Add your logout logic here, e.g., clear cookies or call an API
+    Cookies.remove('fullName');
+    
+    // Redirect to the login page after logout
+    router.push('/login');
+  };
 
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -149,11 +159,12 @@ export default function Wishlist() {
                         Profile Settings
                       </a>
                     </Link>
-                    <Link href="/logout" legacyBehavior>
-                      <a className="block px-4 py-2 !text-gray-900 hover:bg-gray-100">
-                        Logout
-                      </a>
-                    </Link>
+                    <button
+                    onClick={handleLogout}
+                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
                   </div>
                 )}
               </div>

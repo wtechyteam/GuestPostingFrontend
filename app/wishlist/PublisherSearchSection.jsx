@@ -4,7 +4,7 @@ import { Img } from "../common/Img";
 import { Input } from "../common/Input";
 import { Heading } from "../common/Heading";
 import { CloseSVG } from "../common/Close";
-import UserProfile3 from "../common/UserProfile3";
+import UserProfile3 from "./UserProfile3";
 import React from "react";
 import { TabPanel, TabList, Tab, Tabs } from "react-tabs";
 import Image from "next/image";

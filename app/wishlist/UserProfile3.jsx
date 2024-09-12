@@ -1,7 +1,7 @@
-import { Heading } from "./Heading";
-import { Text } from "./Text";
-import { Img } from "./Img";
-import { Button } from "./Button";
+import { Heading } from "../common/Heading";
+import { Text } from "../common/Text";
+import { Img } from "../common/Img";
+import { Button } from "../common/Button";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -114,7 +114,7 @@ export default function UserProfile3({
             </div>
           </div>
           <div className="flex items-center">
-            <Button
+          <Button
               onClick={fetchAllProducts}
               color="indigo_a400"
               size="md"
@@ -123,8 +123,9 @@ export default function UserProfile3({
               {buyPostButton}
             </Button>
 
+
             <Image
-              src="/images/heart1.png"
+              src="/images/heartColoured.png"
               width={22}
               height={22}
               alt="Material Symbol"

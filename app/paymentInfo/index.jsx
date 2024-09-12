@@ -12,6 +12,7 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Suspense } from "react";
+import { useRouter } from 'next/navigation'; 
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -25,6 +26,15 @@ export default function NotificationPage() {
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
+  const router = useRouter();  // Initialize the router
+
+  const handleLogout = () => {
+    // Add your logout logic here, e.g., clear cookies or call an API
+    Cookies.remove('fullName');
+    
+    // Redirect to the login page after logout
+    router.push('/login');
+  };
 
   // New state to handle active tab
   const [activeTab, setActiveTab] = useState("tab1");
@@ -162,11 +172,12 @@ export default function NotificationPage() {
                         Profile Settings
                       </a>
                     </Link>
-                    <Link href="/logout" legacyBehavior>
-                      <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        Logout
-                      </a>
-                    </Link>
+                    <button
+                    onClick={handleLogout}
+                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
                   </div>
                 )}
               </div>

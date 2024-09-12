@@ -11,6 +11,9 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import PublisherSearchSection from "./PublisherSearchSection";
+import { Suspense } from "react";
+import TextContentRow from "../common/TextContentRow";
+import { useRouter } from 'next/navigation';  
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -25,6 +28,15 @@ export default function OrderPage() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("tab1");
+  const router = useRouter();  // Initialize the router
+
+  const handleLogout = () => {
+    // Add your logout logic here, e.g., clear cookies or call an API
+    Cookies.remove('fullName');
+    
+    // Redirect to the login page after logout
+    router.push('/login');
+  };
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
@@ -37,6 +49,39 @@ export default function OrderPage() {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
+  const data = [
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+   
+  ];
 
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
@@ -130,11 +175,12 @@ export default function OrderPage() {
                         Profile Settings
                       </a>
                     </Link>
-                    <Link href="/logout" legacyBehavior>
-                      <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        Logout
-                      </a>
-                    </Link>
+                    <button
+                    onClick={handleLogout}
+                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
                   </div>
                 )}
               </div>
@@ -190,7 +236,20 @@ export default function OrderPage() {
                     <h2 className="text-xl font-semibold text-gray-700 ">
                       Order History
                     </h2>
-                    <PublisherSearchSection />
+                    <Text size="textmd" as="p">
+                      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <TextContentRow
+                                {...d}
+                                key={"viewhierarchy" + index}
+                              />
+                            ))}
+                          </Suspense>
+                        </div>
+                      </div>
+                    </Text>
                   </div>
                 )}
                 {activeTab === "tab2" && (

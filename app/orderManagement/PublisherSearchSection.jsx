@@ -4,7 +4,7 @@ import { Img } from "../common/Img";
 import { Input } from "../common/Input";
 import { Heading } from "../common/Heading";
 import { CloseSVG } from "../common/Close";
-import UserProfile3 from "../common/UserProfile3";
+import UserProfile3 from "./UserProfile3";
 import React from "react";
 import { TabPanel, TabList, Tab, Tabs } from "react-tabs";
 import Image from "next/image";
@@ -106,7 +106,6 @@ export default function PublisherSearchSection() {
               <div className="w-full">
                 <div className="flex flex-col gap-1">
                   <UserProfile3 />
-  
                   <UserProfile3 /> 
                 </div>
               </div>
