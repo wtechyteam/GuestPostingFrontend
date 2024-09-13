@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Suspense } from "react";
 import { useRouter } from 'next/navigation'; 
+import HomeFaq from "./HomeFaq";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -34,6 +35,13 @@ export default function NotificationPage() {
     
     // Redirect to the login page after logout
     router.push('/login');
+  };
+  const handleLogout2 = () => {
+  
+    
+    
+    // Redirect to the login page after logout
+    router.push('/profileDetails');
   };
 
   // New state to handle active tab
@@ -180,11 +188,12 @@ export default function NotificationPage() {
 
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
-                    <Link href="/profile-settings" legacyBehavior>
-                      <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        Profile Settings
-                      </a>
-                    </Link>
+                    <button
+                    onClick={handleLogout2}
+                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                  >
+                    Profile Settings
+                  </button>
                     <button
                     onClick={handleLogout}
                     className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
@@ -211,24 +220,11 @@ export default function NotificationPage() {
            <h1 className="text-3xl font-bold text-gray-700 !text-left">Support</h1>
             <div className="mt-2">
               
-              <div className="mt-4">
+              <div >
                 {activeTab === "tab1" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[480px] w-[1580px]">
+                  <div className="bg-gray-10 shadow-lg  rounded-[14px] min-h-[480px] w-[1580px]">
                     
-                    <Text size="textmd" as="p">
-                      <div className="rounded-[14px] bg-white pt-1  px-3.5 shadow-sm">
-                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
-                          <Suspense fallback={<div>Loading feed...</div>}>
-                            {data.map((d, index) => (
-                              <TextContentRow
-                                {...d}
-                                key={"viewhierarchy" + index}
-                              />
-                            ))}
-                          </Suspense>
-                        </div>
-                      </div>
-                    </Text>
+                    <HomeFaq/>
                   </div>
                 )}
                

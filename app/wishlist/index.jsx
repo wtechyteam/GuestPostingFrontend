@@ -10,7 +10,7 @@ import { SelectBox } from "../common/SelectBox";
 import HowItWorks from "./HowItWorks";
 import { Input } from "./../common/Input";
 import PublisherSearchSection from "./PublisherSearchSection";
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from "next/navigation";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -31,16 +31,19 @@ export default function Wishlist() {
     contact: "999 9999 999",
   });
   const [isEditing, setIsEditing] = useState(false);
-  const router = useRouter();  // Initialize the router
+  const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
     // Add your logout logic here, e.g., clear cookies or call an API
-    Cookies.remove('fullName');
-    
-    // Redirect to the login page after logout
-    router.push('/login');
-  };
+    Cookies.remove("fullName");
 
+    // Redirect to the login page after logout
+    router.push("/login");
+  };
+  const handleLogout2 = () => {
+    // Redirect to the login page after logout
+    router.push("/profileDetails");
+  };
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
@@ -154,17 +157,18 @@ export default function Wishlist() {
 
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
-                    <Link href="/profile-settings" legacyBehavior>
-                      <a className="block px-4 py-2 !text-gray-900 hover:bg-gray-100">
-                        Profile Settings
-                      </a>
-                    </Link>
                     <button
-                    onClick={handleLogout}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
+                      onClick={handleLogout2}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Profile Details
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>
@@ -173,7 +177,7 @@ export default function Wishlist() {
         </header>
 
         <div className="flex items-start justify-start gap-7 self-stretch">
-        <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
+          <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
             <Sidebar1 />
           </div>
 
@@ -182,14 +186,12 @@ export default function Wishlist() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-             <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">Wishlist</h1>
+            <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
+              Wishlist
+            </h1>
 
-
-  <PublisherSearchSection/>
-  </div>
-
-              
-         
+            <PublisherSearchSection />
+          </div>
         </div>
       </div>
     </div>

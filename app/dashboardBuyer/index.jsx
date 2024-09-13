@@ -31,6 +31,13 @@ export default function DashboardPage() {
     // Redirect to the login page after logout
     router.push('/login');
   };
+  const handleLogout2 = () => {
+  
+    
+    
+    // Redirect to the login page after logout
+    router.push('/profileDetails');
+  };
 
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -131,11 +138,12 @@ export default function DashboardPage() {
 
         {isDropdownVisible && (
           <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
-            <Link href="/profile-settings" legacyBehavior>
-              <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                Profile Settings
-              </a>
-            </Link>
+            <button
+              onClick={handleLogout2}
+              className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+            >
+              Profile Settings
+            </button>
             <button
               onClick={handleLogout}
               className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
