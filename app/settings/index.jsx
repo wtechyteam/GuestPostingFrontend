@@ -279,61 +279,74 @@ export default function SettingsPage() {
                       Personal Information
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-gray-600">Name:</label>
-                        <Input
-                          type="text"
-                          className="border border-gray-300 p-2 rounded-lg w-full"
-                          value={editableContent.name}
-                          onChange={(e) => handleInputChange(e, "name")}
-                          disabled={!isEditing}
-                        />
-                      </div>
-                      <div>
-                        <label className="text-gray-600">Location:</label>
-                        <Input
-                          type="text"
-                          className="border border-gray-300 p-2 rounded-lg w-full"
-                          value={editableContent.location}
-                          onChange={(e) => handleInputChange(e, "location")}
-                          disabled={!isEditing}
-                        />
-                      </div>
-                      <div>
-                        <label className="text-gray-600">Email:</label>
-                        <Input
-                          type="email"
-                          className="border border-gray-300 p-2 rounded-lg w-full"
-                          value={editableContent.email}
-                          onChange={(e) => handleInputChange(e, "email")}
-                          disabled={!isEditing}
-                        />
-                      </div>
-                      <div>
-                        <label className="text-gray-600">
-                          Date of Birth:
-                        </label>
-                        <Input
-                          type="text"
-                          className="border border-gray-300 p-2 rounded-lg w-full"
-                          value={editableContent.dob}
-                          onChange={(e) => handleInputChange(e, "dob")}
-                          disabled={!isEditing}
-                        />
-                      </div>
-                      <div>
-                        <label className="text-gray-600">
-                          Contact Number:
-                        </label>
-                        <Input
-                          type="text"
-                          className="border border-gray-300 p-2 rounded-lg w-full"
-                          value={editableContent.contact}
-                          onChange={(e) => handleInputChange(e, "contact")}
-                          disabled={!isEditing}
-                        />
-                      </div>
-                    </div>
+  <div>
+    <label className="text-gray-600">Name:</label>
+    <Input
+      type="text"
+      className="border border-gray-300 p-2 rounded-lg w-full"
+      value={editableContent.name}
+      onChange={(e) => handleInputChange(e, "name")}
+      disabled={!isEditing}
+    />
+  </div>
+  
+  <div>
+    <label className="text-gray-600">Location:</label>
+    <Input
+      type="text"
+      className="border border-gray-300 p-2 rounded-lg w-full"
+      value={editableContent.location}
+      onChange={(e) => handleInputChange(e, "location")}
+      disabled={!isEditing}
+    />
+  </div>
+
+  <div className="relative">
+  <label className="text-gray-600">Email:</label>
+  <Input
+    type="email"
+    className="border border-gray-300 p-2 rounded-lg w-full"
+    value={editableContent.email}
+    onChange={(e) => handleInputChange(e, "email")}
+    disabled={!isEditing}
+  />
+  <div className="absolute mt-2 top-1/2 transform -translate-y-1/2 right-4 flex items-center space-x-1 text-green-600">
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+    <path fillRule="evenodd" d="M16.707 6.293a1 1 0 00-1.414 0L9 12.586 6.707 10.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l7-7a1 1 0 000-1.414z" clipRule="evenodd" />
+  </svg>
+  <span className="text-xs">Verified</span>
+</div>
+
+</div>
+
+
+  <div className="relative">
+    <label className="text-gray-600">Contact Number:</label>
+    <Input
+      type="text"
+      className="border border-gray-300 p-2 rounded-lg w-full"
+      value={editableContent.contact}
+      onChange={(e) => handleInputChange(e, "contact")}
+      disabled={!isEditing}
+    />
+   <button className="absolute mt-2 top-1/2 transform -translate-y-1/2 right-2 bg-red-600 text-white px-1.5 py-0.5 rounded text-xs">
+  Unverified
+</button>
+
+  </div>
+
+  <div>
+    <label className="text-gray-600">Date of Birth:</label>
+    <Input
+      type="text"
+      className="border border-gray-300 p-2 rounded-lg w-full"
+      value={editableContent.dob}
+      onChange={(e) => handleInputChange(e, "dob")}
+      disabled={!isEditing}
+    />
+  </div>
+</div>
+
                   </div>
                 )}
 

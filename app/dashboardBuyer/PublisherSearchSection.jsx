@@ -36,13 +36,13 @@ export default function PublisherSearchSection() {
 
               <div className="flex justify-between gap-5 self-stretch md:flex-col">
                 <TabList className="flex flex-wrap gap-4 ">
-                  <Tab className="px-[12px] py-3 text-[14px] font-normal text-adsy_com-black">
+                  <Tab className="px-[12px] py-4 text-[14px] font-normal text-adsy_com-black">
                     All
                   </Tab>
-                  <Tab className="px-[12px] py-3 text-[14px] font-normal text-adsy_com-black">
+                  <Tab className="px-[12px] py-4 text-[14px] font-normal text-adsy_com-black">
                     Pro
                   </Tab>
-                  <Tab className="px-[12px] py-3 text-[14px] font-normal text-adsy_com-black">
+                  <Tab className="px-[12px] py-4 text-[14px] font-normal text-adsy_com-black">
                     Verified
                   </Tab>
                 </TabList>
@@ -58,8 +58,8 @@ export default function PublisherSearchSection() {
                       <div className="flex h-[12px] w-[10px] items-center justify-center">
                         <Image
                           src="/images/Group 25811.png"
-                          width={10}
-                          height={12}
+                          width={15}
+                          height={13}
                           alt="Contrast"
                           className="my-0.5 h-[12px] w-[10px]"
                         />
@@ -105,6 +105,8 @@ export default function PublisherSearchSection() {
             >
               <div className="w-full">
                 <div className="flex flex-col gap-1">
+                  <UserProfile3 />
+                  <UserProfile3 />
                   <UserProfile3 />
   
                  

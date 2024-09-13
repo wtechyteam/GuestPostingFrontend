@@ -94,6 +94,7 @@ export default function Sidebar1({ ...props }) {
             Profile Details
           </MenuItem>
           </Link>
+          <Link href="/orderManagement">
           <SubMenu
             icon={
               <Image
@@ -110,6 +111,8 @@ export default function Sidebar1({ ...props }) {
             <Link href="/orderManagement"> <MenuItem className="pl-4">Order Status </MenuItem></Link>
             {/* <Link href="/orderManagement"> <MenuItem className="pl-4">Order List </MenuItem></Link> */}
           </SubMenu>
+          </Link>
+          <Link href="/paymentInfo">
           <SubMenu
             icon={
               <Image
@@ -126,6 +129,7 @@ export default function Sidebar1({ ...props }) {
            {/* <Link href="/paymentInfo"> <MenuItem className="pl-4">Billing Information </MenuItem></Link> */}
            <Link href="/paymentInfo"><MenuItem className="pl-4">Payment Method </MenuItem></Link>
           </SubMenu>
+          </Link>
           <Link href="/wishlist">
           <MenuItem
             icon={
@@ -141,37 +145,40 @@ export default function Sidebar1({ ...props }) {
             Wishlist
           </MenuItem>
           </Link>
-          <SubMenu
+          <Link href="/notifications">
+          <MenuItem
             icon={
               <Image
                 src="/images/ClipboardText.png"
                 width={20}
                 height={20}
-                alt="Clipboard Icon"
+                alt="Wishlist Icon"
                 className="h-[20px] w-[20px]"
               />
             }
-            label="Notifications"
+           
           >
-            <Link href="/notifications"><MenuItem className="pl-4">Seller Message </MenuItem></Link>
-            <Link href="/notifications"><MenuItem className="pl-4">Promotions/Discount </MenuItem></Link>
+         Notifications
             {/* <Link href="/notifications"><MenuItem className="pl-4">Order Updates </MenuItem></Link> */}
-          </SubMenu>
-          <SubMenu
+          </MenuItem>
+          </Link>
+          <Link href="/support">
+          <MenuItem
             icon={
               <Image
                 src="/images/Question.png"
                 width={20}
                 height={20}
-                alt="Question Icon"
+                alt="Wishlist Icon"
                 className="h-[20px] w-[20px]"
               />
             }
-            label="Support"
+           
           >
-            <Link href="/support"><MenuItem className="pl-4">FAQs </MenuItem></Link>
-            {/* <Link href="/support"><MenuItem className="pl-4">Customer Query </MenuItem></Link> */}
-          </SubMenu>
+        Support
+            {/* <Link href="/notifications"><MenuItem className="pl-4">Order Updates </MenuItem></Link> */}
+          </MenuItem>
+          </Link>
           <Link href="/settings">
           <MenuItem
             icon={

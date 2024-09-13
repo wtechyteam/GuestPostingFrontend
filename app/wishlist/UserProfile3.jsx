@@ -126,7 +126,7 @@ export default function UserProfile3({
 
 
             <Image
-              src="/images/heartColoured.png"
+              src="/images/colouredHeart2.png"
               width={22}
               height={22}
               alt="Material Symbol"

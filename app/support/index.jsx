@@ -214,11 +214,9 @@ export default function NotificationPage() {
               <div className="mt-4">
                 {activeTab === "tab1" && (
                   <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[480px] w-[1580px]">
-                    <h2 className="text-xl font-semibold text-gray-700 ">
-                     FAQs
-                    </h2>
+                    
                     <Text size="textmd" as="p">
-                      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
+                      <div className="rounded-[14px] bg-white pt-1  px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
                           <Suspense fallback={<div>Loading feed...</div>}>
                             {data.map((d, index) => (

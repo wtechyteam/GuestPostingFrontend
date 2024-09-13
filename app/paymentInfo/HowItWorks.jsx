@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
-import { Img } from "../common/Img";
+import Image from "next/image";
 
 export default function HowItWorks({ isHowItWorksVisible, toggleHowItWorks }) {
   return (
@@ -21,14 +21,12 @@ export default function HowItWorks({ isHowItWorksVisible, toggleHowItWorks }) {
             How it works?
           </Heading>
         </div>
-        <Img
-          src="img_vector_blue_gray_900.svg"
-          width={10}
-          height={3}
+        <Image
+          src="/images/down.png"
+          width={15}
+          height={13}
           alt="Vector"
-          className={`h-[3px] transition-transform ${
-            isHowItWorksVisible ? "rotate-180" : ""
-          }`}
+          
         />
       </div>
 

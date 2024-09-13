@@ -188,7 +188,7 @@ export default function ProfileDetailsPage() {
 
               <div className="relative flex items-start w-full mb-4">
                 <Image
-                  src="/images/Rectangle 1695.png"
+                  src="/images/Profile2.png"
                   width={154}
                   height={154}
                   alt="Profile Image"
@@ -232,8 +232,8 @@ export default function ProfileDetailsPage() {
                   {isEditing && (
                     <Image
                       src="/images/Group 25818.png"
-                      width={20}
-                      height={20}
+                      width={24}
+                      height={24}
                       alt="Name Icon"
                       className="ml-2"
                     />
@@ -256,8 +256,8 @@ export default function ProfileDetailsPage() {
                   {isEditing && (
                     <Image
                       src="/images/Group 25818.png"
-                      width={20}
-                      height={20}
+                      width={24}
+                      height={24}
                       alt="Email Icon"
                       className="ml-2"
                     />
@@ -280,8 +280,8 @@ export default function ProfileDetailsPage() {
                   {isEditing && (
                     <Image
                       src="/images/Group 25818.png"
-                      width={20}
-                      height={20}
+                      width={24}
+                      height={24}
                       alt="Location Icon"
                       className="ml-2"
                     />

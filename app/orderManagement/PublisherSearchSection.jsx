@@ -108,6 +108,8 @@ export default function PublisherSearchSection() {
                   <UserProfile3 />
                   <UserProfile3 /> 
                   <UserProfile3 /> 
+                  <UserProfile3 /> 
+                  <UserProfile3 /> 
                 </div>
               </div>
             </TabPanel>

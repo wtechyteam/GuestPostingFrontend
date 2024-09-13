@@ -88,6 +88,12 @@ export default function NotificationPage() {
         "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
       dateText: "12 Aug, 2024",
     },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
   
   ];
 
@@ -238,11 +244,9 @@ export default function NotificationPage() {
               <div className="mt-4">
                 {activeTab === "tab1" && (
                   <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
-                    <h2 className="text-xl font-semibold mb-10 text-gray-700 ">
-                      Transaction History
-                    </h2>
+                    
                     <Text size="textmd" as="p">
-                      <div className="rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
+                      <div className=" pt-1 rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
                           <Suspense fallback={<div>Loading feed...</div>}>
                             {data.map((d, index) => (
@@ -260,11 +264,9 @@ export default function NotificationPage() {
 
                 {activeTab === "tab2" && (
                   <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
-                    <h2 className="text-xl font-semibold mb-10 text-gray-700 ">
-                      Promotions/Discount
-                    </h2>
+                    
                     <Text size="textmd" as="p">
-                      <div className="rounded-[14px] bg-white px-3.5 shadow-sm">
+                      <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
                           <Suspense fallback={<div>Loading feed...</div>}>
                             {data.map((d, index) => (
