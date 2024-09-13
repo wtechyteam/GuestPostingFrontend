@@ -54,7 +54,7 @@ export default function DesktopTwoPage() {
                 size="textxl"
                 as="h1"
                 className="sm:text-[50px] md:text-[46px] z-[1] text-[50px] font-bold mt-[1rem]"
-                style={{ color: 'black' }}
+                style={{ color: "black" }}
               >
                 Write a Message
               </Heading>
@@ -83,14 +83,13 @@ export default function DesktopTwoPage() {
                 className="mt-6 w-[82%] rounded-[20px] border border-solid border-gray-10 font-manrope font-medium !text-principal_blue"
               />
 
-<div className="mt-[18px]">
-  
-  <ReCAPTCHA
-    sitekey="YOUR_SITE_KEY" 
-    onChange={(value) => console.log("Captcha value:", value)}
-    className="h-[78px] w-[304px] rounded-md"
-  />
-</div>
+              <div className="mt-[18px]">
+                <ReCAPTCHA
+                  sitekey="YOUR_SITE_KEY"
+                  onChange={(value) => console.log("Captcha value:", value)}
+                  className="h-[78px] w-[304px] rounded-md"
+                />
+              </div>
 
               <div className="mt-[18px] flex w-[30%] items-center justify-center md:w-full">
                 <Button className="min-w-[100px] rounded-[20px] !bg-adsy_com-blue !font-manrope !font-medium">

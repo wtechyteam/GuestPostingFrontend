@@ -12,7 +12,7 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Suspense } from "react";
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from "next/navigation";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -26,21 +26,18 @@ export default function NotificationPage() {
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
-  const router = useRouter();  // Initialize the router
+  const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
     // Add your logout logic here, e.g., clear cookies or call an API
-    Cookies.remove('fullName');
-    
+    Cookies.remove("fullName");
+
     // Redirect to the login page after logout
-    router.push('/login');
+    router.push("/login");
   };
   const handleLogout2 = () => {
-  
-    
-    
     // Redirect to the login page after logout
-    router.push('/profileDetails');
+    router.push("/profileDetails");
   };
   // New state to handle active tab
   const [activeTab, setActiveTab] = useState("tab1");
@@ -174,17 +171,17 @@ export default function NotificationPage() {
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <button
-                    onClick={handleLogout2}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Profile Settings
-                  </button>
+                      onClick={handleLogout2}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Profile Settings
+                    </button>
                     <button
-                    onClick={handleLogout}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
+                      onClick={handleLogout}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>
@@ -199,9 +196,9 @@ export default function NotificationPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-             <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">Payment Information</h1>
-
-            
+            <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
+              Payment Information
+            </h1>
           </div>
         </div>
       </div>

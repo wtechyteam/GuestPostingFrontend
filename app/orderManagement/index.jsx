@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import PublisherSearchSection from "./PublisherSearchSection";
 import { Suspense } from "react";
 import TextContentRow from "../common/TextContentRow";
-import { useRouter } from 'next/navigation';  
+import { useRouter } from "next/navigation";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -28,21 +28,18 @@ export default function OrderPage() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("tab1");
-  const router = useRouter();  // Initialize the router
+  const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
     // Add your logout logic here, e.g., clear cookies or call an API
-    Cookies.remove('fullName');
-    
+    Cookies.remove("fullName");
+
     // Redirect to the login page after logout
-    router.push('/login');
+    router.push("/login");
   };
   const handleLogout2 = () => {
-  
-    
-    
     // Redirect to the login page after logout
-    router.push('/profileDetails');
+    router.push("/profileDetails");
   };
 
   // Toggle dropdown visibility
@@ -189,17 +186,17 @@ export default function OrderPage() {
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <button
-                    onClick={handleLogout2}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Profile Settings
-                  </button>
+                      onClick={handleLogout2}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Profile Settings
+                    </button>
                     <button
-                    onClick={handleLogout}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
+                      onClick={handleLogout}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>
@@ -208,7 +205,7 @@ export default function OrderPage() {
         </header>
 
         <div className="flex items-start justify-start gap-7 self-stretch">
-        <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
+          <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
             <Sidebar1 />
           </div>
           <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
@@ -252,9 +249,7 @@ export default function OrderPage() {
 
               <div className="mt-4">
                 {activeTab === "tab1" && (
-                  
                   <div className="bg-gray-10 rounded-[14px] mb-10">
-                    
                     <Text size="textmd" as="p">
                       <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -273,7 +268,6 @@ export default function OrderPage() {
                 )}
                 {activeTab === "tab2" && (
                   <div className="bg-white rounded-[14px] mb-10">
-                    
                     <PublisherSearchSection />
                   </div>
                 )}

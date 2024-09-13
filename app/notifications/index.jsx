@@ -12,7 +12,7 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Suspense } from "react";
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from "next/navigation";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -26,14 +26,14 @@ export default function NotificationPage() {
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
-  const router = useRouter();  // Initialize the router
+  const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
     // Add your logout logic here, e.g., clear cookies or call an API
-    Cookies.remove('fullName');
-    
+    Cookies.remove("fullName");
+
     // Redirect to the login page after logout
-    router.push('/login');
+    router.push("/login");
   };
 
   // New state to handle active tab
@@ -98,7 +98,6 @@ export default function NotificationPage() {
         "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
       dateText: "12 Aug, 2024",
     },
-  
   ];
 
   return (
@@ -188,18 +187,18 @@ export default function NotificationPage() {
 
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
-                     <button
-                    onClick={handleLogout2}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Profile Details
-                  </button>
                     <button
-                    onClick={handleLogout}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
+                      onClick={handleLogout2}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Profile Details
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>
@@ -208,7 +207,7 @@ export default function NotificationPage() {
         </header>
 
         <div className="flex items-start justify-start gap-7 self-stretch">
-        <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
+          <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
             <Sidebar1 />
           </div>
           <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
@@ -216,7 +215,9 @@ export default function NotificationPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-            <h1 className="text-3xl font-bold text-gray-700 !text-left">Notifications</h1>
+            <h1 className="text-3xl font-bold text-gray-700 !text-left">
+              Notifications
+            </h1>
             <div className="mt-6">
               <div className="border-b border-gray-200 mb-6">
                 <ul className="flex">
@@ -249,7 +250,6 @@ export default function NotificationPage() {
               <div className="mt-4">
                 {activeTab === "tab1" && (
                   <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
-                    
                     <Text size="textmd" as="p">
                       <div className=" pt-1 rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -269,7 +269,6 @@ export default function NotificationPage() {
 
                 {activeTab === "tab2" && (
                   <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
-                    
                     <Text size="textmd" as="p">
                       <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -292,4 +291,5 @@ export default function NotificationPage() {
         </div>
       </div>
     </div>
-    )}
+  );
+}

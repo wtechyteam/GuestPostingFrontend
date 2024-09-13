@@ -21,9 +21,9 @@ export default function LoginOnePage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-const togglePasswordVisibility = () => {
-  setIsPasswordVisible(!isPasswordVisible);
-}
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   const router = useRouter(); // Initialize the router
 
   useEffect(() => {
@@ -62,24 +62,20 @@ const togglePasswordVisibility = () => {
         email,
         password,
       });
-  
+
       const { token, user } = response.data;
-  
+
       // Set the token and fullName as cookies
       Cookies.set("authToken", token, { expires: 7 });
       Cookies.set("fullName", user.fullName, { expires: 7 });
-  
-      
+
       if (typeof window !== "undefined") {
         router.push("/dashboardBuyer");
       }
     } catch (error) {
-      setErrorMessage(
-        error.response?.data?.message || "An error occurred"
-      );
+      setErrorMessage(error.response?.data?.message || "An error occurred");
     }
   };
-  
 
   return (
     <div className="w-full h-screen bg-gray-10 flex flex-col">
@@ -144,10 +140,7 @@ const togglePasswordVisibility = () => {
                 >
                   If you do not have an account register
                 </Text>
-                <Link
-                  href="/signup"
-                 
-                >
+                <Link href="/signup">
                   <Text
                     as="p"
                     className="ml-1.5 mt-1.5 !font-poppins !text-adsy_com-black md:ml-0"
@@ -170,7 +163,10 @@ const togglePasswordVisibility = () => {
               Log In
             </Text>
 
-            <form onSubmit={handleLogin} className="mt-6 flex w-[82%] flex-col items-start md:w-full">
+            <form
+              onSubmit={handleLogin}
+              className="mt-6 flex w-[82%] flex-col items-start md:w-full"
+            >
               <Input
                 shape="round"
                 type="email"
@@ -179,17 +175,21 @@ const togglePasswordVisibility = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins "
-                style={{ paddingLeft: '1rem' }}
+                style={{ paddingLeft: "1rem" }}
               />
               <Input
                 color="blue 50"
                 shape="round"
-                type={isPasswordVisible ? "text" : "password"} 
+                type={isPasswordVisible ? "text" : "password"}
                 name="Password Input"
                 placeholder="  Password"
                 suffix={
                   <Image
-                    src={isPasswordVisible ? "/images/Frame 43967.png" : "/images/invisible.png"} // Toggle icon
+                    src={
+                      isPasswordVisible
+                        ? "/images/Frame 43967.png"
+                        : "/images/invisible.png"
+                    } // Toggle icon
                     width={16}
                     height={16}
                     alt="Visibility Icon"
@@ -200,7 +200,7 @@ const togglePasswordVisibility = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] "
-                style={{ paddingLeft: '1rem' }}
+                style={{ paddingLeft: "1rem" }}
               />
               {errorMessage && (
                 <Text as="p" className="text-red-500 mt-2">
@@ -234,7 +234,7 @@ const togglePasswordVisibility = () => {
               </Link>
             </form>
             <div className="mt-6 flex flex-row items-center justify-center w-full ml-[-15rem]">
-            <Image
+              <Image
                 src="/images/Facebook2.png"
                 width={40}
                 height={40}

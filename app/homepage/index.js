@@ -30,46 +30,51 @@ export default function DesktopTwoPage() {
       id: 1,
       rating: 5,
       text: "Exceptional Solutions, Exceeded Expectations!",
-      description: "Working with Nearshore has been an absolute pleasure.Their team took the time to understand our unique needs and delivered a solution that not only met but exceeded our expectations.A reliable choice for any project.",
+      description:
+        "Working with Nearshore has been an absolute pleasure.Their team took the time to understand our unique needs and delivered a solution that not only met but exceeded our expectations.A reliable choice for any project.",
       authorImage: "/images/Dovetail.png",
       authorName: "Mary Johnson",
-      authorTitle: "CEO of TechCraft Solutions"
+      authorTitle: "CEO of TechCraft Solutions",
     },
     {
       id: 2,
       rating: 4,
       text: "Great Experience, Highly Recommend!",
-      description: "The team provided excellent service and delivered results ahead of schedule. Their professionalism and skill were evident throughout the project. I highly recommend their services.",
+      description:
+        "The team provided excellent service and delivered results ahead of schedule. Their professionalism and skill were evident throughout the project. I highly recommend their services.",
       authorImage: "/images/Loom.png",
       authorName: "John Smith",
-      authorTitle: "Founder of InnovateTech"
+      authorTitle: "Founder of InnovateTech",
     },
     {
       id: 3,
       rating: 5,
       text: "Outstanding Work, Very Satisfied!",
-      description: "The project was completed with great attention to detail and a high level of quality. The communication was clear, and the deliverables exceeded our expectations. We are very satisfied with the outcome.",
+      description:
+        "The project was completed with great attention to detail and a high level of quality. The communication was clear, and the deliverables exceeded our expectations. We are very satisfied with the outcome.",
       authorImage: "/images/Logo.png",
       authorName: "Lisa White",
-      authorTitle: "Director of Creative Solutions"
+      authorTitle: "Director of Creative Solutions",
     },
     {
       id: 4,
       rating: 4,
       text: "Impressive Results, Professional Team!",
-      description: "The team demonstrated exceptional skill and professionalism. The results were impressive, and they managed to address all of our requirements effectively. A reliable choice for any project.",
+      description:
+        "The team demonstrated exceptional skill and professionalism. The results were impressive, and they managed to address all of our requirements effectively. A reliable choice for any project.",
       authorImage: "/images/Logo.png",
       authorName: "Tom Brown",
-      authorTitle: "Product Manager at TechCorp"
+      authorTitle: "Product Manager at TechCorp",
     },
     {
       id: 5,
       rating: 5,
       text: "Fantastic Service, Great Value!",
-      description: "We were thrilled with the service and the value provided. The team was responsive, and the end product was exactly what we needed. We look forward to working with them again in the future.",
+      description:
+        "We were thrilled with the service and the value provided. The team was responsive, and the end product was exactly what we needed. We look forward to working with them again in the future.",
       authorImage: "/images/Logo.png",
       authorName: "Emily Davis",
-      authorTitle: "CEO of StartUpPro"
+      authorTitle: "CEO of StartUpPro",
     },
     // Add more testimonials here if needed
   ];
@@ -92,13 +97,11 @@ export default function DesktopTwoPage() {
 
       {/* Key benefits section */}
       <KeyBenefitsSection />
-      <TabsSection/>
+      <TabsSection />
       <HomeSection4 />
-      <TabsSection isReversed={true}/>
-    
-      
+      <TabsSection isReversed={true} />
 
-      <HomeFaq/>
+      <HomeFaq />
 
       <div className="mt-[40px]">
         {/* Brand statistics section */}
@@ -109,7 +112,11 @@ export default function DesktopTwoPage() {
               <Slider
                 autoPlay
                 autoPlayInterval={2000}
-                responsive={{ 0: { items: 1 }, 551: { items: 1 }, 1051: { items: 3 } }}
+                responsive={{
+                  0: { items: 1 },
+                  551: { items: 1 },
+                  1051: { items: 3 },
+                }}
                 disableDotsControls
                 activeIndex={sliderState4}
                 onSlideChanged={(e) => {
@@ -184,7 +191,12 @@ export default function DesktopTwoPage() {
                 }}
                 className="!rounded-[32px] w-[64px]"
               >
-                <Image src="/images/arrow-left.png" width={32} height={32} alt="arrow-left" />
+                <Image
+                  src="/images/arrow-left.png"
+                  width={32}
+                  height={32}
+                  alt="arrow-left"
+                />
               </Button>
               <Button
                 color="gray_50_01"
@@ -195,7 +207,12 @@ export default function DesktopTwoPage() {
                 }}
                 className="!rounded-[32px] w-[64px]"
               >
-                <Image src="/images/arrow-right.png" width={32} height={32} alt="arrow-right" />
+                <Image
+                  src="/images/arrow-right.png"
+                  width={32}
+                  height={32}
+                  alt="arrow-right"
+                />
               </Button>
             </div>
           </div>
