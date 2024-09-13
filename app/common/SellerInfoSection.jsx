@@ -12,7 +12,7 @@ export default function SellerInfoSection({ descriptionText, learnMoreButton = "
             className={`flex items-center w-[50%] md:w-full relative 
                 hover:border-2 hover:border-[#1C817D] hover:rounded-2xl 
                 hover:bg-blue-100 p-4 ${props.className}`}
-            style={{ borderColor: 'transparent' }} // Initial style
+            style={{ borderColor: 'transparent' }} 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -21,7 +21,7 @@ export default function SellerInfoSection({ descriptionText, learnMoreButton = "
                     size="text7xl"
                     as="p"
                     className="leading-[58px] z-[2] text-[39.13px] relative font-normal "
-                    style={{ color: isHovered ? '#0000000' : '#000000' }} // Change color based on hover state
+                    style={{ color: isHovered ? '#0000000' : '#000000' }} 
                 >
                     <span className="font-bold">
                         <>

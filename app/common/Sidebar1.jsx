@@ -159,7 +159,7 @@ export default function Sidebar1({ ...props }) {
            
           >
          Notifications
-            {/* <Link href="/notifications"><MenuItem className="pl-4">Order Updates </MenuItem></Link> */}
+          
           </MenuItem>
           </Link>
           <Link href="/support">

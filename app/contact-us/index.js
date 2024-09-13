@@ -20,8 +20,7 @@ export default function DesktopTwoPage() {
       <div>
         <Header />
         <div className="mt-[-2px] relative bg-gray-10">
-          {/* Collaboration section */}
-          <ContactCollaborationSection />
+        <ContactCollaborationSection />
         </div>
       </div>
       <ContactUsCards />
@@ -29,13 +28,13 @@ export default function DesktopTwoPage() {
       <div className="container-sm mt-[82px] px-14 md:px-5">
         <div className="mr-[34px] h-[626px] rounded-[20px] border border-solid border-adsy_com-black bg-gray-10 bg-[url(/images/img_group_850.png)] bg-cover bg-no-repeat md:mr-0 md:h-auto">
           <div className="flex items-center justify-between gap-5 md:flex-col">
-            {/* Replacing GoogleMap with an Image */}
+      
             <div className="relative h-[626px] w-[42%] content-center rounded-bl-[20px] rounded-tl-[20px] border-b border-l border-t border-solid border-adsy_com-black bg-gray-300 md:h-auto">
               <Image
-                src="/path-to-your-image.jpg" // Update with your image path
+                src="/path-to-your-image.jpg" 
                 alt="Contact Image"
-                width={500} // Set appropriate width
-                height={626} // Set appropriate height
+                width={500} 
+                height={626} 
                 className="object-cover rounded-bl-[20px] rounded-tl-[20px]"
               />
             </div>
