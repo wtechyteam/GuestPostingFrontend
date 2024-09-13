@@ -9,7 +9,7 @@ import { Text } from "../common/Text";
 import { SelectBox } from "../common/SelectBox";
 import HowItWorks from "./HowItWorks";
 import { Input } from "../common/Input";
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from "next/navigation";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -30,17 +30,14 @@ export default function SettingsPage() {
     contact: "999 9999 999",
   });
   const [isEditing, setIsEditing] = useState(false);
-  const router = useRouter();  // Initialize the router
+  const router = useRouter();
 
   const handleLogout = () => {
-    // Add your logout logic here, e.g., clear cookies or call an API
-    Cookies.remove('fullName');
-    
-    // Redirect to the login page after logout
-    router.push('/login');
+    Cookies.remove("fullName");
+
+    router.push("/login");
   };
 
-  // State to manage active tab
   const [activeTab, setActiveTab] = useState("account-settings");
 
   const toggleDropdown = () => {
@@ -59,19 +56,15 @@ export default function SettingsPage() {
     setIsEditing(true);
   };
   const handleLogout2 = () => {
-    // Redirect to the login page after logout
     router.push("/profileDetails");
   };
   const handleSave = () => {
     setIsEditing(false);
-    // Add your save logic here
   };
 
   const handleCancel = () => {
     setIsEditing(false);
-    // Reset the editable content or perform any cancel logic
   };
-
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
@@ -164,17 +157,17 @@ export default function SettingsPage() {
                 {isDropdownVisible && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <button
-                    onClick={handleLogout2}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Profile Settings
-                  </button>
+                      onClick={handleLogout2}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Profile Settings
+                    </button>
                     <button
-                    onClick={handleLogout}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
+                      onClick={handleLogout}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>
@@ -183,7 +176,7 @@ export default function SettingsPage() {
         </header>
 
         <div className="flex items-start justify-start gap-7 self-stretch">
-        <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
+          <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
             <Sidebar1 />
           </div>
 
@@ -283,74 +276,79 @@ export default function SettingsPage() {
                       Personal Information
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-  <div>
-    <label className="text-gray-600">Name:</label>
-    <Input
-      type="text"
-      className="border border-gray-300 p-2 rounded-lg w-full"
-      value={editableContent.name}
-      onChange={(e) => handleInputChange(e, "name")}
-      disabled={!isEditing}
-    />
-  </div>
-  
-  <div>
-    <label className="text-gray-600">Location:</label>
-    <Input
-      type="text"
-      className="border border-gray-300 p-2 rounded-lg w-full"
-      value={editableContent.location}
-      onChange={(e) => handleInputChange(e, "location")}
-      disabled={!isEditing}
-    />
-  </div>
+                      <div>
+                        <label className="text-gray-600">Name:</label>
+                        <Input
+                          type="text"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.name}
+                          onChange={(e) => handleInputChange(e, "name")}
+                          disabled={!isEditing}
+                        />
+                      </div>
 
-  <div className="relative">
-  <label className="text-gray-600">Email:</label>
-  <Input
-    type="email"
-    className="border border-gray-300 p-2 rounded-lg w-full"
-    value={editableContent.email}
-    onChange={(e) => handleInputChange(e, "email")}
-    disabled={!isEditing}
-  />
-  <div className="absolute mt-2 top-1/2 transform -translate-y-1/2 right-4 flex items-center space-x-1 text-green-600">
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-    <path fillRule="evenodd" d="M16.707 6.293a1 1 0 00-1.414 0L9 12.586 6.707 10.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l7-7a1 1 0 000-1.414z" clipRule="evenodd" />
-  </svg>
-  <span className="text-xs">Verified</span>
-</div>
+                      <div>
+                        <label className="text-gray-600">Location:</label>
+                        <Input
+                          type="text"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.location}
+                          onChange={(e) => handleInputChange(e, "location")}
+                          disabled={!isEditing}
+                        />
+                      </div>
 
-</div>
+                      <div className="relative">
+                        <label className="text-gray-600">Email:</label>
+                        <Input
+                          type="email"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.email}
+                          onChange={(e) => handleInputChange(e, "email")}
+                          disabled={!isEditing}
+                        />
+                        <div className="absolute mt-2 top-1/2 transform -translate-y-1/2 right-4 flex items-center space-x-1 text-green-600">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 6.293a1 1 0 00-1.414 0L9 12.586 6.707 10.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l7-7a1 1 0 000-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          <span className="text-xs">Verified</span>
+                        </div>
+                      </div>
 
+                      <div className="relative">
+                        <label className="text-gray-600">Contact Number:</label>
+                        <Input
+                          type="text"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.contact}
+                          onChange={(e) => handleInputChange(e, "contact")}
+                          disabled={!isEditing}
+                        />
+                        <button className="absolute mt-2 top-1/2 transform -translate-y-1/2 right-2 bg-red-600 text-white px-1.5 py-0.5 rounded text-xs">
+                          Unverified
+                        </button>
+                      </div>
 
-  <div className="relative">
-    <label className="text-gray-600">Contact Number:</label>
-    <Input
-      type="text"
-      className="border border-gray-300 p-2 rounded-lg w-full"
-      value={editableContent.contact}
-      onChange={(e) => handleInputChange(e, "contact")}
-      disabled={!isEditing}
-    />
-   <button className="absolute mt-2 top-1/2 transform -translate-y-1/2 right-2 bg-red-600 text-white px-1.5 py-0.5 rounded text-xs">
-  Unverified
-</button>
-
-  </div>
-
-  <div>
-    <label className="text-gray-600">Date of Birth:</label>
-    <Input
-      type="text"
-      className="border border-gray-300 p-2 rounded-lg w-full"
-      value={editableContent.dob}
-      onChange={(e) => handleInputChange(e, "dob")}
-      disabled={!isEditing}
-    />
-  </div>
-</div>
-
+                      <div>
+                        <label className="text-gray-600">Date of Birth:</label>
+                        <Input
+                          type="text"
+                          className="border border-gray-300 p-2 rounded-lg w-full"
+                          value={editableContent.dob}
+                          onChange={(e) => handleInputChange(e, "dob")}
+                          disabled={!isEditing}
+                        />
+                      </div>
+                    </div>
                   </div>
                 )}
 
