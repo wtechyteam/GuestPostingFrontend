@@ -103,11 +103,9 @@ export default function Sidebar1({ ...props }) {
               label="Order Management"
             >
               <Link href="/orderManagement">
-                {" "}
                 <MenuItem className="pl-4">Order History </MenuItem>
               </Link>
               <Link href="/orderManagement">
-                {" "}
                 <MenuItem className="pl-4">Order Status </MenuItem>
               </Link>
               {/* <Link href="/orderManagement"> <MenuItem className="pl-4">Order List </MenuItem></Link> */}
@@ -127,7 +125,6 @@ export default function Sidebar1({ ...props }) {
               label="Payment Information"
             >
               <Link href="/paymentInfo">
-                {" "}
                 <MenuItem className="pl-4">Transaction History </MenuItem>
               </Link>
               <Link href="/paymentInfo">
