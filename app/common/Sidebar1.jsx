@@ -132,7 +132,7 @@ export default function Sidebar1({ ...props }) {
               </Link>
             </SubMenu>
           </Link>
-          <Link href="/wishlist">
+          <Link href="/lists">
             <MenuItem
               icon={
                 <Image
@@ -144,7 +144,22 @@ export default function Sidebar1({ ...props }) {
                 />
               }
             >
-              Wishlist
+              Lists
+            </MenuItem>
+          </Link>
+          <Link href="/tasks">
+            <MenuItem
+              icon={
+                <Image
+                  src="/images/Cards.png"
+                  width={20}
+                  height={20}
+                  alt="Wishlist Icon"
+                  className="h-[20px] w-[20px]"
+                />
+              }
+            >
+              Tasks 
             </MenuItem>
           </Link>
           <Link href="/notifications">
@@ -195,7 +210,7 @@ export default function Sidebar1({ ...props }) {
           </Link>
         </div>
 
-        <div className="mt-[21rem]">
+        <div className="mt-[19rem]">
           <MenuItem
             icon={
               <Image

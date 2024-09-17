@@ -187,7 +187,7 @@ export default function Wishlist() {
               toggleHowItWorks={toggleHowItWorks}
             />
             <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
-              Wishlist
+              Lists
             </h1>
 
             <PublisherSearchSection />

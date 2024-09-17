@@ -4,6 +4,7 @@ import { Img } from "../common/Img";
 import { Button } from "../common/Button";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 const fetchAllProducts = async () => {
@@ -115,6 +116,7 @@ export default function UserProfile3({
                 </div>
               </div>
               <div className="flex items-center">
+                <Link href="/buyPost">
                 <Button
                   onClick={() => console.log('Buy Post clicked')}
                   color="indigo_a400"
@@ -123,6 +125,7 @@ export default function UserProfile3({
                 >
                   {buyPostButton}
                 </Button>
+                </Link>
 
                 <Image
                   src="/images/heart1.png"

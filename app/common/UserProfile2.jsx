@@ -3,10 +3,11 @@ import { Heading } from "./Heading";
 import { Text } from "./Text";
 import { Button } from "./Button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function UserProfile({
   product,
-  buyPostButton = "Buy Post",
+  buyPostButton = "Select",
   contentPlacementText = "Content placement",
   priceText = "$3,640.87",
   writingPlacementText = "Writing & Placement",
@@ -42,14 +43,17 @@ export default function UserProfile({
     <div className="flex flex-col items-center justify-center gap-3.5 px-4 border-blue_gray-100_02 border border-solid bg-gray-10 rounded-[14px]">
       <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
         <div className="flex flex-1 md:self-stretch">
-          <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem]">
-            {"URL is hidden"}
+          <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem] ">
+            {"John Smith  "}
           </Text>
-          <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
-            <Text size="textxs" as="p" className="text-adsy_com-black font-semibold text-[8.83px]">
-              {"Contributor"}
+          <div className="flex self-end rounded-[8px] bg-indigo-a400 p-1.5">
+            <Text size="textxs" as="p" className="text-white font-semibold text-[8.83px] ">
+              {"Owner"}
             </Text>
           </div>
+          <Text size="textxl" as="p" className="text-indigo-a400 ml-[0.5rem] ">
+            {"URL is hidden"}
+          </Text>
           {/* <div className="flex flex-1 gap-[9px] px-2.5">
             {product.tags && product.tags.split(", ").map((tag, index) => (
               <div key={index} className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5">
@@ -61,9 +65,11 @@ export default function UserProfile({
           </div> */}
         </div>
         <div className="flex items-center">
+          <Link href="/selectPost">
           <Button color="indigo_a400" size="md" className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]">
             {buyPostButton}
           </Button>
+          </Link>
           <Image src="/images/heart1.png" width={22} height={22} alt="Heart Icon" className="ml-4 h-[24px] w-[24px]" />
           <Image src="/images/dustbin.png" width={24} height={24} alt="Dustbin Icon" className="ml-4 h-[24px] w-[24px]" />
         </div>
