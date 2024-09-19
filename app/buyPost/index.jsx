@@ -14,7 +14,7 @@ import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Suspense } from "react";
 import { useRouter } from "next/navigation";
-import UserProfile from "app/common/UserProfile";
+import UserProfileApproved from "app/common/UserProfileApproved";
 import UserProfile2 from "app/common/UserProfile2";
 import { CloseSVG } from "../common/Close";
 
@@ -225,7 +225,7 @@ export default function PostsPage() {
             <h1 className="text-3xl font-bold text-gray-700 !text-left">
               Available Performers for your Task
             </h1>
-            <UserProfile />
+            <UserProfileApproved />
             <div className="mt-6">
               <div className="border-b border-gray-200 mb-6">
                 <ul className="flex">

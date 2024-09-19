@@ -8,7 +8,6 @@ import UserProfile3 from "../common/UserProfile3";
 import React from "react";
 import { TabPanel, TabList, Tab, Tabs } from "react-tabs";
 import Image from "next/image";
-import { Button } from "app/common/Button";
 const dropDownOptions = [
   { label: "Option1", value: "option1" },
   { label: "Option2", value: "option2" },
@@ -78,24 +77,23 @@ export default function PublisherSearchSection() {
                     className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3"
                   />
 
-                  <Button
+                  <SelectBox
                     size="xs"
                     shape="square"
+                    indicator={
+                      <Image
+                        src="/images/CaretDown.png"
+                        width={10}
+                        height={8}
+                        alt="Vector"
+                        className="h-[8px] w-[10px]"
+                      />
+                    }
                     name="Filter Dropdown"
                     placeholder={`Filter`}
-                    style={{
-                      backgroundColor: "white",
-                      border: "1px solid #d1d5db",
-                      height: "46px",
-                      width: "100px",
-                      borderRadius: "24px",
-                      color: "#333", 
-                      fontSize: "15px",
-                    }}
-                    className="gap-1.5 flex items-center justify-center"
-                  >
-                    Filter
-                  </Button>
+                    options={dropDownOptions}
+                    className="w-[6%] gap-1.5 text-adsy_com-black md:w-full rounded-[14px] border border-gray-300"
+                  />
                 </div>
               </div>
             </div>
@@ -110,6 +108,8 @@ export default function PublisherSearchSection() {
                   <UserProfile3 />
                   <UserProfile3 />
                   <UserProfile3 />
+  
+                 
                 </div>
               </div>
             </TabPanel>

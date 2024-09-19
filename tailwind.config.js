@@ -87,6 +87,7 @@ module.exports = {
         },
         white:{a700_4c:"#ffffff4c",a700_66:"#fffffff66"},
         yellow:{800:"#efa82e",900:"#f27712","800_01":"#ecb22e"},
+        more_tasks_green:"#00AB39",
       },
       boxShadow:{
         xs:"0 4px 4px 0 #0000003f",

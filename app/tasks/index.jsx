@@ -1,27 +1,44 @@
 "use client";
-
-import { Img } from "../common/Img";
+import { CloseSVG } from "../common/Close";
+import { Input } from "../common/Input";
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
-import TextContentRow from "../common/TextContentRow";
+import AcceptCard from "../common/AcceptCard";
+import ApprovalPending from "../common/ApprovalPending";
+import CompletedCard from "../common/CompletedCard"
+import ImprovementCard from "../common/ImprovementCard";
+import RejectedCard from "../common/RejectedCard";
+import ArchievedCard from "../common/ArchievedCard";
+import InProgressCard from "../common/InProgressCard"
+import TaskCard from "../common/TaskCard";
 import Image from "next/image";
+import MoreTasks from "./MoreTasks";
 import Sidebar1 from "../common/Sidebar1";
+import PublishersAcceptanceButton from "../common/PublishersAcceptanceButton"
 import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Suspense } from "react";
 import { useRouter } from "next/navigation";
+import Select from "react-select";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
   { label: "English", value: "option2" },
   { label: "English", value: "option3" },
 ];
+const options = [
+  { value: "option1", label: "Option 1" },
+  { value: "option2", label: "Option 2" },
+  { value: "option3", label: "Option 3" },
+];
 
 export default function NotificationPage() {
   const fullName = Cookies.get("fullName");
+  const [searchBarValue10, setSearchBarValue10] = React.useState("");
+  const [publisherValue, setPublisherValue] = React.useState("");
 
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -215,8 +232,9 @@ export default function NotificationPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
+            <MoreTasks />
             <h1 className="text-3xl font-bold text-gray-700 !text-left">
-             Tasks
+              Tasks
             </h1>
             <div className="mt-6">
               <div className="border-b border-gray-200 mb-6">
@@ -242,7 +260,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab2")}
                     >
-                     Draft
+                      Draft
                     </button>
                   </li>
                   <li className="mr-6">
@@ -254,7 +272,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab32")}
                     >
-                     Publisher Acceptance
+                      Publisher Acceptance
                     </button>
                   </li>
                   <li className="mr-6">
@@ -266,7 +284,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab22")}
                     >
-                     In Progress
+                      In Progress
                     </button>
                   </li>
                   <li className="mr-6">
@@ -278,7 +296,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab3")}
                     >
-                    Your Approval
+                      Your Approval
                     </button>
                   </li>
                   <li className="mr-6">
@@ -290,7 +308,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab4")}
                     >
-                   Improvement
+                      Improvement
                     </button>
                   </li>
                   <li className="mr-6">
@@ -302,7 +320,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab5")}
                     >
-                   Completed
+                      Completed
                     </button>
                   </li>
                   <li className="mr-6">
@@ -314,7 +332,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab6")}
                     >
-                   Rejected
+                      Rejected
                     </button>
                   </li>
                   <li className="mr-6">
@@ -326,47 +344,1662 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab7")}
                     >
-                   Archived
+                      Archived
                     </button>
                   </li>
                 </ul>
               </div>
               <div className="mt-4">
-                {activeTab === "tab1" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
-                    <Text size="textmd" as="p">
-                      <div className=" pt-1 rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
-                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
-                          <Suspense fallback={<div>Loading feed...</div>}>
-                            {data.map((d, index) => (
-                              <TextContentRow
-                                {...d}
-                                key={"viewhierarchy" + index}
+              {activeTab === "tab1" && (
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
                               />
-                            ))}
-                          </Suspense>
-                        </div>
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
                       </div>
-                    </Text>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+                    <CompletedCard />
+                    <TaskCard />
+                    <InProgressCard />
+                  
+                    <ApprovalPending />
+                    <AcceptCard/>
+                 
+                    <RejectedCard />
+                    <ImprovementCard />
+                    <ArchievedCard />
                   </div>
                 )}
 
                 {activeTab === "tab2" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
-                    <Text size="textmd" as="p">
-                      <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
-                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
-                          <Suspense fallback={<div>Loading feed...</div>}>
-                            {data.map((d, index) => (
-                              <TextContentRow
-                                {...d}
-                                key={"viewhierarchy" + index}
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
                               />
-                            ))}
-                          </Suspense>
-                        </div>
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
                       </div>
-                    </Text>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+
+                    <TaskCard />
+                    <TaskCard />
+                    <TaskCard />
+                    <TaskCard />
+                    <TaskCard />
+                  </div>
+                )}
+                 {activeTab === "tab32" && (
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+
+                    <PublishersAcceptanceButton />
+                    <PublishersAcceptanceButton />
+                    <PublishersAcceptanceButton />
+                    <PublishersAcceptanceButton />
+                    <PublishersAcceptanceButton />
+                  </div>
+                )}
+                 {activeTab === "tab22" && (
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+
+                    <InProgressCard />
+                    <InProgressCard />
+                    <InProgressCard />
+                    <InProgressCard />
+                    <InProgressCard />
+                  </div>
+                )}
+                 {activeTab === "tab3" && (
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+
+                    <AcceptCard />
+                    <ApprovalPending />
+                    <AcceptCard />
+                    <AcceptCard />
+                    <AcceptCard />
+                  </div>
+                )}
+                 {activeTab === "tab4" && (
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+
+                    <ImprovementCard />
+                    <ImprovementCard />
+                    <ImprovementCard />
+                    <ImprovementCard />
+                    <ImprovementCard />
+                  </div>
+                )}
+                 {activeTab === "tab5" && (
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+
+                    <CompletedCard />
+                    <CompletedCard />
+                    <CompletedCard />
+                    <CompletedCard />
+                    <CompletedCard />
+                  </div>
+                )}
+                 {activeTab === "tab6" && (
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+
+                    <RejectedCard />
+                    <RejectedCard />
+                    <RejectedCard />
+                    <RejectedCard />
+                    <RejectedCard />
+                  </div>
+                )}
+                 {activeTab === "tab7" && (
+                  <div>
+                    <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Created Date`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's URL`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Promoted URL's`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Anchor Text`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Select
+                          value={options.find(
+                            (option) => option.value === searchBarValue10
+                          )}
+                          onChange={(selectedOption) =>
+                            setSearchBarValue10(selectedOption.value)
+                          }
+                          options={options}
+                          placeholder="Service Type"
+                          styles={customStyles}
+                          classNamePrefix="react-select"
+                          className="w-[84%] mt-[-1rem] rounded-[14px] !text-gray-400 md:w-full px-3 py-5"
+                        />
+                      </div>
+                    </div>
+
+                    <ArchievedCard />
+                    <ArchievedCard />
+                    <ArchievedCard />
+                    <ArchievedCard />
+                    <ArchievedCard />
                   </div>
                 )}
               </div>
@@ -377,3 +2010,22 @@ export default function NotificationPage() {
     </div>
   );
 }
+const customStyles = {
+  control: (provided) => ({
+    ...provided,
+    minHeight: "40px",
+    borderRadius: "18px",
+    padding: "0px 10px", // Adjust padding if needed
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    height: "50px", // Ensures the internal container has the same height
+    padding: "15px 10px", // Adjust padding inside
+    display: "flex",
+    alignItems: "center", // Align text vertically
+  }),
+  input: (provided) => ({
+    ...provided,
+    margin: "0px", // Remove margin to align the input properly
+  }),
+};

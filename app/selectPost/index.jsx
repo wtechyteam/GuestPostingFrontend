@@ -58,9 +58,7 @@ export default function SelectPostsPage() {
     router.push("/profileDetails");
   };
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
+ 
 
   const data = [
     {
@@ -258,98 +256,151 @@ export default function SelectPostsPage() {
               <div className="mt-4">
                 {activeTab === "tab1" && (
                   <>
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[150px] w-[1580px] mb-20 ">
-                    <div className="mr-3.5 mt-4 flex flex-col gap-4 md:mr-0 p-6">
-                      <p className="text-gray-900 font-bold text-[22px]">
-                        Publishers special requirements
-                      </p>
+                    <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[150px] w-[1580px] mb-20 ">
+                      <div className="mr-3.5 mt-4 flex flex-col gap-4 md:mr-0 p-6">
+                        <p className="text-gray-900 font-bold text-[22px]">
+                          Publishers special requirements
+                        </p>
 
-                      <Text
-                        size="textmd"
-                        as="p"
-                        className="text-gray-500 text-[16px]"
-                      >
-                        All articles must be 100% unique and not less than 500
-                        words. (no duplicate contents) We do not accept Betting,
-                        Casino, Gambling, Poker, Slot, Cannabis, Tobacco,
-                        Vaping, Guns/weapons, Pills, Recreational drugs,
-                        Supplements, Movie streaming, Negative/defamatory
-                        contents, copyrighted contents and images, and
-                        adult-related contents or links.
-                      </Text>
-                    </div>
-                    </div>
-                    <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[200px] w-[1200px] mb-20 flex justify-center items-center">
-  <div className="p-6">
-    <Text
-      size="textmd"
-      as="p"
-      className="text-gray-500 text-center text-[16px]"
-    >
-      Please Specify any other requirements you have here.
-    </Text>
-  </div>
-  
-</div>
-<div className="absolute right-0 top-1/2 transform -translate-y-1/2 p-6 text-gray-500 text-[10px] max-w-xs" style={{ marginTop: '170px' }}>
-    If necessary, you can write additional task requirements here, e.g., deadline, necessity of disclosure, preferences regarding content placement, etc.
-</div>
-
-
-
-                    <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[200px] w-[1580px] mb-20 flex flex-col">
-  <div className="flex flex-col p-6">
-    <div className="flex justify-between items-center mb-4">
-      <Text
-        size="textmd"
-        as="p"
-        className="text-gray-500"
-      >
-        Content Placement
-      </Text>
-      <p className="font-normal text-gray-900">$299.00</p>
-    </div>
-    <hr className="border-gray-300 mb-4" />
-    <div className="flex justify-between items-center">
-      <p className="text-gray-700 text-lg font-semibold">Total Price:</p>
-      <p className="font-bold text-gray-900 text-xl">$299.00</p>
-    </div>
-  </div>
-  <div className="flex items-center">
-  <button className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 ml-6 mr-2">
-    Send Task
-  </button>
-  <p className="text-gray-400 text-[14px]">
-    As soon as you send the task, the money for it will be reserved on your balance. If you don’t have enough money, the task will be saved as a draft.
-  </p>
-</div>
-
-</div>
-
-                      </>
-                  
-                )}
-                {activeTab === "tab2" && (
-                  <div>
-                    <div className="flex gap-4 p-4 "></div>
-
-                    <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[200px] w-[1580px] mb-20 flex flex-col justify-center items-center">
-                      <div className="mr-3.5 mt-4 flex flex-col gap-4">
                         <Text
                           size="textmd"
                           as="p"
-                          className="text-gray-500 text-center"
+                          className="text-gray-500 text-[16px]"
                         >
-                          No Results to Display
+                          All articles must be 100% unique and not less than 500
+                          words. (no duplicate contents) We do not accept
+                          Betting, Casino, Gambling, Poker, Slot, Cannabis,
+                          Tobacco, Vaping, Guns/weapons, Pills, Recreational
+                          drugs, Supplements, Movie streaming,
+                          Negative/defamatory contents, copyrighted contents and
+                          images, and adult-related contents or links.
                         </Text>
                       </div>
-                      <div className="mt-auto mb-4">
-                        <button className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600">
-                          Click Me
-                        </button>
+                    </div>
+                    <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[200px] w-[1300px] mb-20 flex justify-center items-center">
+                      <div className="p-6">
+                        <Text
+                          size="textmd"
+                          as="p"
+                          className="text-gray-500 text-center text-[16px]"
+                        >
+                          Please Specify any other requirements you have here.
+                        </Text>
                       </div>
                     </div>
-                  </div>
+                    <div
+                      className="absolute right-0 top-1/2 transform -translate-y-1/2 p-6 text-gray-500 text-[12px] max-w-xs"
+                      style={{ marginTop: "170px" }}
+                    >
+                      If necessary, you can write additional task requirements
+                      here, e.g., deadline, necessity of disclosure, preferences
+                      regarding content placement, etc.
+                    </div>
+
+                    <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[200px] w-[1580px] mb-20 flex flex-col">
+                      <div className="flex flex-col p-6">
+                        <div className="flex justify-between items-center mb-4">
+                          <Text size="textmd" as="p" className="text-gray-500">
+                            Content Placement
+                          </Text>
+                          <p className="font-normal text-gray-900">$299.00</p>
+                        </div>
+                        <hr className="border-gray-300 mb-4" />
+                        <div className="flex justify-between items-center">
+                          <p className="text-gray-700 text-lg font-semibold">
+                            Total Price:
+                          </p>
+                          <p className="font-bold text-gray-900 text-xl">
+                            $299.00
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center">
+                        <button className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 ml-6 mr-2">
+                          Send Task
+                        </button>
+                        <p className="text-gray-400 text-[14px]">
+                          As soon as you send the task, the money for it will be
+                          reserved on your balance. If you don’t have enough
+                          money, the task will be saved as a draft.
+                        </p>
+                      </div>
+                    </div>
+                  </>
+                )}
+               {activeTab === "tab2" && (
+                  <>
+                    <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[150px] w-[1580px] mb-20 ">
+                      <div className="mr-3.5 mt-4 flex flex-col gap-4 md:mr-0 p-6">
+                        <p className="text-gray-900 font-bold text-[22px]">
+                          Publishers special requirements
+                        </p>
+
+                        <Text
+                          size="textmd"
+                          as="p"
+                          className="text-gray-500 text-[16px]"
+                        >
+                          All articles must be 100% unique and not less than 500
+                          words. (no duplicate contents) We do not accept
+                          Betting, Casino, Gambling, Poker, Slot, Cannabis,
+                          Tobacco, Vaping, Guns/weapons, Pills, Recreational
+                          drugs, Supplements, Movie streaming,
+                          Negative/defamatory contents, copyrighted contents and
+                          images, and adult-related contents or links.
+                        </Text>
+                      </div>
+                    </div>
+                    <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[200px] w-[1300px] mb-20 flex justify-center items-center">
+                      <div className="p-6">
+                        <Text
+                          size="textmd"
+                          as="p"
+                          className="text-gray-500 text-center text-[16px]"
+                        >
+                          Please Specify any other requirements you have here.
+                        </Text>
+                      </div>
+                    </div>
+                    <div
+                      className="absolute right-0 top-1/2 transform -translate-y-1/2 p-6 text-gray-500 text-[12px] max-w-xs"
+                      style={{ marginTop: "170px" }}
+                    >
+                      If necessary, you can write additional task requirements
+                      here, e.g., deadline, necessity of disclosure, preferences
+                      regarding content placement, etc.
+                    </div>
+
+                    <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[200px] w-[1580px] mb-20 flex flex-col">
+                      <div className="flex flex-col p-6">
+                        <div className="flex justify-between items-center mb-4">
+                          <Text size="textmd" as="p" className="text-gray-500">
+                            Content Placement
+                          </Text>
+                          <p className="font-normal text-gray-900">$299.00</p>
+                        </div>
+                        <hr className="border-gray-300 mb-4" />
+                        <div className="flex justify-between items-center">
+                          <p className="text-gray-700 text-lg font-semibold">
+                            Total Price:
+                          </p>
+                          <p className="font-bold text-gray-900 text-xl">
+                            $299.00
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center">
+                        <button className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 ml-6 mr-2">
+                          Send Task
+                        </button>
+                        <p className="text-gray-400 text-[14px]">
+                          As soon as you send the task, the money for it will be
+                          reserved on your balance. If you don’t have enough
+                          money, the task will be saved as a draft.
+                        </p>
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
             </div>

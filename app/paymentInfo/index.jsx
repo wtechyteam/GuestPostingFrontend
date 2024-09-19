@@ -1,18 +1,20 @@
 "use client";
-
+import { Suspense } from "react";
+import TextContentRow from "../common/TextContentRow";
 import { Img } from "../common/Img";
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
-import TextContentRow from "../common/TextContentRow";
 import Image from "next/image";
 import Sidebar1 from "../common/Sidebar1";
-import HowItWorks from "./HowItWorks";
+import OrderSummarySection from "./OrderSummarySection";
+import PublisherSearchSection from "./PublisherSearchSection";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
-import { Suspense } from "react";
+import HowItWorks from "./HowItWorks";
 import { useRouter } from "next/navigation";
+import PaymentInfo from "app/common/PaymentInfo";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -20,12 +22,8 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function NotificationPage() {
+export default function DashboardPage() {
   const fullName = Cookies.get("fullName");
-
-  // State to handle dropdown visibility
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
   const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
@@ -39,8 +37,10 @@ export default function NotificationPage() {
     // Redirect to the login page after logout
     router.push("/profileDetails");
   };
-  // New state to handle active tab
-  const [activeTab, setActiveTab] = useState("tab1");
+
+  // State to handle dropdown visibility
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
@@ -49,44 +49,64 @@ export default function NotificationPage() {
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
-
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+  const [activeTab, setActiveTab] = useState("tab1");
   const data = [
     {
       longText: "It is a long established",
       descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "It is a long established fact that a reader will be distracted ",
       dateText: "12 Aug, 2024",
     },
     {
       longText: "It is a long established",
       descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "It is a long established fact that a reader will be distracted ",
       dateText: "12 Aug, 2024",
     },
     {
       longText: "It is a long established",
       descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "It is a long established fact that a reader will be distracted ",
       dateText: "12 Aug, 2024",
     },
     {
       longText: "It is a long established",
       descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "It is a long established fact that a reader will be distracted ",
+      dateText: "12 Aug, 2024",
+    },
+    // {
+    //   longText: "It is a long established",
+    //   descriptionText:
+    //     "It is a long established fact that a reader will be distracted ",
+    //   dateText: "12 Aug, 2024",
+    // },
+    // {
+    //   longText: "It is a long established",
+    //   descriptionText:
+    //     "It is a long established fact that a reader will be distracted",
+    //   dateText: "12 Aug, 2024",
+    // },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted ",
       dateText: "12 Aug, 2024",
     },
     {
       longText: "It is a long established",
       descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "It is a long established fact that a reader will be distracted",
       dateText: "12 Aug, 2024",
     },
   ];
-
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
       <div className="flex flex-col items-end bg-gray-50_01">
-        <header className="flex w-[100%] items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
+        <header className="fixed top-0 left-0 w-[100%] z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
           <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
             <div className="flex w-[100%] flex-col items-start sm:w-full">
               <Image
@@ -189,16 +209,257 @@ export default function NotificationPage() {
           </div>
         </header>
 
-        <div className="flex items-start justify-start gap-7 self-stretch">
-          <Sidebar1 />
-          <div className="mt-[26px] flex flex-1 flex-col gap-[22px]">
+        <div className="flex items-start">
+          {/* Fixed Sidebar */}
+          <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
+            <Sidebar1 />
+          </div>
+
+          {/* Main Content */}
+          <div className="ml-[-1600px] mt-[80px] flex flex-1 flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-            <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
+            <OrderSummarySection />
+            <h1 className="text-3xl font-bold text-gray-700 !text-left">
               Payment Information
             </h1>
+            <div className="mt-6">
+              <div className="border-b border-gray-200 mb-6">
+                <ul className="flex">
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab1"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab1")}
+                    >
+                      All Payments
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab2"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab2")}
+                    >
+                      Added Funds
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab3"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab3")}
+                    >
+                      Product Payments
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab4"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab4")}
+                    >
+                      Refunds
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab5"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab5")}
+                    >
+                      Others
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div
+                className="flex mx-auto justify-between mb-3"
+                style={{ maxWidth: "1450px" }}
+              >
+                <Heading
+                  size="textsm"
+                  as="p"
+                  className="text-gray-600 flex-none w-[15%]"
+                >
+                  Date
+                </Heading>
+                <Heading
+                  size="textsm"
+                  as="p"
+                  className="text-gray-600 flex-1 text-center"
+                >
+                  Transaction Description
+                </Heading>
+                {/* Add more space for the gap and align Transaction Amount to the right */}
+                <Heading
+                  size="textsm"
+                  as="p"
+                  className="text-gray-600 flex-none w-[20%] text-right"
+                >
+                  Transaction Amount
+                </Heading>
+                <Heading
+                  size="textsm"
+                  as="p"
+                  className="text-gray-600 flex-none w-[15%] text-right"
+                >
+                  Balance
+                </Heading>
+              </div>
+
+              <div className="mt-4">
+                {activeTab === "tab1" && (
+                  <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <Text size="textmd" as="p">
+                      <div className="pt-1 rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <PaymentInfo
+                                {...d}
+                                key={"viewhierarchy" + index}
+                              />
+                            ))}
+                          </Suspense>
+                        </div>
+                      </div>
+                    </Text>
+
+                    <div className="mt-4 mb-2 flex justify-end">
+                      <button
+                        className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                        style={{ backgroundColor: "#00AB39" }}
+                      >
+                        Add Funds
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "tab2" && (
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <Text size="textmd" as="p">
+                      <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <PaymentInfo
+                                {...d}
+                                key={"viewhierarchy" + index}
+                              />
+                            ))}
+                          </Suspense>
+                        </div>
+                      </div>
+                    </Text>
+                    <div className="mt-4 mb-2 flex justify-end">
+                      <button
+                        className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                        style={{ backgroundColor: "#00AB39" }}
+                      >
+                        Add Funds
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {activeTab === "tab3" && (
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <Text size="textmd" as="p">
+                      <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <PaymentInfo
+                                {...d}
+                                key={"viewhierarchy" + index}
+                              />
+                            ))}
+                          </Suspense>
+                        </div>
+                      </div>
+                    </Text>
+                    <div className="mt-4 mb-2 flex justify-end">
+                      <button
+                        className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                        style={{ backgroundColor: "#00AB39" }}
+                      >
+                        Add Funds
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {activeTab === "tab4" && (
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <Text size="textmd" as="p">
+                      <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <PaymentInfo
+                                {...d}
+                                key={"viewhierarchy" + index}
+                              />
+                            ))}
+                          </Suspense>
+                        </div>
+                      </div>
+                    </Text>
+                    <div className="mt-4 mb-2 flex justify-end">
+                      <button
+                        className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                        style={{ backgroundColor: "#00AB39" }}
+                      >
+                        Add Funds
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {activeTab === "tab5" && (
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <Text size="textmd" as="p">
+                      <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <PaymentInfo
+                                {...d}
+                                key={"viewhierarchy" + index}
+                              />
+                            ))}
+                          </Suspense>
+                        </div>
+                      </div>
+                    </Text>
+                    <div className="mt-4 mb-2 flex justify-end">
+                      <button
+                        className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                        style={{ backgroundColor: "#00AB39" }}
+                      >
+                        Add Funds
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

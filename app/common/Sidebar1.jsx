@@ -90,47 +90,34 @@ export default function Sidebar1({ ...props }) {
             </MenuItem>
           </Link>
           <Link href="/orderManagement">
-            <SubMenu
+            <MenuItem
               icon={
                 <Image
                   src="/images/FolderNotchOpen.png"
                   width={20}
                   height={20}
-                  alt="Folder Icon"
+                  alt="Wishlist Icon"
                   className="h-[20px] w-[20px]"
                 />
               }
-              label="Order Management"
             >
-              <Link href="/orderManagement">
-                <MenuItem className="pl-4">Order History </MenuItem>
-              </Link>
-              <Link href="/orderManagement">
-                <MenuItem className="pl-4">Order Status </MenuItem>
-              </Link>
-              {/* <Link href="/orderManagement"> <MenuItem className="pl-4">Order List </MenuItem></Link> */}
-            </SubMenu>
+              Order Management
+            </MenuItem>
           </Link>
           <Link href="/paymentInfo">
-            <SubMenu
+          <MenuItem
               icon={
                 <Image
                   src="/images/CreditCard.png"
                   width={20}
                   height={20}
-                  alt="Credit Card Icon"
+                  alt="Wishlist Icon"
                   className="h-[20px] w-[20px]"
                 />
               }
-              label="Payment Information"
             >
-              <Link href="/paymentInfo">
-                <MenuItem className="pl-4">Transaction History </MenuItem>
-              </Link>
-              <Link href="/paymentInfo">
-                <MenuItem className="pl-4">Payment Method </MenuItem>
-              </Link>
-            </SubMenu>
+              Payment Information
+            </MenuItem>
           </Link>
           <Link href="/lists">
             <MenuItem

@@ -5,6 +5,7 @@ import { Button } from "../common/Button";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 const fetchAllProducts = async () => {
   try {
     const result = await axios.get("http://localhost:3001/api/api/products");
@@ -78,7 +79,7 @@ export default function UserProfile3({
     return (
       <div
         {...props}
-        className={`${props.className} flex flex-col items-center justify-center gap-3.5 px-4 border-blue_gray-100_02 border border-solid bg-gray-10 rounded-[14px]`}
+        className={`${props.className} flex flex-col items-center justify-center gap-3.5 px-4 border-blue_gray-100_02 border border-solid w-[98%] bg-gray-10 rounded-[14px]`}
       >
         <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
           <div className="flex flex-1 items-center justify-center md:self-stretch">
@@ -115,6 +116,7 @@ export default function UserProfile3({
             </div>
           </div>
           <div className="flex items-center">
+          <Link href="/buyPost">
           <Button
               onClick={fetchAllProducts}
               color="indigo_a400"
@@ -123,7 +125,7 @@ export default function UserProfile3({
             >
               {buyPostButton}
             </Button>
-
+                </Link>
 
             <Image
               src="/images/colouredHeart2.png"

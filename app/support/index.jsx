@@ -21,7 +21,7 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function NotificationPage() {
+export default function SupportPage() {
   const fullName = Cookies.get("fullName");
 
   // State to handle dropdown visibility
@@ -55,51 +55,7 @@ export default function NotificationPage() {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
 
-  const data = [
-    
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-  ];
+  
 
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
@@ -217,18 +173,18 @@ export default function NotificationPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-           <h1 className="text-3xl font-bold text-gray-700 !text-left">Support</h1>
-            <div className="mt-2">
+           <h1 className="text-3xl font-bold text-gray-700 !text-left">FAQs</h1>
+            
               
               <div >
                 {activeTab === "tab1" && (
-                  <div className="bg-gray-10 shadow-lg  rounded-[14px] min-h-[480px] w-[1580px]">
+               
                     
                     <HomeFaq/>
-                  </div>
+                 
                 )}
                
-              </div>
+              
             </div>
           </div>
         </div>

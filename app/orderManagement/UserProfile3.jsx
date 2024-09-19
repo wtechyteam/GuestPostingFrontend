@@ -77,7 +77,7 @@ export default function UserProfile3({
     return (
       <div
         {...props}
-        className={`${props.className} flex flex-col items-center justify-center gap-3.5 px-4 border-blue_gray-100_02 border border-solid bg-gray-10 rounded-[14px]`}
+        className={`${props.className} flex flex-col items-center justify-center gap-3.5 px-4 border-blue_gray-100_02 border border-solid bg-gray-10 w-[99%]  rounded-[14px]`}
       >
         <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
           <div className="flex flex-1 items-center justify-center md:self-stretch">

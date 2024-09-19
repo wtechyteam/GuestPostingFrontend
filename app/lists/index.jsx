@@ -10,7 +10,9 @@ import { SelectBox } from "../common/SelectBox";
 import HowItWorks from "./HowItWorks";
 import { Input } from "./../common/Input";
 import PublisherSearchSection from "./PublisherSearchSection";
+import { CloseSVG } from "../common/Close";
 import { useRouter } from "next/navigation";
+import UserProfile3 from "app/common/UserProfile3";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -20,7 +22,8 @@ const dropDownOptions = [
 
 export default function Wishlist() {
   const fullName = Cookies.get("fullName");
-
+  const [searchBarValue10, setSearchBarValue10] = React.useState("");
+  const [publisherValue, setPublisherValue] = React.useState("");
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
   const [editableContent, setEditableContent] = useState({
@@ -40,12 +43,17 @@ export default function Wishlist() {
     // Redirect to the login page after logout
     router.push("/login");
   };
+  const [activeTab, setActiveTab] = useState("tab1");
+
   const handleLogout2 = () => {
     // Redirect to the login page after logout
     router.push("/profileDetails");
   };
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
+  };
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
   };
 
   const toggleHowItWorks = () => {
@@ -190,7 +198,113 @@ export default function Wishlist() {
               Lists
             </h1>
 
-            <PublisherSearchSection />
+            <div className="mt-6">
+              <div className="border-b border-gray-200 mb-6">
+                <ul className="flex">
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab1"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab1")}
+                    >
+                      Blocked
+                    </button>
+                  </li>
+                  <li className="mr-6">
+                    <button
+                      className={`${
+                        activeTab === "tab2"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tab2")}
+                    >
+                      Favourites
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-4">
+                {activeTab === "tab1" && (
+                  <>
+                   <div className="flex gap-4 p-4 ">
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Task ID`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+
+                      <div className="relative w-1/2">
+                        <Input
+                          color="gray_10"
+                          size="xs"
+                          name="Search Input"
+                          placeholder={`Publisher's Name`}
+                          value={searchBarValue10}
+                          onChange={(e) => setSearchBarValue10(e.target.value)}
+                          prefix={
+                            <div className="flex h-[12px] w-[10px] items-center justify-center">
+                              <Image
+                                src="/images/Group 25811.png"
+                                width={10}
+                                height={12}
+                                alt="Contrast"
+                                className="my-0.5 h-[12px] w-[10px]"
+                              />
+                            </div>
+                          }
+                          suffix={
+                            searchBarValue10?.length > 0 ? (
+                              <CloseSVG
+                                onClick={() => setSearchBarValue10("")}
+                                height={12}
+                                width={10}
+                              />
+                            ) : null
+                          }
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                        />
+                      </div>
+                    </div>
+                      <UserProfile3/>
+                  </>
+                )}
+               {activeTab === "tab2" && (
+                  <>
+                   <PublisherSearchSection/>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

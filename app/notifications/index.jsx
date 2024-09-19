@@ -230,7 +230,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab1")}
                     >
-                      Transaction History
+                      Read
                     </button>
                   </li>
                   <li className="mr-6">
@@ -242,7 +242,7 @@ export default function NotificationPage() {
                       }`}
                       onClick={() => handleTabChange("tab2")}
                     >
-                      Promotions/Discount
+                      Unread
                     </button>
                   </li>
                 </ul>

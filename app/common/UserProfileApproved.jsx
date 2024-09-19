@@ -1,29 +1,11 @@
-import { Heading } from "../common/Heading";
-import { Text } from "../common/Text";
-import { Img } from "../common/Img";
-import { Button } from "../common/Button";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+// UserProfile.js
+import { Heading } from "./Heading";
+import { Text } from "./Text";
+import { Button } from "./Button";
 import Image from "next/image";
 
-const fetchAllProducts = async () => {
-  try {
-    const result = await axios.get("http://localhost:3001/api/api/products");
-    console.log("API Response:", result.data);
-    return result.data;
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return [];
-  }
-};
-
-export default function UserProfile3({
-  urlIsHiddenText = "URL is hidden",
-  contributorText = "Contributor",
-  artText = "Art",
-  healthText = "Health",
-  businessText = "Business",
+export default function UserProfile({
+  product,
   buyPostButton = "Buy Post",
   contentPlacementText = "Content placement",
   priceText = "$3,640.87",
@@ -55,96 +37,40 @@ export default function UserProfile3({
   linksValue = "Dofollow",
   markedSponsoredByText = "Marked Sponsored by",
   markedSponsoredByValue = "No",
-  ...props
 }) {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const productList = await fetchAllProducts();
-      setProducts(productList);
-    };
-    fetchData();
-  }, []);
-
-  if (products.length === 0) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <>
-      {products.map((product, index) => {
-              const tagArray = product.tags.split(", ").map((tag) => tag.trim());
-
-        return (
-          <div
-            key={index}
-            className="flex flex-col items-center justify-center gap-3.5 px-4 mb-2 border-blue_gray-100_02 border border-solid bg-gray-10 w-[98%] rounded-[14px]"
-          >
-            <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
-              <div className="flex flex-1 items-center justify-center md:self-stretch">
-                <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem]">
-                  {product.URL || urlIsHiddenText}
+    <div className="flex flex-col items-center justify-center gap-3.5 px-4 border-blue_gray-100_02 border border-solid bg-gray-10 w-[99%] rounded-[14px]">
+      <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
+        <div className="flex flex-1 md:self-stretch">
+          <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem]">
+            {"URL is hidden"}
+          </Text>
+          <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
+            <Text size="textxs" as="p" className="text-adsy_com-black font-semibold text-[8.83px]">
+              {"Contributor"}
+            </Text>
+          </div>
+          {/* <div className="flex flex-1 gap-[9px] px-2.5">
+            {product.tags && product.tags.split(", ").map((tag, index) => (
+              <div key={index} className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5">
+                <Text size="texts" as="p" className="text-adsy_com-black text-[8.83px]">
+                  {tag}
                 </Text>
-                <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
-                  {!!contributorText ? (
-                    <Text
-                      size="textxs"
-                      as="p"
-                      className="text-adsy_com-black font-semibold text-[8.83px]"
-                    >
-                      {contributorText}
-                    </Text>
-                  ) : null}
-                </div>
-
-                <div className="flex flex-1 gap-[9px] px-2.5">
-                  {tagArray.map((tag, index) => (
-                    <div
-                      key={index}
-                      className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5"
-                    >
-                      <Text
-                        size="texts"
-                        as="p"
-                        className="text-adsy_com-black text-[8.83px]"
-                      >
-                        {tag}
-                      </Text>
-                    </div>
-                  ))}
-                </div>
               </div>
-              <div className="flex items-center">
-                <Link href="/buyPost">
-                <Button
-                  onClick={() => console.log('Buy Post clicked')}
-                  color="indigo_a400"
-                  size="md"
-                  className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]"
-                >
-                  {buyPostButton}
-                </Button>
-                </Link>
+            ))}
+          </div> */}
+        </div>
+        <div className="flex items-center">
+        <div className="min-w-[134px] rounded-xl font-bold text-adsy_com-black bg-transparent text-sm h-10 mb-[0.3rem] flex flex-col items-center justify-center">
+  <div>Approved</div>
+  <div className="text-xs text-gray-600 mt-1">19/09/2024</div>
+</div>
 
-                <Image
-                  src="/images/heart1.png"
-                  width={22}
-                  height={22}
-                  alt="Like"
-                  className="ml-4 h-[24px] w-[24px]"
-                />
-
-                <Image
-                  src="/images/dustbin.png"
-                  width={24}
-                  height={24}
-                  alt="Delete"
-                  className="ml-4 h-[24px] w-[24px]"
-                />
-              </div>
-            </div>
-            <hr className="mt-[-0.8rem] border-gray-300 w-full" />
+          <Image src="/images/heart1.png" width={22} height={22} alt="Heart Icon" className="ml-4 h-[24px] w-[24px]" />
+          <Image src="/images/dustbin.png" width={24} height={24} alt="Dustbin Icon" className="ml-4 h-[24px] w-[24px]" />
+        </div>
+      </div>
+      <hr className="mt-[-0.8rem] border-gray-300 w-full" />
             <div className="self-stretch">
               <div className="flex flex-col gap-4">
                 <div className="mr-3.5 flex items-start md:mr-0 md:flex-col">
@@ -161,7 +87,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {product.contentPlacement || priceText}
+                        {priceText}
                       </Heading>
                     </div>
                     <div className="flex flex-col items-start gap-0.5">
@@ -176,7 +102,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {product.writingAndPlacement || writingPriceText}
+                        {writingPriceText}
                       </Heading>
                     </div>
                   </div>
@@ -194,7 +120,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {product.mozDA || mozDAValue}
+                      {mozDAValue}
                     </Heading>
                     <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
                       <Text
@@ -208,7 +134,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {product.semrushDA || semrushDAValue}
+                        {semrushDAValue}
                       </Heading>
                     </div>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
@@ -223,7 +149,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {product.ahrefsDRrange || ahrefsDRRangeValue}
+                        {ahrefsDRRangeValue}
                       </Heading>
                     </div>
                   </div>
@@ -241,7 +167,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {product.completionRate || completionRateValue}
+                      {completionRateValue}
                     </Heading>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
                       <Text
@@ -255,7 +181,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {product.avgLifetimeOfLinks || avgLifetimeOfLinksValue}
+                        {avgLifetimeOfLinksValue}
                       </Heading>
                     </div>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
@@ -270,7 +196,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                       {product.tat || tatValue}
+                       {tatValue}
                       </Heading>
                     </div>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
@@ -285,7 +211,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                      {product.tasksWithInitialDomain || tasksWithInitialDomainValue}
+                      {tasksWithInitialDomainValue}
                       </Heading>
                     </div>
                   </div>
@@ -305,7 +231,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {product.ahrefsOrganicTraffic || ahrefsOrganicTrafficValue}
+                      {ahrefsOrganicTrafficValue}
                     </Heading>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
                       <Text
@@ -319,7 +245,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {product.totalTraffic || totalTrafficValue}
+                        {totalTrafficValue}
                       </Heading>
                     </div>
                   </div>
@@ -335,7 +261,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {product.language || language}
+                      {language}
                     </Heading>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
                       <Text
@@ -349,7 +275,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                       {product.country || countryValue}
+                       {countryValue}
                       </Heading>
                     </div>
                   </div>
@@ -365,7 +291,7 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {product.links || linksValue}
+                      {linksValue}
                     </Heading>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
                       <Text
@@ -379,17 +305,14 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {product.markedSponsoredBy || markedSponsoredByValue}
+                        {markedSponsoredByValue}
                       </Heading>
-                    </div>
-                  </div>
                 </div>
-               
               </div>
             </div>
           </div>
-        );
-      })}
-    </>
+        </div>
+      </div>
+    
   );
 }
