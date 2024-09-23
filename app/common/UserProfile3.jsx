@@ -55,9 +55,11 @@ export default function UserProfile3({
   linksValue = "Dofollow",
   markedSponsoredByText = "Marked Sponsored by",
   markedSponsoredByValue = "No",
+  description = "Add Minimum Balance to view",
   ...props
 }) {
   const [products, setProducts] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,7 +76,7 @@ export default function UserProfile3({
   return (
     <>
       {products.map((product, index) => {
-              const tagArray = product.tags.split(", ").map((tag) => tag.trim());
+        const tagArray = product.tags.split(", ").map((tag) => tag.trim());
 
         return (
           <div
@@ -83,9 +85,24 @@ export default function UserProfile3({
           >
             <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
               <div className="flex flex-1 items-center justify-center md:self-stretch">
-                <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem]">
-                  {product.URL || urlIsHiddenText}
-                </Text>
+                <div className="relative inline-block">
+                  <Text
+                    size="textxl"
+                    as="p"
+                    className="text-indigo-a400 mr-[0.5rem]"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    {product.URL || urlIsHiddenText}
+                  </Text>
+
+                  {isHovered && (
+                    <div className="absolute left-36 bottom-full mb-2 p-2 bg-adsy_com-black text-gray-10 rounded shadow-lg text-[10px] w-44 transform -translate-x-2">
+                      {description}
+                    </div>
+                  )}
+                </div>
+
                 <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
                   {!!contributorText ? (
                     <Text
@@ -117,14 +134,14 @@ export default function UserProfile3({
               </div>
               <div className="flex items-center">
                 <Link href="/buyPost">
-                <Button
-                  onClick={() => console.log('Buy Post clicked')}
-                  color="indigo_a400"
-                  size="md"
-                  className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]"
-                >
-                  {buyPostButton}
-                </Button>
+                  <Button
+                    onClick={() => console.log("Buy Post clicked")}
+                    color="indigo_a400"
+                    size="md"
+                    className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]"
+                  >
+                    {buyPostButton}
+                  </Button>
                 </Link>
 
                 <Image
@@ -270,7 +287,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                       {product.tat || tatValue}
+                        {product.tat || tatValue}
                       </Heading>
                     </div>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
@@ -279,19 +296,20 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black text-[11.5px]"
                       >
-                       {tasksWithInitialDomainText}
+                        {tasksWithInitialDomainText}
                       </Text>
                       <Heading
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                      {product.tasksWithInitialDomain || tasksWithInitialDomainValue}
+                        {product.tasksWithInitialDomain ||
+                          tasksWithInitialDomainValue}
                       </Heading>
                     </div>
                   </div>
 
                   <div className="border-l border-gray-300 h-full"></div>
-                  
+
                   <div className="border-l border-gray-300 h-full"></div>
                   <div className="flex w-[16%] flex-col items-start md:w-full">
                     <Text
@@ -305,7 +323,8 @@ export default function UserProfile3({
                       as="p"
                       className="text-adsy_com-black font-bold text-[11.5px]"
                     >
-                      {product.ahrefsOrganicTraffic || ahrefsOrganicTrafficValue}
+                      {product.ahrefsOrganicTraffic ||
+                        ahrefsOrganicTrafficValue}
                     </Heading>
                     <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
                       <Text
@@ -349,7 +368,7 @@ export default function UserProfile3({
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                       {product.country || countryValue}
+                        {product.country || countryValue}
                       </Heading>
                     </div>
                   </div>
@@ -384,7 +403,6 @@ export default function UserProfile3({
                     </div>
                   </div>
                 </div>
-               
               </div>
             </div>
           </div>
