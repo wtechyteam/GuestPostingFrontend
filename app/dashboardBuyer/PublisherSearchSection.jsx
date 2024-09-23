@@ -23,7 +23,6 @@ export default function PublisherSearchSection() {
   const [ahref, setAhref] = useState(50);
   const [mozDR, setMozDR] = useState(50);
   const [semrushDA, setSemrushDA] = useState(50);
-  const [selected, setSelected] = useState('');
   const [spamScore, setSpamScore] = useState(50);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -133,21 +132,23 @@ export default function PublisherSearchSection() {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="relative w-[90%] max-w-4xl bg-gray-10 p-8 rounded-lg max-h-[50vh] overflow-y-auto scrollbar-thin">
-            <button
-              className="absolute top-3 right-3 text-gray-500"
-              onClick={closeModal}
-            >
-              &#x2715;
-            </button>
-            <Heading
-              size="lg"
-              as="h2"
-              className="font-semibold text-adsy_com-black text-[30px]"
-            >
-              Filters
-            </Heading>
+          <div className="relative">
+  <button
+    className="absolute top-3 right-3 text-gray-500"
+    onClick={closeModal}
+  >
+    &#x2715;
+  </button>
+  <Heading
+    size="lg"
+    as="h2"
+    className="font-semibold text-adsy_com-black text-[30px]"
+  >
+    Filters
+  </Heading>
+  <hr className="border-t-2 border-gray-300 my-4" />
+</div>
 
-            <hr className="border-t-2 border-gray-300 my-4" />
 
             {/* Add filter form here */}
             <div className="flex flex-col space-y-4">
@@ -459,21 +460,15 @@ export default function PublisherSearchSection() {
                   </select>
                 </div>
                 <div className="flex-1">
-      <label className="block mb-2 mt-1 text-gray-500">
-        Security Deposit
-      </label>
-      <select
-        className={`w-full text-adsy_com-black border rounded-md p-2 ${
-          selected ? 'border-blue-500' : 'border-gray-300'
-        }`}
-        onChange={(e) => setSelected(e.target.value)}
-        value={selected}
-      >
-        <option value="">Not Selected</option>
-        <option value="English">English</option>
-        <option value="Spanish">Spanish</option>
-      </select>
-    </div>
+                  <label className="block mb-2 mt-1 text-gray-500">
+                    Security Deposit
+                  </label>
+                  <select className="w-full text-adsy_com-black border border-gray-300 rounded-md p-2">
+                    <option>Not Selected</option>
+                    <option>English</option>
+                    <option>Spanish</option>
+                  </select>
+                </div>
               </div>
               <div className="flex space-x-6 text-adsy_com-black">
                 <div className="flex-1">
