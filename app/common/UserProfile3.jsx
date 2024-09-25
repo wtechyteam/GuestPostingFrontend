@@ -6,10 +6,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 const fetchAllProducts = async () => {
   try {
-    const result = await axios.get("http://localhost:3001/api/api/products");
+    const result = await axios.get("http://localhost:3001/api/products");
     console.log("API Response:", result.data);
     return result.data;
   } catch (error) {
@@ -60,6 +61,61 @@ export default function UserProfile3({
 }) {
   const [products, setProducts] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [blockStatus, setBlockStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isBlocked, setIsBlocked] = useState(false);
+
+  const blockProduct = async (productId) => {
+    try {
+      const tokenData = Cookies.get("authToken");
+
+      let token;
+      if (typeof tokenData === "string") {
+        try {
+          const parsedTokenData = JSON.parse(tokenData);
+          token = parsedTokenData.token;
+        } catch (error) {
+          token = tokenData;
+        }
+      }
+
+      console.log("Auth Token:", token);
+
+      const response = await axios.post(
+        `http://localhost:3001/api/block/${productId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("API Response:", response.data);
+      setBlockStatus(response.data.message);
+      setErrorMessage(null);
+      setIsBlocked(true);
+    } catch (error) {
+      console.error("Error details:", error);
+      setErrorMessage(
+        error.response?.data?.message || "Error blocking the product."
+      );
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const productList = await fetchAllProducts();
+      setProducts(productList);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  const token2 = Cookies.get("authToken");
+  console.log("token fro testing block posts" + token2);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,8 +125,14 @@ export default function UserProfile3({
     fetchData();
   }, []);
 
-  if (products.length === 0) {
-    return <div>Loading...</div>;
+  if (products.length === 0 && !loading) {
+    return (
+      <div className="flex flex-col items-center justify-center px-4 py-6 bg-gray-50 border border-gray-300 rounded-lg w-[99%] h-[500px]">
+        <Text size="textlg" as="p" className="text-gray-700">
+          No product to show now.
+        </Text>
+      </div>
+    );
   }
 
   return (
@@ -151,14 +213,18 @@ export default function UserProfile3({
                   alt="Like"
                   className="ml-4 h-[24px] w-[24px]"
                 />
-
                 <Image
-                  src="/images/dustbin.png"
+                  src="/images/blocked.png"
                   width={24}
                   height={24}
-                  alt="Delete"
-                  className="ml-4 h-[24px] w-[24px]"
+                  alt="Block"
+                  className="ml-4 h-[24px] w-[24px] cursor-pointer"
+                  onClick={() => blockProduct(product._id)}
                 />
+
+                {/* Feedback messages */}
+                {blockStatus && <p>{blockStatus}</p>}
+                {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
               </div>
             </div>
             <hr className="mt-[-0.8rem] border-gray-300 w-full" />

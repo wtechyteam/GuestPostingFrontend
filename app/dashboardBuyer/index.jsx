@@ -22,17 +22,17 @@ const dropDownOptions = [
 
 export default function DashboardPage() {
   const fullName = Cookies.get("fullName");
-  const router = useRouter(); // Initialize the router
+  const token = Cookies.get("authToken");
+  console.log(token);
+
+  const router = useRouter();
 
   const handleLogout = () => {
-    // Add your logout logic here, e.g., clear cookies or call an API
     Cookies.remove("fullName");
 
-    // Redirect to the login page after logout
     router.push("/login");
   };
   const handleLogout2 = () => {
-    // Redirect to the login page after logout
     router.push("/profileDetails");
   };
 

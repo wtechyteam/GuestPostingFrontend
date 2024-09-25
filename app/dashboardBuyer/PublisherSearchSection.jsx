@@ -104,7 +104,7 @@ export default function PublisherSearchSection() {
                       fontSize: "15px",
                     }}
                     className="gap-1.5 flex items-center justify-center"
-                    onClick={openModal} // Open the modal on click
+                    onClick={openModal}
                   >
                     Filter
                   </Button>
@@ -112,6 +112,13 @@ export default function PublisherSearchSection() {
               </div>
             </div>
           </div>
+          <Heading
+            size="text-[10rem]"
+            as="h1"
+            className="text-gray-600 font-semibold text-[18px]"
+          >
+            Results: {3 * 4} sites
+          </Heading>
           {[...Array(3)].map((_, index) => (
             <TabPanel
               key={`tab-panel${index} `}
@@ -132,32 +139,29 @@ export default function PublisherSearchSection() {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="relative w-[90%] max-w-4xl bg-gray-10 p-8 rounded-lg max-h-[50vh] overflow-y-auto scrollbar-thin">
-          <div className="relative">
-  <button
-    className="absolute top-3 right-3 text-gray-500"
-    onClick={closeModal}
-  >
-    &#x2715;
-  </button>
-  <Heading
-    size="lg"
-    as="h2"
-    className="font-semibold text-adsy_com-black text-[30px]"
-  >
-    Filters
-  </Heading>
-  <hr className="border-t-2 border-gray-300 my-4" />
-</div>
+            <div className="relative">
+              <button
+                className="absolute top-3 right-3 text-gray-500"
+                onClick={closeModal}
+              >
+                &#x2715;
+              </button>
+              <Heading
+                size="lg"
+                as="h2"
+                className="font-semibold text-adsy_com-black text-[30px]"
+              >
+                Filters
+              </Heading>
+              <hr className="border-t-2 border-gray-300 my-4" />
+            </div>
 
-
-            {/* Add filter form here */}
             <div className="flex flex-col space-y-4">
               <h2 className="font-normal text-adsy_com-black mb-2 text-[20px]">
                 Most Popular Filters
               </h2>
 
               <div className="flex space-x-6 text-adsy_com-black">
-                {/* Price Range */}
                 <div className="flex-1">
                   <label className="block mb-5 mt-1 text-gray-500">
                     Price Range
@@ -212,7 +216,6 @@ export default function PublisherSearchSection() {
                   </div>
                 </div>
 
-                {/* Categories */}
                 <div className="flex-1">
                   <label className="block mb-2 mt-1 text-gray-500">
                     Categories
@@ -233,7 +236,6 @@ export default function PublisherSearchSection() {
                   <option>Not Selected</option>
                   <option>USA</option>
                   <option>UK</option>
-                  {/* More options */}
                 </select>
               </div>
               <div className="flex-1">
@@ -246,7 +248,7 @@ export default function PublisherSearchSection() {
                   <option>Spanish</option>
                 </select>
               </div>
-              {/* Language */}
+
               <div className="flex-1">
                 <label className="block mb-2 mt-1 text-gray-500">
                   Approved
@@ -265,7 +267,6 @@ export default function PublisherSearchSection() {
               </h2>
 
               <div className="flex space-x-6 text-adsy_com-black">
-                {/* Price Range */}
                 <div className="flex-1">
                   <label className="block mb-5 mt-1 text-gray-500">
                     MOZ DR From
@@ -319,7 +320,6 @@ export default function PublisherSearchSection() {
                   </div>
                 </div>
 
-                {/* Categories */}
                 <div className="flex-1">
                   <label className="block mb-5 mt-1 text-gray-500">
                     Spam Score from
@@ -390,8 +390,6 @@ export default function PublisherSearchSection() {
                   Marked Sponsored By
                 </label>
                 <select className="w-64 text-adsy_com-black border border-gray-300 rounded-md p-2">
-                  {" "}
-                  {/* Fixed width */}
                   <option>Not Selected</option>
                   <option>English</option>
                   <option>Spanish</option>
@@ -442,8 +440,6 @@ export default function PublisherSearchSection() {
                     Completion Rate
                   </label>
                   <select className="w-full text-adsy_com-black border border-gray-300 rounded-md p-2">
-                    {" "}
-                    {/* Fixed width */}
                     <option>Not Selected</option>
                     <option>English</option>
                     <option>Spanish</option>
@@ -452,8 +448,6 @@ export default function PublisherSearchSection() {
                 <div className="flex-1">
                   <label className="block mb-2 mt-1 text-gray-500">TAT</label>
                   <select className="w-full text-adsy_com-black border border-gray-300 rounded-md p-2">
-                    {" "}
-                    {/* Fixed width */}
                     <option>Not Selected</option>
                     <option>English</option>
                     <option>Spanish</option>

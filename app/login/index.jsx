@@ -24,7 +24,7 @@ export default function LoginOnePage() {
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
-  const router = useRouter(); // Initialize the router
+  const router = useRouter();
 
   useEffect(() => {
     const timeout = setTimeout(
@@ -64,10 +64,17 @@ export default function LoginOnePage() {
       });
 
       const { token, user } = response.data;
+      console.log(response.data);
 
-      // Set the token and fullName as cookies
-      Cookies.set("authToken", token, { expires: 7 });
+      const tokenString =
+        typeof token === "object" ? JSON.stringify(token) : token;
+
+      Cookies.set("authToken", tokenString, { expires: 7 });
       Cookies.set("fullName", user.fullName, { expires: 7 });
+      Cookies.set("email", user.email, { expires: 7 });
+      Cookies.set("contact", user.contact, { expires: 7 });
+      Cookies.set("userId", user._id);
+      const userId = Cookies.get("userId");
 
       if (typeof window !== "undefined") {
         router.push("/dashboardBuyer");
@@ -189,12 +196,12 @@ export default function LoginOnePage() {
                       isPasswordVisible
                         ? "/images/Frame 43967.png"
                         : "/images/invisible.png"
-                    } // Toggle icon
+                    }
                     width={16}
                     height={16}
                     alt="Visibility Icon"
                     className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
-                    onClick={togglePasswordVisibility} // Toggle password visibility on click
+                    onClick={togglePasswordVisibility}
                   />
                 }
                 value={password}

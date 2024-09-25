@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 const fetchAllProducts = async () => {
   try {
-    const result = await axios.get("http://localhost:3001/api/api/products");
+    const result = await axios.get("http://localhost:3001/api/products");
     return result.data;
   } catch (error) {
     console.error("Error fetching products:", error);

@@ -93,7 +93,7 @@ const toggleConfirmPasswordVisibility = () => {
        setSuccess("Registration successful");
       setError("");
 
-      router.push("/dashboardBuyer");
+      router.push("/login");
     } catch (error) {
       setError(error.response?.data?.message || "An error occurred while registering");
       setSuccess("");

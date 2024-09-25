@@ -46,7 +46,11 @@ export default function UserProfile({
             {"URL is hidden"}
           </Text>
           <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
-            <Text size="textxs" as="p" className="text-adsy_com-black font-semibold text-[8.83px]">
+            <Text
+              size="textxs"
+              as="p"
+              className="text-adsy_com-black font-semibold text-[8.83px]"
+            >
               {"Contributor"}
             </Text>
           </div>
@@ -61,258 +65,269 @@ export default function UserProfile({
           </div> */}
         </div>
         <div className="flex items-center">
-        <div className="min-w-[134px] rounded-xl font-bold text-adsy_com-black bg-transparent text-sm h-10 mb-[0.3rem] flex flex-col items-center justify-center">
-  <div>Approved</div>
-  <div className="text-xs text-gray-600 mt-1">19/09/2024</div>
-</div>
+          <div className="min-w-[134px] rounded-xl font-bold text-adsy_com-black bg-transparent text-sm h-10 mb-[0.3rem] flex flex-col items-center justify-center">
+            <div>Approved</div>
+            <div className="text-xs text-gray-600 mt-1">19/09/2024</div>
+          </div>
 
-          <Image src="/images/heart1.png" width={22} height={22} alt="Heart Icon" className="ml-4 h-[24px] w-[24px]" />
-          <Image src="/images/dustbin.png" width={24} height={24} alt="Dustbin Icon" className="ml-4 h-[24px] w-[24px]" />
+          <Image
+            src="/images/heart1.png"
+            width={22}
+            height={22}
+            alt="Heart Icon"
+            className="ml-4 h-[24px] w-[24px]"
+          />
+          <Image
+            src="/images/dustbin.png"
+            width={24}
+            height={24}
+            alt="Dustbin Icon"
+            className="ml-4 h-[24px] w-[24px]"
+          />
         </div>
       </div>
       <hr className="mt-[-0.8rem] border-gray-300 w-full" />
-            <div className="self-stretch">
-              <div className="flex flex-col gap-4">
-                <div className="mr-3.5 flex items-start md:mr-0 md:flex-col">
-                  <div className="flex w-[16%] flex-col gap-4 md:w-full">
-                    <div className="flex flex-col items-start gap-0.5">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {contentPlacementText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {priceText}
-                      </Heading>
-                    </div>
-                    <div className="flex flex-col items-start gap-0.5">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {writingPlacementText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {writingPriceText}
-                      </Heading>
-                    </div>
-                  </div>
+      <div className="self-stretch">
+        <div className="flex flex-col gap-4">
+          <div className="mr-3.5 flex items-start md:mr-0 md:flex-col">
+            <div className="flex w-[16%] flex-col gap-4 md:w-full">
+              <div className="flex flex-col items-start gap-0.5">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {contentPlacementText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {priceText}
+                </Heading>
+              </div>
+              <div className="flex flex-col items-start gap-0.5">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {writingPlacementText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {writingPriceText}
+                </Heading>
+              </div>
+            </div>
 
-                  <div className="border-l border-gray-300 h-full"></div>
-                  <div className="flex w-[12%] flex-col items-start md:w-full">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {mozDAText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {mozDAValue}
-                    </Heading>
-                    <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {semrushDAText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {semrushDAValue}
-                      </Heading>
-                    </div>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {ahrefsDRRangeText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {ahrefsDRRangeValue}
-                      </Heading>
-                    </div>
-                  </div>
+            <div className="border-l border-gray-300 h-full"></div>
+            <div className="flex w-[12%] flex-col items-start md:w-full">
+              <Text
+                size="textlg"
+                as="p"
+                className="text-adsy_com-black text-[11.5px]"
+              >
+                {mozDAText}
+              </Text>
+              <Heading
+                as="p"
+                className="text-adsy_com-black font-bold text-[11.5px]"
+              >
+                {mozDAValue}
+              </Heading>
+              <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {semrushDAText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {semrushDAValue}
+                </Heading>
+              </div>
+              <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {ahrefsDRRangeText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {ahrefsDRRangeValue}
+                </Heading>
+              </div>
+            </div>
 
-                  <div className="border-l border-gray-300 h-full"></div>
-                  <div className="flex w-[16%] flex-col items-start md:w-full">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {completionRateText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {completionRateValue}
-                    </Heading>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {avgLifetimeOfLinksText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {avgLifetimeOfLinksValue}
-                      </Heading>
-                    </div>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {tatText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                       {tatValue}
-                      </Heading>
-                    </div>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                       {tasksWithInitialDomainText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                      {tasksWithInitialDomainValue}
-                      </Heading>
-                    </div>
-                  </div>
+            <div className="border-l border-gray-300 h-full"></div>
+            <div className="flex w-[16%] flex-col items-start md:w-full">
+              <Text
+                size="textlg"
+                as="p"
+                className="text-adsy_com-black text-[11.5px]"
+              >
+                {completionRateText}
+              </Text>
+              <Heading
+                as="p"
+                className="text-adsy_com-black font-bold text-[11.5px]"
+              >
+                {completionRateValue}
+              </Heading>
+              <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {avgLifetimeOfLinksText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {avgLifetimeOfLinksValue}
+                </Heading>
+              </div>
+              <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {tatText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {tatValue}
+                </Heading>
+              </div>
+              <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {tasksWithInitialDomainText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {tasksWithInitialDomainValue}
+                </Heading>
+              </div>
+            </div>
 
-                  <div className="border-l border-gray-300 h-full"></div>
-                  
-                  <div className="border-l border-gray-300 h-full"></div>
-                  <div className="flex w-[16%] flex-col items-start md:w-full">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {ahrefsorganicTrafficText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {ahrefsOrganicTrafficValue}
-                    </Heading>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {totalTrafficText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {totalTrafficValue}
-                      </Heading>
-                    </div>
-                  </div>
-                  <div className="flex w-[16%] flex-col items-start md:w-full">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {languageText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {language}
-                    </Heading>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {countryText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                       {countryValue}
-                      </Heading>
-                    </div>
-                  </div>
-                  <div className="flex w-[16%] flex-col items-start md:w-full">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {linksText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {linksValue}
-                    </Heading>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {markedSponsoredByText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {markedSponsoredByValue}
-                      </Heading>
-                </div>
+            <div className="border-l border-gray-300 h-full"></div>
+
+            <div className="border-l border-gray-300 h-full"></div>
+            <div className="flex w-[16%] flex-col items-start md:w-full">
+              <Text
+                size="textlg"
+                as="p"
+                className="text-adsy_com-black text-[11.5px]"
+              >
+                {ahrefsorganicTrafficText}
+              </Text>
+              <Heading
+                as="p"
+                className="text-adsy_com-black font-bold text-[11.5px]"
+              >
+                {ahrefsOrganicTrafficValue}
+              </Heading>
+              <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {totalTrafficText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {totalTrafficValue}
+                </Heading>
+              </div>
+            </div>
+            <div className="flex w-[16%] flex-col items-start md:w-full">
+              <Text
+                size="textlg"
+                as="p"
+                className="text-adsy_com-black text-[11.5px]"
+              >
+                {languageText}
+              </Text>
+              <Heading
+                as="p"
+                className="text-adsy_com-black font-bold text-[11.5px]"
+              >
+                {language}
+              </Heading>
+              <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {countryText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {countryValue}
+                </Heading>
+              </div>
+            </div>
+            <div className="flex w-[16%] flex-col items-start md:w-full">
+              <Text
+                size="textlg"
+                as="p"
+                className="text-adsy_com-black text-[11.5px]"
+              >
+                {linksText}
+              </Text>
+              <Heading
+                as="p"
+                className="text-adsy_com-black font-bold text-[11.5px]"
+              >
+                {linksValue}
+              </Heading>
+              <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                <Text
+                  size="textlg"
+                  as="p"
+                  className="text-adsy_com-black text-[11.5px]"
+                >
+                  {markedSponsoredByText}
+                </Text>
+                <Heading
+                  as="p"
+                  className="text-adsy_com-black font-bold text-[11.5px]"
+                >
+                  {markedSponsoredByValue}
+                </Heading>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
+    </div>
   );
 }

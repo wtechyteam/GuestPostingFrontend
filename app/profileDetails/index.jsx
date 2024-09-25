@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Sidebar1 from "../common/Sidebar1";
 import Link from "next/link";
@@ -11,6 +11,8 @@ import HowItWorks from "./HowItWorks";
 import { Input } from "./../common/Input";
 import { useRouter } from "next/navigation";
 
+import axios from "axios"; 
+
 const dropDownOptions = [
   { label: "English", value: "English" },
   { label: "English", value: "option2" },
@@ -20,16 +22,66 @@ const dropDownOptions = [
 export default function ProfileDetailsPage() {
   const fullName = Cookies.get("fullName");
 
+  const token = Cookies.get("authToken");
+  const email = Cookies.get("email");
+  const userId = Cookies.get("userId");
+  console.log(userId);
+  const router = useRouter();
+
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
   const [editableContent, setEditableContent] = useState({
-    name: "John Smith",
-    location: "India",
-    email: "abcd@gmail.com",
-    dob: "08 July, 2006",
-    contact: "999 9999 999",
+    name: "",
+    location: "",
+    email: "",
+    dob: "",
+    contact: "",
   });
   const [isEditing, setIsEditing] = useState(false);
+  const formatDate = (isoDate) => {
+    if (!isoDate) return "";
+    const date = new Date(isoDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/api/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log("User Details Response:", response);
+
+        if (response.status === 200) {
+          const userData = response.data;
+          setEditableContent({
+            name: userData.fullName || "Not Specified",
+            email: userData.email || "Not Specified",
+            location: userData.location || "Not Specified",
+            dob: formatDate(userData.DOB) || "Not Specified",
+            contact: userData.contact || "Not Specified",
+          });
+        } else {
+          console.error("Failed to fetch user details");
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    if (userId) {
+      fetchUserDetails();
+    }
+  }, [userId, token]);
 
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -38,16 +90,16 @@ export default function ProfileDetailsPage() {
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
-  const router = useRouter();
 
   const handleLogout = () => {
     Cookies.remove("fullName");
-
     router.push("/login");
   };
+
   const handleLogout2 = () => {
     router.push("/profileDetails");
   };
+
   const handleInputChange = (e, field) => {
     setEditableContent({ ...editableContent, [field]: e.target.value });
   };
@@ -56,8 +108,31 @@ export default function ProfileDetailsPage() {
     setIsEditing(true);
   };
 
-  const handleSave = () => {
-    setIsEditing(false);
+  const handleSave = async () => {
+    const { name, email, location, dob, contact } = editableContent;
+
+    try {
+      const response = await axios.put(
+        `http://localhost:3001/api/users/${userId}`,
+        {
+          fullName: name,
+          email: email,
+          location: location,
+          DOB: dob,
+          contact: contact,
+        }
+      );
+
+      if (response.status === 200) {
+        alert("Profile updated successfully!");
+        setIsEditing(false);
+      } else {
+        alert("Failed to update profile.");
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Error updating profile. Please try again later.");
+    }
   };
 
   const handleCancel = () => {
@@ -227,11 +302,12 @@ export default function ProfileDetailsPage() {
                     type="text"
                     value={editableContent.name}
                     onChange={(e) => handleInputChange(e, "name")}
-                    className={`p-2 border ${
-                      isEditing ? "!bg-white" : "!bg-gray-300"
-                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center ml-11 sm:ml-0`}
+                    className={`p-2 border border-gray-600 ${
+                      isEditing ? "!bg-gray-300" : "!bg-white"
+                    } !rounded-lg !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-11 sm:ml-0`}
                     disabled={!isEditing}
                   />
+
                   {isEditing && (
                     <Image
                       src="/images/Group 25818.png"
@@ -251,11 +327,12 @@ export default function ProfileDetailsPage() {
                     type="email"
                     value={editableContent.email}
                     onChange={(e) => handleInputChange(e, "email")}
-                    className={`p-2 border ${
-                      isEditing ? "!bg-white" : "!bg-gray-300"
-                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center sm:ml-0 ml-14`}
+                    className={`p-2 border !text-adsy_com-black ${
+                      isEditing ? "!bg-gray-300 " : "!bg-white"
+                    } !rounded-lg h-[30px] w-[200px] text-center !text-gray-900 placeholder:text-adsy_com-black sm:ml-0 ml-14`}
                     disabled={!isEditing}
                   />
+
                   {isEditing && (
                     <Image
                       src="/images/Group 25818.png"
@@ -276,8 +353,8 @@ export default function ProfileDetailsPage() {
                     value={editableContent.location}
                     onChange={(e) => handleInputChange(e, "location")}
                     className={`p-2 border ${
-                      isEditing ? "!bg-white" : "!bg-gray-300"
-                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center ml-[-1] sm:ml-0 ml-5`}
+                      isEditing ? "!bg-gray-300" : "!bg-white"
+                    } !rounded-lg  !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-[-1] sm:ml-0 ml-5`}
                     disabled={!isEditing}
                   />
                   {isEditing && (
@@ -300,8 +377,8 @@ export default function ProfileDetailsPage() {
                     value={editableContent.dob}
                     onChange={(e) => handleInputChange(e, "dob")}
                     className={`p-2 border ${
-                      isEditing ? "!bg-white" : "!bg-gray-300"
-                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center sm:ml-0 `}
+                      isEditing ? "!bg-gray-300" : "!bg-white"
+                    } !rounded-lg !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-5`}
                     disabled={!isEditing}
                   />
                   {isEditing && (
@@ -324,8 +401,8 @@ export default function ProfileDetailsPage() {
                     value={editableContent.contact}
                     onChange={(e) => handleInputChange(e, "contact")}
                     className={`p-2 border ${
-                      isEditing ? "!bg-white" : "!bg-gray-300"
-                    } !rounded-lg !text-gray-900 h-[30px] w-[150px] text-center sm:ml-0 ml-6`}
+                      isEditing ? "!bg-gray-300" : "!bg-white"
+                    } !rounded-lg  !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center sm:ml-0 ml-6`}
                     disabled={!isEditing}
                   />
                   {isEditing && (
