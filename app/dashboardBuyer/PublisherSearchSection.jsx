@@ -487,7 +487,7 @@ export default function PublisherSearchSection() {
                 </div>
               </div>
             </div>
-
+            
             <div className="rounded-full flex justify-center space-x-4 mt-6">
               <Button
                 className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]"

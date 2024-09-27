@@ -1,6 +1,5 @@
 "use client";
 import { Text } from "./../common/Text";
-import { Img } from "./../common/Img";
 import { Button } from "./../common/Button";
 import { Heading } from "./../common/Heading";
 import { Input } from "../common/Input";
@@ -8,8 +7,8 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
-import Cookies from "js-cookie"; // Import js-cookie
-import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function LoginOnePage() {
   const words = ["Sales", "Leads", "Revenue", "Engagement"];
@@ -169,7 +168,6 @@ export default function LoginOnePage() {
             >
               Log In
             </Text>
-
             <form
               onSubmit={handleLogin}
               className="mt-6 flex w-[82%] flex-col items-start md:w-full"
@@ -181,7 +179,7 @@ export default function LoginOnePage() {
                 placeholder="  Enter Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins "
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins"
                 style={{ paddingLeft: "1rem" }}
               />
               <Input
@@ -206,7 +204,7 @@ export default function LoginOnePage() {
                 }
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] "
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
                 style={{ paddingLeft: "1rem" }}
               />
               {errorMessage && (

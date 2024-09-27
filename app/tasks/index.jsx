@@ -6,16 +6,16 @@ import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
 import AcceptCard from "../common/AcceptCard";
 import ApprovalPending from "../common/ApprovalPending";
-import CompletedCard from "../common/CompletedCard"
+import CompletedCard from "../common/CompletedCard";
 import ImprovementCard from "../common/ImprovementCard";
 import RejectedCard from "../common/RejectedCard";
 import ArchievedCard from "../common/ArchievedCard";
-import InProgressCard from "../common/InProgressCard"
+import InProgressCard from "../common/InProgressCard";
 import TaskCard from "../common/TaskCard";
 import Image from "next/image";
 import MoreTasks from "./MoreTasks";
 import Sidebar1 from "../common/Sidebar1";
-import PublishersAcceptanceButton from "../common/PublishersAcceptanceButton"
+import PublishersAcceptanceButton from "../common/PublishersAcceptanceButton";
 import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
@@ -46,17 +46,13 @@ export default function NotificationPage() {
   const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
-    // Add your logout logic here, e.g., clear cookies or call an API
     Cookies.remove("fullName");
 
-    // Redirect to the login page after logout
     router.push("/login");
   };
 
-  // New state to handle active tab
   const [activeTab, setActiveTab] = useState("tab1");
 
-  // Toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
@@ -64,7 +60,6 @@ export default function NotificationPage() {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
   const handleLogout2 = () => {
-    // Redirect to the login page after logout
     router.push("/profileDetails");
   };
 
@@ -350,7 +345,7 @@ export default function NotificationPage() {
                 </ul>
               </div>
               <div className="mt-4">
-              {activeTab === "tab1" && (
+                {activeTab === "tab1" && (
                   <div>
                     <div className="flex gap-4 p-4 ">
                       <div className="relative w-1/2">
@@ -528,10 +523,10 @@ export default function NotificationPage() {
                     <CompletedCard />
                     <TaskCard />
                     <InProgressCard />
-                  
+
                     <ApprovalPending />
-                    <AcceptCard/>
-                 
+                    <AcceptCard />
+
                     <RejectedCard />
                     <ImprovementCard />
                     <ArchievedCard />
@@ -600,7 +595,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -721,7 +716,7 @@ export default function NotificationPage() {
                     <TaskCard />
                   </div>
                 )}
-                 {activeTab === "tab32" && (
+                {activeTab === "tab32" && (
                   <div>
                     <div className="flex gap-4 p-4 ">
                       <div className="relative w-1/2">
@@ -904,7 +899,7 @@ export default function NotificationPage() {
                     <PublishersAcceptanceButton />
                   </div>
                 )}
-                 {activeTab === "tab22" && (
+                {activeTab === "tab22" && (
                   <div>
                     <div className="flex gap-4 p-4 ">
                       <div className="relative w-1/2">
@@ -966,7 +961,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -997,7 +992,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1028,7 +1023,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1059,7 +1054,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
 
@@ -1087,7 +1082,7 @@ export default function NotificationPage() {
                     <InProgressCard />
                   </div>
                 )}
-                 {activeTab === "tab3" && (
+                {activeTab === "tab3" && (
                   <div>
                     <div className="flex gap-4 p-4 ">
                       <div className="relative w-1/2">
@@ -1118,7 +1113,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1149,7 +1144,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1180,7 +1175,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1211,7 +1206,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1242,7 +1237,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
 
@@ -1270,7 +1265,7 @@ export default function NotificationPage() {
                     <AcceptCard />
                   </div>
                 )}
-                 {activeTab === "tab4" && (
+                {activeTab === "tab4" && (
                   <div>
                     <div className="flex gap-4 p-4 ">
                       <div className="relative w-1/2">
@@ -1301,7 +1296,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1332,7 +1327,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1363,7 +1358,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1394,7 +1389,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1425,7 +1420,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
 
@@ -1453,7 +1448,7 @@ export default function NotificationPage() {
                     <ImprovementCard />
                   </div>
                 )}
-                 {activeTab === "tab5" && (
+                {activeTab === "tab5" && (
                   <div>
                     <div className="flex gap-4 p-4 ">
                       <div className="relative w-1/2">
@@ -1484,7 +1479,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1515,7 +1510,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1546,7 +1541,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1577,7 +1572,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1608,7 +1603,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
 
@@ -1636,7 +1631,7 @@ export default function NotificationPage() {
                     <CompletedCard />
                   </div>
                 )}
-                 {activeTab === "tab6" && (
+                {activeTab === "tab6" && (
                   <div>
                     <div className="flex gap-4 p-4 ">
                       <div className="relative w-1/2">
@@ -1667,7 +1662,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1698,7 +1693,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1729,7 +1724,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1760,7 +1755,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1791,7 +1786,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
 
@@ -1819,7 +1814,7 @@ export default function NotificationPage() {
                     <RejectedCard />
                   </div>
                 )}
-                 {activeTab === "tab7" && (
+                {activeTab === "tab7" && (
                   <div>
                     <div className="flex gap-4 p-4 ">
                       <div className="relative w-1/2">
@@ -1850,7 +1845,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1881,7 +1876,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1912,7 +1907,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1943,7 +1938,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -1974,7 +1969,7 @@ export default function NotificationPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
                         />
                       </div>
 
@@ -2015,17 +2010,17 @@ const customStyles = {
     ...provided,
     minHeight: "40px",
     borderRadius: "18px",
-    padding: "0px 10px", // Adjust padding if needed
+    padding: "0px 10px",
   }),
   valueContainer: (provided) => ({
     ...provided,
-    height: "50px", // Ensures the internal container has the same height
-    padding: "15px 10px", // Adjust padding inside
+    height: "50px",
+    padding: "15px 10px",
     display: "flex",
-    alignItems: "center", // Align text vertically
+    alignItems: "center",
   }),
   input: (provided) => ({
     ...provided,
-    margin: "0px", // Remove margin to align the input properly
+    margin: "0px",
   }),
 };

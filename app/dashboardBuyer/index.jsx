@@ -1,6 +1,5 @@
 "use client";
 
-import { Img } from "../common/Img";
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";

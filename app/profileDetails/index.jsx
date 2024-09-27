@@ -246,7 +246,7 @@ export default function ProfileDetailsPage() {
         </header>
 
         <div className="flex items-start justify-start gap-7 self-stretch">
-          {/* Fixed Sidebar */}
+         
           <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
             <Sidebar1 />
           </div>
