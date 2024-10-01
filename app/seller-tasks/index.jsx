@@ -1,12 +1,9 @@
 "use client";
-import { Text } from "../common/Text";
-import { Heading } from "../common/Heading";
-import Image from "next/image";
-import Select from "react-select";
-import SidebarSeller from "../common/SidebarSeller";
 import { CloseSVG } from "../common/Close";
 import { Input } from "../common/Input";
 import { SelectBox } from "../common/SelectBox";
+import { Text } from "../common/Text";
+import { Heading } from "../common/Heading";
 import AcceptCard from "../common/AcceptCard";
 import ApprovalPending from "../common/ApprovalPending";
 import CompletedCard from "../common/CompletedCard";
@@ -14,13 +11,18 @@ import ImprovementCard from "../common/ImprovementCard";
 import RejectedCard from "../common/RejectedCard";
 import ArchievedCard from "../common/ArchievedCard";
 import InProgressCard from "../common/InProgressCard";
-import PublishersAcceptanceButton from "../common/PublishersAcceptanceButton";
 import TaskCard from "../common/TaskCard";
+import Image from "next/image";
+import MoreTasks from "./MoreTasks";
+import SidebarSeller from "../common/SidebarSeller";
+import PublishersAcceptanceButton from "../common/PublishersAcceptanceButton";
+import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
-import HowItWorks from "./HowItWorks";
+import { Suspense } from "react";
 import { useRouter } from "next/navigation";
+import Select from "react-select";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -33,39 +35,83 @@ const options = [
   { value: "option3", label: "Option 3" },
 ];
 
-export default function DashboardPage() {
+export default function NotificationPage() {
   const fullName = Cookies.get("fullName");
   const [searchBarValue10, setSearchBarValue10] = React.useState("");
   const [publisherValue, setPublisherValue] = React.useState("");
-  const token = Cookies.get("authToken");
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
-  console.log(token);
 
-  const router = useRouter();
+  // State to handle dropdown visibility
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
+  const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
     Cookies.remove("fullName");
 
     router.push("/login");
   };
-  const handleLogout2 = () => {
-    router.push("/profileDetails");
-  };
+
   const [activeTab, setActiveTab] = useState("tab1");
 
-  // State to handle dropdown visibility
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
-
-  // Toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
+  const handleLogout2 = () => {
+    router.push("/profileDetails");
+  };
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
+  const data = [
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+  ];
+
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
       <div className="flex flex-col items-end bg-gray-50_01">
@@ -157,7 +203,7 @@ export default function DashboardPage() {
                       onClick={handleLogout2}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
-                      Profile Settings
+                      Profile Details
                     </button>
                     <button
                       onClick={handleLogout}
@@ -172,16 +218,16 @@ export default function DashboardPage() {
           </div>
         </header>
 
-        <div className="flex items-start">
+        <div className="flex items-start justify-start gap-7 self-stretch">
           <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
             <SidebarSeller />
           </div>
-
-          <div className="ml-[-1600px] mt-[80px] flex flex-1 flex-col gap-7">
+          <div className="ml-[300px] mt-[90px] flex flex-1 flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
+            {/* <MoreTasks /> */}
             <h1 className="text-3xl font-bold text-gray-700 !text-left">
               Tasks
             </h1>
@@ -245,7 +291,7 @@ export default function DashboardPage() {
                       }`}
                       onClick={() => handleTabChange("tab3")}
                     >
-                      Buyers Approval
+                      Buyers  Approval
                     </button>
                   </li>
                   <li className="mr-6">
@@ -330,7 +376,7 @@ export default function DashboardPage() {
                               />
                             ) : null
                           }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5"
+                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
                         />
                       </div>
                       <div className="relative w-1/2">
@@ -477,8 +523,10 @@ export default function DashboardPage() {
                     <CompletedCard />
                     <TaskCard />
                     <InProgressCard />
+
                     <ApprovalPending />
                     <AcceptCard />
+
                     <RejectedCard />
                     <ImprovementCard />
                     <ArchievedCard />

@@ -117,7 +117,7 @@ export default function Sidebar1({ ...props }) {
               Demand
             </MenuItem>
           </Link>
-          <Link href="/tasks">
+          <Link href="/seller-tasks">
             <MenuItem
               icon={
                 <Image
@@ -178,7 +178,7 @@ export default function Sidebar1({ ...props }) {
               {/* <Link href="/notifications"><MenuItem className="pl-4">Order Updates </MenuItem></Link> */}
             </MenuItem>
           </Link>
-          <Link href="/support">
+          <Link href="/seller-support">
             <MenuItem
               icon={
                 <Image
@@ -193,7 +193,7 @@ export default function Sidebar1({ ...props }) {
               Support
             </MenuItem>
           </Link>
-          <Link href="/settings">
+          <Link href="/seller-settings">
             <MenuItem
               icon={
                 <Image

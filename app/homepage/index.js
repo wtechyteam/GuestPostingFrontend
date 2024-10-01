@@ -15,6 +15,7 @@ import KeyBenefitsSection from "./KeyBenefitsSection";
 import MainContentSection from "./MainContentSection";
 import TrustedBySection from "./TrustedBySection";
 import React from "react";
+import Offer from "./Offer"
 import Image from "next/image";
 import HomeFaq from "./HomeFaq";
 import TabsSection from "./TabsSection";
@@ -82,6 +83,7 @@ export default function DesktopTwoPage() {
   return (
     <div className="w-full bg-gray-10">
       <div>
+        <Offer/>
         <Header />
         <div className="mt-[-2px] relative bg-gray-10">
           {/* Collaboration section */}

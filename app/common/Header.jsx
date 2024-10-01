@@ -132,7 +132,7 @@ export default function Header({ ...props }) {
               <a className="block">
                 <Button
                   size="md"
-                  className="rounded-[24px] min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white transition-colors duration-300"
+                  className=" min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white transition-colors duration-300"
                 >
                   Login
                 </Button>
@@ -142,7 +142,7 @@ export default function Header({ ...props }) {
               <a className="block">
                 <Button
                   size="md"
-                  className="rounded-[24px] min-w-[110px] ml-2 font-medium bg-principal_blue text-white transition-colors duration-300"
+                  className="min-w-[110px] ml-2 font-medium bg-principal_blue text-white transition-colors duration-300"
                 >
                   Sign Up
                 </Button>
