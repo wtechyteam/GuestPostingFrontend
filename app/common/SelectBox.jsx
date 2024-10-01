@@ -132,6 +132,9 @@ const SelectBox = React.forwardRef(
   }
 );
 
+// Adding displayName for better debugging
+SelectBox.displayName = "SelectBox";
+
 SelectBox.propTypes = {
   className: PropTypes.string,
   options: PropTypes.array,

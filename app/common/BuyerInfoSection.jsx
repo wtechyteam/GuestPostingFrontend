@@ -12,7 +12,7 @@ export default function BuyerInfoSection({ descriptionText, learnMoreButton = "S
             className={`flex items-center w-[50%] md:w-full relative 
                 hover:border-2 hover:border-[#1C817D] hover:rounded-2xl 
                 hover:bg-blue-100 p-4`}
-            style={{ borderColor: 'transparent' }} // Initial style
+            style={{ borderColor: 'transparent' }} 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

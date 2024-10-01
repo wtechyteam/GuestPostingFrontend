@@ -32,6 +32,7 @@ const TextArea = React.forwardRef(
         const handleChange = (e) => {
             if (onChange) onChange(e?.target?.value);
         };
+
         return (
             <textarea
                 ref={ref}
@@ -45,6 +46,9 @@ const TextArea = React.forwardRef(
     }
 );
 
+// Adding displayName for debugging
+TextArea.displayName = "TextArea";
+
 TextArea.propTypes = {
     className: PropTypes.string,
     name: PropTypes.string,
@@ -52,6 +56,7 @@ TextArea.propTypes = {
     shape: PropTypes.oneOf(["round"]),
     size: PropTypes.oneOf(["xs"]),
     variant: PropTypes.oneOf(["tarOutlineWhiteA700", "lightBorder"]), // Added new variant here
+    onChange: PropTypes.func,
 };
 
 export { TextArea };
