@@ -22,6 +22,7 @@ import TabsSection from "./TabsSection";
 import ReversedTabsSection from "./ReversedTabsSection";
 import HomeSection4 from "./homeSection4";
 import UserReviewCarousel from "app/common/UserReviewCarousal";
+import ReviewSection from "app/common/ReviewSection";
 
 export default function DesktopTwoPage() {
   const [sliderState4, setSliderState4] = React.useState(0);
@@ -95,6 +96,8 @@ export default function DesktopTwoPage() {
 
       {/* Trusted by section */}
       <TrustedBySection />
+      <UserReviewCarousel />
+      {/* <ReviewSection /> */}
  
 
       {/* Main content section */}

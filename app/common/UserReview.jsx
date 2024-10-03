@@ -6,18 +6,21 @@ import React from "react";
 export default function UserReview({
   reviewDate = "2 days ago",
   reviewTitle = "Best on the market",
-  reviewText = "I love this product because the support is great. Please ...",
+  reviewText =
+    "I love this product because the support is great. Please ...",
   reviewerName = "Worldtraveler",
   ...props
 }) {
   return (
     <div
       {...props}
-      className={`${props.className} flex flex-col items-start justify-center w-full md:w-[90%] lg:w-[80%] gap-2 px-5 py-[34px] sm:py-5 bg-gray-10 shadow-xs border border-gray-300 rounded-lg`}
+      className={`${
+        props.className
+      } flex flex-col items-start justify-center w-[60%] md:w-full gap-2 px-5 py-[34px] sm:py-5 bg-gray-10 shadow-xs border border-gray-300 rounded-lg`}
     >
       <div className="flex items-start justify-between gap-5 self-stretch">
         <RatingBar
-          value={4}
+          value={1}
           isEditable={true}
           size={20}
           starCount={1}
@@ -41,7 +44,7 @@ export default function UserReview({
       <Text
         size="text2xl"
         as="p"
-        className="leading-[22px) text-[14px] w-full font-roboto2 font-light text-adsy_com-black"
+        className="leading-[22px] text-[14px] w-full font-roboto2 font-light text-adsy_com-black"
       >
         {reviewText}
       </Text>

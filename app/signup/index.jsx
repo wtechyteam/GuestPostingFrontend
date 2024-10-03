@@ -18,6 +18,8 @@ export default function SignUpPage() {
   const router = useRouter(); 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
+  const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const togglePasswordVisibility = () => {
   setIsPasswordVisible(!isPasswordVisible);
@@ -79,7 +81,7 @@ const toggleConfirmPasswordVisibility = () => {
     }
   
     try {
-      const response = await axios.post("http://localhost:3001/api/signup", {
+      const response = await axios.post(`${hostedURL}/signup `|| `${localbaseURL}/signup`, {
         fullName: formData.fullName,
         email: formData.email,
         password: formData.password,
