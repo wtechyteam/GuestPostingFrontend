@@ -19,7 +19,6 @@ import Offer from "./Offer"
 import Image from "next/image";
 import HomeFaq from "./HomeFaq";
 import TabsSection from "./TabsSection";
-import ReversedTabsSection from "./ReversedTabsSection";
 import HomeSection4 from "./homeSection4";
 import UserReviewCarousel from "app/common/UserReviewCarousal";
 import ReviewSection from "app/common/ReviewSection";
@@ -96,7 +95,7 @@ export default function DesktopTwoPage() {
 
       {/* Trusted by section */}
       <TrustedBySection />
-      <UserReviewCarousel />
+      {/* <UserReviewCarousel /> */}
       {/* <ReviewSection /> */}
  
 
