@@ -10,41 +10,43 @@ export default function CollaborationSection() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  
+
   const [registeredWebsites, setRegisteredWebsites] = useState(0);
-  const [finalNumber] = useState(61608); // Final value for the number
+  const [finalNumber] = useState(61608);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setDisplayedWord((prev) => {
-        if (isDeleting) {
-          if (prev.length > 0) return prev.slice(0, -1);
-          else {
-            setIsDeleting(false);
-            setCurrentWordIndex((prevIndex) =>
-              prevIndex === words.length - 1 ? 0 : prevIndex + 1
-            );
-            return prev;
+    const timeout = setTimeout(
+      () => {
+        setDisplayedWord((prev) => {
+          if (isDeleting) {
+            if (prev.length > 0) return prev.slice(0, -1);
+            else {
+              setIsDeleting(false);
+              setCurrentWordIndex((prevIndex) =>
+                prevIndex === words.length - 1 ? 0 : prevIndex + 1
+              );
+              return prev;
+            }
+          } else {
+            if (prev.length < words[currentWordIndex].length)
+              return words[currentWordIndex].slice(0, prev.length + 1);
+            else {
+              setIsDeleting(true);
+              return prev;
+            }
           }
-        } else {
-          if (prev.length < words[currentWordIndex].length)
-            return words[currentWordIndex].slice(0, prev.length + 1);
-          else {
-            setIsDeleting(true);
-            return prev;
-          }
-        }
-      });
-    }, isDeleting ? 200 : 300);
+        });
+      },
+      isDeleting ? 200 : 300
+    );
 
     return () => clearTimeout(timeout);
   }, [displayedWord, isDeleting]);
 
- 
   useEffect(() => {
     let start = 0;
-    const duration = 20000; 
-    const increment = finalNumber / (duration / 30); 
+    const duration = 20000;
+    const increment = finalNumber / (duration / 30);
     const step = () => {
       start += increment;
       if (start < finalNumber) {
@@ -98,7 +100,6 @@ export default function CollaborationSection() {
                 </>
               </Text>
 
-             
               <div className="flex space-x-4 mt-4">
                 <Link href="/signup">
                   <Button className="min-w-[170px] h-[50px] font-medium bg-[#005EFF] text-white">
@@ -106,7 +107,7 @@ export default function CollaborationSection() {
                   </Button>
                 </Link>
                 <Link href="/signup">
-                  <Button className="min-w-[170px] h-[50px] font-medium bg-[#ffffff] text-gray-900 ">
+                  <Button className="min-w-[170px] h-[50px] font-medium !bg-[#FFFFFF] text-gray-900">
                     View Pricing
                   </Button>
                 </Link>

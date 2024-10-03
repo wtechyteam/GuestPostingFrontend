@@ -21,10 +21,12 @@ import HomeFaq from "./HomeFaq";
 import TabsSection from "./TabsSection";
 import ReversedTabsSection from "./ReversedTabsSection";
 import HomeSection4 from "./homeSection4";
+import UserReviewCarousel from "app/common/UserReviewCarousal";
 
 export default function DesktopTwoPage() {
   const [sliderState4, setSliderState4] = React.useState(0);
   const sliderRef4 = React.useRef(null);
+
 
   const testimonials = [
     {
@@ -93,6 +95,7 @@ export default function DesktopTwoPage() {
 
       {/* Trusted by section */}
       <TrustedBySection />
+ 
 
       {/* Main content section */}
       <MainContentSection />

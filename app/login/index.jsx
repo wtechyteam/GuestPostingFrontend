@@ -10,6 +10,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
+
 export default function LoginOnePage() {
   const words = ["Sales", "Leads", "Revenue", "Engagement"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -19,6 +20,10 @@ export default function LoginOnePage() {
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
+  const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -57,10 +62,14 @@ export default function LoginOnePage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${hostedURL}/login `|| `${localbaseURL}/login`,
+        console.log(hostedURL),
+        {
+          email,
+          password,
+        }
+      );
 
       const { token, user } = response.data;
       console.log(response.data);

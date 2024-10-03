@@ -3,6 +3,9 @@ import "./globals.css";
 import "./../public/styles/index.css"
 import "./../public/styles/font.css";
 import "./../public/styles/tailwind.css";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 
 
 
