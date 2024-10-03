@@ -251,7 +251,7 @@ export default function ProfileDetailsPage() {
             <Sidebar1 />
           </div>
 
-          <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
+          <div className="ml-[300px] md:ml-0 sm:ml-0 mt-[100px] md:mt-0 sm:mt-0 flex flex-1 flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
