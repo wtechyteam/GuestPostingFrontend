@@ -60,7 +60,7 @@ export default function DashboardPage() {
                 className="ml-6 h-[32px] w-[56px] object-contain"
               />
             </div>
-            <div className="flex w-full flex-col items-start sm:w-full ml-[-65rem]">
+            <div className="flex w-full flex-col items-start sm:w-full ml-[-65rem] md:ml-0 sm:ml-0">
               <Heading
                 size="heading2xl"
                 as="h6"
@@ -159,7 +159,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Main Content */}
-          <div className="ml-[-1600px] mt-[80px] flex flex-1 flex-col gap-7">
+          <div className="ml-[-1600px] md:ml-0 sm:ml-0  mt-[80px] flex flex-1 flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
