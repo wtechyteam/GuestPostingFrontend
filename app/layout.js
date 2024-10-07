@@ -25,8 +25,10 @@ function RootLayout({ children }) {
           content="width=device-width, initial-scale=1.0"
         />
         <meta name="theme-color" content="#000000" />
+        
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="noindex"/>
       </head>
       <body>{children}</body>
     </html>
