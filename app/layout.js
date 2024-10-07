@@ -27,6 +27,7 @@ function RootLayout({ children }) {
         <meta name="theme-color" content="#000000" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="noindex" />
       </head>
       <body>{children}</body>
     </html>
