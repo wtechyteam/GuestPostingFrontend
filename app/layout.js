@@ -28,6 +28,7 @@ function RootLayout({ children }) {
         
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
+        
         <meta name="robots" content="noindex"/>
       </head>
       <body>{children}</body>
