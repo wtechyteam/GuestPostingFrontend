@@ -52,7 +52,7 @@ export default function UserProfile3({
   languageText = "Language",
   language = "German",
   countryText = "Country",
-  countryValue = "Germany",
+  countryValue = "Germay",
   linksText = "Links",
   linksValue = "Dofollow",
   markedSponsoredByText = "Marked Sponsored by",
