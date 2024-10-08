@@ -7,7 +7,7 @@ export default function BuyerMobileSection({ images, ...props }) {
   return (
     <div
       {...props}
-      className="flex flex-col justify-center items-center w-full rounded-lg p-4 sm:p-8 md:p-10"
+      className="flex flex-col justify-center items-center w-full rounded-lg p-4 sm:p-12 md:p-10"
     >
       <button
         type="button"
