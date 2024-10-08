@@ -17,7 +17,7 @@ export default function Footer(props) {
               <Text
                 size="text2xl"
                 as="p"
-                className="text-[16px] font-normal !text-dark-0"
+                className="text-[16px] font-normal !text-dark-0 md:text-sm"
               >
                 Product
               </Text>
@@ -27,7 +27,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Employee Database
                     </Text>
@@ -38,7 +38,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Payroll
                     </Text>
@@ -49,7 +49,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Absences
                     </Text>
@@ -60,7 +60,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Time tracking
                     </Text>
@@ -72,7 +72,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Shift planner
                     </Text>
@@ -84,7 +84,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Recruiting
                     </Text>
@@ -96,7 +96,7 @@ export default function Footer(props) {
               <Text
                 size="text2xl"
                 as="p"
-                className="text-[16px] font-normal !text-dark-0"
+                className="text-[16px] font-normal !text-dark-0 md:text-sm"
               >
                 Information
               </Text>
@@ -106,7 +106,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       FAQ
                     </Text>
@@ -118,7 +118,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Blog
                     </Text>
@@ -130,7 +130,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Support
                     </Text>
@@ -142,7 +142,7 @@ export default function Footer(props) {
               <Text
                 size="text2xl"
                 as="p"
-                className="text-[16px] font-normal !text-dark-0"
+                className="text-[16px] font-normal !text-dark-0 md:text-sm"
               >
                 Company
               </Text>
@@ -152,7 +152,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       About us
                     </Text>
@@ -169,7 +169,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Careers
                     </Text>
@@ -180,7 +180,7 @@ export default function Footer(props) {
                   <Text
                     size="textlg"
                     as="p"
-                    className="text-[16px] font-normal !text-dark-1"
+                    className="text-[16px] font-normal !text-dark-1 md:text-sm"
                   >
                     Contact us
                   </Text>
@@ -191,7 +191,7 @@ export default function Footer(props) {
                     <Text
                       size="textlg"
                       as="p"
-                      className="text-[16px] font-normal !text-dark-1"
+                      className="text-[16px] font-normal !text-dark-1 md:text-sm"
                     >
                       Lift Media
                     </Text>
@@ -207,7 +207,7 @@ export default function Footer(props) {
             <Text
               size="textlg"
               as="p"
-              className="text-[16px] font-normal !text-dark-0"
+              className="text-[16px] font-normal !text-dark-0 md:text-sm"
             >
               Subscribe
             </Text>
@@ -249,7 +249,7 @@ export default function Footer(props) {
                   <Text
                     size="textxl"
                     as="p"
-                    className="text-[14px] font-normal !text-dark-0"
+                    className="text-[14px] font-normal !text-dark-0 md:text-sm"
                   >
                     Terms
                   </Text>
@@ -260,7 +260,7 @@ export default function Footer(props) {
                   <Text
                     size="textxl"
                     as="p"
-                    className="text-[14px] font-normal !text-dark-0"
+                    className="text-[14px] font-normal !text-dark-0 md:text-sm"
                   >
                     Privacy
                   </Text>
@@ -271,37 +271,21 @@ export default function Footer(props) {
                   <Text
                     size="textxl"
                     as="p"
-                    className="text-[14px] font-normal text-dark-0"
+                    className="text-[14px] font-normal !text-dark-0 md:text-sm"
                   >
                     Cookies
                   </Text>
                 </Link>
               </li>
             </ul>
-            <div className="flex gap-4 self-center">
-              <Image
-                src="/images/Linkedin.png"
-                width={38}
-                height={34}
-                alt="User  Icon"
-                className="h-[34px]"
-              />
-              <Image
-                src="/images/Facebook.png"
-                width={38}
-                height={34}
-                alt="Facebook Icon"
-                className="h-[34px]"
-              />
-              <Image
-                src="/images/Twitter.png"
-                width={38}
-                height={34}
-                alt="Thumbs Up Icon"
-                className="h-[34px]"
-              />
-            </div>
-          </div>  
+            <Text
+              size="textxl"
+              as="p"
+              className="text-[14px] font-normal !text-dark-1 md:text-sm"
+            >
+              © 2024 Lift Media, All rights reserved.
+            </Text>
+          </div>
         </div>
       </div>
     </footer>
