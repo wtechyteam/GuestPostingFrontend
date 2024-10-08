@@ -7,7 +7,7 @@ export default function SellerMobileSection({ images, ...props }) {
   return (
     <div
       {...props}
-      className="flex flex-col justify-center items-center w-full rounded-lg"
+      className="flex flex-col justify-center items-center w-full rounded-lg p-4 sm:p-8 md:p-10" // Added padding for different screen sizes
     >
       <button
         type="button"
