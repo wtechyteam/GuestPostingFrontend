@@ -200,9 +200,8 @@ export default function Footer(props) {
               </ul>
             </div>
           </div>
-
           <div
-  className={`rounded-[30px] py-[30px] w-[30%] flex flex-col items-start justify-center gap-5 bg-indigo-800_0c px-11 md:w-full md:justify-center md:items-center lg:w-[30%] lg:justify-start lg:items-start md:px-5 sm:p-5 sm:w-full md:w-full`}
+  className={`rounded-[30px] py-[30px] w-[30%] flex flex-col items-start justify-center gap-5 bg-indigo-800_0c px-11 md:w-full md:justify-center md:items-center lg:w-[30%] lg:justify-start lg:items-start md:px-5 sm:p-5 sm:hidden md:block`}
 >
   <Text
     size="textlg"
@@ -238,6 +237,7 @@ export default function Footer(props) {
     from revolutionizing how companies engage with their clients & their team.
   </Text>
 </div>
+
 
 
         </div>
