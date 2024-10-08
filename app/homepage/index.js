@@ -14,14 +14,11 @@ import CollaborationSection from "./CollaborationSection";
 import KeyBenefitsSection from "./KeyBenefitsSection";
 import MainContentSection from "./MainContentSection";
 import TrustedBySection from "./TrustedBySection";
+import HowGuestPostingWorks from "./HowGuestPostingWorks";
 import React from "react";
 import Offer from "./Offer";
 import Image from "next/image";
 import HomeFaq from "./HomeFaq";
-import TabsSection from "./TabsSection";
-import HomeSection4 from "./homeSection4";
-import UserReviewCarousel from "app/common/UserReviewCarousal";
-import ReviewSection from "app/common/ReviewSection";
 import ReviewCarousel from "./ReviewCarousel";
 
 export default function DesktopTwoPage() {
@@ -106,6 +103,7 @@ export default function DesktopTwoPage() {
 
       {/* Main content section */}
       <MainContentSection />
+      <HowGuestPostingWorks/>
 
       {/* Key benefits section */}
       <KeyBenefitsSection />

@@ -81,7 +81,7 @@ const toggleConfirmPasswordVisibility = () => {
     }
   
     try {
-      const response = await axios.post(`${hostedURL}/signup `|| `${localbaseURL}/signup`, {
+      const response = await axios.post( `${localbaseURL}/signup`, {
         fullName: formData.fullName,
         email: formData.email,
         password: formData.password,

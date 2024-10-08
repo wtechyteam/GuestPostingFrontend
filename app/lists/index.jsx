@@ -300,7 +300,7 @@ export default function Wishlist() {
                 )}
                {activeTab === "tab2" && (
                   <>
-                   <PublisherSearchSection/>
+                  <PublisherSearchSection />
                   </>
                 )}
               </div>

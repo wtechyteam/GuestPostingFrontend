@@ -30,6 +30,9 @@ export default function SettingsPage() {
     contact: "999 9999 999",
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [citizenStatus, setCitizenStatus] = useState("");
+  const [showNotifications, setShowNotifications] = useState(false);
+ 
   const router = useRouter();
 
   const handleLogout = () => {
@@ -37,6 +40,7 @@ export default function SettingsPage() {
 
     router.push("/login");
   };
+ 
 
   const [activeTab, setActiveTab] = useState("account-settings");
 
@@ -67,6 +71,11 @@ export default function SettingsPage() {
   };
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+  };
+  const handleContinue = () => {
+    if (citizenStatus === "usPerson") {
+      setShowNotifications(true);
+    }
   };
 
   return (
@@ -227,7 +236,7 @@ export default function SettingsPage() {
                       Notification settings
                     </button>
                   </li>
-                  <li>
+                  <li className="mr-6">
                     <button
                       className={`${
                         activeTab === "billing-details"
@@ -237,6 +246,18 @@ export default function SettingsPage() {
                       onClick={() => handleTabChange("billing-details")}
                     >
                       Billing details
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className={`${
+                        activeTab === "tax-form"
+                          ? "text-indigo-600 font-semibold"
+                          : "text-gray-600"
+                      }`}
+                      onClick={() => handleTabChange("tax-form")}
+                    >
+                      Tax Form
                     </button>
                   </li>
                 </ul>
@@ -379,160 +400,264 @@ export default function SettingsPage() {
                 )}
 
                 {activeTab === "billing-details" && (
-                <>
-                <h2 className="text-lg font-bold mb-4 text-gray-700">
-                  Billing Details
-                </h2>
-              
-                <div className="p-6 bg-white rounded-md">
-                  <div className="flex flex-wrap gap-6"> {/* Use gap for spacing */}
-                    <div className="flex-1 min-w-[250px]"> {/* Ensures minimum width for each column */}
-                      <div className="mb-4">
-                        <label
-                          htmlFor="company"
-                          className="block text-sm font-semibold text-gray-600 text-[17.18px]"
-                        >
-                          Company Name*
-                        </label>
-                        <Input
-                          type="text"
-                          id="company"
-                          name="company"
-                          className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
-                          value="Jhons Smith"
-                        />
+                  <>
+                    <h2 className="text-lg font-bold mb-4 text-gray-700">
+                      Billing Details
+                    </h2>
+
+                    <div className="p-6 bg-white rounded-md">
+                      <div className="flex flex-wrap gap-6">
+                        {" "}
+                        {/* Use gap for spacing */}
+                        <div className="flex-1 min-w-[250px]">
+                          {" "}
+                          {/* Ensures minimum width for each column */}
+                          <div className="mb-4">
+                            <label
+                              htmlFor="company"
+                              className="block text-sm font-semibold text-gray-600 text-[17.18px]"
+                            >
+                              Company Name*
+                            </label>
+                            <Input
+                              type="text"
+                              id="company"
+                              name="company"
+                              className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
+                              value="Jhons Smith"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              htmlFor="apartment"
+                              className="block text-sm font-semibold text-gray-600 text-[17.18px] "
+                            >
+                              Apt, Unit, Suite, etc.
+                            </label>
+                            <Input
+                              type="text"
+                              id="apartment"
+                              name="apartment"
+                              className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
+                              value="India"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              htmlFor="state"
+                              className="block text-sm font-semibold text-gray-600 text-[17.18px]"
+                            >
+                              State/ Province/ Region*
+                            </label>
+                            <Input
+                              type="text"
+                              id="state"
+                              name="state"
+                              className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
+                              value="Haryana"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              htmlFor="country"
+                              className="block text-sm font-semibold text-gray-600 text-[17.18px]"
+                            >
+                              Country*
+                            </label>
+                            <Input
+                              type="text"
+                              id="country"
+                              name="country"
+                              className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
+                              value="India"
+                            />
+                          </div>
+                        </div>
+                        <div className="flex-1 min-w-[250px]">
+                          <div className="mb-4">
+                            <label
+                              htmlFor="street"
+                              className="block text-sm font-semibold text-gray-600 text-[17.18px]"
+                            >
+                              Street Address*
+                            </label>
+                            <Input
+                              type="text"
+                              id="street"
+                              name="street"
+                              className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
+                              value="Jhons Smith"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              htmlFor="city"
+                              className="block text-sm font-semibold text-gray-600 text-[17.18px]"
+                            >
+                              City/ Town/ Village*
+                            </label>
+                            <Input
+                              type="text"
+                              id="city"
+                              name="city"
+                              className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
+                              value="Jhons Smith"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              htmlFor="postal-code"
+                              className="block text-sm font-semibold text-gray-600 text-[17.18px]"
+                            >
+                              Postal Code*
+                            </label>
+                            <Input
+                              type="text"
+                              id="postal-code"
+                              name="postal-code"
+                              className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px] " // Full width and rectangular
+                              value="Jhons Smith"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              htmlFor="vat-number"
+                              className="block text-sm font-semibold text-gray-600 text-[17.18px] "
+                            >
+                              VAT Number
+                            </label>
+                            <Input
+                              type="text"
+                              id="vat-number"
+                              name="vat-number"
+                              className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
+                              value="Jhons Smith"
+                            />
+                          </div>
+                        </div>
                       </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="apartment"
-                          className="block text-sm font-semibold text-gray-600 text-[17.18px] "
+
+                      <div className="flex mt-4 space-x-4">
+                        <button
+                          className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
+                          onClick={handleSave}
                         >
-                          Apt, Unit, Suite, etc.
-                        </label>
-                        <Input
-                          type="text"
-                          id="apartment"
-                          name="apartment"
-                          className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
-                          value="India"
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="state"
-                          className="block text-sm font-semibold text-gray-600 text-[17.18px]"
+                          Save
+                        </button>
+                        <button
+                          className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md"
+                          onClick={handleCancel}
                         >
-                          State/ Province/ Region*
-                        </label>
-                        <Input
-                          type="text"
-                          id="state"
-                          name="state"
-                          className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
-                          value="Haryana"
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="country"
-                          className="block text-sm font-semibold text-gray-600 text-[17.18px]"
-                        >
-                          Country*
-                        </label>
-                        <Input
-                          type="text"
-                          id="country"
-                          name="country"
-                          className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
-                          value="India"
-                        />
+                          Cancel
+                        </button>
                       </div>
                     </div>
-              
-                    <div className="flex-1 min-w-[250px]"> {/* Ensures minimum width for each column */}
-                      <div className="mb-4">
-                        <label
-                          htmlFor="street"
-                          className="block text-sm font-semibold text-gray-600 text-[17.18px]"
-                        >
-                          Street Address*
-                        </label>
-                        <Input
-                          type="text"
-                          id="street"
-                          name="street"
-                          className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
-                          value="Jhons Smith"
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="city"
-                          className="block text-sm font-semibold text-gray-600 text-[17.18px]"
-                        >
-                          City/ Town/ Village*
-                        </label>
-                        <Input
-                          type="text"
-                          id="city"
-                          name="city"
-                          className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
-                          value="Jhons Smith"
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="postal-code"
-                          className="block text-sm font-semibold text-gray-600 text-[17.18px]"
-                        >
-                          Postal Code*
-                        </label>
-                        <Input
-                          type="text"
-                          id="postal-code"
-                          name="postal-code"
-                          className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px] " // Full width and rectangular
-                          value="Jhons Smith"
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="vat-number"
-                          className="block text-sm font-semibold text-gray-600 text-[17.18px] "
-                        >
-                          VAT Number
-                        </label>
-                        <Input
-                          type="text"
-                          id="vat-number"
-                          name="vat-number"
-                          className="w-full h-10 border border-gray-300 p-2 rounded-md text-[17.18px]" // Full width and rectangular
-                          value="Jhons Smith"
-                        />
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div className="flex mt-4 space-x-4">
-                    <button
-                      className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
-                      onClick={handleSave}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md"
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              </>
-              
-                
-                
+                  </>
                 )}
+                {activeTab === "tax-form" && (
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                      Choose Your Current
+                    </h2>
+                    <div className="mb-6">
+                      <div className="flex items-center mb-4">
+                        <input
+                          type="radio"
+                          id="usPerson"
+                          name="citizenStatus"
+                          value="usPerson"
+                          checked={citizenStatus === "usPerson"}
+                          onChange={(e) => setCitizenStatus(e.target.value)}
+                          className="mr-2 custom-radio"
+                        />
+                        <label
+                          htmlFor="usPerson"
+                          className="text-gray-600 font-semibold"
+                        >
+                          I am a U.S. Person
+                        </label>
+                      </div>
+                      <div className="flex items-center mb-6">
+                        <input
+                          type="radio"
+                          id="nonUsPerson"
+                          name="citizenStatus"
+                          value="nonUsPerson"
+                          checked={citizenStatus === "nonUsPerson"}
+                          onChange={(e) => setCitizenStatus(e.target.value)}
+                          className="mr-2 custom-radio"
+                        />
+                        <label
+                          htmlFor="nonUsPerson"
+                          className="text-gray-600 font-semibold"
+                        >
+                          I am not a U.S. Person
+                        </label>
+                      </div>
+                      <button
+                        onClick={handleContinue}
+                        className="bg-[#1C65D6] text-white px-6 py-2 rounded-md"
+                      >
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Show the Notifications section if the U.S. Person is selected and Continue is clicked */}
+                {showNotifications && (
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                      Notifications
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                        <span className="text-gray-600 font-semibold">
+                          Email Notifications
+                        </span>
+                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
+                          Enable
+                        </button>
+                      </div>
+                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                        <span className="text-gray-600 font-semibold">
+                          SMS Notifications
+                        </span>
+                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
+                          Enable
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <style jsx>{`
+                  .custom-radio {
+                    appearance: none;
+                    width: 16px;
+                    height: 16px;
+                    background-color: white; /* Keeps the background white */
+                    border: 2px solid gray;
+                    border-radius: 0; /* Square shape */
+                    position: relative;
+                    cursor: pointer;
+                  }
+
+                  .custom-radio:checked::after {
+                    content: "✓"; /* Tick mark */
+                    position: absolute;
+                    top: -2px;
+                    left: 2px;
+                    color: #1c65d6; /* Blue tick */
+                    font-size: 14px;
+                    font-weight: bold;
+                  }
+
+                  .custom-radio:checked {
+                    background-color: white; /* Ensure background remains white when selected */
+                    border: 2px solid gray;
+                  }
+                `}</style>
               </div>
             </div>
           </div>
