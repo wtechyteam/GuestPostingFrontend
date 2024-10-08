@@ -113,6 +113,15 @@ export default function DesktopTwoPage() {
       <div className="mt-[40px]">
         {/* Brand statistics section */}
         <BrandStatisticsSection />
+        <Text
+  size="text8xl"
+  as="p"
+  className="hidden sm:block p-5 sm:text-[28px] md:hidden leading-[54px] !text-black-60_ text-[40px] !font-spacegrotesk2 font-medium"
+>
+  We have stopped counting. Over 500 brands count on us.
+</Text>
+
+
         <div className="z-[5] mb-[18px] mt-[-294px] relative flex flex-col items-center py-10 sm:py-5 sm:mt-[2rem] md:mt-[2rem]">
 
           <div className="container-xs sm:gap-[39px] md:gap-[58px] gap-[78px] flex flex-col items-center px-10 md:px-5">

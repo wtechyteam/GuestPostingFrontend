@@ -6,7 +6,7 @@ export default function BrandStatisticsSection() {
   return (
     <>
       {/* brand statistics section */}
-      <div className="flex justify-center lg:flex">
+      <div className="flex justify-center lg:flex sm:hidden md:hidden">
         <div className="container-xs flex items-start justify-center gap-9 px-4 md:flex-col md:px-5 mb-0">
           {/* Image section */}
           <div className="h-[674px] relative flex-1 self-center md:w-full md:flex-none md:self-stretch">
@@ -15,7 +15,7 @@ export default function BrandStatisticsSection() {
               width={590}
               height={544}
               alt="Vector Image"
-              className="rounded-[56px] right-[-0.20px] bottom-[0.40px] w-[82%] h-[544px] absolute m-auto object-contain sm:hidden md:hidden lg:block"
+              className="rounded-[56px] right-[-0.20px] bottom-[0.40px] w-[82%] h-[544px] absolute m-auto object-contain  sm:hidden md:hidden lg:block"
             />
             <div className="absolute left-0 right-0 top-0 m-auto flex flex-1 items-start md:relative md:flex-col">
               <Image
@@ -30,7 +30,7 @@ export default function BrandStatisticsSection() {
                 width={588}
                 height={580}
                 alt="Intersect Image"
-                className="ml-[-104px] w-[72%] h-[580px] relative self-center object-contain md:ml-0 md:w-[80%] md:h-[350px] sm:w-full sm:h-[200px] sm:hidden md:hidden lg:block "
+                className="ml-[-104px] w-[72%] h-[580px] relative self-center object-contain md:ml-0 md:w-[80%] md:h-[350px] sm:w-full sm:h-[200px] sm:block md:hidden lg:block "
               />
             </div>
           </div>
@@ -39,7 +39,7 @@ export default function BrandStatisticsSection() {
             <Text
               size="text8xl"
               as="p"
-              className="sm:text-[28px] md:text-[36px] leading-[54px] !text-black-60_ text-[40px] !font-spacegrotesk2 font-medium ! text-black-70"
+              className="sm:text-[28px] md:text-[36px] leading-[54px] !text-black-60_ text-[40px] !font-spacegrotesk2 font-medium   "
             >
               We have stopped counting. Over 500 brands count on us.
             </Text>
