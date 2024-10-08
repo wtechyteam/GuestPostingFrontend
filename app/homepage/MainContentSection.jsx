@@ -77,13 +77,18 @@ export default function MainContentSection() {
             />
           </div>
         </div>
-        <div className="container-xs flex flex-col items-center px-14 md:px-5">
-          <Link href="/signup">
-            <Button className="min-w-[170px] font-medium">
-              Sign Up
-            </Button>
-          </Link>
-        </div>
+        <div className="container-xs flex justify-start items-center px-14 md:px-5 w-full"> {/* Flex container */}
+  <div className="text-gray-800 text-md mr-auto"> {/* Date section */}
+    <span className="font-bold"> Last Updated: </span> 
+    <span className="italic">{new Date().toLocaleDateString()} </span>{/* Display current date */}
+  </div>
+  <Link href="/signup">
+    <Button size="md" className="min-w-[220px] ml-auto font-medium bg-blue-500 text-white transition-colors duration-300">
+      Add Your Website
+    </Button>
+  </Link>
+</div>
+
       </div>
     </>
   );

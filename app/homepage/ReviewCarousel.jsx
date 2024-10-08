@@ -26,8 +26,8 @@ export default function ReviewCardsContainer({ reviews = [] }) {
 
     <div className="flex justify-center space-x-1 my-2 mb-10"> 
   {[...Array(5)].map((_, index) => (
-    <div key={index} className="bg-green-500 p-2 r"> {/* Individual star box */}
-      <span className="text-white text-2xl">★</span> {/* White star */}
+    <div key={index} className="bg-green-500 p-2 r"> 
+      <span className="text-white text-2xl">★</span> 
     </div>
   ))}
 </div>
@@ -66,7 +66,7 @@ export default function ReviewCardsContainer({ reviews = [] }) {
             </svg>
           ))}
         </div>
-        <div className="text-sm text-gray-500">{review.date}</div> {/* Date positioned to the right */}
+        <div className="text-sm text-gray-500">{review.date}</div> 
       </div>
       <h3 className="text-md text-gray-900 font-semibold mb-2 ">{review.title}</h3>
       <p className="text-sm text-gray-600 mb-2">{review.description}</p>

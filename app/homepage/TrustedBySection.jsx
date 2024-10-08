@@ -5,7 +5,7 @@ import React from "react";
 export default function TrustedBySection() {
   return (
     <>
-      <div className="bg-gray-100 mt-0 flex flex-col items-center p-2"> {/* Reduced margin-top from mt-14 to mt-8 */}
+      <div className="bg-gray-10 mt-0 flex flex-col items-center p-2"> {/* Reduced margin-top from mt-14 to mt-8 */}
         <div className="container-xs gap-[5px] flex flex-col items-center px-14 md:px-5"> 
           <Heading
             size="textxl"
