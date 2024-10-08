@@ -102,12 +102,12 @@ export default function CollaborationSection() {
 
               <div className="flex space-x-4 mt-4">
                 <Link href="/signup">
-                  <Button className="min-w-[170px] h-[50px] font-medium bg-[#005EFF] text-white">
+                  <Button className="min-w-[150px] h-[45px] sm:min-w-[170px] sm:h-[50px] font-medium bg-[#005EFF] text-white">
                     Sign Up
                   </Button>
                 </Link>
                 <Link href="/signup">
-                  <Button className="min-w-[170px] h-[50px] font-medium !bg-[#FFFFFF] text-gray-900">
+                  <Button className="min-w-[150px] h-[45px] sm:min-w-[170px] sm:h-[50px] font-medium !bg-[#FFFFFF] text-gray-900">
                     View Pricing
                   </Button>
                 </Link>
@@ -125,7 +125,7 @@ export default function CollaborationSection() {
               <Image
                 src="/images/Group 25761.png"
                 alt="Collaboration"
-                className="rounded-[36px] w-full h-full object-cover"
+                className="rounded-[36px] w-full h-full object-cover md:object-contain "
                 width={1000}
                 height={900}
               />
@@ -134,18 +134,30 @@ export default function CollaborationSection() {
         </div>
       </div>
 
-      <div className="h-[115px] w-full bg-[#005EFF] flex justify-between items-center px-10 mt-[-70px]">
-        <div className="text-white text-center pl-5">
-          <p className="font-bold text-[22px] mb-2">{registeredWebsites}+</p>
-          <p className="text-[20px] font-bold">Registered Websites</p>
+      <div className="h-[115px] w-full bg-[#005EFF] flex justify-between items-center px-10 mt-[-70px] gap-4 md:gap-12">
+        <div className="text-white text-center pl-5 md:pl-0 sm:pl-0">
+          <p className="font-bold text-[18px] sm:text-[20px] mb-2">
+            {registeredWebsites}+
+          </p>
+          <p className="text-[16px] sm:text-[18px] font-bold">
+            Registered Websites
+          </p>
         </div>
         <div className="text-white text-center">
-          <p className="font-bold text-[22px] mb-2">{registeredWebsites}+</p>
-          <p className="text-[20px] font-bold">Registered Websites</p>
+          <p className="font-bold text-[18px] sm:text-[20px] mb-2">
+            {registeredWebsites}+
+          </p>
+          <p className="text-[16px] sm:text-[18px] font-bold">
+            Registered Websites
+          </p>
         </div>
-        <div className="text-white text-center pr-5">
-          <p className="font-bold text-[22px] mb-2">{registeredWebsites}+</p>
-          <p className="text-[20px] font-bold">Registered Websites</p>
+        <div className="text-white text-center pr-5 md:pr-0 sm:pr-0">
+          <p className="font-bold text-[18px] sm:text-[20px] mb-2">
+            {registeredWebsites}+
+          </p>
+          <p className="text-[16px] sm:text-[18px] font-bold">
+            Registered Websites
+          </p>
         </div>
       </div>
     </>

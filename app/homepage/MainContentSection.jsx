@@ -10,30 +10,26 @@ export default function MainContentSection() {
   return (
     <>
       {/* Main content section */}
-      <div className="mt-[140px] flex flex-col items-center gap-10">
+      <div className=" md:hidden block mt-[80px] md:mt-[100px] flex flex-col items-center gap-5 md:gap-10"> {/* Adjusted gap */}
         <div className="container-xs px-14 md:px-5">
-        <Heading
-    size="heading3xl"
-    as="h2"
-    className="sm:text-[26px] md:text-[28px] leading-[30px] text-[30px] tracking-[0.20px] text-center font-semibold !text-adsy_com-black"
->
-    Publish PR Content on Websites and Telegram<br />
-    <span className="text-[20px]">Channels Promote Your Business Easily, Fast, and Safely</span>
-</Heading>
-
+          <Heading
+            size="heading3xl"
+            as="h2"
+            className="sm:text-[26px] md:text-[28px] leading-[30px] text-[30px] tracking-[0.20px] text-center font-semibold !text-adsy_com-black"
+          >
+            Publish PR Content on Websites and Telegram<br />
+            <span className="text-[20px]">Channels Promote Your Business Easily, Fast, and Safely</span>
+          </Heading>
         </div>
         <div className="h-[942px] relative self-stretch">
           <div
-            className="h-[874px] absolute left-0 right-0 top-0 m-auto flex-1"
+            className="h-[874px] md:h-[300px] absolute left-0 right-0 top-0 m-auto flex-1"
             style={{ backgroundColor: "#D8EBFF" }}
           />
-          <div className="gap-[26px] absolute bottom-0 left-0 right-0 top-0 m-auto flex h-max flex-1 flex-col items-center px-14 md:px-5">
+          <div className="gap-[10px] md:gap-[26px] absolute bottom-0 left-0 right-0 top-0 m-auto flex h-max flex-1 flex-col items-center px-14 md:px-5"> {/* Adjusted gap */}
             <div>
-              
-              <p className="text-center text-lg  text-gray-900 mt-[50px]">
-               
-            
-                List Of <span className="font-bold">61,608</span>  Websites & Blogs That Accept Guest Posts
+              <p className="text-center text-lg text-gray-900 mt-[20px] md:mt-[-16rem]"> {/* Adjusted margin */}
+                List Of <span className="font-bold">61,608</span> Websites & Blogs That Accept Guest Posts
               </p>
             </div>
             <div className="rounded-[10px] w-[38%] flex justify-center md:w-full">
@@ -41,7 +37,7 @@ export default function MainContentSection() {
                 <Button
                   color="gray_10"
                   size="sm"
-                  className={`rounded-[5px] min-w-[250px] tracking-[0.20px] font-medium ${
+                  className={`rounded-[5px] min-w-[250px] tracking-[0.20px] md:mt-[-14rem] font-medium ${
                     activeTab === "buyer"
                       ? "bg-white text-blue-500 border border-blue-500"
                       : "bg-blue-500 text-white"
@@ -53,7 +49,7 @@ export default function MainContentSection() {
                 <Button
                   color="gray_10"
                   size="sm"
-                  className={`rounded-[5px] min-w-[250px] tracking-[0.20px] font-medium ${
+                  className={`rounded-[5px] min-w-[250px] tracking-[0.20px] md:mt-[-14rem] md:w-[100px] sm:w-[100px] font-medium ${
                     activeTab === "seller"
                       ? "bg-white text-blue-500 border border-blue-500"
                       : "bg-blue-500 text-white"
@@ -73,22 +69,21 @@ export default function MainContentSection() {
               width={1024}
               height={820}
               alt={activeTab === "buyer" ? "Image Three" : "Image Five"}
-              className="rounded-[24px] w-[80%] h-[820px] object-contain"
+              className="rounded-[24px] w-[80%] h-[820px] md:mt-[-30rem] object-contain"
             />
           </div>
         </div>
         <div className="container-xs flex justify-start items-center px-14 md:px-5 w-full"> {/* Flex container */}
-  <div className="text-gray-800 text-md mr-auto"> {/* Date section */}
-    <span className="font-bold"> Last Updated: </span> 
-    <span className="italic">{new Date().toLocaleDateString()} </span>{/* Display current date */}
-  </div>
-  <Link href="/signup">
-    <Button size="md" className="min-w-[220px] ml-auto font-medium bg-blue-500 text-white transition-colors duration-300">
-      Add Your Website
-    </Button>
-  </Link>
-</div>
-
+          <div className="text-gray-800 text-md mr-auto md:mr-[1rem]"> {/* Date section */}
+            <span className="font-bold"> Last Updated: </span> 
+            <span className="italic">{new Date().toLocaleDateString()} </span>{/* Display current date */}
+          </div>
+          <Link href="/signup">
+            <Button size="md" className="min-w-[220px] ml-auto font-medium bg-blue-500 text-white transition-colors duration-300">
+              Add Your Website
+            </Button>
+          </Link>
+        </div>
       </div>
     </>
   );

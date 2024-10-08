@@ -18,7 +18,7 @@ export default function ReviewCardsContainer({ reviews = [] }) {
   return (
     <div className="flex space-x-4 justify-center overflow-hidden">
       {/* Static Review Card */}
-      <div className="w-1/4">
+      <div className="  md:hidden w-1/4">
         <div className="bg-white shadow-md rounded-lg p-4 border h-56">
           <h3 className="text-center text-lg font-semibold text-gray-900">Excellent</h3>
           <div className="flex justify-center space-x-1 my-2 mb-10">
@@ -39,7 +39,7 @@ export default function ReviewCardsContainer({ reviews = [] }) {
       </div>
 
       {/* Dynamic Review Cards Slider */}
-      <div className="relative w-3/4 overflow-hidden">
+      <div className="relative w-3/4 md:w-full overflow-hidden">
         <div
           className="keen-slider flex transition-transform duration-500"
           style={{ transform: `translateX(-${(currentSlide / duplicatedReviews.length) * 100}%)` }} // Move slider
@@ -58,7 +58,7 @@ export default function ReviewCardsContainer({ reviews = [] }) {
                     </div>
                   ))}
                 </div>
-                <div className="text-sm text-gray-500">{review.date}</div>
+                <div className="text-sm text-gray-500 md:hidden sm:hidden">{review.date}</div>
               </div>
               <h3 className="text-md text-gray-900 font-semibold mb-2">{review.title}</h3>
               <p className="text-sm text-gray-600 mb-2">{review.description}</p>
@@ -70,15 +70,23 @@ export default function ReviewCardsContainer({ reviews = [] }) {
       </div>
 
       <style jsx>{`
-        .keen-slider {
-          display: flex;
-          transition: transform 0.5s ease-in-out;
-        }
+  .keen-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
 
-        .keen-slider__slide {
-          min-width: 33.33%; /* Ensure each slide takes up 1/3 of the container */
-        }
-      `}</style>
+  .keen-slider__slide {
+    min-width: 33.33%; /* Ensure each slide takes up 1/3 of the container for large screens */
+  }
+
+  /* Media query for small and medium screens */
+  @media (max-width: 768px) { /* Adjust max-width according to your breakpoints */
+    .keen-slider__slide {
+      min-width: 90%; /* Ensure each slide takes up the full width of the container */
+    }
+  }
+`}</style>
+
     </div>
   );
 }
