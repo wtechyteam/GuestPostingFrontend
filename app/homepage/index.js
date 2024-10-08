@@ -15,19 +15,25 @@ import KeyBenefitsSection from "./KeyBenefitsSection";
 import MainContentSection from "./MainContentSection";
 import TrustedBySection from "./TrustedBySection";
 import React from "react";
-import Offer from "./Offer"
+import Offer from "./Offer";
 import Image from "next/image";
 import HomeFaq from "./HomeFaq";
 import TabsSection from "./TabsSection";
 import HomeSection4 from "./homeSection4";
 import UserReviewCarousel from "app/common/UserReviewCarousal";
 import ReviewSection from "app/common/ReviewSection";
+import ReviewCarousel from "./ReviewCarousel";
 
 export default function DesktopTwoPage() {
   const [sliderState4, setSliderState4] = React.useState(0);
   const sliderRef4 = React.useRef(null);
-
-
+  const reviews = [
+    { rating: 5, title: 'Amazing Service!',description: 'Satisfied with the quality. Working with Nearshore has been an absolute pleasure.Their team took the time to understand our unique needs and delivered a solution that not only met but exceeded our expectations. ', date: 'Oct 7, 2024', reviewer: 'John Doe' },
+    { rating: 4, title: 'Great Product', description: 'Satisfied with the quality. Working with Nearshore has been an absolute pleasure.Their team took the time to understand our unique needs and delivered a solution that not only met but exceeded our expectations. ', date: 'Oct 5, 2024', reviewer: 'Jane Smith' },
+    { rating: 3, title: 'Decent', description: 'Satisfied with the quality. Working with Nearshore has been an absolute pleasure.Their team took the time to understand our unique needs and delivered a solution that not only met but exceeded our expectations. ', date: 'Oct 2, 2024', reviewer: 'Alex Johnson' },
+    { rating: 5, title: 'Amazing Service!', description: 'Satisfied with the quality. Working with Nearshore has been an absolute pleasure.Their team took the time to understand our unique needs and delivered a solution that not only met but exceeded our expectations. ', date: 'Oct 7, 2024', reviewer: 'John Doe' },
+    { rating: 4, title: 'Great Product', description: 'Satisfied with the quality.  Working with Nearshore has been an absolute pleasure.Their team took the time to understand our unique needs and delivered a solution that not only met but exceeded our expectations. ', date: 'Oct 5, 2024', reviewer: 'Jane Smith' },
+  ];
   const testimonials = [
     {
       id: 1,
@@ -85,7 +91,7 @@ export default function DesktopTwoPage() {
   return (
     <div className="w-full bg-gray-10">
       <div>
-        <Offer/>
+        <Offer />
         <Header />
         <div className="mt-[-2px] relative bg-gray-10">
           {/* Collaboration section */}
@@ -95,18 +101,14 @@ export default function DesktopTwoPage() {
 
       {/* Trusted by section */}
       <TrustedBySection />
-      {/* <UserReviewCarousel /> */}
-      {/* <ReviewSection /> */}
- 
+    <ReviewCarousel reviews={reviews} />
+  
 
       {/* Main content section */}
       <MainContentSection />
 
       {/* Key benefits section */}
       <KeyBenefitsSection />
-      <TabsSection />
-      <HomeSection4 />
-      <TabsSection isReversed={true} />
 
       <HomeFaq />
 
