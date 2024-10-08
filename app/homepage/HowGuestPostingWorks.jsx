@@ -23,7 +23,7 @@ export default function HowGuestPostingWorks() {
       caption: 'Join & access numerous guest blog posting platforms of opt-in publishers',
     },
     {
-      src: '/images/Mobile.png', // Second image source
+      src: '/images/mobile3.png', // Second image source
       alt: 'Second Image',
       caption: 'Discover exclusive content and guest posting opportunities',
     },
