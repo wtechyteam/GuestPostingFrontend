@@ -113,7 +113,8 @@ export default function DesktopTwoPage() {
       <div className="mt-[40px]">
         {/* Brand statistics section */}
         <BrandStatisticsSection />
-        <div className="z-[5] mb-[18px] mt-[-294px] relative flex flex-col items-center py-10 sm:py-5">
+        <div className="z-[5] mb-[18px] mt-[-294px] relative flex flex-col items-center py-10 sm:py-5 sm:mt-[2rem] md:mt-[2rem]">
+
           <div className="container-xs sm:gap-[39px] md:gap-[58px] gap-[78px] flex flex-col items-center px-10 md:px-5">
             <div className="gap-[38px] mx-auto flex w-full self-stretch md:mx-0 md:flex-col">
               <Slider
