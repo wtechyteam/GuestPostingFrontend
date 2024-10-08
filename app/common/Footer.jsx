@@ -202,43 +202,44 @@ export default function Footer(props) {
           </div>
 
           <div
-            className={`rounded-[30px] py-[30px] w-[30%] flex flex-col items-start justify-center gap-5 bg-indigo-800_0c px-11 md:w-full md:justify-center md:items-center lg:w-[30%] lg:justify-start lg:items-start md:px-5 sm:p-5`}
-          >
-            <Text
-              size="textlg"
-              as="p"
-              className="text-[16px] font-normal !text-dark-0 md:text-sm"
-            >
-              Subscribe
-            </Text>
-            <Input
-              shape="round"
-              name=" Email Input"
-              placeholder={"  Email address"}
-              suffix={
-                <div className="rounded-[50%] h-[50px] w-[54px] flex items-center justify-center bg-principal_blue">
-                  <Image
-                    src="/images/arrowDown.png"
-                    width={16}
-                    height={14}
-                    alt="Arrow Right"
-                    className="rounded-[50%] w-[16px] h-[14px]" 
-                  />
-                </div>
-              }
-              className="mr-1.5"
-            />
+  className={`rounded-[30px] py-[30px] w-[30%] flex flex-col items-start justify-center gap-5 bg-indigo-800_0c px-11 md:w-full md:justify-center md:items-center lg:w-[30%] lg:justify-start lg:items-start md:px-5 sm:p-5 sm:w-full md:w-full`}
+>
+  <Text
+    size="textlg"
+    as="p"
+    className="text-[16px] font-normal !text-dark-0 md:text-sm"
+  >
+    Subscribe
+  </Text>
+  <Input
+    shape="round"
+    name=" Email Input"
+    placeholder={"  Email address"}
+    suffix={
+      <div className="rounded-[50%] h-[50px] w-[54px] flex items-center justify-center bg-principal_blue">
+        <Image
+          src="/images/arrowDown.png"
+          width={16}
+          height={14}
+          alt="Arrow Right"
+          className="rounded-[50%] w-[16px] h-[14px]"
+        />
+      </div>
+    }
+    className="mr-1.5"
+  />
 
-            <Text
-              size="textmd"
-              as="p"
-              className="text-[12px] w-full font-normal leading-5 !text-dark-2"
-            >
-              Hello, we are Lift Media. Our goal is to translate the positive
-              effects from revolutionizing how companies engage with their
-              clients & their team.
-            </Text>
-          </div>
+  <Text
+    size="textmd"
+    as="p"
+    className="text-[12px] w-full font-normal leading-5 !text-dark-2"
+  >
+    Hello, we are Lift Media. Our goal is to translate the positive effects
+    from revolutionizing how companies engage with their clients & their team.
+  </Text>
+</div>
+
+
         </div>
         <div className="w-[96%] flex flex-col items-end gap-9 md:w-full lg:w-[96%]">
           <div className="border-[0.505px] h-[1.01px] w-full self-stretch border-solid border-dark-3 bg-dark-3" />
