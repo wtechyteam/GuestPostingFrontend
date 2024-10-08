@@ -15,7 +15,7 @@ export default function TrustedBySection() {
             Trusted By
           </Heading>
           <Image
-            src="/images/trustSection.png"
+            src="/images/homepage.png"
             width={1080}
             height={140}
             alt="Section Image"
