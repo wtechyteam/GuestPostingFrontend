@@ -239,14 +239,14 @@ export default function UserProfile3({
                     </Button>
                   </Link>
 
-                  {/* <Image
-                    src={wishlistStatus[product._id] ? "/images/colouredHeart2.png" : "/images/heart1.png"}
+                  <Image
+                    src="/images/heart1.png"
                     width={22}
                     height={22}
                     alt="Like"
                     className="ml-4 h-[24px] w-[24px] cursor-pointer"
                     onClick={() => toggleWishlistProduct(product._id)}
-                  /> */}
+                  />
                   <Image
                     src="/images/blocked.png"
                     width={24}

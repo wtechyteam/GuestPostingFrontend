@@ -1,39 +1,26 @@
 import { Heading } from "../common/Heading";
 import { Text } from "../common/Text";
-import { Img } from "../common/Img";
 import { Button } from "../common/Button";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import React, { useEffect, useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {
+  fetchAllProducts, fetchUnblockedProducts, blockProduct, unblockProduct} from "../redux/productSlice";
 import Link from "next/link";
+import Image from "next/image";
 import Cookies from "js-cookie";
 
-const fetchWishlistProducts = async () => {
-  const token = Cookies.get("authToken");
-  console.log("Token before API call:", token);
+// const fetchAllProducts = async () => {
+//   try {
+//     const result = await axios.get("http://localhost:3001/api/products");
+//     console.log("API Response:", result.data);
+//     return result.data;
+//   } catch (error) {
+//     console.error("Error fetching products:", error);
+//     return [];
+//   }
+// };
 
-  if (!token) {
-    console.error("Token is missing or undefined.");
-    return null;
-  }
-
-  try {
-    const response = await axios.get(`http://localhost:3001/api/wishlist`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Token sent correctly here
-      },
-    });
-    console.log("Response data:", response.data);
-    return response.data; // Return data
-  } catch (error) {
-    console.error(
-      "Error Fetching Wishlist",
-      error.response?.data || error.message
-    );
-    return null; // Return null in case of an error
-  }
-};
 export default function UserProfile3({
   urlIsHiddenText = "URL is hidden",
   contributorText = "Contributor",
@@ -71,358 +58,459 @@ export default function UserProfile3({
   linksValue = "Dofollow",
   markedSponsoredByText = "Marked Sponsored by",
   markedSponsoredByValue = "No",
+  description = "Add Minimum Balance to view",
   ...props
 }) {
-  const [wishlistData, setwishlistData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
+  const { unblockedProducts,  loading } = useSelector(
+    (state) => state.products
+  );
+//   const [products, setProducts] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
+  // const [loading, setLoading] = useState(false);
+//   const [blockStatus, setBlockStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+//   const [isBlocked, setIsBlocked] = useState(false);
+//  const [wishlistStatus, setWishlistStatus] = useState({});
+
+  // const blockProduct = async (productId) => {
+  //   const token = Cookies.get("authToken");
+  //   console.log("Token before API call:", token); // Debugging output
+
+  //   if (!token) {
+  //     console.error("Token is missing or undefined.");
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await axios.post(
+  //       `http://localhost:3001/api/block/${productId}`,
+  //       {}, // Pass body if needed
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`, // Ensure this header is correctly set
+  //         },
+  //       }
+  //     );
+  //     console.log("Block Response:", response.data);
+  //   } catch (error) {
+  //     console.error(
+  //       "Error blocking product:",
+  //       error.response?.data || error.message
+  //     );
+  //   }
+  // };
+//   const toggleWishlistProduct = async (productId) => {
+//     const token = Cookies.get("authToken");
+//     if (!token) {
+//         console.error("Token is missing or undefined.");
+//         return;
+//     }
+
+//     console.log("Token being sent:", token); // Log the token for debugging
+    
+//     try {
+//         const method = wishlistStatus[productId] ? "delete" : "post";
+//         const response = await axios[method](
+//             `http://localhost:3001/api/wishlist/${productId}`, // Ensure the endpoint matches your backend
+//             {},
+//             {
+//                 headers: {
+//                     "Content-Type": "application/json",
+//                     Authorization: `Bearer ${token}`,
+//                 },
+//             }
+//         );
+//         console.log(`${method === "post" ? "Add to" : "Remove from"} Wishlist Response:`, response.data);
+//         setWishlistStatus((prev) => ({ ...prev, [productId]: !prev[productId] }));
+//     } catch (error) {
+//         console.error("Error managing wishlist:", error.response?.data || error.message);
+//     }
+// };
+
+  
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const productList = await fetchWishlistProducts();
-        setwishlistData(productList);
-        setLoading(false);
-      } catch (error) {
-        setErrorMessage("Failed to load products");
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+    // const fetchData = async () => {
+    //   setLoading(true);
+    //   try {
+    //     const productList = await fetchAllProducts();
+    //     setProducts(productList);
+    //     setLoading(false);
+    //   } catch (error) {
+    //     setErrorMessage("Failed to load products");
+    //     setLoading(false);
+    //   }
+    // };
+    // fetchData();
+    dispatch(fetchAllProducts());
+    dispatch(fetchUnblockedProducts());
+  }, [dispatch]);
 
-  if (!wishlistData) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  // Split tags string into an array
-  const tagArray = wishlistData.tags
-    ? wishlistData.tags.split(", ").map((tag) => tag.trim())
-    : [];
-  {
+  if (errorMessage) {
+    return <div>{errorMessage}</div>;
+  }
+
+  if (unblockedProducts.length === 0) {
     return (
-      <div
-        {...props}
-        className={`${props.className} flex flex-col items-center justify-center gap-3.5 px-4 border-blue_gray-100_02 border border-solid w-[98%] bg-gray-10 rounded-[14px]`}
-      >
-        <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
-          <div className="flex flex-1 items-center justify-center md:self-stretch">
-            <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem]">
-              {wishlistData.URL || "URL is hidden"}
-            </Text>
-            <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
-              {!!contributorText ? (
-                <Text
-                  size="textxs"
-                  as="p"
-                  className="text-adsy_com-black font-semibold text-[8.83px]"
-                >
-                  {contributorText}
-                </Text>
-              ) : null}
-            </div>
+      <div className="flex flex-col items-center justify-center px-4 py-6 bg-gray-50 border border-gray-300 rounded-lg w-[99%] h-[500px]">
+        <Text size="textlg" as="p" className="text-gray-700">
+          No product to show now.
+        </Text>
+      </div>
+    );
+  }
 
-            <div className="flex flex-1 gap-[9px] px-2.5">
-              {tagArray.map((tag, index) => (
-                <div
-                  key={index}
-                  className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5"
-                >
-                  <Text
-                    size="texts"
-                    as="p"
-                    className="text-adsy_com-black text-[8.83px]"
-                  >
-                    {tag}
-                  </Text>
+  return (
+    <>
+      {unblockedProducts
+        // .filter((product) => product.status !== "block") // Filter out blocked products
+        .map((product, index) => {
+          const tagArray = product.tags.split(", ").map((tag) => tag.trim());
+
+          return (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center gap-3.5 px-4 mb-2 border-blue_gray-100_02 border border-solid bg-gray-10 w-[98%] rounded-[14px]"
+            >
+              <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
+                <div className="flex flex-1 items-center justify-center md:self-stretch">
+                  <div className="relative inline-block">
+                    <Text
+                      size="textxl"
+                      as="p"
+                      className="text-indigo-a400 mr-[0.5rem]"
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                    >
+                      {product.URL || urlIsHiddenText}
+                    </Text>
+
+                    {isHovered && (
+                      <div className="absolute left-36 bottom-full mb-2 p-2 bg-adsy_com-black text-gray-10 rounded shadow-lg text-[10px] w-44 transform -translate-x-2">
+                        {description}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
+                    {!!contributorText ? (
+                      <Text
+                        size="textxs"
+                        as="p"
+                        className="text-adsy_com-black font-semibold text-[8.83px]"
+                      >
+                        {contributorText}
+                      </Text>
+                    ) : null}
+                  </div>
+
+                  <div className="flex flex-1 gap-[9px] px-2.5">
+                    {tagArray.map((tag, index) => (
+                      <div
+                        key={index}
+                        className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5"
+                      >
+                        <Text
+                          size="texts"
+                          as="p"
+                          className="text-adsy_com-black text-[8.83px]"
+                        >
+                          {tag}
+                        </Text>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex items-center">
-            <Link href="/buyPost">
-              <Button
-                color="indigo_a400"
-                size="md"
-                className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]"
-              >
-                {buyPostButton}
-              </Button>
-            </Link>
+                <div className="flex items-center">
+                  <Link href="/buyPost">
+                    <Button
+                      onClick={() => console.log("Buy Post clicked")}
+                      color="indigo_a400"
+                      size="md"
+                      className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]"
+                    >
+                      {buyPostButton}
+                    </Button>
+                  </Link>
 
-            <Image
-              src="/images/colouredHeart2.png"
-              width={22}
-              height={22}
-              alt="Material Symbol"
-              className="ml-4 h-[24px] w-[24px]"
-            />
+                  <Image
+                    src="/images/heart1.png"
+                    width={22}
+                    height={22}
+                    alt="Like"
+                    className="ml-4 h-[24px] w-[24px] cursor-pointer"
+                    onClick={() => toggleWishlistProduct(product._id)}
+                  />
+                  <Image
+                    src="/images/blocked.png"
+                    width={24}
+                    height={24}
+                    alt="Block"
+                    className="ml-4 h-[24px] w-[24px] cursor-pointer"
+                    onClick={() => dispatch(blockProduct(product._id))}
+                  />
 
-            <Image
-              src="/images/dustbin.png"
-              width={24}
-              height={24}
-              alt="Material Symbol"
-              className="ml-4 h-[24px] w-[24px]"
-            />
-          </div>
-        </div>
-        <hr className="mt-[-0.8rem] border-gray-300 w-full" />
-        <div className="self-stretch">
-          <div className="flex flex-col gap-4">
-            <div className="mr-3.5 flex items-start md:mr-0 md:flex-col">
-              <div className="flex w-[16%] flex-col gap-4 md:w-full">
-                <div className="flex flex-col items-start gap-0.5">
-                  <Text
-                    size="textlg"
-                    as="p"
-                    className="text-adsy_com-black text-[11.5px]"
-                  >
-                    {contentPlacementText}
-                  </Text>
-                  <Heading
-                    as="p"
-                    className="text-adsy_com-black font-bold text-[11.5px]"
-                  >
-                   
-                    {wishlistData.contentPlacement || priceText}
-                  </Heading>
-                </div>
-                <div className="flex flex-col items-start gap-0.5">
-                  <Text
-                    size="textlg"
-                    as="p"
-                    className="text-adsy_com-black font-bold text-[11.5px]"
-                  >
-                    {writingPlacementText}
-                  </Text>
-                  <Heading
-                    as="p"
-                    className="text-adsy_com-black font-bold text-[11.5px]"
-                  >
-                    {wishlistData.writingAndPlacement || writingPriceText}
-                  </Heading>
+                  {/* Feedback messages
+                  {blockStatus && <p>{blockStatus}</p>}
+                  {errorMessage && (
+                    <p style={{ color: "red" }}>{errorMessage}</p>
+                  )} */}
                 </div>
               </div>
+              <hr className="mt-[-0.8rem] border-gray-300 w-full" />
+              <div className="self-stretch">
+                <div className="flex flex-col gap-4">
+                  <div className="mr-3.5 flex items-start md:mr-0 md:flex-col">
+                    <div className="flex w-[16%] flex-col gap-4 md:w-full">
+                      <div className="flex flex-col items-start gap-0.5">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {contentPlacementText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.contentPlacement || priceText}
+                        </Heading>
+                      </div>
+                      <div className="flex flex-col items-start gap-0.5">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {writingPlacementText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.writingAndPlacement || writingPriceText}
+                        </Heading>
+                      </div>
+                    </div>
 
-              <div className="border-l border-gray-300 h-full"></div>
-              <div className="flex w-[12%] flex-col items-start md:w-full">
-                <Text
-                  size="textlg"
-                  as="p"
-                  className="text-adsy_com-black text-[11.5px]"
-                >
-                  {mozDAText}
-                </Text>
-                <Heading
-                  as="p"
-                  className="text-adsy_com-black font-bold text-[11.5px]"
-                >
-                  {wishlistData.mozDA || mozDAValue}
-                </Heading>
-                <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
-                  <Text
-                    size="textlg"
-                    as="p"
-                    className="text-adsy_com-black text-[11.5px]"
-                  >
-                    {semrushDAText}
-                  </Text>
-                  <Heading
-                    as="p"
-                    className="text-adsy_com-black font-bold text-[11.5px]"
-                  >
-                    {wishlistData.semrushDA || semrushDAValue}
-                  </Heading>
-                </div>
-                <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                  <Text
-                    size="textlg"
-                    as="p"
-                    className="text-adsy_com-black text-[11.5px]"
-                  >
-                    {ahrefsDRRangeText}
-                  </Text>
-                  <Heading
-                    as="p"
-                    className="text-adsy_com-black font-bold text-[11.5px]"
-                  >
-                    {wishlistData.ahrefsDRrange || ahrefsDRRangeValue}
-                  </Heading>
-                </div>
-              </div>
-
-              <div className="border-l border-gray-300 h-full"></div>
-              <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
-                <div className="flex flex-1 flex-col items-start self-center">
-                  <div className="flex flex-col items-start gap-1 self-stretch">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {completionRateText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {wishlistData.completionRate || completionRateValue}
-                    </Heading>
-                  </div>
-                  <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {avgLifetimeOfLinksText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {wishlistData.avgLifetimeOfLinks ||
-                        avgLifetimeOfLinksValue}
-                    </Heading>
-                  </div>
-
-                  <Text
-                    size="textlg"
-                    as="p"
-                    className="mt-3.5 text-adsy_com-black text-[11.5px]"
-                  >
-                    {tatText}
-                  </Text>
-                  <Heading
-                    as="p"
-                    className="text-adsy_com-black font-bold text-[11.5px]"
-                  >
-                    {wishlistData.tat || tatValue}
-                  </Heading>
-                  <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
-                    <Text
-                      size="textmd"
-                      as="p"
-                      className="text-adsy_com-black text-[10.5px] font-normal"
-                    >
-                      {tasksWithInitialDomainText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px] mb-[1rem]"
-                    >
-                      {wishlistData.taskDomainPrice ||
-                        tasksWithInitialDomainValue}
-                    </Heading>
-                  </div>
-                </div>
-
-                <div className="border-l border-gray-300 h-full"></div>
-                <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
-                  <div className="flex flex-col items-start gap-0.5 self-stretch">
-                    <Text
-                      size="textmd"
-                      as="p"
-                      className="text-adsy_com-black text-[10.5px] font-normal"
-                    >
-                      {ahrefsorganicTrafficText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {wishlistData.ahrefsOrganicTraffic ||
-                        ahrefsOrganicTrafficValue}
-                    </Heading>
-                    <Text
-                      size="textmd"
-                      as="p"
-                      className="text-adsy_com-black text-[10.5px] font-normal mt-4"
-                    >
-                      {totalTrafficText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {wishlistData.totalTraffic || totalTrafficValue}
-                    </Heading>
-                  </div>
-                </div>
-
-                <div className="border-l-[2px] border-gray-300 h-full"></div>
-                <div className="flex flex-1 items-start gap-5 px-[30px] md:self-stretch sm:px-5">
-                  <div className="flex flex-1 flex-col items-start gap-1.5 self-center">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {languageText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {wishlistData.language || language}
-                    </Heading>
-                    <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
+                    <div className="border-l border-gray-300 h-full"></div>
+                    <div className="flex w-[12%] flex-col items-start md:w-full">
                       <Text
                         size="textlg"
                         as="p"
                         className="text-adsy_com-black text-[11.5px]"
                       >
-                        {countryText}
+                        {mozDAText}
                       </Text>
                       <Heading
                         as="p"
                         className="text-adsy_com-black font-bold text-[11.5px]"
                       >
-                        {wishlistData.country || countryValue}
+                        {product.mozDA || mozDAValue}
                       </Heading>
+                      <div className="mt-4 flex flex-col items-start gap-1 self-stretch">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {semrushDAText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.semrushDA || semrushDAValue}
+                        </Heading>
+                      </div>
+                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {ahrefsDRRangeText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.ahrefsDRrange || ahrefsDRRangeValue}
+                        </Heading>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div className="border-l border-gray-300 h-full"></div>
-                <div className="flex flex-1 flex-col items-start gap-5 px-[30px] md:self-stretch sm:px-5">
-                  <div className="flex flex-col items-start gap-0.5 self-stretch">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {linksText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px] font-bold"
-                    >
-                      {wishlistData.links || linksValue}
-                    </Heading>
-                  </div>
-                  <div className="flex flex-col items-start gap-1.5 self-stretch">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {markedSponsoredByText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {wishlistData.markedSponsoredBy ? "Yes" : "No"}
-                    </Heading>
+                    <div className="border-l border-gray-300 h-full"></div>
+                    <div className="flex w-[16%] flex-col items-start md:w-full">
+                      <Text
+                        size="textlg"
+                        as="p"
+                        className="text-adsy_com-black text-[11.5px]"
+                      >
+                        {completionRateText}
+                      </Text>
+                      <Heading
+                        as="p"
+                        className="text-adsy_com-black font-bold text-[11.5px]"
+                      >
+                        {product.completionRate || completionRateValue}
+                      </Heading>
+                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {avgLifetimeOfLinksText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.avgLifetimeOfLinks ||
+                            avgLifetimeOfLinksValue}
+                        </Heading>
+                      </div>
+                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {tatText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.tat || tatValue}
+                        </Heading>
+                      </div>
+                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {tasksWithInitialDomainText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.tasksWithInitialDomain ||
+                            tasksWithInitialDomainValue}
+                        </Heading>
+                      </div>
+                    </div>
+
+                    <div className="border-l border-gray-300 h-full"></div>
+
+                    <div className="border-l border-gray-300 h-full"></div>
+                    <div className="flex w-[16%] flex-col items-start md:w-full">
+                      <Text
+                        size="textlg"
+                        as="p"
+                        className="text-adsy_com-black text-[11.5px]"
+                      >
+                        {ahrefsorganicTrafficText}
+                      </Text>
+                      <Heading
+                        as="p"
+                        className="text-adsy_com-black font-bold text-[11.5px]"
+                      >
+                        {product.ahrefsOrganicTraffic ||
+                          ahrefsOrganicTrafficValue}
+                      </Heading>
+                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {totalTrafficText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.totalTraffic || totalTrafficValue}
+                        </Heading>
+                      </div>
+                    </div>
+                    <div className="flex w-[16%] flex-col items-start md:w-full">
+                      <Text
+                        size="textlg"
+                        as="p"
+                        className="text-adsy_com-black text-[11.5px]"
+                      >
+                        {languageText}
+                      </Text>
+                      <Heading
+                        as="p"
+                        className="text-adsy_com-black font-bold text-[11.5px]"
+                      >
+                        {product.language || language}
+                      </Heading>
+                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {countryText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.country || countryValue}
+                        </Heading>
+                      </div>
+                    </div>
+                    <div className="flex w-[16%] flex-col items-start md:w-full">
+                      <Text
+                        size="textlg"
+                        as="p"
+                        className="text-adsy_com-black text-[11.5px]"
+                      >
+                        {linksText}
+                      </Text>
+                      <Heading
+                        as="p"
+                        className="text-adsy_com-black font-bold text-[11.5px]"
+                      >
+                        {product.links || linksValue}
+                      </Heading>
+                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
+                        <Text
+                          size="textlg"
+                          as="p"
+                          className="text-adsy_com-black text-[11.5px]"
+                        >
+                          {markedSponsoredByText}
+                        </Text>
+                        <Heading
+                          as="p"
+                          className="text-adsy_com-black font-bold text-[11.5px]"
+                        >
+                          {product.markedSponsoredBy || markedSponsoredByValue}
+                        </Heading>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+          );
+        })}
+    </>
+  );
 }
