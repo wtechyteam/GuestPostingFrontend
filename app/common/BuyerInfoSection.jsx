@@ -19,7 +19,7 @@ export default function BuyerInfoSection({ ...props }) {
 <div className="flex w-full md:w-full flex-col items-center space-y-12 sm:justify-left sm:ml-12 md:ml-8">
 
   <h2 className="text-[36px] md:text-[36px] font-bold">Buyer</h2>
-  <ul className="list-disc pl-6 space-y-4 text-[26px] md:text-[22px] sm:text-[16px]">
+  <ul className="list-disc pl-6 space-y-4 text-[26px] md:text-[22px] sm:text-[16px] ">
     <li>Place quality blog posts from buyers</li>
     <li>Make money writing your blog</li>
     <li>Get regular payouts, prompt support</li>

@@ -14,18 +14,16 @@ export default function BlogSection() {
   const blogContents = [
     {
       imageSrc: "/images/f59b797a963f815a5bdc.jpg.png",
-      title: "Content Placement and Writing & Placement - New Approaches to Habitual Services. How they work.",
-      
+      title:
+        "Content Placement and Writing & Placement - New Approaches to Habitual Services. How they work.",
     },
     {
       imageSrc: "/images/0a1c5b180093643cd97f.jpg.png",
       title: "13 Free Sources to Get Backlinks to Your Site",
-      
     },
     {
       imageSrc: "/images/b4193834200a873d414c.jpg.png",
       title: "How Keywords Work in SEO. Figuring It Out with Adsy's Expert.",
-     
     },
   ];
 
@@ -42,22 +40,21 @@ export default function BlogSection() {
               Blog
             </Heading>
             <div className="flex flex-1 items-center justify-end self-end px-3">
-  <Heading
-    size="headinglg"
-    as="h5"
-    className="text-[20px] !font-poppins2 font-semibold !text-adsy_com-black"
-  >
-    More News
-  </Heading>
-  <Image
-    src="/images/Frame.png"
-    width={28}
-    height={28}
-    alt="Arrow Image"
-    className="h-[28px] ml-2" // Added margin-left
-  />
-</div>
-
+              <Heading
+                size="headinglg"
+                as="h5"
+                className="text-[20px] !font-poppins2 font-semibold !text-adsy_com-black"
+              >
+                More News
+              </Heading>
+              <Image
+                src="/images/Frame.png"
+                width={28}
+                height={28}
+                alt="Arrow Image"
+                className="h-[28px] ml-2" // Added margin-left
+              />
+            </div>
           </div>
           <div className="mt-[-6px] relative mx-auto flex w-full md:mr-0 md:flex-col">
             <Slider
@@ -80,15 +77,14 @@ export default function BlogSection() {
                       width={348}
                       height={238}
                       alt={`Slider Image ${index + 1}`}
-                      className="rounded-[10px] w-[88%] h-[238px] object-contain"
+                      className="rounded-[10px] w-[88%] h-[238px] object-contain mx-auto"
                     />
                     <Text
                       size="text5xl"
                       as="p"
-                      className="text-[20.21px] !font-poppins2 font-normal leading-7 !text-adsy_com-lynch"
+                      className="text-[20.21px] !font-poppins2 font-normal leading-7 !text-adsy_com-lynch md:text-center sm:text-center"
                     >
                       {blog.title}
-                      
                     </Text>
                   </div>
                 </React.Fragment>
