@@ -103,7 +103,7 @@ export default function CollaborationSection() {
 
               <div className="flex flex-row space-y-4 mt-4 md:flex-col  md:space-x-4 md:space-y-0">
                 <Link href="/signup">
-                  <Button className="min-w-[150px] h-[45px] sm:min-w-[170px] md:ml-[2rem] sm:h-[50px] font-medium bg-[#005EFF] text-white">
+                  <Button className="min-w-[150px] h-[45px] sm:min-w-[170px] md:ml-[1.5rem] sm:h-[50px] font-medium bg-[#005EFF] text-white">
                     Sign Up
                   </Button>
                 </Link>
