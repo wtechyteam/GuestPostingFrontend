@@ -80,7 +80,7 @@ export default function CollaborationSection() {
                 <Text
                   size="text9xl"
                   as="p"
-                  className="sm:text-[35px] md:text-[41px] text-[45.48px] font-medium !text-gray-10 text-center md:text-left"
+                  className="sm:text-[35px] md:text-[41px] text-[45.48px] font-medium !text-gray-10 text-center md:text-center"
                 >
                   <span>More&nbsp;</span>
                   <span className="font-bold underline">{displayedWord}</span>
@@ -90,7 +90,7 @@ export default function CollaborationSection() {
               <Text
                 size="text5xl"
                 as="p"
-                className="text-[20px] mt-[42px] font-medium leading-5 !text-gray-10"
+                className="text-[20px] mt-[42px] font-medium leading-5 !text-gray-10 md:text-center"
               >
                 <>
                   PR Distribution MarketPlace.
