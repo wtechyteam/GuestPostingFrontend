@@ -61,7 +61,7 @@ export default function CollaborationSection() {
 
   return (
     <>
-      <div className="bg-[url(/images/flow1.gif)] py-[76px] h-[746px] md:h-[580px] sm:h-[550px] bg-cover bg-no-repeat md:h-auto md:py-10 px-5 md:px-10">
+      <div className="bg-[url(/images/flow1.gif)] py-[76px] h-[746px] md:h-[580px] sm:h-[580px] bg-cover bg-no-repeat md:h-auto md:py-10 px-5 md:px-10">
         <div>
           <div className="flex items-center md:items-center justify-center md:flex-col">
             <div className="w-[40%] flex flex-col items-start md:w-full md:px-5 md:items-center">
