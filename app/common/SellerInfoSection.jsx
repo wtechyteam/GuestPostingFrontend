@@ -10,8 +10,8 @@ export default function SellerInfoSection({ ...props }) {
     <div
       {...props}
       className={`flex md:flex-col-reverse flex-row md:flex-col items-center w-full md:w-[80%] relative !text-adsy_com-black
-                hover:border-2 hover:border-[#1C817D] hover:rounded-2xl 
-                hover:bg-blue-100 p-4`}
+                
+                 p-4`}
       style={{ borderColor: "transparent" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
