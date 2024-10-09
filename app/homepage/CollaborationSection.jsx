@@ -136,15 +136,15 @@ export default function CollaborationSection() {
       </div>
 
       <div className="h-[115px] w-full bg-[#005EFF] flex flex-row md:flex-col justify-between items-center px-10 mt-[-70px] gap-4 md:gap-12">
-        <div className="text-white text-center pl-5 md:pl-0 sm:pl-0 md:mt-[2rem] sm:mt-[2rem]">
+        <div className=" text-gray-10 text-white text-center pl-5 md:pl-0 sm:pl-0 md:mt-[2rem] sm:mt-[2rem]">
           <p className="font-bold text-[18px] sm:text-[20px] mb-2 ">
             {registeredWebsites}+
           </p>
-          <p className="text-[16px] sm:text-[18px] font-bold">
+          <p className=" text-gray-10 text-[16px] sm:text-[18px] font-bold">
             Registered Websites
           </p>
         </div>
-        <div className="text-white text-center md:hidden sm:hidden">
+        <div className="text-gray-10 text-white text-center md:hidden sm:hidden">
           <p className="font-bold text-[18px] sm:text-[20px] mb-2">
             {registeredWebsites}+
           </p>
@@ -152,7 +152,7 @@ export default function CollaborationSection() {
             Registered Websites
           </p>
         </div>
-        <div className="text-white text-center pr-5 md:pr-0 sm:pr-0  md:hidden sm:hidden">
+        <div className="text-gray-10 text-white text-center pr-5 md:pr-0 sm:pr-0  md:hidden sm:hidden">
           <p className="font-bold text-[18px] sm:text-[20px] mb-2">
             {registeredWebsites}+
           </p>
