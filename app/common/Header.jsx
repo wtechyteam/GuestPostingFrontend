@@ -53,10 +53,12 @@ export default function Header({ ...props }) {
 
         {/* Full Menu - Hidden on Small Screens */}
         <div
-          className={`w-[84%] flex justify-between gap-5 md:w-full md:flex-col md:items-center md:${isMenuOpen ? 'block' : 'hidden'} transition-all`}
+          className={`w-[84%] flex justify-between gap-5 md:w-full md:flex-col md:items-center md:${
+            isMenuOpen ? "block" : "hidden"
+          } md:bg-gray-200 md:rounded-lg transition-all`}
         >
-          <div className="relative rounded-[24px] w-[60%] flex justify-center bg-gray-50_02 p-2.5 md:w-full">
-            <div className="flex w-full md:flex-col">
+          <div className="relative rounded-[24px] w-[60%] flex justify-center bg-gray-50_02 p-2.5 md:w-full md:bg-transparent">
+            <div className="flex w-full md:flex-col md:items-center">
               <ul className="gap-[72px] flex flex-wrap md:gap-5 md:flex-col md:items-center">
                 <li className="relative">
                   <button
@@ -134,7 +136,7 @@ export default function Header({ ...props }) {
             </div>
           </div>
 
-          <div className="w-[28%] flex justify-center md:w-full md:mt-3 md:justify-between">
+          <div className="w-[28%] flex justify-center md:w-full md:mt-3 md:flex-col md:items-center">
             <SelectBox
               shape="round"
               indicator={
@@ -155,17 +157,18 @@ export default function Header({ ...props }) {
               <a className="block">
                 <Button
                   size="md"
-                  className="min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white transition-colors duration-300"
+                  className="min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white transition-colors duration-300 md:mb-3 md:mt-3 md:min-w-[80px] md:px-2 md:py-1" // Smaller size for small screens
                 >
                   Login
                 </Button>
               </a>
             </Link>
+
             <Link href="/signup" legacyBehavior>
               <a className="block">
                 <Button
                   size="md"
-                  className="min-w-[110px] ml-2 font-medium bg-principal_blue text-white transition-colors duration-300"
+                  className="min-w-[110px] ml-4 font-medium bg-principal_blue text-white transition-colors duration-300 md:min-w-[90px] md:px-2 md:py-1" // Smaller size for small screens
                 >
                   Sign Up
                 </Button>
