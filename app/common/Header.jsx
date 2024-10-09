@@ -32,9 +32,10 @@ export default function Header({ ...props }) {
 
   return (
     <header
-      {...props}
-      className={`${props.className} flex justify-center items-center py-6 sm:py-5 z-[7] relative bg-gray-10 shadow-xs`}
-    >
+    {...props}
+    className={`${props.className} flex justify-center items-center py-6 sm:py-5 z-[7] relative bg-gray-10 shadow-xs overflow-x-hidden md:overflow-x-hidden`}
+  >
+  
       <div className="container-xs flex justify-between gap-5 px-12 md:px-5">
         {/* Logo */}
         <Link href="/">
