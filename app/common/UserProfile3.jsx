@@ -10,16 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Cookies from "js-cookie";
 
-// const fetchAllProducts = async () => {
-//   try {
-//     const result = await axios.get("http://localhost:3001/api/products");
-//     console.log("API Response:", result.data);
-//     return result.data;
-//   } catch (error) {
-//     console.error("Error fetching products:", error);
-//     return [];
-//   }
-// };
+
 
 export default function UserProfile3({
   urlIsHiddenText = "URL is hidden",
@@ -66,12 +57,11 @@ export default function UserProfile3({
   const { unblockedProducts,  loading } = useSelector(
     (state) => state.products
   );
-//   const [products, setProducts] = useState([]);
+
   const [isHovered, setIsHovered] = useState(false);
-  // const [loading, setLoading] = useState(false);
-//   const [blockStatus, setBlockStatus] = useState(null);
+ 
   const [errorMessage, setErrorMessage] = useState(null);
-//   const [isBlocked, setIsBlocked] = useState(false);
+
 //  const [wishlistStatus, setWishlistStatus] = useState({});
 
   // const blockProduct = async (productId) => {
@@ -132,18 +122,7 @@ export default function UserProfile3({
 
   
   useEffect(() => {
-    // const fetchData = async () => {
-    //   setLoading(true);
-    //   try {
-    //     const productList = await fetchAllProducts();
-    //     setProducts(productList);
-    //     setLoading(false);
-    //   } catch (error) {
-    //     setErrorMessage("Failed to load products");
-    //     setLoading(false);
-    //   }
-    // };
-    // fetchData();
+    
     dispatch(fetchAllProducts());
     dispatch(fetchUnblockedProducts());
   }, [dispatch]);

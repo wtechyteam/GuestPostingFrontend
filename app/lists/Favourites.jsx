@@ -66,84 +66,14 @@ export default function UserProfile3({
   const { unblockedProducts,  loading } = useSelector(
     (state) => state.products
   );
-//   const [products, setProducts] = useState([]);
+
   const [isHovered, setIsHovered] = useState(false);
-  // const [loading, setLoading] = useState(false);
-//   const [blockStatus, setBlockStatus] = useState(null);
+
   const [errorMessage, setErrorMessage] = useState(null);
-//   const [isBlocked, setIsBlocked] = useState(false);
-//  const [wishlistStatus, setWishlistStatus] = useState({});
-
-  // const blockProduct = async (productId) => {
-  //   const token = Cookies.get("authToken");
-  //   console.log("Token before API call:", token); // Debugging output
-
-  //   if (!token) {
-  //     console.error("Token is missing or undefined.");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await axios.post(
-  //       `http://localhost:3001/api/block/${productId}`,
-  //       {}, // Pass body if needed
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`, // Ensure this header is correctly set
-  //         },
-  //       }
-  //     );
-  //     console.log("Block Response:", response.data);
-  //   } catch (error) {
-  //     console.error(
-  //       "Error blocking product:",
-  //       error.response?.data || error.message
-  //     );
-  //   }
-  // };
-//   const toggleWishlistProduct = async (productId) => {
-//     const token = Cookies.get("authToken");
-//     if (!token) {
-//         console.error("Token is missing or undefined.");
-//         return;
-//     }
-
-//     console.log("Token being sent:", token); // Log the token for debugging
-    
-//     try {
-//         const method = wishlistStatus[productId] ? "delete" : "post";
-//         const response = await axios[method](
-//             `http://localhost:3001/api/wishlist/${productId}`, // Ensure the endpoint matches your backend
-//             {},
-//             {
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                     Authorization: `Bearer ${token}`,
-//                 },
-//             }
-//         );
-//         console.log(`${method === "post" ? "Add to" : "Remove from"} Wishlist Response:`, response.data);
-//         setWishlistStatus((prev) => ({ ...prev, [productId]: !prev[productId] }));
-//     } catch (error) {
-//         console.error("Error managing wishlist:", error.response?.data || error.message);
-//     }
-// };
 
   
   useEffect(() => {
-    // const fetchData = async () => {
-    //   setLoading(true);
-    //   try {
-    //     const productList = await fetchAllProducts();
-    //     setProducts(productList);
-    //     setLoading(false);
-    //   } catch (error) {
-    //     setErrorMessage("Failed to load products");
-    //     setLoading(false);
-    //   }
-    // };
-    // fetchData();
+
     dispatch(fetchAllProducts());
     dispatch(fetchUnblockedProducts());
   }, [dispatch]);
@@ -169,7 +99,7 @@ export default function UserProfile3({
   return (
     <>
       {unblockedProducts
-        // .filter((product) => product.status !== "block") // Filter out blocked products
+ 
         .map((product, index) => {
           const tagArray = product.tags.split(", ").map((tag) => tag.trim());
 
