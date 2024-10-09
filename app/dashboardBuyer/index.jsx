@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";

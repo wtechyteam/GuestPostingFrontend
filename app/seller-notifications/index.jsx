@@ -1,19 +1,18 @@
 "use client";
-import React, { useState } from "react";
+
+import { Img } from "../common/Img";
+import { SelectBox } from "../common/SelectBox";
+import { Text } from "../common/Text";
+import { Heading } from "../common/Heading";
+import TextContentRow from "../common/TextContentRow";
 import Image from "next/image";
-import Sidebar1 from "../common/Sidebar1";
+import SidebarSeller from "../common/SidebarSeller";
+import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
-import { Heading } from "../common/Heading";
-import { Text } from "../common/Text";
-import { SelectBox } from "../common/SelectBox";
-import HowItWorks from "./HowItWorks";
-import { Input } from "./../common/Input";
-import PublisherSearchSection from "./PublisherSearchSection";
-import { CloseSVG } from "../common/Close";
+import React, { useState } from "react";
+import { Suspense } from "react";
 import { useRouter } from "next/navigation";
-import UserProfile3 from "app/common/UserProfile3";
-import Blocked from "./Blocked"
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -21,20 +20,12 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function Wishlist() {
+export default function NotificationPage() {
   const fullName = Cookies.get("fullName");
-  const [searchBarValue10, setSearchBarValue10] = React.useState("");
-  const [publisherValue, setPublisherValue] = React.useState("");
+
+  // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
-  const [editableContent, setEditableContent] = useState({
-    name: "John Smith",
-    location: "India",
-    email: "abcd@gmail.com",
-    dob: "08 July, 2006",
-    contact: "999 9999 999",
-  });
-  const [isEditing, setIsEditing] = useState(false);
   const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
@@ -44,44 +35,74 @@ export default function Wishlist() {
     // Redirect to the login page after logout
     router.push("/login");
   };
+
+  // New state to handle active tab
   const [activeTab, setActiveTab] = useState("tab1");
 
+  // Toggle dropdown visibility
+  const toggleDropdown = () => {
+    setDropdownVisible(!isDropdownVisible);
+  };
+  const toggleHowItWorks = () => {
+    setHowItWorksVisible(!isHowItWorksVisible);
+  };
   const handleLogout2 = () => {
     // Redirect to the login page after logout
     router.push("/profileDetails");
   };
-  const toggleDropdown = () => {
-    setDropdownVisible(!isDropdownVisible);
-  };
+
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
-  const toggleHowItWorks = () => {
-    setHowItWorksVisible(!isHowItWorksVisible);
-  };
-
-  const handleInputChange = (e, field) => {
-    setEditableContent({ ...editableContent, [field]: e.target.value });
-  };
-
-  const handleEditProfile = () => {
-    setIsEditing(true);
-  };
-
-  const handleSave = () => {
-    setIsEditing(false);
-    // Add your save logic here
-  };
-
-  const handleCancel = () => {
-    setIsEditing(false);
-    // Reset the editable content or perform any cancel logic
-  };
+  const data = [
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+  ];
 
   return (
-    <div className="w-full h-100% bg-gray-10 overflow-x-hidden">
-      <div className="flex flex-col items-end bg-gray-50_01 ">
+    <div className="w-full bg-gray-10 overflow-x-hidden">
+      <div className="flex flex-col items-end bg-gray-50_01">
         <header className="fixed top-0 left-0 w-[100%] z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
           <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
             <div className="flex w-[100%] flex-col items-start sm:w-full">
@@ -187,18 +208,16 @@ export default function Wishlist() {
 
         <div className="flex items-start justify-start gap-7 self-stretch">
           <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
-            <Sidebar1 />
+            <SidebarSeller/>
           </div>
-
           <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-            <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
-              Lists
+            <h1 className="text-3xl font-bold text-gray-700 !text-left">
+              Notifications
             </h1>
-
             <div className="mt-6">
               <div className="border-b border-gray-200 mb-6">
                 <ul className="flex">
@@ -211,7 +230,7 @@ export default function Wishlist() {
                       }`}
                       onClick={() => handleTabChange("tab1")}
                     >
-                      Blocked
+                      Read
                     </button>
                   </li>
                   <li className="mr-6">
@@ -223,86 +242,48 @@ export default function Wishlist() {
                       }`}
                       onClick={() => handleTabChange("tab2")}
                     >
-                      Favourites
+                      Unread
                     </button>
                   </li>
                 </ul>
               </div>
               <div className="mt-4">
                 {activeTab === "tab1" && (
-                  <>
-                   <div className="flex gap-4 p-4 ">
-                      <div className="relative w-1/2">
-                        <Input
-                          color="gray_10"
-                          size="xs"
-                          name="Search Input"
-                          placeholder={`Task ID`}
-                          value={searchBarValue10}
-                          onChange={(e) => setSearchBarValue10(e.target.value)}
-                          prefix={
-                            <div className="flex h-[12px] w-[10px] items-center justify-center">
-                              <Image
-                                src="/images/Group 25811.png"
-                                width={10}
-                                height={12}
-                                alt="Contrast"
-                                className="my-0.5 h-[12px] w-[10px]"
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <Text size="textmd" as="p">
+                      <div className=" pt-1 rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <TextContentRow
+                                {...d}
+                                key={"viewhierarchy" + index}
                               />
-                            </div>
-                          }
-                          suffix={
-                            searchBarValue10?.length > 0 ? (
-                              <CloseSVG
-                                onClick={() => setSearchBarValue10("")}
-                                height={12}
-                                width={10}
-                              />
-                            ) : null
-                          }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
-                        />
+                            ))}
+                          </Suspense>
+                        </div>
                       </div>
-
-                      <div className="relative w-1/2">
-                        <Input
-                          color="gray_10"
-                          size="xs"
-                          name="Search Input"
-                          placeholder={`Publisher's Name`}
-                          value={searchBarValue10}
-                          onChange={(e) => setSearchBarValue10(e.target.value)}
-                          prefix={
-                            <div className="flex h-[12px] w-[10px] items-center justify-center">
-                              <Image
-                                src="/images/Group 25811.png"
-                                width={10}
-                                height={12}
-                                alt="Contrast"
-                                className="my-0.5 h-[12px] w-[10px]"
-                              />
-                            </div>
-                          }
-                          suffix={
-                            searchBarValue10?.length > 0 ? (
-                              <CloseSVG
-                                onClick={() => setSearchBarValue10("")}
-                                height={12}
-                                width={10}
-                              />
-                            ) : null
-                          }
-                          className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3 py-5" // Adjust padding or height
-                        />
-                      </div>
-                    </div>
-                      <Blocked/>
-                  </>
+                    </Text>
+                  </div>
                 )}
-               {activeTab === "tab2" && (
-                  <>
-                  <PublisherSearchSection />
-                  </>
+
+                {activeTab === "tab2" && (
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1580px]">
+                    <Text size="textmd" as="p">
+                      <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
+                        <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
+                          <Suspense fallback={<div>Loading feed...</div>}>
+                            {data.map((d, index) => (
+                              <TextContentRow
+                                {...d}
+                                key={"viewhierarchy" + index}
+                              />
+                            ))}
+                          </Suspense>
+                        </div>
+                      </div>
+                    </Text>
+                  </div>
                 )}
               </div>
             </div>

@@ -1,27 +1,26 @@
+import mongoose from "mongoose";
 import { Heading } from "../common/Heading";
 import { Text } from "../common/Text";
+import { Img } from "../common/Img";
 import { Button } from "../common/Button";
 import axios from "axios";
-import React, { useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {
-  fetchAllProducts, fetchBlockedProducts, blockProduct, unblockProduct} from "../redux/productSlice";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Cookies from "js-cookie";
 
-// const fetchAllProducts = async () => {
-//   try {
-//     const result = await axios.get("http://localhost:3001/api/products");
-//     console.log("API Response:", result.data);
-//     return result.data;
-//   } catch (error) {
-//     console.error("Error fetching products:", error);
-//     return [];
-//   }
-// };
+const fetchAllProducts = async () => {
+  try {
+    const result = await axios.get("http://localhost:3001/api/products");
+    console.log("API Response:", result.data);
+    return result.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+};
 
-export default function UserProfile3({
+export default function SellerWebsiteCard({
   urlIsHiddenText = "URL is hidden",
   contributorText = "Contributor",
   artText = "Art",
@@ -61,92 +60,85 @@ export default function UserProfile3({
   description = "Add Minimum Balance to view",
   ...props
 }) {
-  const dispatch = useDispatch();
-
-  const { blockedProducts,  loading } = useSelector(
-    (state) => state.products
-  );
-//   const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
-  // const [loading, setLoading] = useState(false);
-//   const [blockStatus, setBlockStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [blockStatus, setBlockStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-//   const [isBlocked, setIsBlocked] = useState(false);
-//  const [wishlistStatus, setWishlistStatus] = useState({});
+  const [isBlocked, setIsBlocked] = useState(false);
+ const [wishlistStatus, setWishlistStatus] = useState({});
 
-  // const blockProduct = async (productId) => {
-  //   const token = Cookies.get("authToken");
-  //   console.log("Token before API call:", token); // Debugging output
+  const blockProduct = async (productId) => {
+    const token = Cookies.get("authToken");
+    console.log("Token before API call:", token); // Debugging output
 
-  //   if (!token) {
-  //     console.error("Token is missing or undefined.");
-  //     return;
-  //   }
+    if (!token) {
+      console.error("Token is missing or undefined.");
+      return;
+    }
 
-  //   try {
-  //     const response = await axios.post(
-  //       `http://localhost:3001/api/block/${productId}`,
-  //       {}, // Pass body if needed
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`, // Ensure this header is correctly set
-  //         },
-  //       }
-  //     );
-  //     console.log("Block Response:", response.data);
-  //   } catch (error) {
-  //     console.error(
-  //       "Error blocking product:",
-  //       error.response?.data || error.message
-  //     );
-  //   }
-  // };
-//   const toggleWishlistProduct = async (productId) => {
-//     const token = Cookies.get("authToken");
-//     if (!token) {
-//         console.error("Token is missing or undefined.");
-//         return;
-//     }
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/api/block/${productId}`,
+        {}, // Pass body if needed
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Ensure this header is correctly set
+          },
+        }
+      );
+      console.log("Block Response:", response.data);
+    } catch (error) {
+      console.error(
+        "Error blocking product:",
+        error.response?.data || error.message
+      );
+    }
+  };
+  const toggleWishlistProduct = async (productId) => {
+    const token = Cookies.get("authToken");
+    if (!token) {
+        console.error("Token is missing or undefined.");
+        return;
+    }
 
-//     console.log("Token being sent:", token); // Log the token for debugging
+    console.log("Token being sent:", token); // Log the token for debugging
     
-//     try {
-//         const method = wishlistStatus[productId] ? "delete" : "post";
-//         const response = await axios[method](
-//             `http://localhost:3001/api/wishlist/${productId}`, // Ensure the endpoint matches your backend
-//             {},
-//             {
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                     Authorization: `Bearer ${token}`,
-//                 },
-//             }
-//         );
-//         console.log(`${method === "post" ? "Add to" : "Remove from"} Wishlist Response:`, response.data);
-//         setWishlistStatus((prev) => ({ ...prev, [productId]: !prev[productId] }));
-//     } catch (error) {
-//         console.error("Error managing wishlist:", error.response?.data || error.message);
-//     }
-// };
+    try {
+        const method = wishlistStatus[productId] ? "delete" : "post";
+        const response = await axios[method](
+            `http://localhost:3001/api/wishlist/${productId}`, // Ensure the endpoint matches your backend
+            {},
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        console.log(`${method === "post" ? "Add to" : "Remove from"} Wishlist Response:`, response.data);
+        setWishlistStatus((prev) => ({ ...prev, [productId]: !prev[productId] }));
+    } catch (error) {
+        console.error("Error managing wishlist:", error.response?.data || error.message);
+    }
+};
 
   
   useEffect(() => {
-    // const fetchData = async () => {
-    //   setLoading(true);
-    //   try {
-    //     const productList = await fetchAllProducts();
-    //     setProducts(productList);
-    //     setLoading(false);
-    //   } catch (error) {
-    //     setErrorMessage("Failed to load products");
-    //     setLoading(false);
-    //   }
-    // };
-    // fetchData();
-    dispatch(fetchAllProducts());
-    dispatch(fetchBlockedProducts());
-  }, [dispatch]);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const productList = await fetchAllProducts();
+        setProducts(productList);
+        setLoading(false);
+      } catch (error) {
+        setErrorMessage("Failed to load products");
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -156,11 +148,11 @@ export default function UserProfile3({
     return <div>{errorMessage}</div>;
   }
 
-  if (blockedProducts.length === 0) {
+  if (products.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center px-4 py-6 bg-gray-50 border border-gray-300 rounded-lg w-[99%] h-[500px]">
         <Text size="textlg" as="p" className="text-gray-700">
-          No blocked products to show now.
+          No product to show now.
         </Text>
       </div>
     );
@@ -168,10 +160,10 @@ export default function UserProfile3({
 
   return (
     <>
-      {blockedProducts
-        // .filter((product) => product.status !== "block") // Filter out blocked products
+      {products
+        .filter((product) => product.status !== "block") // Filter out blocked products
         .map((product, index) => {
-          // const tagArray = product.tags.split(", ").map((tag) => tag.trim());
+          const tagArray = product.tags.split(", ").map((tag) => tag.trim());
 
           return (
             <div
@@ -210,7 +202,7 @@ export default function UserProfile3({
                     ) : null}
                   </div>
 
-                  {/* <div className="flex flex-1 gap-[9px] px-2.5">
+                  <div className="flex flex-1 gap-[9px] px-2.5">
                     {tagArray.map((tag, index) => (
                       <div
                         key={index}
@@ -225,7 +217,7 @@ export default function UserProfile3({
                         </Text>
                       </div>
                     ))}
-                  </div> */}
+                  </div>
                 </div>
                 <div className="flex items-center">
                   <Link href="/buyPost">
@@ -239,28 +231,28 @@ export default function UserProfile3({
                     </Button>
                   </Link>
 
-                  {/* <Image
+                  <Image
                     src={wishlistStatus[product._id] ? "/images/colouredHeart2.png" : "/images/heart1.png"}
                     width={22}
                     height={22}
                     alt="Like"
                     className="ml-4 h-[24px] w-[24px] cursor-pointer"
                     onClick={() => toggleWishlistProduct(product._id)}
-                  /> */}
+                  />
                   <Image
                     src="/images/blocked.png"
                     width={24}
                     height={24}
                     alt="Block"
                     className="ml-4 h-[24px] w-[24px] cursor-pointer"
-                    onClick={() => dispatch(unblockProduct(product._id))}
+                    onClick={() => blockProduct(product._id)}
                   />
 
-                  {/* Feedback messages
+                  {/* Feedback messages */}
                   {blockStatus && <p>{blockStatus}</p>}
                   {errorMessage && (
                     <p style={{ color: "red" }}>{errorMessage}</p>
-                  )} */}
+                  )}
                 </div>
               </div>
               <hr className="mt-[-0.8rem] border-gray-300 w-full" />

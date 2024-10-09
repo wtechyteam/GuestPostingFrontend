@@ -72,7 +72,7 @@ export default function Sidebar1({ ...props }) {
               Dashboard
             </MenuItem>
           </Link>
-          <Link href="/myWebsite">
+          <Link href="/my-website">
             <MenuItem
               icon={
                 <Image
@@ -87,7 +87,7 @@ export default function Sidebar1({ ...props }) {
               My Website
             </MenuItem>
           </Link>
-          <Link href="/mySocialMedia">
+          <Link href="/my-social-media">
             <MenuItem
               icon={
                 <Image
@@ -147,7 +147,7 @@ export default function Sidebar1({ ...props }) {
               Balance
             </MenuItem>
           </Link>
-          <Link href="/referralProgram">
+          <Link href="/referral-program">
             <MenuItem
               icon={
                 <Image
@@ -162,7 +162,7 @@ export default function Sidebar1({ ...props }) {
               Referral Program
             </MenuItem>
           </Link>
-          <Link href="/notifications">
+          <Link href="/seller-notifications">
             <MenuItem
               icon={
                 <Image
