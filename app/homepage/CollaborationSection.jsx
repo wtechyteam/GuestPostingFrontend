@@ -100,18 +100,19 @@ export default function CollaborationSection() {
                 </>
               </Text>
 
-              <div className="flex space-x-4 mt-4">
-                <Link href="/signup">
-                  <Button className="min-w-[150px] h-[45px] sm:min-w-[170px] sm:h-[50px] font-medium bg-[#005EFF] text-white">
-                    Sign Up
-                  </Button>
-                </Link>
-                <Link href="/signup">
-                  <Button className="min-w-[150px] h-[45px] sm:min-w-[170px] sm:h-[50px] font-medium !bg-[#FFFFFF] text-gray-900">
-                    View Pricing
-                  </Button>
-                </Link>
-              </div>
+              <div className="flex flex-row space-y-4 mt-4 md:flex-col  md:space-x-4 md:space-y-0">
+  <Link href="/signup">
+    <Button className="min-w-[150px] h-[45px] sm:min-w-[170px] md:ml-[1rem] sm:h-[50px] font-medium bg-[#005EFF] text-white">
+      Sign Up
+    </Button>
+  </Link>
+  <Link href="/signup">
+    <Button className="min-w-[150px] h-[45px] ml-[2rem] md:ml-[0] mt-[-1rem] md:mt-[1rem] sm:min-w-[170px] sm:h-[50px] font-medium !bg-[#FFFFFF] text-gray-900">
+      View Pricing
+    </Button>
+  </Link>
+</div>
+
 
               <Text
                 size="text5xl"

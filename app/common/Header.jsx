@@ -4,6 +4,11 @@ import { SelectBox } from "./SelectBox";
 import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
 
 const dropDownOptions = [
   { label: "Option1", value: "Option1" },
@@ -17,6 +22,13 @@ export default function Header({ ...props }) {
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const menuItems = [
+    { text: "How It Works", href: "#" },
+    { text: "FAQs", href: "#" },
+    { text: "Blogs", href: "#" },
+    { text: "Contact Us", href: "/contact-us" },
+  ];
 
   return (
     <header
@@ -36,16 +48,16 @@ export default function Header({ ...props }) {
         </Link>
 
         {/* Burger Menu Icon for Small Screens */}
-        <div className="hidden md:block flex items-center">
+        <div className="hidden md:block sm:block flex items-center">
           <button
             onClick={toggleMenu}
-            className="text-black focus:outline-none"
+            className="relative text-black focus:outline-none"
           >
             <Image
-              src="/images/hamburger.png"
+              src={isMenuOpen ? "/images/close.png" : "/images/hamburger.png"}
               width={24}
               height={24}
-              alt="Menu"
+              alt={isMenuOpen ? "Close Menu" : "Menu"}
               className="h-[24px] w-[24px]"
             />
           </button>
@@ -53,9 +65,7 @@ export default function Header({ ...props }) {
 
         {/* Full Menu - Hidden on Small Screens */}
         <div
-          className={`w-[84%] flex justify-between gap-5 md:w-full md:flex-col md:items-center md:${
-            isMenuOpen ? "block" : "hidden"
-          } md:bg-gray-200 md:rounded-lg transition-all`}
+          className={`flex md:hidden w-[84%] justify-between gap-5 md:w-full md:flex-col md:items-center`}
         >
           <div className="relative rounded-[24px] w-[60%] flex justify-center bg-gray-50_02 p-2.5 md:w-full md:bg-transparent">
             <div className="flex w-full md:flex-col md:items-center">
@@ -104,7 +114,7 @@ export default function Header({ ...props }) {
                     <Text
                       size="textmd"
                       as="p"
-                      className="text-[16px] !font-spacegrotesk2  font-medium !text-black-70_"
+                      className="text-[16px] !font-spacegrotesk2 font-medium !text-black-70_"
                     >
                       FAQs
                     </Text>
@@ -115,7 +125,7 @@ export default function Header({ ...props }) {
                     <Text
                       size="textmd"
                       as="p"
-                      className="text-[16px] !font-spacegrotesk2  font-medium !text-black-70_"
+                      className="text-[16px] !font-spacegrotesk2 font-medium !text-black-70_"
                     >
                       Blogs
                     </Text>
@@ -126,7 +136,7 @@ export default function Header({ ...props }) {
                     <Text
                       size="textmd"
                       as="p"
-                      className="text-[16px] !font-spacegrotesk2  font-medium !text-black-70_"
+                      className="text-[16px] !font-spacegrotesk2 font-medium !text-black-70_"
                     >
                       Contact Us
                     </Text>
@@ -151,13 +161,13 @@ export default function Header({ ...props }) {
               name="Language DropDown"
               placeholder={`EN`}
               options={dropDownOptions}
-              className="w-[26%] gap-1.5 text-black"
+              className="w-[26%] gap-1.5 text-black block md:hidden"
             />
             <Link href="/login" legacyBehavior>
               <a className="block">
                 <Button
                   size="md"
-                  className="min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white transition-colors duration-300 md:mb-3 md:mt-3 md:min-w-[80px] md:px-2 md:py-1" // Smaller size for small screens
+                  className="min-w-[92px] ml-3.5 font-medium bg-blue-500 text-white transition-colors duration-300 md:mb-3 md:mt-3 md:min-w-[80px] md:px-2 md:py-1"
                 >
                   Login
                 </Button>
@@ -168,7 +178,7 @@ export default function Header({ ...props }) {
               <a className="block">
                 <Button
                   size="md"
-                  className="min-w-[110px] ml-4 font-medium bg-principal_blue text-white transition-colors duration-300 md:min-w-[90px] md:px-2 md:py-1" // Smaller size for small screens
+                  className="min-w-[110px] ml-4 font-medium bg-principal_blue text-white transition-colors duration-300 md:min-w-[90px] md:px-2 md:py-1"
                 >
                   Sign Up
                 </Button>
@@ -177,6 +187,55 @@ export default function Header({ ...props }) {
           </div>
         </div>
       </div>
+
+      {/* Collapsed Menu for Small Screens */}
+      <Drawer anchor="right" open={isMenuOpen} onClose={toggleMenu}>
+  <div className="relative p-4 w-64">
+    {/* Close Icon */}
+    <button
+      onClick={toggleMenu}
+      className="absolute top-4 right-4 text-black focus:outline-none"
+    >
+      <Image
+        src="/images/close.png"
+        width={24}
+        height={24}
+        alt="Close Menu"
+        className="h-[20px] w-[20px]"
+      />
+    </button>
+    
+    <List>
+      {menuItems.map((item) => (
+        <ListItem button key={item.text} component={Link} href={item.href} onClick={toggleMenu}>
+          <ListItemText primary={item.text} />
+        </ListItem>
+      ))}
+    </List>
+    <Divider />
+    <Link href="/login" legacyBehavior>
+      <a onClick={toggleMenu}>
+        <Button
+          size="md"
+          className="min-w-[92px] w-full bg-blue-500 text-white transition-colors duration-300 mt-2"
+        >
+          Login
+        </Button>
+      </a>
+    </Link>
+    <Link href="/signup" legacyBehavior>
+      <a onClick={toggleMenu}>
+        <Button
+          size="md"
+          className="min-w-[110px] w-full bg-principal_blue text-white transition-colors duration-300 mt-2"
+        >
+          Sign Up
+        </Button>
+      </a>
+    </Link>
+  </div>
+</Drawer>
+
     </header>
   );
 }
