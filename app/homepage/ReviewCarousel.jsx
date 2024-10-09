@@ -24,7 +24,7 @@ export default function ReviewCardsContainer({ reviews = [] }) {
           <div className="flex justify-center space-x-1 my-2 mb-10">
             {[...Array(5)].map((_, index) => (
               <div key={index} className="bg-[#219653] p-2">
-                <span className="text-white text-2xl">★</span>
+                <span className="text-white text-gray-10 text-2xl">★</span>
               </div>
             ))}
           </div>
@@ -56,7 +56,7 @@ export default function ReviewCardsContainer({ reviews = [] }) {
                       key={starIdx}
                       className={`bg-[#219653] p-0.5 flex items-center justify-center ${starIdx < review.rating ? 'block' : 'hidden'}`}
                     >
-                      <span className="text-white text-xl">★</span>
+                      <span className="text-white text-gray-10 text-xl">★</span>
                     </div>
                   ))}
                 </div>
