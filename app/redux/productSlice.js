@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
- 
+
 // Async thunk to fetch all products
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
@@ -10,7 +10,7 @@ export const fetchAllProducts = createAsyncThunk(
     return response.data;
   }
 );
- 
+
 // Async thunk to fetch blocked products for the current user
 export const fetchBlockedProducts = createAsyncThunk(
   "products/fetchBlocked",
@@ -25,7 +25,7 @@ export const fetchBlockedProducts = createAsyncThunk(
     return response.data;
   }
 );
- 
+
 // Async thunk to fetch unblocked products for the current user
 export const fetchUnblockedProducts = createAsyncThunk(
   "products/fetchUnblocked",
@@ -34,13 +34,13 @@ export const fetchUnblockedProducts = createAsyncThunk(
     const response = await axios.get(
       "http://localhost:3001/api/unblockedProducts",
       {
-        headers: { Authorization: `Bearer ${token}`},
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
     return response.data;
   }
 );
- 
+
 // Async thunk to block a product
 export const blockProduct = createAsyncThunk(
   "products/block",
@@ -60,13 +60,13 @@ export const blockProduct = createAsyncThunk(
     }
   }
 );
- 
+
 // Async thunk to unblock a product
 export const unblockProduct = createAsyncThunk(
   "products/unblock",
   async (productId, { rejectWithValue }) => {
     const token = Cookies.get("authToken");
-    
+
     try {
       const response = await axios.post(
         `http://localhost:3001/api/unblock/${productId}`,
@@ -82,9 +82,7 @@ export const unblockProduct = createAsyncThunk(
     }
   }
 );
- 
- 
- 
+
 // Initial state
 const initialState = {
   products: [],
@@ -93,7 +91,7 @@ const initialState = {
   loading: false,
   error: null,
 };
- 
+
 // Create product slice
 const productSlice = createSlice({
   name: "products",
@@ -123,47 +121,56 @@ const productSlice = createSlice({
       .addCase(blockProduct.fulfilled, (state, action) => {
         // Ensure that action.payload contains just the productId
         const productId = action.payload; // Assuming payload is just the ID
-    
-        console.log('Blocking product:', productId);
-        console.log('Current products before removal:', state.products);
-    
+
+        console.log("Blocking product:", productId);
+        console.log("Current products before removal:", state.products);
+
         // Remove blocked product from products list
-        state.products = state.products.filter((product) => product._id !== productId);
-    
-        console.log('Updated products after removal:', state.products);
-    
+        state.products = state.products.filter(
+          (product) => product._id !== productId
+        );
+
+        console.log("Updated products after removal:", state.products);
+
         // Ensure blockedProducts is an array before pushing
         if (!Array.isArray(state.blockedProducts)) {
-            console.error('blockedProducts is not an array. Initializing as an empty array.');
-            state.blockedProducts = [];
+          console.error(
+            "blockedProducts is not an array. Initializing as an empty array."
+          );
+          state.blockedProducts = [];
         }
-    
+
         // Push the productId into blockedProducts
         state.blockedProducts.push(productId);
-    })
-    
-    
-    .addCase(unblockProduct.fulfilled, (state, action) => {
-      const productId = action.payload;
- 
-      // Remove the product from blockedProducts
-      state.blockedProducts = state.blockedProducts.filter((id) => id !== productId);
- 
-      // Retrieve the original product from allProducts and add it back to products
-      const unblockedProduct = state.products.find((product) => product._id === productId);
-      if (unblockedProduct) {
-        state.products.push(unblockedProduct);
-      } else {
-        console.warn(`Unblocked product with ID ${productId} not found in allProducts.`);
-      }
-    })
-    .addCase(blockProduct.rejected, (state, action) => {
-      state.error = action.payload;
-    })
-    .addCase(unblockProduct.rejected, (state, action) => {
-      state.error = action.payload;
-    });
+      })
+
+      .addCase(unblockProduct.fulfilled, (state, action) => {
+        const productId = action.payload;
+
+        // Remove the product from blockedProducts
+        state.blockedProducts = state.blockedProducts.filter(
+          (id) => id !== productId
+        );
+
+        // Retrieve the original product from allProducts and add it back to products
+        const unblockedProduct = state.products.find(
+          (product) => product._id === productId
+        );
+        if (unblockedProduct) {
+          state.products.push(unblockedProduct);
+        } else {
+          console.warn(
+            `Unblocked product with ID ${productId} not found in allProducts.`
+          );
+        }
+      })
+      .addCase(blockProduct.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(unblockProduct.rejected, (state, action) => {
+        state.error = action.payload;
+      });
   },
 });
- 
+
 export default productSlice.reducer;
