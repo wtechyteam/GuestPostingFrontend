@@ -4,6 +4,7 @@ import { Button } from "../common/Button";
 import SuccessModal from "./../common/SuccessModal";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import SingleBlockedCard from "./../common/SingleBlockedCard";
 import {
   fetchAllProducts,
   fetchBlockedProducts,
@@ -57,7 +58,7 @@ export default function UserProfile3({
 
   const { blockedProducts, loading } = useSelector((state) => state.products);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
+  const [modalMessage, setModalMessage] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -71,8 +72,6 @@ export default function UserProfile3({
       await dispatch(unblockProduct(productId));
       setModalMessage("Product Unblocked Successfully");
       setIsModalOpen(true);
-    
-    
     } catch (error) {
       console.error("Error Unblocking product:", error);
     }
@@ -411,11 +410,11 @@ export default function UserProfile3({
                   className="ml-4 h-[24px] w-[24px] cursor-pointer"
                   onClick={() => handleUnblockProduct(product._id)}
                 />
-                 {isModalOpen && (
-                    <SuccessModal onClose={() => setIsModalOpen(false)}>
-                      <p>{modalMessage}</p>
-                    </SuccessModal>
-                  )}
+                {isModalOpen && (
+                  <SuccessModal onClose={() => setIsModalOpen(false)}>
+                    <p>{modalMessage}</p>
+                  </SuccessModal>
+                )}
               </div>
             </div>
             <hr className="mt-[-0.8rem] border-gray-300 w-full" />
