@@ -61,64 +61,6 @@ export default function UserProfile3({
   const [isHovered, setIsHovered] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  //  const [wishlistStatus, setWishlistStatus] = useState({});
-
-  // const blockProduct = async (productId) => {
-  //   const token = Cookies.get("authToken");
-  //   console.log("Token before API call:", token); // Debugging output
-
-  //   if (!token) {
-  //     console.error("Token is missing or undefined.");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await axios.post(
-  //       `http://localhost:3001/api/block/${productId}`,
-  //       {}, // Pass body if needed
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`, // Ensure this header is correctly set
-  //         },
-  //       }
-  //     );
-  //     console.log("Block Response:", response.data);
-  //   } catch (error) {
-  //     console.error(
-  //       "Error blocking product:",
-  //       error.response?.data || error.message
-  //     );
-  //   }
-  // };
-  //   const toggleWishlistProduct = async (productId) => {
-  //     const token = Cookies.get("authToken");
-  //     if (!token) {
-  //         console.error("Token is missing or undefined.");
-  //         return;
-  //     }
-
-  //     console.log("Token being sent:", token); // Log the token for debugging
-
-  //     try {
-  //         const method = wishlistStatus[productId] ? "delete" : "post";
-  //         const response = await axios[method](
-  //             `http://localhost:3001/api/wishlist/${productId}`, // Ensure the endpoint matches your backend
-  //             {},
-  //             {
-  //                 headers: {
-  //                     "Content-Type": "application/json",
-  //                     Authorization: `Bearer ${token}`,
-  //                 },
-  //             }
-  //         );
-  //         console.log(`${method === "post" ? "Add to" : "Remove from"} Wishlist Response:`, response.data);
-  //         setWishlistStatus((prev) => ({ ...prev, [productId]: !prev[productId] }));
-  //     } catch (error) {
-  //         console.error("Error managing wishlist:", error.response?.data || error.message);
-  //     }
-  // };
-
   useEffect(() => {
     dispatch(fetchAllProducts());
     dispatch(fetchBlockedProducts());
@@ -304,70 +246,6 @@ export default function UserProfile3({
                         </Heading>
                       </div>
                     </div>
-
-                    {/* <div className="border-l border-gray-300 h-full"></div>
-                    <div className="flex w-[16%] flex-col items-start md:w-full">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {completionRateText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {product.completionRate || completionRateValue}
-                      </Heading>
-                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                        <Text
-                          size="textlg"
-                          as="p"
-                          className="text-adsy_com-black text-[11.5px]"
-                        >
-                          {avgLifetimeOfLinksText}
-                        </Text>
-                        <Heading
-                          as="p"
-                          className="text-adsy_com-black font-bold text-[11.5px]"
-                        >
-                          {product.avgLifetimeOfLinks ||
-                            avgLifetimeOfLinksValue}
-                        </Heading>
-                      </div>
-                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                        <Text
-                          size="textlg"
-                          as="p"
-                          className="text-adsy_com-black text-[11.5px]"
-                        >
-                          {tatText}
-                        </Text>
-                        <Heading
-                          as="p"
-                          className="text-adsy_com-black font-bold text-[11.5px]"
-                        >
-                          {product.tat || tatValue}
-                        </Heading>
-                      </div>
-                      <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                        <Text
-                          size="textlg"
-                          as="p"
-                          className="text-adsy_com-black text-[11.5px]"
-                        >
-                          {tasksWithInitialDomainText}
-                        </Text>
-                        <Heading
-                          as="p"
-                          className="text-adsy_com-black font-bold text-[11.5px]"
-                        >
-                          {product.tasksWithInitialDomain ||
-                            tasksWithInitialDomainValue}
-                        </Heading>
-                      </div>
-                    </div> */}
 
                     <div className="border-l border-gray-300 h-full"></div>
 
@@ -623,69 +501,6 @@ export default function UserProfile3({
                       </Heading>
                     </div>
                   </div>
-
-                  {/* <div className="border-l border-gray-300 h-full"></div>
-                  <div className="flex w-[16%] flex-col items-start md:w-full">
-                    <Text
-                      size="textlg"
-                      as="p"
-                      className="text-adsy_com-black text-[11.5px]"
-                    >
-                      {completionRateText}
-                    </Text>
-                    <Heading
-                      as="p"
-                      className="text-adsy_com-black font-bold text-[11.5px]"
-                    >
-                      {product.completionRate || completionRateValue}
-                    </Heading>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {avgLifetimeOfLinksText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {product.avgLifetimeOfLinks || avgLifetimeOfLinksValue}
-                      </Heading>
-                    </div>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {tatText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {product.tat || tatValue}
-                      </Heading>
-                    </div>
-                    <div className="mt-4 flex flex-col items-start gap-0.5 self-stretch">
-                      <Text
-                        size="textlg"
-                        as="p"
-                        className="text-adsy_com-black text-[11.5px]"
-                      >
-                        {tasksWithInitialDomainText}
-                      </Text>
-                      <Heading
-                        as="p"
-                        className="text-adsy_com-black font-bold text-[11.5px]"
-                      >
-                        {product.tasksWithInitialDomain ||
-                          tasksWithInitialDomainValue}
-                      </Heading>
-                    </div>
-                  </div> */}
 
                   <div className="border-l border-gray-300 h-full"></div>
 

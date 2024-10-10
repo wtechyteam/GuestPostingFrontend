@@ -10,6 +10,7 @@ import {
   blockProduct,
   unblockProduct,
 } from "../redux/productSlice";
+import {addToWishlist} from "../redux/wishlistSlice"
 import Link from "next/link";
 import Image from "next/image";
 
@@ -138,6 +139,15 @@ export default function UserProfile3({
       console.error("Error blocking product:", error);
     }
   };
+  const handleAddToWishlistProduct = async (productId) => {
+    try{
+      await dispatch(addToWishlist(productId));
+      setModalMessage("Product Added to Wishlist Successfully");
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Error adding product to wishlist:", error);
+    }
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -236,7 +246,7 @@ export default function UserProfile3({
                     height={22}
                     alt="Like"
                     className="ml-4 h-[24px] w-[24px] cursor-pointer"
-                    onClick={() => toggleWishlistProduct(product._id)}
+                    onClick={() => handleAddToWishlistProduct(product._id)}
                   />
                   <Image
                     src="/images/blocked.png"
