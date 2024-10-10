@@ -1,7 +1,7 @@
 import { Heading } from "../common/Heading";
 import { Text } from "../common/Text";
 import { Button } from "../common/Button";
-import Blocked from "./Blocked";
+import SuccessModal from "./../common/SuccessModal";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -56,9 +56,9 @@ export default function UserProfile3({
   const dispatch = useDispatch();
 
   const { blockedProducts, loading } = useSelector((state) => state.products);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
   const [isHovered, setIsHovered] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState(null);
 
   //  const [wishlistStatus, setWishlistStatus] = useState({});
@@ -124,6 +124,18 @@ export default function UserProfile3({
     dispatch(fetchBlockedProducts());
   }, [dispatch]);
 
+  const handleUnblockProduct = async (productId) => {
+    try {
+      await dispatch(unblockProduct(productId));
+      setModalMessage("Product Unblocked Successfully");
+      setIsModalOpen(true);
+    
+    
+    } catch (error) {
+      console.error("Error Unblocking product:", error);
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -136,7 +148,7 @@ export default function UserProfile3({
     return (
       <div className="flex flex-col items-center justify-center px-4 py-6 bg-gray-50 border border-gray-300 rounded-lg w-[99%] h-[500px]">
         <Text size="textlg" as="p" className="text-gray-700">
-          No blocked products to show now.
+          Loading Blocked Products List...
         </Text>
       </div>
     );
@@ -194,15 +206,19 @@ export default function UserProfile3({
                     </Button>
                   </Link>
 
-                
                   <Image
-                    src="/images/unlock.png"
-                    width={24}
-                    height={24}
-                    alt="Block"
-                    className="ml-4 h-[24px] w-[24px] cursor-pointer"
-                    onClick={() => dispatch(unblockProduct(product._id))}
-                  />
+                  src="/images/unlock.png"
+                  width={24}
+                  height={24}
+                  alt="Block"
+                  className="ml-4 h-[24px] w-[24px] cursor-pointer"
+                  onClick={() => handleUnblockProduct(product._id)}
+                />
+                 {isModalOpen && (
+                    <SuccessModal onClose={() => setIsModalOpen(false)}>
+                      <p>{modalMessage}</p>
+                    </SuccessModal>
+                  )}
                 </div>
               </div>
               <hr className="mt-[-0.8rem] border-gray-300 w-full" />
@@ -515,8 +531,13 @@ export default function UserProfile3({
                   height={24}
                   alt="Block"
                   className="ml-4 h-[24px] w-[24px] cursor-pointer"
-                  onClick={() => dispatch(unblockProduct(product._id))}
+                  onClick={() => handleUnblockProduct(product._id)}
                 />
+                 {isModalOpen && (
+                    <SuccessModal onClose={() => setIsModalOpen(false)}>
+                      <p>{modalMessage}</p>
+                    </SuccessModal>
+                  )}
               </div>
             </div>
             <hr className="mt-[-0.8rem] border-gray-300 w-full" />
