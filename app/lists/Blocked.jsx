@@ -194,16 +194,9 @@ export default function UserProfile3({
                     </Button>
                   </Link>
 
-                  {/* <Image
-                    src={wishlistStatus[product._id] ? "/images/colouredHeart2.png" : "/images/heart1.png"}
-                    width={22}
-                    height={22}
-                    alt="Like"
-                    className="ml-4 h-[24px] w-[24px] cursor-pointer"
-                    onClick={() => toggleWishlistProduct(product._id)}
-                  /> */}
+                
                   <Image
-                    src="/images/blocked.png"
+                    src="/images/unlock.png"
                     width={24}
                     height={24}
                     alt="Block"
@@ -517,7 +510,7 @@ export default function UserProfile3({
                 </Link>
 
                 <Image
-                  src="/images/blocked.png"
+                  src="/images/unlock.png"
                   width={24}
                   height={24}
                   alt="Block"

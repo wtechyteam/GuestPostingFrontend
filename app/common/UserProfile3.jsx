@@ -1,15 +1,17 @@
 import { Heading } from "../common/Heading";
 import { Text } from "../common/Text";
 import { Button } from "../common/Button";
-import axios from "axios";
-import React, { useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import SuccessModal from "../common/SuccessModal";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
-  fetchAllProducts, fetchUnblockedProducts, blockProduct, unblockProduct} from "../redux/productSlice";
+  fetchAllProducts,
+  fetchUnblockedProducts,
+  blockProduct,
+  unblockProduct,
+} from "../redux/productSlice";
 import Link from "next/link";
 import Image from "next/image";
-import Cookies from "js-cookie";
-
 
 
 export default function UserProfile3({
@@ -54,15 +56,15 @@ export default function UserProfile3({
 }) {
   const dispatch = useDispatch();
 
-  const { unblockedProducts,  loading } = useSelector(
-    (state) => state.products
-  );
+  const { unblockedProducts, loading } = useSelector((state) => state.products);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const [isHovered, setIsHovered] = useState(false);
- 
+
   const [errorMessage, setErrorMessage] = useState(null);
 
-//  const [wishlistStatus, setWishlistStatus] = useState({});
+  //  const [wishlistStatus, setWishlistStatus] = useState({});
 
   // const blockProduct = async (productId) => {
   //   const token = Cookies.get("authToken");
@@ -92,40 +94,50 @@ export default function UserProfile3({
   //     );
   //   }
   // };
-//   const toggleWishlistProduct = async (productId) => {
-//     const token = Cookies.get("authToken");
-//     if (!token) {
-//         console.error("Token is missing or undefined.");
-//         return;
-//     }
+  //   const toggleWishlistProduct = async (productId) => {
+  //     const token = Cookies.get("authToken");
+  //     if (!token) {
+  //         console.error("Token is missing or undefined.");
+  //         return;
+  //     }
 
-//     console.log("Token being sent:", token); // Log the token for debugging
-    
-//     try {
-//         const method = wishlistStatus[productId] ? "delete" : "post";
-//         const response = await axios[method](
-//             `http://localhost:3001/api/wishlist/${productId}`, // Ensure the endpoint matches your backend
-//             {},
-//             {
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                     Authorization: `Bearer ${token}`,
-//                 },
-//             }
-//         );
-//         console.log(`${method === "post" ? "Add to" : "Remove from"} Wishlist Response:`, response.data);
-//         setWishlistStatus((prev) => ({ ...prev, [productId]: !prev[productId] }));
-//     } catch (error) {
-//         console.error("Error managing wishlist:", error.response?.data || error.message);
-//     }
-// };
+  //     console.log("Token being sent:", token); // Log the token for debugging
 
-  
+  //     try {
+  //         const method = wishlistStatus[productId] ? "delete" : "post";
+  //         const response = await axios[method](
+  //             `http://localhost:3001/api/wishlist/${productId}`, // Ensure the endpoint matches your backend
+  //             {},
+  //             {
+  //                 headers: {
+  //                     "Content-Type": "application/json",
+  //                     Authorization: `Bearer ${token}`,
+  //                 },
+  //             }
+  //         );
+  //         console.log(`${method === "post" ? "Add to" : "Remove from"} Wishlist Response:`, response.data);
+  //         setWishlistStatus((prev) => ({ ...prev, [productId]: !prev[productId] }));
+  //     } catch (error) {
+  //         console.error("Error managing wishlist:", error.response?.data || error.message);
+  //     }
+  // };
+
   useEffect(() => {
-    
     dispatch(fetchAllProducts());
     dispatch(fetchUnblockedProducts());
   }, [dispatch]);
+
+  const handleBlockProduct = async (productId) => {
+    try {
+      await dispatch(blockProduct(productId));
+      setModalMessage("Product Blocked Successfully");
+      setIsModalOpen(true);
+    
+    
+    } catch (error) {
+      console.error("Error blocking product:", error);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -139,7 +151,7 @@ export default function UserProfile3({
     return (
       <div className="flex flex-col items-center justify-center px-4 py-6 bg-gray-50 border border-gray-300 rounded-lg w-[99%] h-[500px]">
         <Text size="textlg" as="p" className="text-gray-700">
-          No product to show now.
+          Loading Your Products. Please Wait...
         </Text>
       </div>
     );
@@ -232,14 +244,15 @@ export default function UserProfile3({
                     height={24}
                     alt="Block"
                     className="ml-4 h-[24px] w-[24px] cursor-pointer"
-                    onClick={() => dispatch(blockProduct(product._id))}
+                    onClick={() => handleBlockProduct(product._id)}
+
                   />
 
-                  {/* Feedback messages
-                  {blockStatus && <p>{blockStatus}</p>}
-                  {errorMessage && (
-                    <p style={{ color: "red" }}>{errorMessage}</p>
-                  )} */}
+                  {isModalOpen && (
+                    <SuccessModal onClose={() => setIsModalOpen(false)}>
+                      <p>{modalMessage}</p>
+                    </SuccessModal>
+                  )}
                 </div>
               </div>
               <hr className="mt-[-0.8rem] border-gray-300 w-full" />
