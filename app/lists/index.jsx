@@ -231,7 +231,7 @@ export default function Wishlist() {
               <div className="mt-4">
                 {activeTab === "tab1" && (
                   <>
-                   <div className="flex gap-4 p-4 ">
+                   <div className="flex gap-4 p-4 mb-8">
                       <div className="relative w-1/2">
                         <Input
                           color="gray_10"

@@ -259,7 +259,7 @@ export default function UserProfile3({
               <div className="self-stretch">
                 <div className="flex flex-col gap-4">
                   <div className="mr-3.5 flex items-start md:mr-0 md:flex-col">
-                    <div className="flex w-[16%] flex-col gap-4 md:w-full">
+                    <div className="flex w-[20%] flex-col gap-4 md:w-full">
                       <div className="flex flex-col items-start gap-0.5">
                         <Text
                           size="textlg"
@@ -292,8 +292,8 @@ export default function UserProfile3({
                       </div>
                     </div>
 
-                    <div className="border-l border-gray-300 h-full"></div>
-                    <div className="flex w-[12%] flex-col items-start md:w-full">
+                
+                    <div className="flex w-[20%] flex-col items-start md:w-full">
                       <Text
                         size="textlg"
                         as="p"
@@ -332,15 +332,15 @@ export default function UserProfile3({
                         </Text>
                         <Heading
                           as="p"
-                          className="text-adsy_com-black font-bold text-[11.5px]"
+                          className="text-adsy_com-black font-bold text-[11.5px] mb-2"
                         >
                           {product.ahrefsDRrange || ahrefsDRRangeValue}
                         </Heading>
                       </div>
                     </div>
 
-                    <div className="border-l border-gray-300 h-full"></div>
-                    <div className="flex w-[16%] flex-col items-start md:w-full">
+                  
+                    {/* <div className="flex w-[16%] flex-col items-start md:w-full">
                       <Text
                         size="textlg"
                         as="p"
@@ -401,12 +401,10 @@ export default function UserProfile3({
                             tasksWithInitialDomainValue}
                         </Heading>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="border-l border-gray-300 h-full"></div>
-
-                    <div className="border-l border-gray-300 h-full"></div>
-                    <div className="flex w-[16%] flex-col items-start md:w-full">
+                
+                    <div className="flex w-[20%] flex-col items-start md:w-full">
                       <Text
                         size="textlg"
                         as="p"
@@ -437,7 +435,7 @@ export default function UserProfile3({
                         </Heading>
                       </div>
                     </div>
-                    <div className="flex w-[16%] flex-col items-start md:w-full">
+                    <div className="flex w-[20%] flex-col items-start md:w-full">
                       <Text
                         size="textlg"
                         as="p"
@@ -467,7 +465,7 @@ export default function UserProfile3({
                         </Heading>
                       </div>
                     </div>
-                    <div className="flex w-[16%] flex-col items-start md:w-full">
+                    <div className="flex w-[20%] flex-col items-start md:w-full">
                       <Text
                         size="textlg"
                         as="p"
