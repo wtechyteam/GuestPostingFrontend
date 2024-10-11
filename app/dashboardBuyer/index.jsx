@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
@@ -159,7 +159,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Main Content */}
-          <div className="ml-[-1600px] md:ml-0 sm:ml-0  mt-[80px] md:mt-0 sm-mt-0 flex flex-1 flex-col gap-7">
+          <div className="w-[72rem] ml-2 md:ml-0 sm:ml-0 mt-[80px] md:mt-0 sm:mt-0 flex flex-1 flex-col gap-7 ">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}

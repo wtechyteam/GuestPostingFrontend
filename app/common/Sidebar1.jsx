@@ -164,6 +164,7 @@ export default function Sidebar1({ ...props }) {
               Notifications
             </MenuItem>
           </Link>
+
           <Link href="/support">
             <MenuItem
               icon={
@@ -197,7 +198,7 @@ export default function Sidebar1({ ...props }) {
           </Link>
         </div>
 
-        <div className="mt-[19rem]">
+        <div className="mt-10">
           <MenuItem
             icon={
               <Image
