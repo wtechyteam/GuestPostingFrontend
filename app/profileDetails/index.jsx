@@ -10,7 +10,7 @@ import { SelectBox } from "../common/SelectBox";
 import HowItWorks from "./HowItWorks";
 import { Input } from "./../common/Input";
 import { useRouter } from "next/navigation";
-import axios from "axios"; 
+import axios from "axios";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -137,311 +137,310 @@ export default function ProfileDetailsPage() {
   const handleCancel = () => {
     setIsEditing(false);
   };
-  return(
+  return (
     <>
-    <div className="w-full bg-gray-10 overflow-x-hidden">
-      <div className="flex flex-col items-end bg-gray-50_01">
-        <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl">
-          <div className="mb-1 flex w-[96%] items-center justify-between">
-            <div className="flex flex-col items-start">
-              <Image
-                src="/images/logo.png"
-                width={56}
-                height={32}
-                alt="Sidebar Logo"
-                className="ml-6 h-[32px] w-[56px] object-contain"
-              />
-            </div>
-            <div className="flex w-[40%] mr-[100px] flex-col items-start sm:w-full  md:ml-0 sm:ml-0">
-            <Heading
-              size="heading2xl"
-              as="h6"
-              className="!font-publicsans !font-semibold !text-gray-900"
-            >
-              Hey, {fullName ? fullName : "Guest"}.
-            </Heading>
-            <div className="flex">
-              <Text size="textmd" as="p" className="!text-gray-600">
-                Here is all your Relik analytics overview
-              </Text>
-            </div>
-          </div>
-
-          <div className="flex w-[18%]  ml-4 mr-[-1rem] items-center justify-center gap-4 sm:w-full">
-            <SelectBox
-              color="gray_50"
-              size="sm"
-              indicator={
+      <div className="w-full bg-gray-10 overflow-x-hidden">
+        <div className="flex flex-col items-end bg-gray-50_01">
+          <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl">
+            <div className="mb-1 flex w-[96%] items-center justify-between">
+              <div className="flex flex-col items-start">
                 <Image
-                  src="/images/CaretDown.png"
-                  width={24}
-                  height={20}
-                  alt="Arrow Down"
-                  className="h-[20px] w-[24px] ml-2"
-                />
-              }
-              getOptionLabel={(e) => (
-                <div className="flex items-center">
-                  <Image
-                    src="/images/Flag.png"
-                    width={16}
-                    height={20}
-                    alt="Image"
-                    className="h-[20px] w-[24px]"
-                  />
-                  <span className="ml-2">{e.label}</span>
-                </div>
-              )}
-              name="Language Dropdown"
-              placeholder={`English`}
-              options={dropDownOptions}
-              defaultValue={dropDownOptions[0]}
-              className="flex-grow rounded-lg font-publicsans bg-gray-100 px-4 py-2 my-2"
-            />
-
-            <Link href="#">
-              <Image
-                src="/images/Icon.png"
-                width={20}
-                height={20}
-                alt="Notification Icon"
-                className="h-[20px] w-[16px]"
-              />
-            </Link>
-
-            <div className="relative">
-              <div
-                className="flex flex-col items-center rounded-[20px] bg-warning-200 p-1 cursor-pointer"
-                onClick={toggleDropdown}
-              >
-                <Image
-                  src="/images/Profile.png"
-                  width={32}
+                  src="/images/logo.png"
+                  width={56}
                   height={32}
-                  alt="Profile Image"
-                  className="h-[32px] w-[32px] rounded-[16px] object-cover"
+                  alt="Sidebar Logo"
+                  className="ml-6 h-[32px] w-[56px] object-contain"
                 />
               </div>
-
-              {isDropdownVisible && (
-                <div className="absolute right-0 mt-2 w-48 bg-gray-10 border rounded-lg shadow-lg z-50">
-                  <button
-                    onClick={handleLogout2}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Profile Settings
-                  </button>
-                  <button
-                    onClick={handleLogout}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Switch To Seller
-                  </button>
-                  <button
-                    onClick={handleLogout}
-                    className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-          </div>
-        </header>
-
-        <div className="flex items-start justify-start gap-7 self-stretch mt-[70px]">
-          <div className="fixed top-[60px] left-0 h-full bg-white shadow-md z-20">
-            <Sidebar1 />
-          </div>
-          <div className="ml-[300px] mt-[30px] flex flex-1 flex-col gap-7">
-            <HowItWorks
-              isHowItWorksVisible={isHowItWorksVisible}
-              toggleHowItWorks={toggleHowItWorks}
-            />
-          <div className="rounded-[20px] bg-gray-10 p-6 shadow-lg flex flex-col mb-6 min-h-[700px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1000px] xl:max-w-[1125px]">
-
-<h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
-                Profile Details
-              </h1>
-
-              <div className="relative flex items-start w-full mb-4">
-                <Image
-                  src="/images/Profile2.png"
-                  width={154}
-                  height={154}
-                  alt="Profile Image"
-                  className="rounded-full mr-8"
-                />
-
-                <div className="max-w-lg mt-10 ml-8 sm:mt-0">
-                  <Text
-                    size="text6xl"
-                    as="p"
-                    className="!text-gray-900 leading-normal"
-                  >
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout. It is to Boost Your Business With Collaborator.
+              <div className="flex w-[40%] mr-[100px] flex-col items-start sm:w-full  md:ml-0 sm:ml-0">
+                <Heading
+                  size="heading2xl"
+                  as="h6"
+                  className="!font-publicsans !font-semibold !text-gray-900"
+                >
+                  Hey, {fullName ? fullName : "Guest"}.
+                </Heading>
+                <div className="flex">
+                  <Text size="textmd" as="p" className="!text-gray-600">
+                    Here is all your Relik analytics overview
                   </Text>
                 </div>
+              </div>
 
-                {!isEditing && (
-                  <button
-                    className="absolute bottom-20 right-4 rounded-lg bg-blue-500 text-white text-gray-10 py-2 px-6 sm:right-0 sm:bottom-0"
-                    onClick={handleEditProfile}
+              <div className="flex w-[18%]  ml-4 mr-[-1rem] items-center justify-center gap-4 sm:w-full">
+                <SelectBox
+                  color="gray_50"
+                  size="sm"
+                  indicator={
+                    <Image
+                      src="/images/CaretDown.png"
+                      width={24}
+                      height={20}
+                      alt="Arrow Down"
+                      className="h-[20px] w-[24px] ml-2"
+                    />
+                  }
+                  getOptionLabel={(e) => (
+                    <div className="flex items-center">
+                      <Image
+                        src="/images/Flag.png"
+                        width={16}
+                        height={20}
+                        alt="Image"
+                        className="h-[20px] w-[24px]"
+                      />
+                      <span className="ml-2">{e.label}</span>
+                    </div>
+                  )}
+                  name="Language Dropdown"
+                  placeholder={`English`}
+                  options={dropDownOptions}
+                  defaultValue={dropDownOptions[0]}
+                  className="flex-grow rounded-lg font-publicsans bg-gray-100 px-4 py-2 my-2"
+                />
+
+                <Link href="#">
+                  <Image
+                    src="/images/Icon.png"
+                    width={20}
+                    height={20}
+                    alt="Notification Icon"
+                    className="h-[20px] w-[16px]"
+                  />
+                </Link>
+
+                <div className="relative">
+                  <div
+                    className="flex flex-col items-center rounded-[20px] bg-warning-200 p-1 cursor-pointer"
+                    onClick={toggleDropdown}
                   >
-                    Edit Profile
-                  </button>
+                    <Image
+                      src="/images/Profile.png"
+                      width={32}
+                      height={32}
+                      alt="Profile Image"
+                      className="h-[32px] w-[32px] rounded-[16px] object-cover"
+                    />
+                  </div>
+
+                  {isDropdownVisible && (
+                    <div className="absolute right-0 mt-2 w-48 bg-gray-10 border rounded-lg shadow-lg z-50">
+                      <button
+                        onClick={handleLogout2}
+                        className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                      >
+                        Profile Settings
+                      </button>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                      >
+                        Switch To Seller
+                      </button>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div className="flex items-start justify-start gap-7 self-stretch mt-[70px]">
+            <div className="fixed top-[60px] left-0 h-full bg-white shadow-md z-20">
+              <Sidebar1 />
+            </div>
+            <div className="ml-[300px] mt-[30px] flex flex-1 flex-col gap-7">
+              <HowItWorks
+                isHowItWorksVisible={isHowItWorksVisible}
+                toggleHowItWorks={toggleHowItWorks}
+              />
+              <div className="rounded-[20px] bg-gray-10 p-6 shadow-lg flex flex-col mb-6 min-h-[700px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1000px] xl:max-w-[1125px]">
+                <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
+                  Profile Details
+                </h1>
+
+                <div className="relative flex items-start w-full mb-4">
+                  <Image
+                    src="/images/Profile2.png"
+                    width={154}
+                    height={154}
+                    alt="Profile Image"
+                    className="rounded-full mr-8"
+                  />
+
+                  <div className="max-w-lg mt-10 ml-8 sm:mt-0">
+                    <Text
+                      size="text6xl"
+                      as="p"
+                      className="!text-gray-900 leading-normal"
+                    >
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its layout. It is to Boost Your Business With
+                      Collaborator.
+                    </Text>
+                  </div>
+
+                  {!isEditing && (
+                    <button
+                      className="absolute bottom-20 right-4 rounded-lg bg-blue-500 text-white text-gray-10 py-2 px-6 sm:right-0 sm:bottom-0"
+                      onClick={handleEditProfile}
+                    >
+                      Edit Profile
+                    </button>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 w-full mt-4">
+                  <div className="flex items-center">
+                    <label className="text-gray-700 font-semibold mr-2">
+                      Name:
+                    </label>
+                    <input
+                      type="text"
+                      value={editableContent.name}
+                      onChange={(e) => handleInputChange(e, "name")}
+                      className={`p-2 border border-gray-600 ${
+                        isEditing ? "!bg-gray-300" : "!bg-white"
+                      } !rounded-lg !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-11 sm:ml-0`}
+                      disabled={!isEditing}
+                    />
+
+                    {isEditing && (
+                      <Image
+                        src="/images/Group 25818.png"
+                        width={24}
+                        height={24}
+                        alt="Name Icon"
+                        className="ml-2"
+                      />
+                    )}
+                  </div>
+
+                  <div className="flex items-center">
+                    <label className="text-gray-700 font-semibold mr-2">
+                      Email:
+                    </label>
+                    <input
+                      type="email"
+                      value={editableContent.email}
+                      onChange={(e) => handleInputChange(e, "email")}
+                      className={`p-2 border !text-adsy_com-black ${
+                        isEditing ? "!bg-gray-300 " : "!bg-white"
+                      } !rounded-lg h-[30px] w-[200px] text-center !text-gray-900 placeholder:text-adsy_com-black sm:ml-0 ml-14`}
+                      disabled={!isEditing}
+                    />
+
+                    {isEditing && (
+                      <Image
+                        src="/images/Group 25818.png"
+                        width={24}
+                        height={24}
+                        alt="Email Icon"
+                        className="ml-2"
+                      />
+                    )}
+                  </div>
+
+                  <div className="flex items-center">
+                    <label className="text-gray-700 font-semibold mr-2">
+                      Location:
+                    </label>
+                    <input
+                      type="text"
+                      value={editableContent.location}
+                      onChange={(e) => handleInputChange(e, "location")}
+                      className={`p-2 border ${
+                        isEditing ? "!bg-gray-300" : "!bg-white"
+                      } !rounded-lg  !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-[-1] sm:ml-0 ml-5`}
+                      disabled={!isEditing}
+                    />
+                    {isEditing && (
+                      <Image
+                        src="/images/Group 25818.png"
+                        width={24}
+                        height={24}
+                        alt="Location Icon"
+                        className="ml-2"
+                      />
+                    )}
+                  </div>
+
+                  <div className="flex items-center">
+                    <label className="text-gray-700 font-semibold mr-2">
+                      Date of Birth:
+                    </label>
+                    <input
+                      type="date"
+                      value={editableContent.dob}
+                      onChange={(e) => handleInputChange(e, "dob")}
+                      className={`p-2 border ${
+                        isEditing ? "!bg-gray-300" : "!bg-white"
+                      } !rounded-lg !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-5`}
+                      disabled={!isEditing}
+                    />
+                    {isEditing && (
+                      <Image
+                        src="/images/Group 25818.png"
+                        width={24}
+                        height={24}
+                        alt="DOB Icon"
+                        className="ml-2"
+                      />
+                    )}
+                  </div>
+
+                  <div className="flex items-center">
+                    <label className="text-gray-700 font-semibold mr-2">
+                      Contact:
+                    </label>
+                    <input
+                      type="text"
+                      value={editableContent.contact}
+                      onChange={(e) => handleInputChange(e, "contact")}
+                      className={`p-2 border ${
+                        isEditing ? "!bg-gray-300" : "!bg-white"
+                      } !rounded-lg  !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center sm:ml-0 ml-6`}
+                      disabled={!isEditing}
+                    />
+                    {isEditing && (
+                      <Image
+                        src="/images/Group 25818.png"
+                        width={24}
+                        height={24}
+                        alt="Contact Icon"
+                        className="ml-2"
+                      />
+                    )}
+                  </div>
+                </div>
+
+                {isEditing && (
+                  <div className="flex mt-4 gap-4">
+                    <button
+                      className="rounded-lg bg-blue-500 text-white text-gray-10 py-2 px-6"
+                      onClick={handleSave}
+                    >
+                      Save
+                    </button>
+                    <button
+                      className="rounded-lg bg-gray-300 text-gray-700 py-2 px-6"
+                      onClick={handleCancel}
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 )}
               </div>
-
-              <div className="grid grid-cols-2 gap-4 w-full mt-4">
-                <div className="flex items-center">
-                  <label className="text-gray-700 font-semibold mr-2">
-                    Name:
-                  </label>
-                  <input
-                    type="text"
-                    value={editableContent.name}
-                    onChange={(e) => handleInputChange(e, "name")}
-                    className={`p-2 border border-gray-600 ${
-                      isEditing ? "!bg-gray-300" : "!bg-white"
-                    } !rounded-lg !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-11 sm:ml-0`}
-                    disabled={!isEditing}
-                  />
-
-                  {isEditing && (
-                    <Image
-                      src="/images/Group 25818.png"
-                      width={24}
-                      height={24}
-                      alt="Name Icon"
-                      className="ml-2"
-                    />
-                  )}
-                </div>
-
-                <div className="flex items-center">
-                  <label className="text-gray-700 font-semibold mr-2">
-                    Email:
-                  </label>
-                  <input
-                    type="email"
-                    value={editableContent.email}
-                    onChange={(e) => handleInputChange(e, "email")}
-                    className={`p-2 border !text-adsy_com-black ${
-                      isEditing ? "!bg-gray-300 " : "!bg-white"
-                    } !rounded-lg h-[30px] w-[200px] text-center !text-gray-900 placeholder:text-adsy_com-black sm:ml-0 ml-14`}
-                    disabled={!isEditing}
-                  />
-
-                  {isEditing && (
-                    <Image
-                      src="/images/Group 25818.png"
-                      width={24}
-                      height={24}
-                      alt="Email Icon"
-                      className="ml-2"
-                    />
-                  )}
-                </div>
-
-                <div className="flex items-center">
-                  <label className="text-gray-700 font-semibold mr-2">
-                    Location:
-                  </label>
-                  <input
-                    type="text"
-                    value={editableContent.location}
-                    onChange={(e) => handleInputChange(e, "location")}
-                    className={`p-2 border ${
-                      isEditing ? "!bg-gray-300" : "!bg-white"
-                    } !rounded-lg  !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-[-1] sm:ml-0 ml-5`}
-                    disabled={!isEditing}
-                  />
-                  {isEditing && (
-                    <Image
-                      src="/images/Group 25818.png"
-                      width={24}
-                      height={24}
-                      alt="Location Icon"
-                      className="ml-2"
-                    />
-                  )}
-                </div>
-
-                <div className="flex items-center">
-                  <label className="text-gray-700 font-semibold mr-2">
-                    Date of Birth:
-                  </label>
-                  <input
-                    type="date"
-                    value={editableContent.dob}
-                    onChange={(e) => handleInputChange(e, "dob")}
-                    className={`p-2 border ${
-                      isEditing ? "!bg-gray-300" : "!bg-white"
-                    } !rounded-lg !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center ml-5`}
-                    disabled={!isEditing}
-                  />
-                  {isEditing && (
-                    <Image
-                      src="/images/Group 25818.png"
-                      width={24}
-                      height={24}
-                      alt="DOB Icon"
-                      className="ml-2"
-                    />
-                  )}
-                </div>
-
-                <div className="flex items-center">
-                  <label className="text-gray-700 font-semibold mr-2">
-                    Contact:
-                  </label>
-                  <input
-                    type="text"
-                    value={editableContent.contact}
-                    onChange={(e) => handleInputChange(e, "contact")}
-                    className={`p-2 border ${
-                      isEditing ? "!bg-gray-300" : "!bg-white"
-                    } !rounded-lg  !text-gray-900 placeholder:text-adsy_com-black h-[30px] w-[150px] text-center sm:ml-0 ml-6`}
-                    disabled={!isEditing}
-                  />
-                  {isEditing && (
-                    <Image
-                      src="/images/Group 25818.png"
-                      width={24}
-                      height={24}
-                      alt="Contact Icon"
-                      className="ml-2"
-                    />
-                  )}
-                </div>
-              </div>
-
-              {isEditing && (
-                <div className="flex mt-4 gap-4">
-                  <button
-                    className="rounded-lg bg-blue-500 text-white text-gray-10 py-2 px-6"
-                    onClick={handleSave}
-                  >
-                    Save
-                  </button>
-                  <button
-                    className="rounded-lg bg-gray-300 text-gray-700 py-2 px-6"
-                    onClick={handleCancel}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              )}
             </div>
-          
           </div>
         </div>
       </div>
-    </div>
-  </>
-  )
+    </>
+  );
 }
