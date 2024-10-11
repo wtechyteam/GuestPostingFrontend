@@ -339,7 +339,7 @@ export default function SettingsPage() {
                             onChange={(e) => handleInputChange(e, "contact")}
                             disabled={!isEditing}
                           />
-                          <button className="absolute mt-2 top-1/2 transform -translate-y-1/2 right-2 bg-red-600 text-white px-1.5 py-0.5 rounded text-xs">
+                          <button className="absolute mt-2 top-1/2 transform -translate-y-1/2 right-2 bg-red-600  text-gray-10 text-white px-1.5 py-0.5 rounded text-xs">
                             Unverified
                           </button>
                         </div>
@@ -528,13 +528,13 @@ export default function SettingsPage() {
 
                         <div className="flex mt-4 space-x-4">
                           <button
-                            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
+                            className="bg-blue-600 text-white text-gray-10 px-6 py-2 rounded-md hover:bg-blue-700"
                             onClick={handleSave}
                           >
                             Save
                           </button>
                           <button
-                            className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md"
+                            className="bg-gray-200  text-gray-700 px-4 py-2 rounded-md"
                             onClick={handleCancel}
                           >
                             Cancel

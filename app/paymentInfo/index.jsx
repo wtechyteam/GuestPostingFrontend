@@ -343,7 +343,7 @@ export default function PaymentInfoPage() {
 
                       <div className="mt-4 mb-2 flex justify-end">
                         <button
-                          className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                          className="text-white text-gray-10 font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
                           style={{ backgroundColor: "#00AB39" }}
                         >
                           Add Funds
@@ -370,7 +370,7 @@ export default function PaymentInfoPage() {
                       </Text>
                       <div className="mt-4 mb-2 flex justify-end">
                         <button
-                          className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                          className="text-white text-gray-10 font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
                           style={{ backgroundColor: "#00AB39" }}
                         >
                           Add Funds
@@ -396,7 +396,7 @@ export default function PaymentInfoPage() {
                       </Text>
                       <div className="mt-4 mb-2 flex justify-end">
                         <button
-                          className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                          className="text-white text-gray-10 font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
                           style={{ backgroundColor: "#00AB39" }}
                         >
                           Add Funds
@@ -422,7 +422,7 @@ export default function PaymentInfoPage() {
                       </Text>
                       <div className="mt-4 mb-2 flex justify-end">
                         <button
-                          className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                          className="text-white text-gray-10 font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
                           style={{ backgroundColor: "#00AB39" }}
                         >
                           Add Funds
@@ -448,7 +448,7 @@ export default function PaymentInfoPage() {
                       </Text>
                       <div className="mt-4 mb-2 flex justify-end">
                         <button
-                          className="text-white font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
+                          className="text-white text-gray-10 font-bold py-2 px-4 mr-8 mb-2 rounded hover:bg-green-200"
                           style={{ backgroundColor: "#00AB39" }}
                         >
                           Add Funds
