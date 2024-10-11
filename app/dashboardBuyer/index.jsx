@@ -165,7 +165,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Main Content */}
-          <div className="w-[72rem] ml-2 md:ml-0 sm:ml-0 mt-[80px] md:mt-0 sm:mt-0 flex flex-1 flex-col gap-7 ">
+          <div className="w-[72rem] xl:ml-[-1400px] ml-2 md:ml-0 sm:ml-0 mt-[80px] md:mt-0 sm:mt-0 flex flex-1 flex-col gap-7 ">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}

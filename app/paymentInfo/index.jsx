@@ -327,7 +327,7 @@ export default function DashboardPage() {
 
               <div className="mt-4">
                 {activeTab === "tab1" && (
-                  <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1135px]">
+                  <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1120px]">
                     <Text size="textmd" as="p">
                       <div className="pt-1 rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -355,7 +355,7 @@ export default function DashboardPage() {
                 )}
 
                 {activeTab === "tab2" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1135px]">
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1120px]">
                     <Text size="textmd" as="p">
                       <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -381,7 +381,7 @@ export default function DashboardPage() {
                   </div>
                 )}
                 {activeTab === "tab3" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1135px]">
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1120px]">
                     <Text size="textmd" as="p">
                       <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -407,7 +407,7 @@ export default function DashboardPage() {
                   </div>
                 )}
                 {activeTab === "tab4" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1135px]">
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1120px]">
                     <Text size="textmd" as="p">
                       <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -433,7 +433,7 @@ export default function DashboardPage() {
                   </div>
                 )}
                 {activeTab === "tab5" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1135px]">
+                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1120px]">
                     <Text size="textmd" as="p">
                       <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
