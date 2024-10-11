@@ -15,18 +15,20 @@ export default function SignUpPage() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const router = useRouter(); 
+  const router = useRouter();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false);
   const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
   const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
+  const apiUrl = hostedURL || localbaseURL;
 
-const togglePasswordVisibility = () => {
-  setIsPasswordVisible(!isPasswordVisible);
-}
-const toggleConfirmPasswordVisibility = () => {
-  setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
-};
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+  const toggleConfirmPasswordVisibility = () => {
+    setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+  };
 
   const [formData, setFormData] = useState({
     email: "",
@@ -62,7 +64,7 @@ const toggleConfirmPasswordVisibility = () => {
         });
       },
       isDeleting ? 200 : 300
-    ); 
+    );
 
     return () => clearTimeout(timeout);
   }, [displayedWord, isDeleting]);
@@ -74,30 +76,41 @@ const toggleConfirmPasswordVisibility = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
+    // Clear previous error messages
+    setError("");
+    setSuccess("");
+
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-  
+
     try {
-      const response = await axios.post( `${localbaseURL}/signup`, {
+      const response = await axios.post(`${apiUrl}/signup`, {
         fullName: formData.fullName,
         email: formData.email,
         password: formData.password,
+        contact: formData.phoneNumber,
       });
-  
+
       const { token, user } = response.data;
-  
+
       // Set the token and fullName as cookies
       Cookies.set("authToken", token, { expires: 7 });
       Cookies.set("fullName", user.fullName, { expires: 7 });
-       setSuccess("Registration successful");
+      setSuccess("Registration successful");
       setError("");
 
       router.push("/login");
     } catch (error) {
-      setError(error.response?.data?.message || "An error occurred while registering");
+      if (error.response && error.response.status === 400) {
+        const backendErrors = error.response.data.errors;
+        const errorMessages = backendErrors.map(err => err.msg).join(", ");
+        setError(errorMessages);
+      } else {
+        setError("An unexpected error occurred");
+      }
       setSuccess("");
     }
   };
@@ -184,14 +197,17 @@ const toggleConfirmPasswordVisibility = () => {
             >
               Sign Up
             </Text>
-            <form className="mt-6 flex w-[82%] flex-col items-start md:w-full" onSubmit={handleSubmit}>
+            <form
+              className="mt-6 flex w-[82%] flex-col items-start md:w-full"
+              onSubmit={handleSubmit}
+            >
               <Input
                 shape="round"
                 type="email"
                 name="email"
                 placeholder="Enter Email"
                 className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins flex items-center justify-center text-center mt-[1rem]"
-                style={{ paddingLeft: '1rem' }}
+                style={{ paddingLeft: "1rem" }}
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -201,7 +217,7 @@ const toggleConfirmPasswordVisibility = () => {
                 name="fullName"
                 placeholder="Name"
                 className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins flex items-center justify-center text-center mt-[1rem]"
-                style={{ paddingLeft: '1rem' }}
+                style={{ paddingLeft: "1rem" }}
                 value={formData.fullName}
                 onChange={handleChange}
               />
@@ -211,58 +227,62 @@ const toggleConfirmPasswordVisibility = () => {
                 name="phoneNumber"
                 placeholder="Contact Number"
                 className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins flex items-center justify-center text-center mt-[1rem]"
-                style={{ paddingLeft: '1rem' }}
+                style={{ paddingLeft: "1rem" }}
                 value={formData.phoneNumber}
                 onChange={handleChange}
               />
               <Input
-  color="blue 50"
-  shape="round"
-  type={isPasswordVisible ? "text" : "password"} // Toggle input type
-  name="password"
-  placeholder="Password"
-  suffix={
-    <Image
-      src={isPasswordVisible ? "/images/Frame 43967.png" : "/images/invisible.png"} // Toggle icon
-      width={16}
-      height={16}
-      alt="Visibility Icon"
-      className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
-      onClick={togglePasswordVisibility} // Toggle password visibility on click
-    />
-  }
-  className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
-  style={{ paddingLeft: '1rem' }}
-  value={formData.password}
-  onChange={handleChange}
-/>
-<Input
-  color="blue 50"
-  shape="round"
-  type={isConfirmPasswordVisible ? "text" : "password"} // Toggle input type for confirm password
-  name="confirmPassword"
-  placeholder="Confirm Password"
-  suffix={
-    <Image
-      src={isConfirmPasswordVisible ? "/images/Frame 43967.png" : "/images/invisible.png"} // Toggle icon for confirm password
-      width={16}
-      height={16}
-      alt="Visibility Icon"
-      className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
-      onClick={toggleConfirmPasswordVisibility} // Toggle confirm password visibility on click
-    />
-  }
-  className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
-  style={{ paddingLeft: '1rem' }}
-  value={formData.confirmPassword}
-  onChange={handleChange}
-/>
-              {error && (
-                <p className="mt-2 text-red-500">{error}</p>
-              )}
-              {success && (
-                <p className="mt-2 text-green-500">{success}</p>
-              )}
+                color="blue 50"
+                shape="round"
+                type={isPasswordVisible ? "text" : "password"} // Toggle input type
+                name="password"
+                placeholder="Password"
+                suffix={
+                  <Image
+                    src={
+                      isPasswordVisible
+                        ? "/images/Frame 43967.png"
+                        : "/images/invisible.png"
+                    } // Toggle icon
+                    width={16}
+                    height={16}
+                    alt="Visibility Icon"
+                    className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
+                    onClick={togglePasswordVisibility} // Toggle password visibility on click
+                  />
+                }
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
+                style={{ paddingLeft: "1rem" }}
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <Input
+                color="blue 50"
+                shape="round"
+                type={isConfirmPasswordVisible ? "text" : "password"} // Toggle input type for confirm password
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                suffix={
+                  <Image
+                    src={
+                      isConfirmPasswordVisible
+                        ? "/images/Frame 43967.png"
+                        : "/images/invisible.png"
+                    } // Toggle icon for confirm password
+                    width={16}
+                    height={16}
+                    alt="Visibility Icon"
+                    className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
+                    onClick={toggleConfirmPasswordVisibility} // Toggle confirm password visibility on click
+                  />
+                }
+                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
+                style={{ paddingLeft: "1rem" }}
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
+              {error && <p className="mt-2 text-red-500">{error}</p>}
+              {success && <p className="mt-2 text-green-500">{success}</p>}
               <Button
                 shape="round"
                 type="submit"
@@ -281,7 +301,7 @@ const toggleConfirmPasswordVisibility = () => {
               </Link>
             </form>
             <div className="mt-6 flex flex-row items-center justify-center w-full ml-[-15rem]">
-            <Image
+              <Image
                 src="/images/Facebook2.png"
                 width={40}
                 height={40}

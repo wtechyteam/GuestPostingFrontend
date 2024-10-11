@@ -42,8 +42,8 @@ export default function UserProfile3({
   tasksWithInitialDomainValue = "100.00%",
   ahrefsorganicTrafficText = "Ahrefs Organic Traffic",
   ahrefsOrganicTrafficValue = "1,801,273",
-  totalTrafficText = <>Total traffic</>,
-  totalTrafficValue = "Not Provided",
+  majesticText = <>Majestic</>,
+  majesticValue = "Not Provided",
   languageText = "Language",
   language = "German",
   countryText = "Country",
@@ -414,13 +414,13 @@ export default function UserProfile3({
                           as="p"
                           className="text-adsy_com-black text-[11.5px]"
                         >
-                          {totalTrafficText}
+                          {majesticText}
                         </Text>
                         <Heading
                           as="p"
                           className="text-adsy_com-black font-bold text-[11.5px]"
                         >
-                          {product.totalTraffic || totalTrafficValue}
+                          {product.majestic || majesticValue}
                         </Heading>
                       </div>
                     </div>

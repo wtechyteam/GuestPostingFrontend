@@ -2,11 +2,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
+const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+
 // Async thunk to fetch all products
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
   async () => {
-    const response = await axios.get("http://localhost:3001/api/products");
+    const response = await axios.get(`${hostedURL}/products` || `${localbaseURL}/products`);
     return response.data;
   }
 );
