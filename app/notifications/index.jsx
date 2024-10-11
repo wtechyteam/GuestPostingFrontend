@@ -19,8 +19,8 @@ const dropDownOptions = [
   { label: "English", value: "option2" },
   { label: "English", value: "option3" },
 ];
-
 export default function NotificationPage() {
+
   const fullName = Cookies.get("fullName");
 
   // State to handle dropdown visibility
@@ -99,22 +99,22 @@ export default function NotificationPage() {
       dateText: "12 Aug, 2024",
     },
   ];
-
   return (
-    <div className="w-full bg-gray-10 overflow-x-hidden">
-      <div className="flex flex-col items-end bg-gray-50_01">
-        <header className="fixed top-0 left-0 w-[100%] z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
-          <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
-            <div className="flex w-[100%] flex-col items-start sm:w-full">
-              <Image
-                src="/images/logo.png"
-                width={56}
-                height={32}
-                alt="Sidebar Logo"
-                className="ml-6 h-[32px] w-[56px] object-contain"
-              />
-            </div>
-            <div className="flex w-[68%]   flex-col items-start sm:w-full ml-[-60rem] md:ml-0 sm:ml-0">
+    <>
+      <div className="w-full bg-gray-10 overflow-x-hidden">
+        <div className="flex flex-col items-end bg-gray-50_01">
+          <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl">
+            <div className="mb-1 flex w-[96%] items-center justify-between">
+              <div className="flex flex-col items-start">
+                <Image
+                  src="/images/logo.png"
+                  width={56}
+                  height={32}
+                  alt="Sidebar Logo"
+                  className="ml-6 h-[32px] w-[56px] object-contain"
+                />
+              </div>
+              <div className="flex w-[40%] mr-[100px] flex-col items-start sm:w-full  md:ml-0 sm:ml-0">
               <Heading
                 size="heading2xl"
                 as="h6"
@@ -209,19 +209,19 @@ export default function NotificationPage() {
                 )}
               </div>
             </div>
-          </div>
-        </header>
+            </div>
+          </header>
 
-        <div className="flex items-start justify-start gap-7 self-stretch">
-          <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
-            <Sidebar1 />
-          </div>
-          <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
-            <HowItWorks
-              isHowItWorksVisible={isHowItWorksVisible}
-              toggleHowItWorks={toggleHowItWorks}
-            />
-            <h1 className="text-3xl font-bold text-gray-700 !text-left">
+          <div className="flex items-start justify-start gap-7 self-stretch mt-[70px]">
+            <div className="fixed top-[60px] left-0 h-full bg-white shadow-md z-20">
+              <Sidebar1 />
+            </div>
+            <div className="ml-[300px] mt-[30px] flex flex-1 flex-col gap-7">
+              <HowItWorks
+                isHowItWorksVisible={isHowItWorksVisible}
+                toggleHowItWorks={toggleHowItWorks}
+              />
+               <h1 className="text-3xl font-bold text-gray-700 !text-left">
               Notifications
             </h1>
             <div className="mt-6">
@@ -255,7 +255,7 @@ export default function NotificationPage() {
               </div>
               <div className="mt-4">
                 {activeTab === "tab1" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1100px]">
+                   <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px]">
                     <Text size="textmd" as="p">
                       <div className=" pt-1 rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -274,7 +274,7 @@ export default function NotificationPage() {
                 )}
 
                 {activeTab === "tab2" && (
-                  <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-[1100px]">
+                  <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px]">
                     <Text size="textmd" as="p">
                       <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                         <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -293,9 +293,10 @@ export default function NotificationPage() {
                 )}
               </div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
