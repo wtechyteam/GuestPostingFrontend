@@ -291,7 +291,7 @@ export default function ProfileDetailsPage() {
 
                 {!isEditing && (
                   <button
-                    className="absolute bottom-20 right-4 rounded-lg bg-blue-500 text-white py-2 px-6 sm:right-0 sm:bottom-0"
+                    className="absolute bottom-20 right-4 rounded-lg bg-blue-500 text-white text-gray-10 py-2 px-6 sm:right-0 sm:bottom-0"
                     onClick={handleEditProfile}
                   >
                     Edit Profile
@@ -426,7 +426,7 @@ export default function ProfileDetailsPage() {
               {isEditing && (
                 <div className="flex mt-4 gap-4">
                   <button
-                    className="rounded-lg bg-blue-500 text-white py-2 px-6"
+                    className="rounded-lg bg-blue-500 text-white text-gray-10 py-2 px-6"
                     onClick={handleSave}
                   >
                     Save
