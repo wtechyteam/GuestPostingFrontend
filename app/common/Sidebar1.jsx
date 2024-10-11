@@ -15,10 +15,12 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 export default function Sidebar1({ ...props }) {
+  const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
+  const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
   const router = useRouter();
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:3001/api/logout");
+      await axios.post(`${hostedURL}/logout` || `${localbaseURL}/logout`);
 
       Cookies.remove("authToken");
       Cookies.remove("fullName");
