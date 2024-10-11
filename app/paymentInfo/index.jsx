@@ -325,7 +325,7 @@ export default function PaymentInfoPage() {
 
                 <div className="mt-4">
                   {activeTab === "tab1" && (
-                    <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[960px] xl:max-w-[1120px]">
+                    <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px]">
                       <Text size="textmd" as="p">
                         <div className="pt-1 rounded-[14px] bg-gray-10 px-3.5 shadow-sm">
                           <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -353,7 +353,7 @@ export default function PaymentInfoPage() {
                   )}
 
                   {activeTab === "tab2" && (
-                   <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[960px] xl:max-w-[1120px]">
+                   <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px]">
                       <Text size="textmd" as="p">
                         <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                           <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -379,7 +379,7 @@ export default function PaymentInfoPage() {
                     </div>
                   )}
                   {activeTab === "tab3" && (
-                    <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[960px] xl:max-w-[1120px]">
+                    <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px]">
                       <Text size="textmd" as="p">
                         <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                           <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -405,7 +405,7 @@ export default function PaymentInfoPage() {
                     </div>
                   )}
                   {activeTab === "tab4" && (
-                  <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[960px] xl:max-w-[1120px]">
+                  <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px]">
                       <Text size="textmd" as="p">
                         <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                           <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
@@ -431,7 +431,7 @@ export default function PaymentInfoPage() {
                     </div>
                   )}
                   {activeTab === "tab5" && (
-                   <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[960px] xl:max-w-[1120px]">
+                   <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px]">
                       <Text size="textmd" as="p">
                         <div className="pt-1 rounded-[14px] bg-white px-3.5 shadow-sm">
                           <div className="mr-3.5 mt-6 flex flex-col gap-6 md:mr-0">
