@@ -216,7 +216,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Main Content */}
-          <div className=" w-[72rem] ml-[-20px] mr-[-2rem] mt-[80px] flex flex-1 border flex-col gap-7">
+          <div className=" w-[72rem] ml-[-18px] mr-[-1rem] mt-[80px] flex flex-1 border flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
