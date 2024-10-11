@@ -83,7 +83,7 @@ export default function SettingsPage() {
                 className="ml-6 h-[32px] w-[56px] object-contain"
               />
             </div>
-            <div className="flex w-full flex-col items-start sm:w-full ml-[-65rem]">
+            <div className="flex w-[68%]   flex-col items-start sm:w-full ml-[-60rem] md:ml-0 sm:ml-0">
               <Heading
                 size="heading2xl"
                 as="h6"
@@ -98,7 +98,8 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="flex w-[18%] items-center justify-center gap-4 sm:w-full">
+
+            <div className="flex w-[18%]  ml-4 mr-[-1rem] items-center justify-center gap-4 sm:w-full">
               <SelectBox
                 color="gray_50"
                 size="sm"
@@ -155,12 +156,18 @@ export default function SettingsPage() {
                 </div>
 
                 {isDropdownVisible && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
+                  <div className="absolute right-0 mt-2 w-48 bg-gray-10 border rounded-lg shadow-lg z-50">
                     <button
                       onClick={handleLogout2}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
                       Profile Settings
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Switch To Seller
                     </button>
                     <button
                       onClick={handleLogout}
@@ -185,7 +192,7 @@ export default function SettingsPage() {
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-            <div className="rounded-[20px] bg-gray-10 p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1580px]">
+            <div className="rounded-[20px] bg-gray-10 p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1100px]">
               <h1 className="text-3xl font-bold mb-4 text-gray-700">
                 Profile Settings
               </h1>

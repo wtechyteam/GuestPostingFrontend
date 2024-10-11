@@ -22,7 +22,7 @@ export default function MoreTasks() {
         <div className="flex-shrink-0 mr-[18px] rounded-lg">
           <button
             style={{ backgroundColor: '#000000' }}
-            className="text-white py-3 px-3 rounded hover:bg-green-700 transition-colors"
+            className="text-white text-gray-10 py-3 px-3 rounded hover:bg-green-700 transition-colors"
           >
             Search For Publisher
           </button>

@@ -7,7 +7,12 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    screens: { xl:{max:"2000px"}, md: { max: "1050px" }, sm: { max: "550px" } },
+    screens: { 
+      'xl-1440': '1440px', 
+      'xl-1920': '1920px', 
+      md: { max: '1050px' }, 
+      sm: { max: '550px' }
+    },
     extend: {
       colors: {
         adsy_com: { black: "#000000", lynch: "#6b6b6b" },
