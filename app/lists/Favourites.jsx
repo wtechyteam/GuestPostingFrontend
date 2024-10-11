@@ -83,7 +83,7 @@ export default function UserProfile3({
 
   if (wishlist.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center px-4 py-6 bg-gray-50 border border-gray-300 rounded-lg w-[99%] h-[500px]">
+      <div className="flex flex-col items-center justify-center px-4 py-6 bg-gray-50 border border-gray-300 rounded-lg w-[99%] h-[520px]">
         <Text size="textlg" as="p" className="text-gray-700">
           Loading Wishlist Products List...
         </Text>
@@ -144,7 +144,7 @@ export default function UserProfile3({
                   </Link>
 
                   <Image
-                  src="/images/unlock.png"
+                  src="/images/colouredHeart2.png"
                   width={24}
                   height={24}
                   alt="Block"
@@ -399,7 +399,7 @@ export default function UserProfile3({
                 </Link>
 
                 <Image
-                  src="/images/unlock.png"
+                  src="/images/colouredHeart2.png"
                   width={24}
                   height={24}
                   alt="Block"

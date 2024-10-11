@@ -10,7 +10,7 @@ import {
   blockProduct,
   unblockProduct,
 } from "../redux/productSlice";
-import {addToWishlist} from "../redux/wishlistSlice"
+import {addToWishlist,removeFromWishlist} from "../redux/wishlistSlice"
 import Link from "next/link";
 import Image from "next/image";
 
@@ -60,70 +60,18 @@ export default function UserProfile3({
   const { unblockedProducts, loading } = useSelector((state) => state.products);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
-
+  const [likedProducts, setLikedProducts] = useState({});
   const [isHovered, setIsHovered] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState(null);
 
-  //  const [wishlistStatus, setWishlistStatus] = useState({});
-
-  // const blockProduct = async (productId) => {
-  //   const token = Cookies.get("authToken");
-  //   console.log("Token before API call:", token); // Debugging output
-
-  //   if (!token) {
-  //     console.error("Token is missing or undefined.");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await axios.post(
-  //       `http://localhost:3001/api/block/${productId}`,
-  //       {}, // Pass body if needed
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`, // Ensure this header is correctly set
-  //         },
-  //       }
-  //     );
-  //     console.log("Block Response:", response.data);
-  //   } catch (error) {
-  //     console.error(
-  //       "Error blocking product:",
-  //       error.response?.data || error.message
-  //     );
-  //   }
-  // };
-  //   const toggleWishlistProduct = async (productId) => {
-  //     const token = Cookies.get("authToken");
-  //     if (!token) {
-  //         console.error("Token is missing or undefined.");
-  //         return;
-  //     }
-
-  //     console.log("Token being sent:", token); // Log the token for debugging
-
-  //     try {
-  //         const method = wishlistStatus[productId] ? "delete" : "post";
-  //         const response = await axios[method](
-  //             `http://localhost:3001/api/wishlist/${productId}`, // Ensure the endpoint matches your backend
-  //             {},
-  //             {
-  //                 headers: {
-  //                     "Content-Type": "application/json",
-  //                     Authorization: `Bearer ${token}`,
-  //                 },
-  //             }
-  //         );
-  //         console.log(`${method === "post" ? "Add to" : "Remove from"} Wishlist Response:`, response.data);
-  //         setWishlistStatus((prev) => ({ ...prev, [productId]: !prev[productId] }));
-  //     } catch (error) {
-  //         console.error("Error managing wishlist:", error.response?.data || error.message);
-  //     }
-  // };
-
+  
   useEffect(() => {
+   
+    // Load liked products from local storage
+    const storedLikes = JSON.parse(localStorage.getItem('likedProducts')) || {};
+    setLikedProducts(storedLikes);
+
     dispatch(fetchAllProducts());
     dispatch(fetchUnblockedProducts());
   }, [dispatch]);
@@ -139,6 +87,7 @@ export default function UserProfile3({
       console.error("Error blocking product:", error);
     }
   };
+ 
   const handleAddToWishlistProduct = async (productId) => {
     try{
       await dispatch(addToWishlist(productId));
@@ -148,6 +97,28 @@ export default function UserProfile3({
       console.error("Error adding product to wishlist:", error);
     }
   }
+
+  const handleRemoveFromWishlist = async (productId) => {
+    try {
+      await dispatch(removeFromWishlist(productId));
+      setModalMessage("Product removed from wishlist Successfully");
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Error removing from wishlist:", error);
+    }
+  };
+  const toggleLikeProduct = (productId) => {
+    setLikedProducts((prev) => {
+      const newLikedProducts = {
+        ...prev,
+        [productId]: !prev[productId], // Toggle like status
+      };
+
+      // Save updated likes to local storage
+      localStorage.setItem('likedProducts', JSON.stringify(newLikedProducts));
+      return newLikedProducts;
+    });
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -170,7 +141,7 @@ export default function UserProfile3({
   return (
     <>
       {unblockedProducts
-        // .filter((product) => product.status !== "block") // Filter out blocked products
+      
         .map((product, index) => {
           const tagArray = product.tags.split(", ").map((tag) => tag.trim());
 
@@ -241,13 +212,21 @@ export default function UserProfile3({
                   </Link>
 
                   <Image
-                    src="/images/heart1.png"
-                    width={22}
-                    height={22}
-                    alt="Like"
-                    className="ml-4 h-[24px] w-[24px] cursor-pointer"
-                    onClick={() => handleAddToWishlistProduct(product._id)}
-                  />
+                src={likedProducts[product._id] ? "/images/colouredHeart2.png" : "/images/heart1.png"}
+                width={22}
+                height={22}
+                alt="Like"
+                className="ml-4 h-[24px] w-[24px] cursor-pointer"
+                onClick={() => {
+                  if (likedProducts[product._id]) {
+                    handleRemoveFromWishlist(product._id); // Remove from wishlist if liked
+                  } else {
+                    handleAddToWishlistProduct(product._id); // Add to wishlist if not liked
+                  }
+                  toggleLikeProduct(product._id); // Toggle like state
+                }}
+              />
+
                   <Image
                     src="/images/blocked.png"
                     width={24}

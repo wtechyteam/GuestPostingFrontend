@@ -13,7 +13,7 @@ export default function PaymentInfo({
   return (
     <div {...props} className={`${props.className} flex flex-col items-center gap-7 flex-1`}>
      
-      <div className="w-full flex items-center">
+      <div className="w-[1150px] flex items-center">
         {/* Date on the left with less space */}
         <Heading size="textsm" as="p" className="text-gray-600 ml-8 flex-none w-[20%]">
           {dateText} 

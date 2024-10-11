@@ -1,17 +1,15 @@
-"use client";
-
+"use client"
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
 import Image from "next/image";
-import Sidebar1 from "../common/Sidebar1";
-import OrderSummarySection from "./OrderSummarySection";
-import PublisherSearchSection from "./PublisherSearchSection";
+import SidebarSeller from "../common/SidebarSeller";
+import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
-import HowItWorks from "./HowItWorks";
 import { useRouter } from "next/navigation";
+
 
 const dropDownOptions = [
   { label: "English", value: "English" },
@@ -19,25 +17,26 @@ const dropDownOptions = [
   { label: "English", value: "option3" },
 ];
 
-export default function DashboardPage() {
+export default function OrderPage() {
   const fullName = Cookies.get("fullName");
-  const token = Cookies.get("authToken");
-  console.log(token);
-
-  const router = useRouter();
-
-  const handleLogout = () => {
-    Cookies.remove("fullName");
-
-    router.push("/login");
-  };
-  const handleLogout2 = () => {
-    router.push("/profileDetails");
-  };
 
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState("tab1");
+  const router = useRouter(); // Initialize the router
+
+  const handleLogout = () => {
+    // Add your logout logic here, e.g., clear cookies or call an API
+    Cookies.remove("fullName");
+
+    // Redirect to the login page after logout
+    router.push("/login");
+  };
+  const handleLogout2 = () => {
+    // Redirect to the login page after logout
+    router.push("/profileDetails");
+  };
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
@@ -46,6 +45,55 @@ export default function DashboardPage() {
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+  const data = [
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+  ];
+
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
       <div className="flex flex-col items-end bg-gray-50_01">
@@ -60,7 +108,7 @@ export default function DashboardPage() {
                 className="ml-6 h-[32px] w-[56px] object-contain"
               />
             </div>
-            <div className="flex w-[68%]   flex-col items-start sm:w-full ml-[-60rem] md:ml-0 sm:ml-0">
+            <div className="flex w-full flex-col items-start sm:w-full ml-[-65rem]">
               <Heading
                 size="heading2xl"
                 as="h6"
@@ -75,7 +123,7 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="flex w-[18%]  ml-4 mr-[-1rem] items-center justify-center gap-4 sm:w-full">
+            <div className="flex w-[18%] items-center justify-center gap-4 sm:w-full">
               <SelectBox
                 color="gray_50"
                 size="sm"
@@ -132,18 +180,12 @@ export default function DashboardPage() {
                 </div>
 
                 {isDropdownVisible && (
-                  <div className="absolute right-0 mt-2 w-48 bg-gray-10 border rounded-lg shadow-lg z-50">
+                  <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                     <button
                       onClick={handleLogout2}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
                       Profile Settings
-                    </button>
-                    <button
-                      onClick={handleLogout}
-                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
-                    >
-                      Switch To Seller
                     </button>
                     <button
                       onClick={handleLogout}
@@ -158,20 +200,25 @@ export default function DashboardPage() {
           </div>
         </header>
 
-        <div className="flex items-start">
-          {/* Fixed Sidebar */}
+        <div className="flex items-start justify-start gap-7 self-stretch">
           <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
-            <Sidebar1 />
+            <SidebarSeller />
           </div>
-
-          {/* Main Content */}
-          <div className="w-[72rem] ml-2 md:ml-0 sm:ml-0 mt-[80px] md:mt-0 sm:mt-0 flex flex-1 flex-col gap-7 ">
+          <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
             <HowItWorks
               isHowItWorksVisible={isHowItWorksVisible}
               toggleHowItWorks={toggleHowItWorks}
             />
-            <OrderSummarySection />
-            <PublisherSearchSection />
+
+            <div className="mt-6">
+              <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
+                Add your website info
+              </h1>
+
+              <div className="mt-4">
+             <h1>how are you</h1>
+              </div>
+            </div>
           </div>
         </div>
       </div>

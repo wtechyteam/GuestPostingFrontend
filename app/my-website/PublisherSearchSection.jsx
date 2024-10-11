@@ -4,7 +4,7 @@ import { Img } from "../common/Img";
 import { Input } from "../common/Input";
 import { Heading } from "../common/Heading";
 import { CloseSVG } from "../common/Close";
-import Favourites from "./Favourites";
+import UserProfile3 from "./sellerWebsiteCard";
 import React from "react";
 import { TabPanel, TabList, Tab, Tabs } from "react-tabs";
 import Image from "next/image";
@@ -22,7 +22,7 @@ export default function PublisherSearchSection() {
         <Tabs
           className="flex flex-col gap-4"
           selectedTabClassName="!text-adsy_com-black bg-gray-10 rounded-[14px]"
-          selectedTabPanelClassName="ml-1 md:ml-0 !relative tab-panel--selected mb-2"
+          selectedTabPanelClassName="ml-1 md:ml-0 !relative tab-panel--selected"
         >
           <div className="mr-4 md:mr-0">
             <div className="flex flex-col items-start gap-[18px]">
@@ -46,7 +46,7 @@ export default function PublisherSearchSection() {
                     Verified
                   </Tab>
                 </TabList>
-                <div className="flex flex-1 items-start justify-center mb-4 gap-5 md:flex-col md:self-stretch md:px-5">
+                <div className="flex flex-1 items-start justify-center gap-5 md:flex-col md:self-stretch md:px-5">
                   <Input
                     color="gray_10"
                     size="xs"
@@ -105,8 +105,11 @@ export default function PublisherSearchSection() {
             >
               <div className="w-full">
                 <div className="flex flex-col gap-1">
-                  <Favourites />
-             
+                  <UserProfile3 />
+                  <UserProfile3 /> 
+                  <UserProfile3 /> 
+                  <UserProfile3 /> 
+                  <UserProfile3 /> 
                 </div>
               </div>
             </TabPanel>
