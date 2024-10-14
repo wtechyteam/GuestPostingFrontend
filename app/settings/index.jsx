@@ -394,11 +394,9 @@ export default function SettingsPage() {
 
                       <div className="p-6 bg-white rounded-md">
                         <div className="flex flex-wrap gap-6">
-                          {" "}
-                          {/* Use gap for spacing */}
+                      
                           <div className="flex-1 min-w-[250px]">
-                            {" "}
-                            {/* Ensures minimum width for each column */}
+                          
                             <div className="mb-4">
                               <label
                                 htmlFor="company"

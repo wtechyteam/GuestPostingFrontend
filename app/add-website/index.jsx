@@ -9,7 +9,6 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 
-
 import { useRouter } from "next/navigation";
 
 import SearchBar from "./urlBox";
@@ -258,27 +257,79 @@ export default function OrderPage() {
                   </li>
                 </ul>
               </div>
-             
+
               <div className="mt-4">
-                {activeTab === "tab1" && (
-                  
-                    <SearchBar />
-                 
-                )}
+                {activeTab === "tab1" && <SearchBar />}
                 {activeTab === "tab2" && (
-                 
-                   <SearchBar />
-                  
+                  <div className="flex flex-col gap-4 w-80 mb-[20rem]">
+                    <div className="flex gap-8">
+                      <div className="flex flex-col flex-1">
+                        <label
+                          htmlFor="url"
+                          className="font-semibold mb-1 text-gray-900"
+                        >
+                          Copy & paste sites’ URLs in the field below
+                        </label>
+                        <label
+                          htmlFor="url"
+                          className="font-semibold mb-1 text-gray-400 text-sm"
+                        >
+                          URL*
+                        </label>
+                        <textarea
+                          id="url"
+                          placeholder="Enter URLs, each on a new line"
+                          style={{
+                            border: "1px solid gray",
+                            padding: "8px",
+                            borderRadius: "12px",
+                            resize: "none", // Optional: Prevent resizing
+                          }}
+                          className="w-[30rem] h-60 text-gray-900 bg-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
+                    </div>
+                    <p className="font-semibold mb-1 text-gray-400 text-sm">
+                      Add URLs as a list, with each URL starting from a new
+                      line.
+                    </p>
+                    <button className="bg-indigo-700 w-[50%] text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition duration-300">
+                      Next
+                    </button>
+                  </div>
                 )}
                 {activeTab === "tab3" && (
-                  
-                    <SearchBar />
-                 
+                  <div className="flex flex-col gap-4 w-80 mb-[20rem]">
+                    <div className="flex gap-8 ">
+                      <div className="flex flex-col flex-1">
+                        <label
+                          htmlFor="associated-sites"
+                          className="font-semibold mb-1 text-gray-900"
+                        >
+                          Upload Via the file
+                        </label>
+                        <p className="font-semibold mb-1 text-gray-400 text-sm">
+                          Restrictions: Files must be no larger than 2MB, only
+                          csv, xls, xlsx
+                        </p>
+                        <input
+                          type="file"
+                          id="file-upload"
+                          accept=".csv, .xls, .xlsx"
+                          style={{
+                            border: "1px solid gray",
+                            padding: "8px",
+                            borderRadius: "12px",
+                          }}
+                          className="w-[30rem] h-60 text-gray-900 bg-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
+                    </div>
+                    <button className="bg-indigo-700 w-[50%] text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition duration-300">
+                      Next
+                    </button>
+                  </div>
                 )}
-               
-                
-               
-                
               </div>
             </div>
           </div>

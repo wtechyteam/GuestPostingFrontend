@@ -34,9 +34,7 @@ export default function Sidebar1({ ...props }) {
       rootStyles={{ [`${sidebarClasses.container}`]: { gap: 6 } }}
       className={`${props.className} flex flex-col h-screen gap-1.5 bg-gray-10 fixed top-0 left-0 overflow-auto`}
     >
-      <Heading size="label_regular" as="p" className="ml-6 !text-gray-400">
-        Dashboard
-      </Heading>
+    
       <Menu
         menuItemStyles={{
           button: {
@@ -210,7 +208,7 @@ export default function Sidebar1({ ...props }) {
           </Link>
         </div>
 
-        <div className="mt-[16rem]">
+        <div className="mt-[100px]">
           <MenuItem
             icon={
               <Image
