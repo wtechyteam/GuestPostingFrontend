@@ -281,9 +281,9 @@ export default function PostsPage() {
                     </Text>
                   )}
                   {activeTab === "tab2" && (
-                    <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[20rem]">
+                    <div className="relative rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[20rem]">
                       <div className="flex gap-4 p-4 ">
-                        <div className="relative w-1/2">
+                      <div className="relative w-full lg:w-1/2">
                           <Input
                             color="gray_10"
                             size="xs"
@@ -317,7 +317,7 @@ export default function PostsPage() {
                           />
                         </div>
 
-                        <div className="relative w-1/2">
+                        <div className="relative w-full lg:w-1/2">
                           <Input
                             color="gray_10"
                             size="xs"
@@ -352,7 +352,7 @@ export default function PostsPage() {
                         </div>
                       </div>
 
-                      <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[200px] w-[1580px] mb-20 flex justify-center items-center">
+                      <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[20rem]">
                         <div className="mr-3.5 mt-4 flex flex-col gap-4 md:mr-0">
                           <Text
                             size="textmd"
