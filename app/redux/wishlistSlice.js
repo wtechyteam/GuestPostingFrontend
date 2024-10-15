@@ -2,6 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
+const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+const apiURL = hostedURL || localbaseURL;
+
 // Initial state for the wishlist slice
 const initialState = {
   wishlist: [], // Initialize as an empty array
@@ -15,7 +20,7 @@ export const getWishlist = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = Cookies.get("authToken");
-      const response = await axios.get("http://localhost:3001/api/wishlist", {
+      const response = await axios.get(`${apiURL}/wishlist`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return response.data; // Return the wishlist products
@@ -32,7 +37,7 @@ export const addToWishlist = createAsyncThunk(
     try {
       const token = Cookies.get("authToken");
       await axios.post(
-        `http://localhost:3001/api/wishlist/${productId}`,
+        `${apiURL}/wishlist/${productId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -51,7 +56,7 @@ export const removeFromWishlist = createAsyncThunk(
   async (productId, { rejectWithValue }) => {
     try {
       const token = Cookies.get("authToken");
-      await axios.delete(`http://localhost:3001/api/wishlist/${productId}`, {
+      await axios.delete(`${apiURL}/wishlist/${productId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return productId; // Return the product ID to remove from wishlist
