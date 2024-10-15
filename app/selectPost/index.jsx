@@ -257,7 +257,8 @@ export default function SelectPostsPage() {
               <div className="mt-4">
                 {activeTab === "tab1" && (
                   <>
-                    <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[150px] w-[1580px] mb-10 ">
+                 <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[20rem]">
+
                       <div className="mr-3.5 mt-4 flex flex-col gap-4 md:mr-0 p-6">
                         <p className="text-gray-900 font-bold text-[22px]">
                           Publishers special requirements
@@ -389,7 +390,8 @@ export default function SelectPostsPage() {
                 )}
                 {activeTab === "tab2" && (
                  <>
-                 <div className="bg-gray-10 shadow-lg rounded-[14px] min-h-[150px] w-[1580px] mb-10 ">
+                <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[20rem]">
+
                    <div className="mr-3.5 mt-4 flex flex-col gap-4 md:mr-0 p-6">
                      <p className="text-gray-900 font-bold text-[22px]">
                        Publishers special requirements

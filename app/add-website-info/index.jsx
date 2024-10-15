@@ -9,6 +9,8 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import PostRequestForm from "./PostRequestForm";
+
 
 
 const dropDownOptions = [
@@ -93,6 +95,7 @@ export default function AddWebsiteInfoPage() {
       dateText: "12 Aug, 2024",
     },
   ];
+
   return (
     <>
       <div className="w-full bg-gray-10 overflow-x-hidden">
@@ -215,14 +218,13 @@ export default function AddWebsiteInfoPage() {
                 isHowItWorksVisible={isHowItWorksVisible}
                 toggleHowItWorks={toggleHowItWorks}
               />
-             <div className="mt-6">
-              <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
-                Add your website info
+              <h1 className="text-3xl font-bold  text-gray-700">
+                Add Website Info
               </h1>
+             <div className="mt-6 mb-20">
+             <PostRequestForm />
 
-              <div className="mt-4">
-            
-              </div>
+              
             </div>
             </div>
           </div>

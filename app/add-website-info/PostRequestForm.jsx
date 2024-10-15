@@ -1,10 +1,15 @@
-"use client"
+"use client";
 import Link from "next/link";
-import React, { useState } from "react";
-import ReactQuill from "react-quill";
+import { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+import { Input } from "./../common/Input";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const PostRequestForm = () => {
+  const [mounted, setMounted] = useState(false);
+
   const [formData, setFormData] = useState({
     url: "",
     language: "English",
@@ -25,23 +30,63 @@ const PostRequestForm = () => {
       specialTopic: 0,
     },
   });
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
 
-  
+    if (type === "checkbox") {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: checked,
+      }));
+    } else if (name.startsWith("prices.")) {
+      const priceName = name.split(".")[1];
+      setFormData((prevData) => ({
+        ...prevData,
+        prices: {
+          ...prevData.prices,
+          [priceName]: value,
+        },
+      }));
+    } else if (name === "categories") {
+      const selectedCategories = Array.from(
+        e.target.selectedOptions,
+        (option) => option.value
+      );
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: selectedCategories,
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log(formData);
+    // Optionally, redirect or display confirmation
+  };
+  useEffect(() => {
+    setMounted(true); // Set to true after the component mounts
+  }, []);
   return (
-    <form className="p-6 bg-gray-10 mb-2 rounded-lg shadow-md w-[99%] mx-auto text-adsy_com-black">
+    <form className="p-6 bg-gray-10 mb-20 rounded-lg shadow-md w-[99%] mx-auto text-adsy_com-black">
       {/* URL and Language Side by Side */}
       <div className="flex space-x-4 mb-4">
         <div className="w-1/2">
           <label className="block text-sm font-medium text-gray-700">
             URL *
           </label>
-          <input
+          <Input
             type="url"
             name="url"
             value={formData.url}
             onChange={handleInputChange}
-            placeholder="https://www.ormtechies.com"
+            placeholder="https://"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
           />
         </div>
@@ -69,7 +114,7 @@ const PostRequestForm = () => {
           </label>
           <div className="flex items-center space-x-4 mt-2">
             <label className="flex items-center space-x-2">
-              <input
+              <Input
                 type="radio"
                 name="contentSponsored"
                 value="Yes"
@@ -116,25 +161,27 @@ const PostRequestForm = () => {
             <label className="block text-sm font-medium text-gray-700">
               Special Requirements
             </label>
-            <ReactQuill
-              name="specialRequirements"
-              value={formData.specialRequirements}
-              onChange={handleInputChange}
-              placeholder="Enter any special requirements here..."
-              className="mt-1 mb-16"
-              style={{ height: "200px", width: "100%" }} // Set a larger height and width
-              modules={{
-                toolbar: [
-                  [{ header: [1, 2, false] }],
-                  ["bold", "italic", "underline"],
-                  ["link", "image"],
-                  ["clean"],
-                ],
-              }}
-            />
+            {mounted && ( // Render only when mounted
+              <ReactQuill
+                name="specialRequirements"
+                value={formData.specialRequirements}
+                onChange={handleInputChange}
+                placeholder="Enter any special requirements here..."
+                className="mt-1 mb-16"
+                style={{ height: "200px", width: "100%" }}
+                modules={{
+                  toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ["bold", "italic", "underline"],
+                    ["link", "image"],
+                    ["clean"],
+                  ],
+                }}
+              />
+            )}
           </div>
           <div className="flex items-center mt-4">
-            <input
+            <Input
               type="checkbox"
               name="specialTopic"
               checked={formData.specialTopic}
@@ -154,12 +201,12 @@ const PostRequestForm = () => {
               (the domain of works should match the sites URL)
             </label>
 
-            <input
+            <Input
               type="url"
               name="url"
               value={formData.url}
               onChange={handleInputChange}
-              placeholder="https://www.ormtechies.com"
+              placeholder="https://"
               className="mt-4 block w-full border border-gray-300 rounded-md shadow-sm p-2"
             />
           </div>
@@ -172,7 +219,7 @@ const PostRequestForm = () => {
             </label>
             <div className="flex space-x-4 mt-2">
               <label className="flex items-center space-x-2">
-                <input
+                <Input
                   type="radio"
                   name="wordCount"
                   value="500"
@@ -183,7 +230,7 @@ const PostRequestForm = () => {
                 <span>500</span>
               </label>
               <label className="flex items-center space-x-2">
-                <input
+                <Input
                   type="radio"
                   name="wordCount"
                   value="1000"
@@ -194,7 +241,7 @@ const PostRequestForm = () => {
                 <span>1000</span>
               </label>
               <label className="flex items-center space-x-2">
-                <input
+                <Input
                   type="radio"
                   name="wordCount"
                   value="1500"
@@ -203,6 +250,17 @@ const PostRequestForm = () => {
                   className="text-indigo-600"
                 />
                 <span>1500</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <Input
+                  type="radio"
+                  name="wordCount"
+                  value="2000"
+                  checked={formData.wordCount === "2000"}
+                  onChange={handleInputChange}
+                  className="text-indigo-600"
+                />
+                <span>2000+</span>
               </label>
             </div>
           </div>
