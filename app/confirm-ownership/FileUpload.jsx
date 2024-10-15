@@ -3,7 +3,7 @@ import Link from "next/link";
 const SearchStatusComponent = () => {
   return (
     <div className="mt-6 ">
-      <div className=" rounded-[14px] mb-[20rem] text-adsy_com-black p-2 w-[40%]">
+      <div className=" rounded-[14px] mb-[20rem] text-adsy_com-black p-2 w-[60%]">
         {/* <h2 className="text-lg font-semibold mb-2">Site owner</h2> */}
 
         <div className="bg-gray-10 rounded-lg border border-gray-300 shadow-md p-4 mb-4">

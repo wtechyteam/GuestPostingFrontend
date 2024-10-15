@@ -200,7 +200,7 @@ export default function Sidebar1({ ...props }) {
           </Link>
         </div>
 
-        <div className="mt-[190px]">
+        <div className="mt-[100px]">
           <MenuItem
             icon={
               <Image

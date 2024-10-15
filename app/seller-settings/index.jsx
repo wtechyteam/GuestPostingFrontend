@@ -10,14 +10,13 @@ import { SelectBox } from "../common/SelectBox";
 import HowItWorks from "./HowItWorks";
 import { Input } from "../common/Input";
 import { useRouter } from "next/navigation";
-
+import TaxForm from "./taxForm"; 
 const dropDownOptions = [
   { label: "English", value: "English" },
   { label: "English", value: "option2" },
   { label: "English", value: "option3" },
 ];
-
-export default function SettingsPage() {
+export default function SellerSettingsPage(){
   const fullName = Cookies.get("fullName");
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -31,7 +30,8 @@ export default function SettingsPage() {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [citizenStatus, setCitizenStatus] = useState("");
-  const [showNotifications, setShowNotifications] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+
  
   const router = useRouter();
 
@@ -73,26 +73,28 @@ export default function SettingsPage() {
     setActiveTab(tab);
   };
   const handleContinue = () => {
-    if (citizenStatus === "usPerson") {
-      setShowNotifications(true);
+    if (!citizenStatus) {
+      alert("Please select your citizen status.");
+      return;
     }
+    setShowForm(true); 
   };
-
   return (
-    <div className="w-full h-100% bg-gray-10 overflow-x-hidden">
-      <div className="flex flex-col items-end bg-gray-50_01 ">
-        <header className="fixed top-0 left-0 w-[100%] z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
-          <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
-            <div className="flex w-[100%] flex-col items-start sm:w-full">
-              <Image
-                src="/images/logo.png"
-                width={56}
-                height={32}
-                alt="Sidebar Logo"
-                className="ml-6 h-[32px] w-[56px] object-contain"
-              />
-            </div>
-            <div className="flex w-full flex-col items-start sm:w-full ml-[-65rem]">
+    <>
+      <div className="w-full bg-gray-10 overflow-x-hidden">
+        <div className="flex flex-col items-end bg-gray-50_01">
+          <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl">
+            <div className="mb-1 flex w-[96%] items-center justify-between">
+              <div className="flex flex-col items-start">
+                <Image
+                  src="/images/logo.png"
+                  width={56}
+                  height={32}
+                  alt="Sidebar Logo"
+                  className="ml-6 h-[32px] w-[56px] object-contain"
+                />
+              </div>
+              <div className="flex w-[40%] mr-[100px] flex-col items-start sm:w-full  md:ml-0 sm:ml-0">
               <Heading
                 size="heading2xl"
                 as="h6"
@@ -107,7 +109,7 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="flex w-[18%] items-center justify-center gap-4 sm:w-full">
+            <div className="flex w-[18%]  ml-4 mr-[-1rem] items-center justify-center gap-4 sm:w-full">
               <SelectBox
                 color="gray_50"
                 size="sm"
@@ -164,12 +166,18 @@ export default function SettingsPage() {
                 </div>
 
                 {isDropdownVisible && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
+                  <div className="absolute right-0 mt-2 w-48 bg-gray-10 border rounded-lg shadow-lg z-50">
                     <button
                       onClick={handleLogout2}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
                       Profile Settings
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
+                    >
+                      Switch To Seller
                     </button>
                     <button
                       onClick={handleLogout}
@@ -181,20 +189,19 @@ export default function SettingsPage() {
                 )}
               </div>
             </div>
-          </div>
-        </header>
+            </div>
+          </header>
 
-        <div className="flex items-start justify-start gap-7 self-stretch">
-          <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
-            <SidebarSeller />
-          </div>
-
-          <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
-            <HowItWorks
-              isHowItWorksVisible={isHowItWorksVisible}
-              toggleHowItWorks={toggleHowItWorks}
-            />
-            <div className="rounded-[20px] bg-gray-10 p-6 shadow-lg flex flex-col  mb-6 min-h-[700px] w-[1580px]">
+          <div className="flex items-start justify-start gap-7 self-stretch mt-[70px]">
+            <div className="fixed top-[60px] left-0 h-full bg-white shadow-md z-20">
+              <SidebarSeller />
+            </div>
+            <div className="ml-[300px] mt-[30px] flex flex-1 flex-col gap-7">
+              <HowItWorks
+                isHowItWorksVisible={isHowItWorksVisible}
+                toggleHowItWorks={toggleHowItWorks}
+              />
+              <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[20rem]">
               <h1 className="text-3xl font-bold mb-4 text-gray-700">
                 Profile Settings
               </h1>
@@ -555,81 +562,58 @@ export default function SettingsPage() {
                   </>
                 )}
                 {activeTab === "tax-form" && (
-                  <div>
-                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
-                      Choose Your Current
-                    </h2>
-                    <div className="mb-6">
-                      <div className="flex items-center mb-4">
-                        <input
-                          type="radio"
-                          id="usPerson"
-                          name="citizenStatus"
-                          value="usPerson"
-                          checked={citizenStatus === "usPerson"}
-                          onChange={(e) => setCitizenStatus(e.target.value)}
-                          className="mr-2 custom-radio"
-                        />
-                        <label
-                          htmlFor="usPerson"
-                          className="text-gray-600 font-semibold"
-                        >
-                          I am a U.S. Person
-                        </label>
-                      </div>
-                      <div className="flex items-center mb-6">
-                        <input
-                          type="radio"
-                          id="nonUsPerson"
-                          name="citizenStatus"
-                          value="nonUsPerson"
-                          checked={citizenStatus === "nonUsPerson"}
-                          onChange={(e) => setCitizenStatus(e.target.value)}
-                          className="mr-2 custom-radio"
-                        />
-                        <label
-                          htmlFor="nonUsPerson"
-                          className="text-gray-600 font-semibold"
-                        >
-                          I am not a U.S. Person
-                        </label>
-                      </div>
-                      <button
-                        onClick={handleContinue}
-                        className="bg-[#1C65D6] text-white px-6 py-2 rounded-md"
-                      >
-                        Continue
-                      </button>
-                    </div>
-                  </div>
+               <div>
+               <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                 Choose Your Current Status
+               </h2>
+               <div className="mb-6">
+                 <div className="flex items-center mb-4">
+                   <input
+                     type="radio"
+                     id="usPerson"
+                     name="citizenStatus"
+                     value="usPerson"
+                     checked={citizenStatus === "usPerson"}
+                     onChange={(e) => setCitizenStatus(e.target.value)}
+                     className="mr-2 custom-radio"
+                   />
+                   <label htmlFor="usPerson" className="text-gray-600 font-semibold">
+                     I am a U.S. Person
+                   </label>
+                 </div>
+                 <div className="flex items-center mb-6">
+                   <input
+                     type="radio"
+                     id="nonUsPerson"
+                     name="citizenStatus"
+                     value="nonUsPerson"
+                     checked={citizenStatus === "nonUsPerson"}
+                     onChange={(e) => setCitizenStatus(e.target.value)}
+                     className="mr-2 custom-radio"
+                   />
+                   <label htmlFor="nonUsPerson" className="text-gray-600 font-semibold">
+                     I am not a U.S. Person
+                   </label>
+                 </div>
+                 <button
+                   onClick={handleContinue}
+                   className="bg-[#1C65D6] text-white px-6 py-2 rounded-md"
+                   disabled={!citizenStatus}
+                 >
+                   Continue
+                 </button>
+               </div>
+         
+               {/* Render the TaxForm component when appropriate */}
+               {activeTab === "tax-form" && showForm && (
+                 <TaxForm citizenStatus={citizenStatus} />
+               )}
+             </div>
+            
                 )}
+              
 
-                {/* Show the Notifications section if the U.S. Person is selected and Continue is clicked */}
-                {showNotifications && (
-                  <div>
-                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
-                      Notifications
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-                        <span className="text-gray-600 font-semibold">
-                          Email Notifications
-                        </span>
-                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
-                          Enable
-                        </button>
-                      </div>
-                      <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-                        <span className="text-gray-600 font-semibold">
-                          SMS Notifications
-                        </span>
-                        <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">
-                          Enable
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
+               
 
                 <style jsx>{`
                   .custom-radio {
@@ -660,9 +644,11 @@ export default function SettingsPage() {
                 `}</style>
               </div>
             </div>
+            
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

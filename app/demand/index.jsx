@@ -1,100 +1,46 @@
 "use client";
+
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
 import Image from "next/image";
 import SidebarSeller from "../common/SidebarSeller";
-import HowItWorks from "./HowItWorks";
+
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
-
-
+import HowItWorks from "./HowItWorks";
 import { useRouter } from "next/navigation";
-
-import SearchBar from "./urlBox";
 
 const dropDownOptions = [
   { label: "English", value: "English" },
-  { label: "English", value: "option2" },
-  { label: "English", value: "option3" },
+  { label: "Spanish", value: "option2" },
+  { label: "French", value: "option3" },
 ];
-export default function ConfirmationStatusWithoutPage() {
-  const fullName = Cookies.get("fullName");
 
-  // State to handle dropdown visibility
+export default function Demand() {
+  const fullName = Cookies.get("fullName");
+  const router = useRouter();
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState("tab1");
-  const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
-    // Add your logout logic here, e.g., clear cookies or call an API
     Cookies.remove("fullName");
-
-    // Redirect to the login page after logout
     router.push("/login");
   };
+
   const handleLogout2 = () => {
-    // Redirect to the login page after logout
     router.push("/profileDetails");
   };
 
-  // Toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
+
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
-  const data = [
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-    {
-      longText: "It is a long established",
-      descriptionText:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-      dateText: "12 Aug, 2024",
-    },
-  ];
   return (
     <>
       <div className="w-full bg-gray-10 overflow-x-hidden">
@@ -212,37 +158,11 @@ export default function ConfirmationStatusWithoutPage() {
             <div className="fixed top-[60px] left-0 h-full bg-white shadow-md z-20">
               <SidebarSeller />
             </div>
-            <div className="ml-[300px] mt-[30px] flex flex-1 flex-col gap-7">
+            <div className="ml-[300px] mt-[30px] mb-[100rem] flex flex-1 flex-col gap-7">
               <HowItWorks
                 isHowItWorksVisible={isHowItWorksVisible}
                 toggleHowItWorks={toggleHowItWorks}
               />
-               <div className="mt-6">
-              <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
-              Site ownership or moderation is still required to continue working with added site(s)
-              </h1>
-
-              <div className="mt-6 ">
-                <div className="bg-gray-10 rounded-[14px] mb-[30rem] text-adsy_com-black p-6 w-[99%]">
-                  {/* <h2 className="text-lg font-semibold mb-2">Site owner</h2> */}
-                  <p className="mb-4 leading-6">
-                  Though you decided to skip this step for now, we kindly remind you that to be available for orders from buyers or make bids in Open offers you have to either confirm site ownership or pass moderation. To do it later, press the Requires moderation Are you owner? Confirm ownership or Unavailable for tasks signs in the My websites tab.
-                  </p>
-                  <p className="mb-4 leading-6">
-                  I have read the information about ownership and contributor moderation and I understand that I cannot work with sites as contributor without passing the moderation.
-                  </p>
-
-                  <div className="mt-4">
-                    <Link href="/add-website">
-                      <button className="bg-blue-600 text-gray-10 font-semibold py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition duration-200">
-                        Finish Site Addition
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
             
             </div>
           </div>
@@ -250,4 +170,4 @@ export default function ConfirmationStatusWithoutPage() {
       </div>
     </>
   );
-  }
+}
