@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
 const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
+const apiURL = hostedURL || localbaseURL;
+
 
 // Async thunk to fetch all products
 export const fetchAllProducts = createAsyncThunk(
@@ -21,7 +23,7 @@ export const fetchBlockedProducts = createAsyncThunk(
   async () => {
     const token = Cookies.get("authToken");
     const response = await axios.get(
-      "http://localhost:3001/api/blockedProducts",
+      `${apiURL}/blockedProducts`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -36,7 +38,7 @@ export const fetchUnblockedProducts = createAsyncThunk(
   async () => {
     const token = Cookies.get("authToken");
     const response = await axios.get(
-      "http://localhost:3001/api/unblockedProducts",
+      `${apiURL}/unblockedProducts`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -52,7 +54,7 @@ export const blockProduct = createAsyncThunk(
     const token = Cookies.get("authToken");
     try {
       await axios.post(
-        `http://localhost:3001/api/block/${productId}`,
+        `${apiURL}/block/${productId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -73,7 +75,7 @@ export const unblockProduct = createAsyncThunk(
 
     try {
       const response = await axios.post(
-        `http://localhost:3001/api/unblock/${productId}`,
+        `${apiURL}/unblock/${productId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
