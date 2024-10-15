@@ -281,7 +281,7 @@ export default function PostsPage() {
                     </Text>
                   )}
                   {activeTab === "tab2" && (
-                    <div className="relative rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[20rem]">
+                    <div className="relative rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[5rem]">
                       <div className="flex gap-4 p-4 ">
                       <div className="relative w-full lg:w-1/2">
                           <Input
