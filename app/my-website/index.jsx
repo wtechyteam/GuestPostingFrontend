@@ -8,7 +8,7 @@ import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
-import UserProfile3 from "./sellerWebsiteCard";
+import SellerWebsiteCard from "./sellerWebsiteCard";
 import { Suspense } from "react";
 import TextContentRow from "../common/TextContentRow";
 import { useRouter } from "next/navigation";
@@ -317,37 +317,37 @@ export default function MyWebsitePage() {
                 <div className="mt-4">
                   {activeTab === "tab1" && (
                     <div className="bg-gray-10 rounded-[14px] mb-10">
-                      <UserProfile3 />
+                      <SellerWebsiteCard />
                     </div>
                   )}
                   {activeTab === "tab2" && (
                     <div className="bg-white rounded-[14px] mb-10">
-                      <UserProfile3 />
+                        <SellerWebsiteCard />
                     </div>
                   )}
                   {activeTab === "tab3" && (
                     <div className="bg-white rounded-[14px] mb-10">
-                      <UserProfile3 />
+                       <SellerWebsiteCard />
                     </div>
                   )}
                   {activeTab === "tab4" && (
                     <div className="bg-white rounded-[14px] mb-10">
-                      <UserProfile3 />
+                     <SellerWebsiteCard />
                     </div>
                   )}
                   {activeTab === "tab5" && (
                     <div className="bg-white rounded-[14px] mb-10">
-                      <UserProfile3 />
+                       <SellerWebsiteCard />
                     </div>
                   )}
                   {activeTab === "tab6" && (
                     <div className="bg-white rounded-[14px] mb-10">
-                      <UserProfile3 />
+                     <SellerWebsiteCard />
                     </div>
                   )}
                   {activeTab === "tab7" && (
                     <div className="bg-white rounded-[14px] mb-10">
-                      <UserProfile3 />
+                        <SellerWebsiteCard />
                     </div>
                   )}
                 </div>

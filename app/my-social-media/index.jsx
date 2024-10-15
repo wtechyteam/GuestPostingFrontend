@@ -237,11 +237,11 @@ export default function MySocialMedia() {
                 </ul>
               </div>
               <SearchBar />
-              <div className="relative bg-gray-10 shadow-lg rounded-[14px] min-h-[450px] w-full sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] p-4 mb-[20rem]">
+            
                 <div className="mb-8">
                   {activeTab === "all" && (
-                    <div>
-                      <div className="grid grid-cols-4 gap-2 mb-4">
+                     <div className="mb-[25rem]">
+                      <div className="grid grid-cols-4 gap-2 mb-4 ">
                         <h2 className="text-sm font-semibold text-gray-600">
                           URL
                         </h2>
@@ -275,7 +275,7 @@ export default function MySocialMedia() {
                     </div>
                   )}
                   {activeTab === "pending-specifications" && (
-                    <div>
+                         <div className="mb-[25rem]">
                       <div className="grid grid-cols-4 gap-2 mb-4">
                         <h2 className="text-sm font-semibold text-gray-600">
                           URL
@@ -310,7 +310,7 @@ export default function MySocialMedia() {
                     </div>
                   )}
                   {activeTab === "pending-moderation" && (
-                    <div>
+                       <div className="mb-[25rem]">
                       <div className="grid grid-cols-4 gap-2 mb-4">
                         <h2 className="text-sm font-semibold text-gray-600">
                           URL
@@ -345,7 +345,7 @@ export default function MySocialMedia() {
                     </div>
                   )}
                   {activeTab === "approved" && (
-                    <div>
+                        <div className="mb-[25rem]">
                       <div className="grid grid-cols-4 gap-2 mb-4">
                         <h2 className="text-sm font-semibold text-gray-600">
                           URL
@@ -380,7 +380,7 @@ export default function MySocialMedia() {
                     </div>
                   )}
                   {activeTab === "rejected" && (
-                    <div>
+                         <div className="mb-[25rem]">
                       <div className="grid grid-cols-4 gap-2 mb-4">
                         <h2 className="text-sm font-semibold text-gray-600">
                           URL
@@ -424,7 +424,7 @@ export default function MySocialMedia() {
             </div>
           </div>
         </div>
-      </div>
+     
     </>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 const AccountLink = ({ primaryUrl, secondaryUrl, status, isActive, price }) => {
   return (
-    <div className="flex items-center justify-between bg-white border rounded-lg p-4 shadow-md space-x-6">
+    <div className="flex items-center justify-between bg-gray-10 border rounded-lg p-4 shadow-md space-x-6">
       {/* Left Section: URLs, Status, and Price */}
       <div className="flex items-center space-x-48">
         <a href={primaryUrl} className="text-blue-600 hover:underline truncate">
