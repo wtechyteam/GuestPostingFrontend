@@ -2,6 +2,7 @@ import { Heading } from "./Heading";
 import { Text } from "./Text";
 import { Button } from "./Button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function TaskCard() {
   return (
@@ -120,6 +121,7 @@ export default function TaskCard() {
         alt="Dustbin Icon"
         className="absolute top-3 right-3 h-[24px] w-[24px]"
       />
+      <Link href="/your-acceptance">
       <Button 
         color="" 
         size="md" 
@@ -128,6 +130,7 @@ export default function TaskCard() {
       >
         Approval Pending
       </Button>
+      </Link>
     </div>
   );
 }
