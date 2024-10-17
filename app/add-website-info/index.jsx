@@ -7,8 +7,8 @@ import SidebarSeller from "../common/SidebarSeller";
 import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState,useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation"; 
 import PostRequestForm from "./PostRequestForm";
 
 
@@ -21,12 +21,21 @@ const dropDownOptions = [
 export default function AddWebsiteInfoPage() {
 
   const fullName = Cookies.get("fullName");
+  const searchParams = useSearchParams(); // Initialize searchParams
+  const router = useRouter(); // Initialize router
+  const [url, setUrl] = useState('');
 
   // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("tab1");
-  const router = useRouter(); // Initialize the router
+
+// Retrieve 'url' from query params
+useEffect(() => {
+  const queryUrl = searchParams.get("url");
+  if (queryUrl) setUrl(queryUrl);
+}, [searchParams]);
+
 
   const handleLogout = () => {
     // Add your logout logic here, e.g., clear cookies or call an API
@@ -222,7 +231,7 @@ export default function AddWebsiteInfoPage() {
                 Add Website Info
               </h1>
              <div className="mt-6 mb-20">
-             <PostRequestForm />
+             <PostRequestForm url={url} /> 
 
               
             </div>

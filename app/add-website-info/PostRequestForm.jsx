@@ -4,15 +4,17 @@ import { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import { Input } from "./../common/Input";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const PostRequestForm = () => {
+const PostRequestForm = ({ url }) => {
   const [mounted, setMounted] = useState(false);
 
   const [formData, setFormData] = useState({
-    url: "",
-    language: "English",
+    url: "hello.com",
+    language: "",
     contentSponsored: "No",
     categories: ["Automobiles", "Business", "Home and Family"],
     links: "Dofollow",
@@ -64,17 +66,41 @@ const PostRequestForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
-    // Optionally, redirect or display confirmation
+    try {
+      // Fetch UserId from cookies
+      const userId = Cookies.get("userId");
+  
+      // Log the fetched userId to the console
+      console.log("Fetched UserId from cookies:", userId);
+  
+      if (!userId) throw new Error("UserId not found in cookies");
+  
+      // Add the `url` and `UserId` to the form data before submitting
+      const dataToSubmit = { ...formData, url, userId };
+  
+      const response = await axios.post(
+        "http://localhost:3001/api/seller/products",
+        dataToSubmit
+      );
+  
+      console.log("Product added successfully:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  
+    console.log("Form Data:", formData); // Optionally log form data
   };
+  
   useEffect(() => {
     setMounted(true); // Set to true after the component mounts
   }, []);
   return (
-    <form className="p-6 bg-gray-10 mb-20 rounded-lg shadow-md w-[99%] mx-auto text-adsy_com-black">
+    <form
+      onSubmit={handleSubmit}
+      className="p-6 bg-gray-10 mb-20 rounded-lg shadow-md w-[99%] mx-auto text-adsy_com-black"
+    >
       {/* URL and Language Side by Side */}
       <div className="flex space-x-4 mb-4">
         <div className="w-1/2">
@@ -84,8 +110,8 @@ const PostRequestForm = () => {
           <Input
             type="url"
             name="url"
-            value={formData.url}
-            onChange={handleInputChange}
+            value={url}
+            readOnly
             placeholder="https://"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
           />
@@ -101,6 +127,8 @@ const PostRequestForm = () => {
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
           >
             <option>English</option>
+            <option>French</option>
+            <option>German</option>
             {/* Add other language options here */}
           </select>
         </div>
@@ -183,8 +211,8 @@ const PostRequestForm = () => {
           <div className="flex items-center mt-4">
             <Input
               type="checkbox"
-              name="specialTopic"
-              checked={formData.specialTopic}
+              name="paidPosts"
+              checked={formData.paidPosts}
               onChange={handleInputChange}
               className="mr-2"
             />
@@ -390,6 +418,7 @@ const PostRequestForm = () => {
         <button
           type="submit"
           className="w-1/4 bg-blue-600 text-gray-10 font-medium p-2 rounded-md mt-4"
+          onClick={handleSubmit}
         >
           Save Changes
         </button>
