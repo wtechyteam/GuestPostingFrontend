@@ -12,8 +12,29 @@ const apiURL = hostedURL || localbaseURL;
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
   async () => {
-    const response = await axios.get(`${hostedURL}/products` || `${localbaseURL}/products`);
+    const response = await axios.get(`${hostedURL}/products`||`${localbaseURL}/products`);
     return response.data;
+  }
+);
+//Async thunk to search products
+export const fetchSearchedProducts = createAsyncThunk(
+  "products/fetchSearchedProducts",
+  async ({ query, URL, tags, language, country }, thunkAPI) => {
+    try {
+      const response = await axios.get(`${hostedURL}/products/search`||`${localbaseURL}/products/search`, {
+        params: {
+          query: query || "",
+          URL: URL || "",
+          tags: tags || "",
+          language: language || "",
+          country: country || "",
+        },
+      });
+ 
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
 );
 
@@ -23,7 +44,7 @@ export const fetchBlockedProducts = createAsyncThunk(
   async () => {
     const token = Cookies.get("authToken");
     const response = await axios.get(
-      `${apiURL}/blockedProducts`,
+      `${apiURL}/blockedProducts`|| `${localbaseURL}/blockProducts`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -38,7 +59,7 @@ export const fetchUnblockedProducts = createAsyncThunk(
   async () => {
     const token = Cookies.get("authToken");
     const response = await axios.get(
-      `${apiURL}/unblockedProducts`,
+     `${apiURL}/unblockedProducts`|| `${localbaseURL}/unblockedProducts`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -54,7 +75,7 @@ export const blockProduct = createAsyncThunk(
     const token = Cookies.get("authToken");
     try {
       await axios.post(
-        `${apiURL}/block/${productId}`,
+        `${apiURL}/block/${productId}` ||  `${localbaseURL}/block/${productId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -75,7 +96,7 @@ export const unblockProduct = createAsyncThunk(
 
     try {
       const response = await axios.post(
-        `${apiURL}/unblock/${productId}`,
+        `${apiURL}/unblock/${productId}` || `${localbaseURL}/unblock/${productId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -174,6 +195,18 @@ const productSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(unblockProduct.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(fetchSearchedProducts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchSearchedProducts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.products = action.payload;
+      })
+      .addCase(fetchSearchedProducts.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.payload;
       });
   },

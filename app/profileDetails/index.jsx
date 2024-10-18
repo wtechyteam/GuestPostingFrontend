@@ -52,7 +52,7 @@ const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/users/${userId}`,
+          ` ${apiURL}/users/${userId}`|| `${localbaseURL}/users/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -65,7 +65,7 @@ const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
         if (response.status === 200) {
           const userData = response.data;
           setEditableContent({
-            name: userData.fullName || "Not Specified",
+            name: userData.fullName || "Not Specific",
             email: userData.email || "Not Specified",
             location: userData.location || "Not Specified",
             dob: formatDate(userData.DOB) || "Not Specified",

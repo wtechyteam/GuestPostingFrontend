@@ -121,14 +121,18 @@ export default function TaskCard() {
         alt="Dustbin Icon"
         className="absolute top-3 right-3 h-[24px] w-[24px]"
       />
-       <Link href="/if-approved">
+      <Link href="/seller-improvement">
       <Button 
         color="" 
         size="md" 
         className="absolute bottom-3 right-3 min-w-[134px] rounded-xl font-bold text-white" 
-        style={{ backgroundColor: '#00C807', height: '2rem', marginBottom: '0.3rem' }}
+        style={{
+          backgroundColor: "#B0C800",
+          height: "2rem",
+          marginBottom: "0.3rem",
+        }}
       >
-        Approved
+        Improvement
       </Button>
       </Link>
     </div>

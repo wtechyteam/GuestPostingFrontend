@@ -1,93 +1,115 @@
 "use client";
-
 import { SelectBox } from "../common/SelectBox";
 import { Text } from "../common/Text";
 import { Heading } from "../common/Heading";
 import Image from "next/image";
-import Sidebar1 from "../common/Sidebar1";
-import OrderSummarySection from "./OrderSummarySection";
-import PublisherSearchSection from "./testing";
+import SidebarSeller from "../common/SidebarSeller";
+import HowItWorks from "./HowItWorks";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
-import HowItWorks from "./HowItWorks";
 import { useRouter } from "next/navigation";
-import UserProfile3 from "app/common/UserProfile3";
-
+import ApprovalComponent from "./approvalComponent"
 const dropDownOptions = [
   { label: "English", value: "English" },
-  { label: "Spanish", value: "option2" },
-  { label: "French", value: "option3" },
+  { label: "English", value: "option2" },
+  { label: "English", value: "option3" },
 ];
-
-export default function DashboardPage() {
+const options = [
+  { value: "option1", label: "Option 1" },
+  { value: "option2", label: "Option 2" },
+  { value: "option3", label: "Option 3" },
+];
+export default function NotificationPage() {
   const fullName = Cookies.get("fullName");
-  const router = useRouter();
+
+  // State to handle dropdown visibility
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isHowItWorksVisible, setHowItWorksVisible] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(""); // State for the search query
-  const [searchResults, setSearchResults] = useState([]);
+  const router = useRouter(); // Initialize the router
 
   const handleLogout = () => {
     Cookies.remove("fullName");
+
     router.push("/login");
   };
 
-  const handleLogout2 = () => {
-    router.push("/profileDetails");
-  };
-  const handleSwitch = () => {
-    router.push("/dashboardSeller");
-  };
+  const [activeTab, setActiveTab] = useState("tab1");
 
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
-
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
-   // Search handling function
-   const handleSearch = async (query) => {
-    setSearchQuery(query);
-    const tags = 'weed';
-    const language = 'English';
-    const country = 'USA';
-  
-    try {
-      const response = await fetch(`http://localhost:3001/api/products/search?tags=${tags}`);
-  
-      // Check if the response is ok (status code 200-299)
-      if (!response.ok) {
-        const errorMessage = await response.text(); // Read the response body as text
-        console.error("Error fetching search results:", errorMessage);
-        return; // Exit the function if there's an error
-      }
-  
-      const data = await response.json();
-      setSearchResults(data);
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-    }
+  const handleLogout2 = () => {
+    router.push("/profileDetails");
   };
-  
-  
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
+  const data = [
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+    {
+      longText: "It is a long established",
+      descriptionText:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      dateText: "12 Aug, 2024",
+    },
+  ];
+
   return (
-    <>
-      <div className="w-full bg-gray-10 overflow-x-hidden">
-        <div className="flex flex-col items-end bg-gray-50_01">
-          <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl">
-            <div className="mb-1 flex w-[96%] items-center justify-between">
-              <div className="flex flex-col items-start">
-                <Image
-                  src="/images/logo.png"
-                  width={56}
-                  height={32}
-                  alt="Sidebar Logo"
-                  className="ml-6 h-[32px] w-[56px] object-contain"
-                />
-              </div>
-              <div className="flex w-[40%] mr-[100px] flex-col items-start sm:w-full  md:ml-0 sm:ml-0">
+    <div className="w-full bg-gray-10 overflow-x-hidden">
+      <div className="flex flex-col items-end bg-gray-50_01">
+        <header className="fixed top-0 left-0 w-[100%] z-50 flex items-center justify-center bg-gray-10 p-1.5 shadow-6xl md:w-full">
+          <div className="mb-1 flex w-[96%] items-center justify-between md:w-full sm:flex-col">
+            <div className="flex w-[100%] flex-col items-start sm:w-full">
+              <Image
+                src="/images/logo.png"
+                width={56}
+                height={32}
+                alt="Sidebar Logo"
+                className="ml-6 h-[32px] w-[56px] object-contain"
+              />
+            </div>
+            <div className="flex w-[68%]   flex-col items-start sm:w-full ml-[-60rem] md:ml-0 sm:ml-0">
               <Heading
                 size="heading2xl"
                 as="h6"
@@ -167,7 +189,7 @@ export default function DashboardPage() {
                       Profile Settings
                     </button>
                     <button
-                      onClick={handleSwitch}
+                      onClick={handleLogout}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
                       Switch To Seller
@@ -182,25 +204,25 @@ export default function DashboardPage() {
                 )}
               </div>
             </div>
-            </div>
-          </header>
+          </div>
+        </header>
 
-          <div className="flex items-start justify-start gap-7 self-stretch mt-[70px]">
-            <div className="fixed top-[60px] left-0 h-full bg-white shadow-md z-20">
-              <Sidebar1 />
-            </div>
-            <div className="ml-[300px] mt-[30px] flex flex-1 flex-col gap-7">
-              <HowItWorks
-                isHowItWorksVisible={isHowItWorksVisible}
-                toggleHowItWorks={toggleHowItWorks}
-              />
-              <OrderSummarySection />
-              <PublisherSearchSection onSearch={handleSearch} />
-              <UserProfile3 searchResults={searchResults} />
-            </div>
+        <div className="flex items-start justify-start gap-7 self-stretch">
+          <div className="fixed top-100 mt-[50px] left-0 h-full bg-white shadow-md z-20">
+            <SidebarSeller />
+          </div>
+          <div className="ml-[300px] mt-[100px] flex flex-1 flex-col gap-7">
+            <HowItWorks
+              isHowItWorksVisible={isHowItWorksVisible}
+              toggleHowItWorks={toggleHowItWorks}
+            />
+             <h1 className="text-3xl font-bold text-gray-700 !text-left">
+              Improvement
+            </h1>
+            <ApprovalComponent /> 
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

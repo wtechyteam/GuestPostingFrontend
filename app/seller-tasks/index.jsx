@@ -7,7 +7,7 @@ import { Heading } from "../common/Heading";
 import AcceptCard from "../common/AcceptCard";
 import ApprovalPending from "../common/ApprovalPending";
 import CompletedCard from "../common/CompletedCard";
-import ImprovementCard from "../common/ImprovementCard";
+import ImprovementCard from "../common/SellerImprovementCard";
 import RejectedCard from "../common/RejectedCard";
 import ArchievedCard from "../common/ArchievedCard";
 import InProgressCard from "../common/InProgressCard";

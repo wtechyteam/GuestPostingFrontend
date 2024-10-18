@@ -1,14 +1,19 @@
-"use client"
+"use client";
 import { SelectBox } from "../common/SelectBox";
 import { Img } from "../common/Img";
 import { Input } from "../common/Input";
 import { Heading } from "../common/Heading";
+import { useRouter } from "next/navigation";
 import { CloseSVG } from "../common/Close";
 import UserProfile3 from "../common/UserProfile3";
-import React, { useState } from "react";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import { TabPanel, TabList, Tab, Tabs } from "react-tabs";
 import Image from "next/image";
+import { useDispatch } from 'react-redux';
+import { fetchSearchedProducts } from './../redux/productSlice';
 import { Button } from "app/common/Button";
+import { useDebounce } from "use-debounce";
 
 const dropDownOptions = [
   { label: "Option1", value: "option1" },
@@ -16,9 +21,19 @@ const dropDownOptions = [
   { label: "Option3", value: "option3" },
 ];
 
-export default function PublisherSearchSection() {
+export default function PublisherSearchSection({ onSearch }) {
   const [searchBarValue10, setSearchBarValue10] = useState("");
+  const router = useRouter();
+  const [query, setQuery] = useState('');
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchInput); // Call the onSearch function passed from the parent
+  };
+
   const [value, setValue] = useState(50);
   const [ahref, setAhref] = useState(50);
   const [mozDR, setMozDR] = useState(50);
@@ -26,6 +41,27 @@ export default function PublisherSearchSection() {
   const [spamScore, setSpamScore] = useState(50);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  useEffect(() => {
+    if (!query) {
+      router.push("/dashboardBuyer");
+    } else {
+      router.push(`/dashboardBuyer?search=${query}`);
+    }
+  }, [query, router]);
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const searchParams = {
+      query,
+      URL: '', // Adjust or fetch from context/config if needed
+      tags: '',
+      language: 'en',
+      country: 'US',
+    };
+
+    dispatch(fetchSearchedProducts(searchParams));
+  };
+
 
   return (
     <>
@@ -78,13 +114,16 @@ export default function PublisherSearchSection() {
                       </div>
                     }
                     suffix={
-                      searchBarValue10?.length > 0 ? (
-                        <CloseSVG
-                          onClick={() => setSearchBarValue10("")}
-                          height={12}
-                          width={10}
-                        />
-                      ) : null
+                      <div className="flex items-center gap-2">
+                        
+                        <button
+                        type="submit"
+                          onClick={() => console.log("Search initiated")}
+                          className="bg-indigo-a400 font-bold text-gray-10 px-2 py-2 rounded-md "
+                        >
+                          Search
+                        </button>
+                      </div>
                     }
                     className="w-[84%] gap-3.5 self-center rounded-[14px] border border-solid border-blue_gray-50 !text-gray-400 md:w-full px-3"
                   />
@@ -117,22 +156,8 @@ export default function PublisherSearchSection() {
             as="h1"
             className="text-gray-600 font-semibold text-[18px]"
           >
-            Results: {3 * 4} sites
+            Results: 12 sites
           </Heading>
-          {[...Array(3)].map((_, index) => (
-            <TabPanel
-              key={`tab-panel${index} `}
-              className="absolute ml-1 items-center md:ml-0"
-            >
-              <div className="w-full">
-                <div className="flex flex-col gap-1">
-                  <UserProfile3 />
-                  {/* <UserProfile3 />
-                  <UserProfile3 /> */}
-                </div>
-              </div>
-            </TabPanel>
-          ))}
         </Tabs>
       </div>
 
@@ -487,7 +512,7 @@ export default function PublisherSearchSection() {
                 </div>
               </div>
             </div>
-            
+
             <div className="rounded-full flex justify-center space-x-4 mt-6">
               <Button
                 className="min-w-[134px] rounded-xl font-bold text-white bg-indigo-a400 text-sm h-10 mb-[0.3rem]"

@@ -12,9 +12,11 @@ import {
 } from "../redux/productSlice";
 import { addToWishlist, removeFromWishlist } from "../redux/wishlistSlice";
 import Link from "next/link";
+
 import Image from "next/image";
 
 export default function UserProfile3({
+  searchResults,
   urlIsHiddenText = "URL is hidden",
   contributorText = "Contributor",
   artText = "Art",
@@ -55,7 +57,7 @@ export default function UserProfile3({
   ...props
 }) {
   const dispatch = useDispatch();
-
+  const { products, isLoading, error } = useSelector((state) => state.products);
   const { unblockedProducts, loading } = useSelector((state) => state.products);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -106,7 +108,7 @@ export default function UserProfile3({
     setLikedProducts((prev) => {
       const newLikedProducts = {
         ...prev,
-        [productId]: !prev[productId], // Toggle like status
+        [productId]: !prev[productId], 
       };
 
       // Save updated likes to local storage
@@ -134,9 +136,12 @@ export default function UserProfile3({
   }
 
   return (
-    <>
+    <> 
+   
+
+
       {unblockedProducts.map((product, index) => {
-        const tagArray = product.tags.split(", ").map((tag) => tag.trim());
+      
 
         return (
           <div
@@ -176,7 +181,7 @@ export default function UserProfile3({
                 </div>
 
                 <div className="flex flex-1 gap-[9px] px-2.5">
-                  {tagArray.map((tag, index) => (
+                  {product.tags.map((tag, index) => (
                     <div
                       key={index}
                       className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5"
@@ -216,11 +221,11 @@ export default function UserProfile3({
                   className="ml-4 h-[24px] w-[24px] cursor-pointer"
                   onClick={() => {
                     if (likedProducts[product._id]) {
-                      handleRemoveFromWishlist(product._id); // Remove from wishlist if liked
+                      handleRemoveFromWishlist(product._id); 
                     } else {
-                      handleAddToWishlistProduct(product._id); // Add to wishlist if not liked
+                      handleAddToWishlistProduct(product._id); 
                     }
-                    toggleLikeProduct(product._id); // Toggle like state
+                    toggleLikeProduct(product._id); 
                   }}
                 />
 
