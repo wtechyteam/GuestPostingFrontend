@@ -52,7 +52,7 @@ const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/users/${userId}`,
+          `${hostedURL}/users/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
