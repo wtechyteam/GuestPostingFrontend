@@ -20,6 +20,8 @@ const dropDownOptions = [
 
 export default function ProfileDetailsPage() {
   const fullName = Cookies.get("fullName");
+  const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
+const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
   const token = Cookies.get("authToken");
   const email = Cookies.get("email");
@@ -112,7 +114,7 @@ export default function ProfileDetailsPage() {
 
     try {
       const response = await axios.put(
-        `http://localhost:3001/api/users/${userId}`,
+       ` ${apiURL}/users/${userId}`|| `${localbaseURL}/users/${userId}`,
         {
           fullName: name,
           email: email,
