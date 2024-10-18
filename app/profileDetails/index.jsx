@@ -114,7 +114,7 @@ const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
     try {
       const response = await axios.put(
-       ` ${apiURL}/users/${userId}`|| `${localbaseURL}/users/${userId}`,
+       `${hostedURL}/users/${userId}`,
         {
           fullName: name,
           email: email,
