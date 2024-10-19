@@ -21,7 +21,7 @@ const dropDownOptions = [
 export default function ProfileDetailsPage() {
   const fullName = Cookies.get("fullName");
   const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
-const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
+  const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
   const token = Cookies.get("authToken");
   const email = Cookies.get("email");
@@ -52,7 +52,8 @@ const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          ` ${apiURL}/users/${userId}`|| `${localbaseURL}/users/${userId}`,
+          `${hostedURL}/users/${userId}`,
+
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -113,16 +114,13 @@ const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
     const { name, email, location, dob, contact } = editableContent;
 
     try {
-      const response = await axios.put(
-       ` ${apiURL}/users/${userId}`|| `${localbaseURL}/users/${userId}`,
-        {
-          fullName: name,
-          email: email,
-          location: location,
-          DOB: dob,
-          contact: contact,
-        }
-      );
+      const response = await axios.put(`${hostedURL}/users/${userId}`, {
+        fullName: name,
+        email: email,
+        location: location,
+        DOB: dob,
+        contact: contact,
+      });
 
       if (response.status === 200) {
         alert("Profile updated successfully!");
