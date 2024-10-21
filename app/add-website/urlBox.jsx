@@ -1,18 +1,17 @@
+// SearchStatusComponent.jsx
 import { useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 const SearchStatusComponent = () => {
-  const [url, setUrl] = useState('');
-  const router = useRouter(); // Initialize the router
+  const [URL, setURL] = useState('');
+  const router = useRouter();
 
   const handleInputChange = (event) => {
-    setUrl(event.target.value);
+    setURL(event.target.value);
   };
 
   const handleSubmit = () => {
-    // Navigate to AddWebsiteInfoPage with the URL as a query parameter
-    router.push(`/add-website-info?url=${encodeURIComponent(url)}`);
+    router.push(`/add-website-info?URL=${encodeURIComponent(URL)}`);
   };
 
   return (
@@ -22,7 +21,7 @@ const SearchStatusComponent = () => {
         <input
           type="text"
           placeholder="Add your URL here"
-          value={url}
+          value={URL}
           onChange={handleInputChange}
           className="outline-none w-full text-adsy_com-black"
         />
