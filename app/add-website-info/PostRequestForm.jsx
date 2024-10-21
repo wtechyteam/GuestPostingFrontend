@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -25,6 +25,7 @@ const PostRequestForm = () => {
     writingAndPlacement: 0,
     extraContent: 0,
     specialTopic: 0,
+    priceForLinks: 0,
   });
 
   const searchParams = useSearchParams();
@@ -163,30 +164,64 @@ const PostRequestForm = () => {
           </div>
         </div>
         <div className="w-1/2">
-          <label className="block text-sm font-medium text-gray-700">
-            Categories (select up to 3) *
-          </label>
-          <select
-            name="tags"
-            value={formData.tags} // Ensure this matches the state
-            onChange={handleChange}
-            multiple
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-          >
-            <option value="Automobile">Automobile</option>
-            <option value="Business">Business</option>
-            <option value="Home">Home</option>
-            <option value="Family">Family</option>
-          </select>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Categories (select up to 3) *
+            </label>
+            <select
+              name="tags"
+              value={formData.tags}
+              onChange={handleChange}
+              multiple
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 cursor-pointer"
+              style={{ height: "2.4rem", overflowY: "auto" }} // Adjust the height to display only one row
+            >
+              <option value="Automobile">Automobile</option>
+              <option value="Business">Business</option>
+              <option value="Home">Home</option>
+              <option value="Family">Family</option>
+            </select>
+          </div>
         </div>
       </div>
       <div className="flex space-x-4 mb-4">
         <div className="w-1/2">
+          <div className="mt-[-1rem] mb-3  w-full  rounded-md">
+            <label className="text-sm font-medium text-gray-700 mb-1">
+              Links*
+            </label>
+            <div className="flex space-x-8 mt-4">
+              <label className="flex items-center space-x-2">
+                <Input
+                  type="radio"
+                  name="links"
+                  value="DoFollow"
+                  checked={formData.links === "DoFollow"}
+                  onChange={handleChange}
+                  className="text-indigo-600"
+                />
+                <span>DoFollow</span>
+              </label>
+
+              <label className="flex items-center space-x-2">
+                <Input
+                  type="radio"
+                  name="links"
+                  value="NoFollow"
+                  checked={formData.links === "NoFollow"}
+                  onChange={handleChange}
+                  className="text-indigo-600"
+                />
+                <span>NoFollow</span>
+              </label>
+            </div>
+          </div>
+
           <div className="mt-1">
             <label className="block text-sm font-medium text-gray-700">
               Special Requirements
             </label>
-            
+
             <ReactQuill
               value={formData.requirements}
               onChange={(value) => handleChange("requirements", value)}
@@ -202,7 +237,6 @@ const PostRequestForm = () => {
                 ],
               }}
             />
-            
           </div>
           <div className="flex items-center mt-4">
             <input
@@ -287,6 +321,21 @@ const PostRequestForm = () => {
                 />
                 <span>2000+</span>
               </label>
+            </div>
+            <div className="mt-4  w-full  rounded-md">
+              <label className="text-sm font-medium text-gray-700">
+                Add Price for Link Insertion :
+              </label>
+              <span className="ml-1">$</span>
+              <input
+                type="number"
+                name="priceForLinks" // Use simple name for easy state management
+                value={formData.priceForLinks} // This should reflect your form state
+                onChange={handleChange} // Call your change handler
+                className="border border-gray-300 rounded-md shadow-sm p-1 w-20 ml-4"
+                min="0" // Minimum value of 0
+                placeholder="0" // Optional placeholder
+              />
             </div>
           </div>
           <div className="flex items-center mb-2">

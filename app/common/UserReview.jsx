@@ -48,6 +48,7 @@ export default function UserReview({
       >
         {reviewText}
       </Text>
+      
       <div className="w-[24%] h-px bg-gray-400" />
       <Heading
         size="headingmd"

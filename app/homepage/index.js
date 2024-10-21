@@ -28,68 +28,38 @@ export default function DesktopTwoPage() {
     {
       rating: 5,
       title: "Amazing Service!",
-      description:
-        "Satisfied with the quality. Working with Nearshore has been an absolute pleasure. Their team took the time to understand expectations ",
+      description: "Satisfied with the quality. Working with Nearshore has been an absolute pleasure. Their team took the time to understand expectations.",
       date: "Oct 7, 2024",
       reviewer: "John Doe",
     },
     {
       rating: 4,
       title: "Great Product",
-      description:
-        "The quality is good. Working with Nearshore has been a great experience. They delivered a solution that met our expectations.",
+      description: "The quality is good. Working with Nearshore has been a great experience. They delivered a solution that met our expectations.",
       date: "Oct 5, 2024",
       reviewer: "Jane Smith",
     },
     {
       rating: 3,
       title: "Decent",
-      description:
-        "The product is decent. It met our needs but there's room for improvement.",
+      description: "The product is decent. It met our needs but there's room for improvement.",
       date: "Oct 2, 2024",
       reviewer: "Alex Johnson",
     },
   ];
-
-  // Array of random names
-  const randomNames = [
-    "John Doe",
-    "Jane Smith",
-    "Alex Johnson",
-    "Emily Davis",
-    "Michael Brown",
-    "Sarah Wilson",
-    "David Miller",
-    "Laura Taylor",
-    "Daniel Anderson",
-    "Samantha Thomas",
-    "James Moore",
-    "Linda Jackson",
-    "Robert White",
-    "Elizabeth Harris",
-    "William Martin",
-  ];
-
-  // Function to get a random name
-  const getRandomName = () => {
-    const randomIndex = Math.floor(Math.random() * randomNames.length);
-    return randomNames[randomIndex];
-  };
-
+  
+  // Number of times to duplicate the base reviews
+  const numberOfDuplicates = 300;
+  
+  // Create an empty array to hold the duplicated reviews
   const reviews = [];
-
-  // Generate 50 reviews
-  for (let i = 0; i < 1000; i++) {
-    const review = {
-      rating: Math.floor(Math.random() * 5) + 1, // Random rating between 1 and 5
-      title: baseReviews[i % baseReviews.length].title,
-      description: baseReviews[i % baseReviews.length].description,
-      date: `Oct ${Math.floor(Math.random() * 31) + 1}, 2024`, // Random date in October 2024
-      reviewer: getRandomName(), // Use a random name from the array
-    };
-
-    reviews.push(review);
+  
+  // Loop to duplicate the base reviews
+  for (let i = 0; i < numberOfDuplicates; i++) {
+    reviews.push(...baseReviews);
   }
+  
+  
 
   const testimonials = [
     {

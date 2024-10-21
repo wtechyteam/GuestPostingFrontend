@@ -15,7 +15,10 @@ const dropDownOptions = [
   { label: "Option2", value: "Option2" },
   { label: "Option3", value: "Option3" },
 ];
-
+const Options = [
+  { label: "For Buyers", value: "For Buyers" },
+  { label: "For Sellers", value: "For Sellers" },
+];
 export default function Header({ ...props }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,11 +35,10 @@ export default function Header({ ...props }) {
 
   return (
     <header
-    {...props}
-    className={`${props.className} flex justify-center items-center py-6 sm:py-5 z-[7] relative bg-gray-10 shadow-xs overflow-x-hidden md:overflow-x-hidden`}
-  >
-  
-      <div className="container-xs flex justify-between gap-5 px-12 md:px-5">
+      {...props}
+      className={`${props.className} flex justify-center items-center py-6 sm:py-5 z-[7] relative bg-gray-10 shadow-xs overflow-x-hidden`}
+    >
+      <div className="container-xs flex justify-between items-center gap-5 px-12 md:px-5">
         {/* Logo */}
         <Link href="/">
           <Text
@@ -49,7 +51,7 @@ export default function Header({ ...props }) {
         </Link>
 
         {/* Burger Menu Icon for Small Screens */}
-        <div className="hidden md:block sm:block flex items-center">
+        <div className="hidden md:block sm:block">
           <button
             onClick={toggleMenu}
             className="relative text-black focus:outline-none"
@@ -65,57 +67,38 @@ export default function Header({ ...props }) {
         </div>
 
         {/* Full Menu - Hidden on Small Screens */}
-        <div
-          className={`flex md:hidden w-[84%] justify-between gap-5 md:w-full md:flex-col md:items-center`}
-        >
-          <div className="relative rounded-[24px] w-[60%] flex justify-center bg-gray-50_02 p-2.5 md:w-full md:bg-transparent">
-            <div className="flex w-full md:flex-col md:items-center">
-              <ul className="gap-[72px] flex flex-wrap md:gap-5 md:flex-col md:items-center">
-                <li className="relative">
-                  <button
-                    onClick={toggleDropdown}
-                    className="text-[16px] !font-spacegrotesk2 font-medium !text-black-70_ bg-transparent border-none cursor-pointer flex"
-                  >
-                    <Text
-                      size="textmd"
-                      as="p"
-                      className="text-[16px] !font-spacegrotesk2 font-medium !text-black-70_"
-                    >
-                      How It Works
-                    </Text>
-                    <Image
-                      src="/images/CaretDown.png"
-                      width={16}
-                      height={14}
-                      alt="Arrow Down"
-                      className="h-[14px] w-[16px] mt-[0.35rem]"
-                    />
-                  </button>
-                  {isDropdownOpen && (
-                    <ul className="absolute top-full left-0 mt-2 w-48 bg-gray-50_02 border border-gray-300 shadow-lg rounded-lg">
-                      <li>
-                        <Link href="/for-buyer" legacyBehavior>
-                          <a className="block px-4 py-2 text-[16px] !font-spacegrotesk2 font-medium !text-black-70_">
-                            For Buyer
-                          </a>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/for-seller" legacyBehavior>
-                          <a className="block px-4 py-2 text-[16px] !font-spacegrotesk2 font-medium !text-black-70_">
-                            For Seller
-                          </a>
-                        </Link>
-                      </li>
-                    </ul>
-                  )}
+        <div className="flex md:hidden w-[84%] justify-center justify-between gap-5 md:w-full md:flex-col md:items-center">
+          <div className="relative rounded-[24px] w-[60%] flex justify-center bg-gray-50_02 p-1 md:w-full md:bg-transparent">
+            {" "}
+            {/* Reduced padding */}
+            <div className="flex justify-center w-full md:flex-col md:items-center">
+              <ul className="gap-[48px] flex flex-wrap md:gap-5 md:flex-col md:items-center justify-center">
+                {" "}
+                {/* Reduced gap */}
+                <li className="relative flex items-center">
+                  <SelectBox
+                    shape="round"
+                    indicator={
+                      <Image
+                        src="/images/CaretDown.png"
+                        width={16}
+                        height={14}
+                        alt="Arrow Down"
+                        className="h-[14px] w-[16px]"
+                      />
+                    }
+                    name="How it Works"
+                    placeholder={"How It Works"}
+                    options={Options}
+                    className="text-[16px] !font-spacegrotesk2 font-medium !text-adsy_com-black h-[12px] p-1 bg-gray-50_02" // Changed to gray color
+                  />
                 </li>
                 <li>
                   <Link href="#">
                     <Text
                       size="textmd"
                       as="p"
-                      className="text-[16px] !font-spacegrotesk2 font-medium !text-black-70_"
+                      className="text-[16px] !font-spacegrotesk2 font-medium !text-adsy_com-black mt-3"
                     >
                       FAQs
                     </Text>
@@ -126,7 +109,7 @@ export default function Header({ ...props }) {
                     <Text
                       size="textmd"
                       as="p"
-                      className="text-[16px] !font-spacegrotesk2 font-medium !text-black-70_"
+                      className="text-[16px] !font-spacegrotesk2 font-medium !text-adsy_com-black mt-3"
                     >
                       Blogs
                     </Text>
@@ -137,7 +120,7 @@ export default function Header({ ...props }) {
                     <Text
                       size="textmd"
                       as="p"
-                      className="text-[16px] !font-spacegrotesk2 font-medium !text-black-70_"
+                      className="text-[16px] !font-spacegrotesk2 font-medium !text-adsy_com-black mt-3"
                     >
                       Contact Us
                     </Text>
@@ -191,52 +174,57 @@ export default function Header({ ...props }) {
 
       {/* Collapsed Menu for Small Screens */}
       <Drawer anchor="right" open={isMenuOpen} onClose={toggleMenu}>
-  <div className="relative p-4 w-64">
-    {/* Close Icon */}
-    <button
-      onClick={toggleMenu}
-      className="absolute top-4 right-4 text-black focus:outline-none"
-    >
-      <Image
-        src="/images/close.png"
-        width={24}
-        height={24}
-        alt="Close Menu"
-        className="h-[20px] w-[20px]"
-      />
-    </button>
-    
-    <List>
-      {menuItems.map((item) => (
-        <ListItem button key={item.text} component={Link} href={item.href} onClick={toggleMenu}>
-          <ListItemText primary={item.text} />
-        </ListItem>
-      ))}
-    </List>
-    <Divider />
-    <Link href="/login" legacyBehavior>
-      <a onClick={toggleMenu}>
-        <Button
-          size="md"
-          className="min-w-[92px] w-full bg-blue-500 text-white transition-colors duration-300 mt-2"
-        >
-          Login
-        </Button>
-      </a>
-    </Link>
-    <Link href="/signup" legacyBehavior>
-      <a onClick={toggleMenu}>
-        <Button
-          size="md"
-          className="min-w-[110px] w-full bg-principal_blue text-white transition-colors duration-300 mt-2"
-        >
-          Sign Up
-        </Button>
-      </a>
-    </Link>
-  </div>
-</Drawer>
+        <div className="relative p-4 w-64">
+          {/* Close Icon */}
+          <button
+            onClick={toggleMenu}
+            className="absolute top-4 right-4 text-black focus:outline-none"
+          >
+            <Image
+              src="/images/close.png"
+              width={24}
+              height={24}
+              alt="Close Menu"
+              className="h-[20px] w-[20px]"
+            />
+          </button>
 
+          <List>
+            {menuItems.map((item) => (
+              <ListItem
+                button
+                key={item.text}
+                component={Link}
+                href={item.href}
+                onClick={toggleMenu}
+              >
+                <ListItemText primary={item.text} />
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <Link href="/login" legacyBehavior>
+            <a onClick={toggleMenu}>
+              <Button
+                size="md"
+                className="min-w-[92px] w-full bg-blue-500 text-white transition-colors duration-300 mt-2"
+              >
+                Login
+              </Button>
+            </a>
+          </Link>
+          <Link href="/signup" legacyBehavior>
+            <a onClick={toggleMenu}>
+              <Button
+                size="md"
+                className="min-w-[110px] w-full bg-principal_blue text-white transition-colors duration-300 mt-2"
+              >
+                Sign Up
+              </Button>
+            </a>
+          </Link>
+        </div>
+      </Drawer>
     </header>
   );
 }
