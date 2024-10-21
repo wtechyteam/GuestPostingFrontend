@@ -26,6 +26,7 @@ const PostRequestForm = () => {
     extraContent: 0,
     specialTopic: 0,
     priceForLinks: 0,
+    contentTypes: [],
   });
 
   const searchParams = useSearchParams();
@@ -41,12 +42,22 @@ const PostRequestForm = () => {
     } else {
       // For standard input events
       const { name, value, type, checked, multiple } = eOrName.target;
-
+  
       if (type === "checkbox") {
-        setFormData((prevData) => ({
-          ...prevData,
-          [name]: checked, // Update the checkbox state
-        }));
+        // Handle multiple checkboxes by updating the contentTypes array
+        setFormData((prevData) => {
+          const currentContentTypes = Array.isArray(prevData.contentTypes) ? prevData.contentTypes : [];
+  
+          // If checked, add the value to the array, otherwise remove it
+          const updatedContentTypes = checked
+            ? [...currentContentTypes, value] // Add value
+            : currentContentTypes.filter((item) => item !== value); // Remove value
+  
+          return {
+            ...prevData,
+            contentTypes: updatedContentTypes, // Update the contentTypes array
+          };
+        });
       } else if (multiple && name === "tags") {
         const selectedTags = Array.from(
           eOrName.target.selectedOptions,
@@ -69,7 +80,7 @@ const PostRequestForm = () => {
       }
     }
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -322,20 +333,96 @@ const PostRequestForm = () => {
                 <span>2000+</span>
               </label>
             </div>
-            <div className="mt-4  w-full  rounded-md">
+
+            <div className="mt-4 w-full rounded-md">
               <label className="text-sm font-medium text-gray-700">
-                Add Price for Link Insertion :
+                Add Price for Link Insertion:
               </label>
-              <span className="ml-1">$</span>
-              <input
-                type="number"
-                name="priceForLinks" // Use simple name for easy state management
-                value={formData.priceForLinks} // This should reflect your form state
-                onChange={handleChange} // Call your change handler
-                className="border border-gray-300 rounded-md shadow-sm p-1 w-20 ml-4"
-                min="0" // Minimum value of 0
-                placeholder="0" // Optional placeholder
-              />
+
+              <div className="mb-4 w-full rounded-md flex items-center space-x-4">
+                <div className="w-full max-w-full">
+                  <p className="text-xs text-gray-600 w-full leading-snug tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
+                    State the price you want to get for placing a link.
+                  </p>
+                </div>
+
+                <div className="flex items-center mb-2">
+                 
+                  <input
+                    type="number"
+                    name="priceForLinks"
+                    value={formData.priceForLinks}
+                    onChange={handleChange}
+                    className="border border-gray-300 rounded-md shadow-sm p-1 w-20 ml-2"
+                    min="0"
+                    placeholder="0"
+                  />
+                   <span className="ml-1">$</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-1/2 mb-4 text-gray-600">
+              <label className="block text-sm font-medium text-gray-700 w-full whitespace-nowrap">
+                Are Any of the Following Listed on Your Website?
+              </label>
+              <div className="flex flex-col space-y-2 mt-2">
+                <label className="flex items-center space-x-2">
+                  <Input
+                    type="checkbox"
+                    name="contentTypes"
+                    value="adult"
+                    checked={formData.contentTypes?.includes("adult")}
+                    onChange={handleChange}
+                    className="text-indigo-600"
+                  />
+                  <span className="text-xs">Adult Material</span>
+                </label>
+                <label className="flex items-center space-x-2">
+                  <Input
+                    type="checkbox"
+                    name="contentTypes"
+                    value="gambling"
+                    checked={formData.contentTypes?.includes("gambling")}
+                    onChange={handleChange}
+                    className="text-indigo-600"
+                  />
+                  <span className="text-xs">Gambling</span>
+                </label>
+                <label className="flex items-center space-x-2">
+                  <Input
+                    type="checkbox"
+                    name="contentTypes"
+                    value="casino"
+                    checked={formData.contentTypes?.includes("casino")}
+                    onChange={handleChange}
+                    className="text-indigo-600"
+                  />
+                  <span className="text-xs">Casino</span>
+                </label>
+                <label className="flex items-center space-x-2">
+                  <Input
+                    type="checkbox"
+                    name="contentTypes"
+                    value="crypto"
+                    checked={formData.contentTypes?.includes("crypto")}
+                    onChange={handleChange}
+                    className="text-indigo-600"
+                  />
+                  <span className="text-xs">Crypto</span>
+                </label>
+                <label className="flex items-center space-x-2">
+                  <Input
+                    type="checkbox"
+                    name="contentTypes"
+                    value="none"
+                    checked={formData.contentTypes?.includes("none")}
+                    onChange={handleChange}
+                    className="text-indigo-600"
+                  />
+                  <span className="text-xs">None</span>
+                </label>
+              </div>
             </div>
           </div>
           <div className="flex items-center mb-2">
@@ -430,7 +517,7 @@ const PostRequestForm = () => {
 
       <button
         type="submit"
-        className="w-1/4 bg-blue-600 text-gray-10 font-medium p-2 rounded-md mt-4"
+        className="w-1/4 bg-blue-600 text-gray-10 font-medium p-2 rounded-md "
       >
         Save Changes
       </button>

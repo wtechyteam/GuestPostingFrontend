@@ -46,6 +46,10 @@ export default function ConfirmationStatusPage() {
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
+  const handleSwitch=()=>{
+    router.push("/dashboardBuyer")
+  }
+    
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -189,10 +193,10 @@ export default function ConfirmationStatusPage() {
                       Profile Settings
                     </button>
                     <button
-                      onClick={handleLogout}
+                      onClick={handleSwitch}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
-                      Switch To Seller
+                      Switch To Buyer
                     </button>
                     <button
                       onClick={handleLogout}
@@ -216,7 +220,7 @@ export default function ConfirmationStatusPage() {
                 isHowItWorksVisible={isHowItWorksVisible}
                 toggleHowItWorks={toggleHowItWorks}
               />
-              <div className="mt-6">
+              <div className="mt-6 ">
               <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
                 Confirmation status
               </h1>
@@ -278,7 +282,7 @@ export default function ConfirmationStatusPage() {
                 </div>
               </div>
               <div className="mt-6 ">
-                <div className="bg-gray-10 rounded-[14px] mb-28 text-adsy_com-black p-6 w-[99%]">
+              <div style={{ marginBottom: '20rem' }} className="bg-gray-10 rounded-[14px] text-adsy_com-black p-6 w-[99%]">
                   <h2 className="text-lg font-semibold mb-2">Site owner</h2>
                   <p className="mb-4 leading-6">
                     Its a status that you need to select on your own. After you

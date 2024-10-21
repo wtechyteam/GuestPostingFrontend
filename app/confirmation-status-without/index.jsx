@@ -47,6 +47,10 @@ export default function ConfirmationStatusWithoutPage() {
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
+  const handleSwitch=()=>{
+    router.push("/dashboardBuyer")
+  }
+    
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -190,10 +194,10 @@ export default function ConfirmationStatusWithoutPage() {
                       Profile Settings
                     </button>
                     <button
-                      onClick={handleLogout}
+                      onClick={handleSwitch}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
-                      Switch To Seller
+                      Switch To Buyer
                     </button>
                     <button
                       onClick={handleLogout}
@@ -217,7 +221,7 @@ export default function ConfirmationStatusWithoutPage() {
                 isHowItWorksVisible={isHowItWorksVisible}
                 toggleHowItWorks={toggleHowItWorks}
               />
-               <div className="mt-6">
+               <div className="mt-6" style={{ marginBottom: '10rem' }}>
               <h1 className="text-3xl font-bold mb-4 text-gray-700 !text-left">
               Site ownership or moderation is still required to continue working with added site(s)
               </h1>

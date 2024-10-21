@@ -48,6 +48,10 @@ function AddWebsiteInfoContent() {
   const toggleHowItWorks = () => {
     setHowItWorksVisible(!isHowItWorksVisible);
   };
+  const handleSwitch=()=>{
+    router.push("/dashboardBuyer")
+  }
+    
 
   return (
     <div className="w-full bg-gray-10 overflow-x-hidden">
@@ -129,10 +133,10 @@ function AddWebsiteInfoContent() {
                       Profile Settings
                     </button>
                     <button
-                      onClick={handleLogout}
+                      onClick={handleSwitch}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
-                      Switch To Seller
+                      Switch To Buyer
                     </button>
                     <button
                       onClick={handleLogout}

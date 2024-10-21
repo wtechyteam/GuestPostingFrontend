@@ -50,6 +50,10 @@ export default function NotificationPage() {
     // Redirect to the login page after logout
     router.push("/profileDetails");
   };
+  const handleSwitch=()=>{
+    router.push("/dashboardBuyer")
+  }
+    
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -194,10 +198,10 @@ export default function NotificationPage() {
                       Profile Settings
                     </button>
                     <button
-                      onClick={handleLogout}
+                      onClick={handleSwitch}
                       className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100"
                     >
-                      Switch To Seller
+                      Switch To Buyer
                     </button>
                     <button
                       onClick={handleLogout}
