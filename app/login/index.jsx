@@ -128,26 +128,26 @@ export default function LoginOnePage() {
                 </Heading>
 
                 <div className="relative h-[72px] self-stretch sm:items-center sm:justify-center">
-                  {/* Colored div */}
-                  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 sm:right-auto sm:left-1 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
-
-                  {/* Heading */}
-                  <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start sm:items-center">
-                    <Heading
-                      size="text13xl"
-                      as="h4"
-                      className="!text-[46.16px] sm:!text-[35px] md:!text-[40px] !text-gray-10 text-center md:text-left"
-                    >
-                      <span className="text-adsy_com-black">More</span>
-                      <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6 sm:hidden">
-                        &nbsp;
-                      </span>
-                      <span className="font-bold underline">
-                        {displayedWord}
-                      </span>
-                    </Heading>
-                  </div>
-                </div>
+  {/* Colored div */}
+  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 sm:right-auto sm:left-1 sm:mx-auto sm:mx-10 sm:w-[50%] md:left-[10%] md:w-[75%]" />
+  
+  {/* Heading */}
+  <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start sm:items-center">
+    <Heading
+      size="text13xl"
+      as="h4"
+      className="!text-[46.16px] sm:!text-[35px] md:!text-[40px] !text-gray-10 text-center md:text-left"
+    >
+      <span className="text-adsy_com-black">More</span>
+      <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6 sm:hidden">
+        &nbsp;
+      </span>
+      <span className="font-bold underline">
+        {displayedWord}
+      </span>
+    </Heading>
+  </div>
+</div>
 
                 <Text
                   as="p"
