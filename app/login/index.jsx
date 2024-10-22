@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 export default function LoginOnePage() {
-  const words = ["Sales", "Leads", "Revenue", "Engagement"];
+  const words = ["Sales", "Leads", "Revenue"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
