@@ -170,7 +170,7 @@ export default function LoginOnePage() {
             </div>
           </div>
 
-          <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5 md:items-center sm:w-[90%] sm:px-3">
+          <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5 md:items-center sm:w-[90%] sm:px-3 sm:mx-[2rem] sm:mt-[2rem]">
   <Text
     size="text7xl"
     as="p"
