@@ -128,7 +128,7 @@ export default function LoginOnePage() {
   </Heading>
 
   <div className="relative h-[72px] self-stretch">
-    <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400" />
+    <div className="absolute bottom-0 sm:right-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400" />
     <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start">
       <Heading
         size="text13xl"
