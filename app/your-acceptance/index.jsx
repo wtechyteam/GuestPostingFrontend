@@ -49,6 +49,7 @@ export default function NotificationPage() {
     router.push("/dashboardBuyer")
   }
 
+
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };

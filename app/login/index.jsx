@@ -10,7 +10,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
-
 export default function LoginOnePage() {
   const words = ["Sales", "Leads", "Revenue", "Engagement"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -22,8 +21,6 @@ export default function LoginOnePage() {
   const [errorMessage, setErrorMessage] = useState("");
   const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
   const localbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
-
-
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -62,14 +59,10 @@ export default function LoginOnePage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        
-           `${localbaseURL}/login`,
-         {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`${localbaseURL}/login`, {
+        email,
+        password,
+      });
 
       const { token, user } = response.data;
       console.log(response.data);
@@ -93,7 +86,7 @@ export default function LoginOnePage() {
   };
 
   return (
-    <div className="w-full h-screen bg-gray-10 flex flex-col">
+    <div className="w-full h-auto bg-gray-10 flex flex-col overflow-hidden">
       <div className="mt-8 flex flex-col items-start gap-28 md:gap-[84px] sm:gap-14">
         <Link href="/">
           <Text
@@ -109,17 +102,17 @@ export default function LoginOnePage() {
             <div className="flex items-start md:flex-col">
               <Image
                 src="/images/Saly-14.png"
-                width={362}
-                height={568}
+                width={262} // Adjust the size here
+                height={468} // Adjust the size here
                 alt="Saly Image"
-                className="mt-[60px] h-[568px] w-[46%] self-end object-contain md:w-full md:self-auto"
+                className="mt-[20px] h-auto w-[36%] self-end object-contain md:w-full md:self-auto" // Adjusted margin and width
               />
 
               <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch">
                 <Heading
                   size="heading7xl"
                   as="h2"
-                  className="!text-indigo-a400 !text-[48px] font-bold sm:text-[42px]"
+                  className="!text-indigo-a400 !text-[48px] font-bold sm:text-[42px] text-center md:text-left"
                 >
                   Login in to
                 </Heading>
@@ -127,17 +120,17 @@ export default function LoginOnePage() {
                 <Heading
                   size="text9xl"
                   as="h3"
-                  className="!text-gray-10 mt-16 !text-[34.28px] sm:!text-[30px]"
+                  className="!text-gray-10 mt-16 !text-[34.28px] sm:!text-[30px] text-center md:text-left"
                 >
                   <span className="text-adsy_com-black">Generate&nbsp;</span>
                 </Heading>
                 <div className="relative h-[72px] self-stretch">
-                  <div className="absolute bottom-0 right-[25%] top-0 my-auto h-[72px] w-[50%] bg-indigo-a400" />
+                  <div className="absolute bottom-0 right-[18%] top-0 my-auto h-[72px] w-[60%] bg-indigo-a400" />
                   <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start">
                     <Heading
                       size="text13xl"
                       as="h4"
-                      className="!text-[55.16px] !text-gray-10 sm:!text-[41px]"
+                      className="!text-[55.16px] !text-gray-10 sm:!text-[41px] text-center md:text-left"
                     >
                       <span className="text-adsy_com-black">More</span>
                       <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6">
@@ -149,16 +142,17 @@ export default function LoginOnePage() {
                     </Heading>
                   </div>
                 </div>
+
                 <Text
                   as="p"
-                  className="ml-1.5 mt-[68px] !font-poppins !text-adsy_com-black md:ml-0"
+                  className="ml-1.5 mt-[68px] !font-poppins !text-adsy_com-black md:ml-0 text-center md:text-left"
                 >
                   If you do not have an account register
                 </Text>
                 <Link href="/signup">
                   <Text
                     as="p"
-                    className="ml-1.5 mt-1.5 !font-poppins !text-adsy_com-black md:ml-0"
+                    className="ml-1.5 mt-1.5 !font-poppins !text-adsy_com-black md:ml-0 text-center md:text-left"
                   >
                     <span className="text-adsy_com-black">You can &nbsp;</span>
                     <span className="font-semibold text-indigo-a400">
@@ -173,13 +167,13 @@ export default function LoginOnePage() {
             <Text
               size="text7xl"
               as="p"
-              className="ml-[4rem] self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px]"
+              className="self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center md:text-left"
             >
               Log In
             </Text>
             <form
               onSubmit={handleLogin}
-              className="mt-6 flex w-[82%] flex-col items-start md:w-full"
+              className="mt-6 flex w-full flex-col items-start"
             >
               <Input
                 shape="round"
@@ -221,15 +215,16 @@ export default function LoginOnePage() {
                   {errorMessage}
                 </Text>
               )}
-              <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
-                <Text
-                  size="textsm"
-                  as="p"
-                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[9rem]"
-                >
-                  Forgot password ?
-                </Text>
-              </div>
+           <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
+  <Text
+    size="textsm"
+    as="p"
+    className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[10rem] lg:mr-[15rem]"
+  >
+    Forgot password ?
+  </Text>
+</div>
+
               <Button
                 color="indigo_A400"
                 size="2xl"
@@ -238,38 +233,38 @@ export default function LoginOnePage() {
               >
                 Login
               </Button>
-              <Link href="#" className="ml-[120px] mt-[2rem] md:ml-0 ">
-                <Text
-                  as="p"
-                  className="!font-poppins !font-medium !text-gray-400"
-                >
-                  or continue with
-                </Text>
-              </Link>
+              <Link href="#" className="mt-[2rem] ml-[10rem] md:ml-[50px] lg:ml-[80px]">
+  <Text as="p" className="!font-poppins !font-medium !text-gray-400">
+    or continue with
+  </Text>
+</Link>
+
             </form>
-            <div className="mt-6 flex flex-row items-center justify-center w-full ml-[-15rem]">
-              <Image
-                src="/images/Facebook2.png"
-                width={40}
-                height={40}
-                alt="Apple Icon"
-                className="ml-[1rem] h-[40px] w-[40px] object-cover"
-              />
-              <Image
-                src="/images/apple.png"
-                width={40}
-                height={40}
-                alt="Apple Icon"
-                className="ml-[1rem] h-[40px] w-[40px] object-cover"
-              />
-              <Image
-                src="/images/google.png"
-                width={40}
-                height={40}
-                alt="Google Icon"
-                className="ml-[1rem] h-[40px] w-[40px] object-cover"
-              />
-            </div>
+            <div className="mt-6 flex flex-row items-center justify-start w-full gap-[3rem] ml-60 sm:-ml-5 md:-ml-2 lg:-ml-0">
+  <Image
+    src="/images/Facebook2.png"
+    width={40}
+    height={40}
+    alt="Facebook Icon"
+    className="h-[40px] w-[40px] object-cover"
+  />
+  <Image
+    src="/images/apple.png"
+    width={40}
+    height={40}
+    alt="Apple Icon"
+    className="h-[40px] w-[40px] object-cover"
+  />
+  <Image
+    src="/images/google.png"
+    width={40}
+    height={40}
+    alt="Google Icon"
+    className="h-[40px] w-[40px] object-cover"
+  />
+</div>
+
+
           </div>
         </div>
       </div>
