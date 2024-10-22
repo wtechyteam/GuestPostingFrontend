@@ -105,8 +105,9 @@ export default function LoginOnePage() {
   width={262} // Adjust the size here
   height={468} // Adjust the size here
   alt="Saly Image"
-  className="mt-[20px] sm:ml-[-2rem] sm:mt-[-10rem] h-auto w-[36%] md:w-[80%] self-end object-contain block mx-auto" // Center the image on small and medium screens
+  className="mt-[20px] sm:ml-[-2rem] sm:mt-[-10rem] h-auto w-[36%] md:w-[80%] self-end object-contain block sm:mx-auto lg:mx-0" // Center the image on small and medium screens, retain original alignment on large screens
 />
+
 
 
               <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch sm:items-center sm:justify-center">
