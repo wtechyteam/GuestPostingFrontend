@@ -234,12 +234,12 @@ export default function LoginOnePage() {
       Login
     </Button>
     <Link href="#" className="mt-[2rem] md:ml-[0]">
-      <Text as="p" className="!font-poppins !font-medium !text-gray-400">
+      <Text as="p" className="!font-poppins !font-medium !text-gray-400 items-center justify-center">
         or continue with
       </Text>
     </Link>
   </form>
-  <div className="mt-6 flex flex-row items-center justify-center w-full gap-[3rem] mr-[4rem]  sm:ml-[12rem] sm:justify-center">
+  <div className="mt-6 flex flex-row items-center justify-center w-full gap-[3rem] mr-[6rem]  sm:ml-[12rem] sm:justify-center">
     <Image
       src="/images/Facebook2.png"
       width={40}
