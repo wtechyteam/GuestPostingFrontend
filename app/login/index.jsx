@@ -164,111 +164,112 @@ export default function LoginOnePage() {
             </div>
           </div>
           <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5">
-            <Text
-              size="text7xl"
-              as="p"
-              className="self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center md:text-left"
-            >
-              Log In
-            </Text>
-            <form
-              onSubmit={handleLogin}
-              className="mt-6 flex w-full flex-col items-start"
-            >
-              <Input
-                shape="round"
-                type="email"
-                name="Email or Phone Input"
-                placeholder="  Enter Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins"
-                style={{ paddingLeft: "1rem" }}
-              />
-              <Input
-                color="blue 50"
-                shape="round"
-                type={isPasswordVisible ? "text" : "password"}
-                name="Password Input"
-                placeholder="  Password"
-                suffix={
-                  <Image
-                    src={
-                      isPasswordVisible
-                        ? "/images/Frame 43967.png"
-                        : "/images/invisible.png"
-                    }
-                    width={16}
-                    height={16}
-                    alt="Visibility Icon"
-                    className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
-                    onClick={togglePasswordVisibility}
-                  />
-                }
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
-                style={{ paddingLeft: "1rem" }}
-              />
-              {errorMessage && (
-                <Text as="p" className="text-red-500 mt-2">
-                  {errorMessage}
-                </Text>
-              )}
-              <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
-                <Text
-                  size="textsm"
-                  as="p"
-                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[10rem] lg:mr-[15rem] sm:ml-[-15rem]"
-                >
-                  Forgot password ?
-                </Text>
-              </div>
+  <Text
+    size="text7xl"
+    as="p"
+    className="self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center md:text-left"
+  >
+    Log In
+  </Text>
+  <form
+    onSubmit={handleLogin}
+    className="mt-6 flex w-full flex-col items-start"
+  >
+    <Input
+      shape="round"
+      type="email"
+      name="Email or Phone Input"
+      placeholder="  Enter Email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins"
+      style={{ paddingLeft: "1rem" }}
+    />
+    <Input
+      color="blue 50"
+      shape="round"
+      type={isPasswordVisible ? "text" : "password"}
+      name="Password Input"
+      placeholder="  Password"
+      suffix={
+        <Image
+          src={
+            isPasswordVisible
+              ? "/images/Frame 43967.png"
+              : "/images/invisible.png"
+          }
+          width={16}
+          height={16}
+          alt="Visibility Icon"
+          className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
+          onClick={togglePasswordVisibility}
+        />
+      }
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
+      style={{ paddingLeft: "1rem" }}
+    />
+    {errorMessage && (
+      <Text as="p" className="text-red-500 mt-2">
+        {errorMessage}
+      </Text>
+    )}
+    <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
+      <Text
+        size="textsm"
+        as="p"
+        className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[10rem] lg:mr-[15rem] sm:ml-[-15rem]"
+      >
+        Forgot password ?
+      </Text>
+    </div>
 
-              <Button
-                color="indigo_A400"
-                size="2xl"
-                className="mt-6 w-[60%] rounded-lg font-poppins font-medium text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
-                style={{ backgroundColor: "#3861FB" }}
-              >
-                Login
-              </Button>
-              <Link
-                href="#"
-                className="mt-[2rem] ml-[8rem] md:ml-[50px] lg:ml-[80px]"
-              >
-                <Text
-                  as="p"
-                  className="!font-poppins !font-medium !text-gray-400"
-                >
-                  or continue with
-                </Text>
-              </Link>
-            </form>
-            <div className="mt-6 flex flex-row items-center justify-start w-full gap-[3rem] ml-40 sm:-ml-5 md:-ml-2 lg:-ml-0">
-              <Image
-                src="/images/Facebook2.png"
-                width={40}
-                height={40}
-                alt="Facebook Icon"
-                className="h-[40px] w-[40px] object-cover"
-              />
-              <Image
-                src="/images/apple.png"
-                width={40}
-                height={40}
-                alt="Apple Icon"
-                className="h-[40px] w-[40px] object-cover"
-              />
-              <Image
-                src="/images/google.png"
-                width={40}
-                height={40}
-                alt="Google Icon"
-                className="h-[40px] w-[40px] object-cover"
-              />
-            </div>
-          </div>
+    <Button
+      color="indigo_A400"
+      size="2xl"
+      className="mt-6 w-[60%] rounded-lg font-poppins font-medium text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+      style={{ backgroundColor: "#3861FB" }}
+    >
+      Login
+    </Button>
+    <Link
+      href="#"
+      className="mt-[2rem] ml-[8rem] md:ml-[50px] lg:ml-[80px]"
+    >
+      <Text
+        as="p"
+        className="!font-poppins !font-medium !text-gray-400"
+      >
+        or continue with
+      </Text>
+    </Link>
+  </form>
+  <div className="mt-6 flex flex-row items-center justify-start w-full gap-[3rem] ml-40 sm:-ml-5 md:-ml-2 lg:-ml-0 sm:justify-center">
+    <Image
+      src="/images/Facebook2.png"
+      width={40}
+      height={40}
+      alt="Facebook Icon"
+      className="h-[40px] w-[40px] object-cover"
+    />
+    <Image
+      src="/images/apple.png"
+      width={40}
+      height={40}
+      alt="Apple Icon"
+      className="h-[40px] w-[40px] object-cover"
+    />
+    <Image
+      src="/images/google.png"
+      width={40}
+      height={40}
+      alt="Google Icon"
+      className="h-[40px] w-[40px] object-cover"
+    />
+  </div>
+</div>
+
         </div>
       </div>
     </div>
