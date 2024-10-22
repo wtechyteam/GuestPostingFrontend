@@ -132,21 +132,25 @@ export default function LoginOnePage() {
       </Heading>
 
       <div className="relative h-[72px] self-stretch sm:items-center sm:justify-center">
-        <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 sm:right-auto sm:left-0 sm:mx-auto sm:w-[80%]" />
-        <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col sm:left-[20rem] items-start sm:items-center">
-          <Heading
-            size="text13xl"
-            as="h4"
-            className="!text-[46.16px] sm:!text-[35px] md:!text-[40px] !text-gray-10 text-center md:text-left"
-          >
-            <span className="text-adsy_com-black">More</span>
-            <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6 sm:hidden">
-              &nbsp;
-            </span>
-            <span className="font-bold underline">{displayedWord}</span>
-          </Heading>
-        </div>
-      </div>
+  {/* Colored div */}
+  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 sm:right-auto sm:left-0 sm:mx-auto sm:w-[80%] md:left-[5%] md:w-[75%]" />
+  
+  {/* Heading */}
+  <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start sm:items-center">
+    <Heading
+      size="text13xl"
+      as="h4"
+      className="!text-[46.16px] sm:!text-[35px] md:!text-[40px] !text-gray-10 text-center md:text-left"
+    >
+      <span className="text-adsy_com-black">More</span>
+      <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6 sm:hidden">
+        &nbsp;
+      </span>
+      <span className="font-bold underline">{displayedWord}</span>
+    </Heading>
+  </div>
+</div>
+
 
       <Text
         as="p"
@@ -191,109 +195,110 @@ export default function LoginOnePage() {
 
 
 
-          <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5 md:items-center">
-            <Text
-              size="text7xl"
-              as="p"
-              className="self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center md:text-left"
-            >
-              Log In
-            </Text>
-            <form
-              onSubmit={handleLogin}
-              className="mt-6 flex w-full flex-col items-start md:items-center"
-            >
-              <Input
-                shape="round"
-                type="email"
-                name="Email or Phone Input"
-                placeholder="  Enter Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins md:w-[80%]"
-                style={{ paddingLeft: "1rem" }}
-              />
-              <Input
-                color="blue 50"
-                shape="round"
-                type={isPasswordVisible ? "text" : "password"}
-                name="Password Input"
-                placeholder="  Password"
-                suffix={
-                  <Image
-                    src={
-                      isPasswordVisible
-                        ? "/images/Frame 43967.png"
-                        : "/images/invisible.png"
-                    }
-                    width={16}
-                    height={16}
-                    alt="Visibility Icon"
-                    className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
-                    onClick={togglePasswordVisibility}
-                  />
-                }
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] md:w-[80%]"
-                style={{ paddingLeft: "1rem" }}
-              />
-              {errorMessage && (
-                <Text as="p" className="text-red-500 mt-2">
-                  {errorMessage}
-                </Text>
-              )}
-              <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
-                <Text
-                  size="textsm"
-                  as="p"
-                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[5rem] sm:ml-[-15rem]"
-                >
-                  Forgot password ?
-                </Text>
-              </div>
+<div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5 md:items-center sm:w-[90%] sm:px-3">
+  <Text
+    size="text7xl"
+    as="p"
+    className="self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center md:text-left"
+  >
+    Log In
+  </Text>
+  <form
+    onSubmit={handleLogin}
+    className="mt-6 flex w-full flex-col items-start md:items-center"
+  >
+    <Input
+      shape="round"
+      type="email"
+      name="Email or Phone Input"
+      placeholder="  Enter Email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins md:w-[80%] sm:w-[90%] sm:h-[70px]"
+      style={{ paddingLeft: "1rem" }}
+    />
+    <Input
+      color="blue 50"
+      shape="round"
+      type={isPasswordVisible ? "text" : "password"}
+      name="Password Input"
+      placeholder="  Password"
+      suffix={
+        <Image
+          src={
+            isPasswordVisible
+              ? "/images/Frame 43967.png"
+              : "/images/invisible.png"
+          }
+          width={16}
+          height={16}
+          alt="Visibility Icon"
+          className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
+          onClick={togglePasswordVisibility}
+        />
+      }
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] md:w-[80%] sm:w-[90%] sm:h-[70px]"
+      style={{ paddingLeft: "1rem" }}
+    />
+    {errorMessage && (
+      <Text as="p" className="text-red-500 mt-2">
+        {errorMessage}
+      </Text>
+    )}
+    <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
+      <Text
+        size="textsm"
+        as="p"
+        className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[5rem] sm:ml-0 sm:text-center"
+      >
+        Forgot password?
+      </Text>
+    </div>
 
-              <Button
-                color="indigo_A400"
-                size="2xl"
-                className="mt-6 w-[60%] rounded-lg font-poppins font-medium text-white shadow-lg hover:shadow-xl transition-shadow duration-300 md:w-[80%]"
-                style={{ backgroundColor: "#3861FB" }}
-              >
-                Login
-              </Button>
-              <Link href="#" className="mt-[2rem] md:ml-[0]">
-                <Text
-                  as="p"
-                  className="!font-poppins !font-medium !text-gray-400 items-center justify-center"
-                >
-                  or continue with
-                </Text>
-              </Link>
-            </form>
-            <div className="mt-6 flex flex-row items-center justify-center w-full gap-[3rem] mr-[6rem]  sm:ml-[12rem] sm:justify-center">
-              <Image
-                src="/images/Facebook2.png"
-                width={40}
-                height={40}
-                alt="Facebook Icon"
-                className="h-[40px] w-[40px] object-cover"
-              />
-              <Image
-                src="/images/apple.png"
-                width={40}
-                height={40}
-                alt="Apple Icon"
-                className="h-[40px] w-[40px] object-cover"
-              />
-              <Image
-                src="/images/google.png"
-                width={40}
-                height={40}
-                alt="Google Icon"
-                className="h-[40px] w-[40px] object-cover"
-              />
-            </div>
-          </div>
+    <Button
+      color="indigo_A400"
+      size="2xl"
+      className="mt-6 w-[60%] rounded-lg font-poppins font-medium text-white shadow-lg hover:shadow-xl transition-shadow duration-300 md:w-[80%] sm:w-[90%]"
+      style={{ backgroundColor: "#3861FB" }}
+    >
+      Login
+    </Button>
+    <Link href="#" className="mt-[2rem]">
+      <Text
+        as="p"
+        className="!font-poppins !font-medium !text-gray-400 items-center justify-center text-center"
+      >
+        or continue with
+      </Text>
+    </Link>
+  </form>
+  <div className="mt-6 flex flex-row items-center justify-center w-full gap-[3rem] sm:gap-[2rem] sm:w-[100%]">
+    <Image
+      src="/images/Facebook2.png"
+      width={40}
+      height={40}
+      alt="Facebook Icon"
+      className="h-[40px] w-[40px] object-cover"
+    />
+    <Image
+      src="/images/apple.png"
+      width={40}
+      height={40}
+      alt="Apple Icon"
+      className="h-[40px] w-[40px] object-cover"
+    />
+    <Image
+      src="/images/google.png"
+      width={40}
+      height={40}
+      alt="Google Icon"
+      className="h-[40px] w-[40px] object-cover"
+    />
+  </div>
+</div>
+
         </div>
       </div>
     </div>
