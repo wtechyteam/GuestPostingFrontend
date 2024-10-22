@@ -9,6 +9,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
+import { useRouter } from "next/navigation";
 
 const dropDownOptions = [
   { label: "Option1", value: "Option1" },
@@ -20,6 +21,7 @@ const Options = [
   { label: "For Sellers", value: "For Sellers" },
 ];
 export default function Header({ ...props }) {
+  const router = useRouter();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -32,6 +34,13 @@ export default function Header({ ...props }) {
     { text: "Blogs", href: "#" },
     { text: "Contact Us", href: "/contact-us" },
   ];
+  const handleSelectChange = (selectedOption) => {
+    if (selectedOption.value === "For Buyers") {
+      router.push("/for-buyers"); // Navigate to the "For Buyers" page
+    } else if (selectedOption.value === "For Sellers") {
+      router.push("/for-sellers"); // Navigate to the "For Sellers" page
+    }
+  };
 
   return (
     <header
@@ -90,6 +99,7 @@ export default function Header({ ...props }) {
                     name="How it Works"
                     placeholder={"How It Works"}
                     options={Options}
+                    onChange={handleSelectChange}
                     className="text-[16px] !font-spacegrotesk2 font-medium !text-adsy_com-black h-[12px] p-1 bg-gray-50_02" // Changed to gray color
                   />
                 </li>
