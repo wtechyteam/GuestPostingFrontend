@@ -163,7 +163,7 @@ export default function LoginOnePage() {
               </div>
             </div>
           </div>
-          <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5 sm:ml-[5rem]">
+          <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5 md:items-center">
   <Text
     size="text7xl"
     as="p"
@@ -173,7 +173,7 @@ export default function LoginOnePage() {
   </Text>
   <form
     onSubmit={handleLogin}
-    className="mt-6 flex w-full flex-col items-start"
+    className="mt-6 flex w-full flex-col items-start md:items-center"
   >
     <Input
       shape="round"
@@ -182,7 +182,7 @@ export default function LoginOnePage() {
       placeholder="  Enter Email"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
-      className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins"
+      className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins md:w-[80%]"
       style={{ paddingLeft: "1rem" }}
     />
     <Input
@@ -207,7 +207,7 @@ export default function LoginOnePage() {
       }
       value={password}
       onChange={(e) => setPassword(e.target.value)}
-      className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem]"
+      className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] md:w-[80%]"
       style={{ paddingLeft: "1rem" }}
     />
     {errorMessage && (
@@ -219,7 +219,7 @@ export default function LoginOnePage() {
       <Text
         size="textsm"
         as="p"
-        className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[10rem] lg:mr-[15rem] sm:ml-[-15rem]"
+        className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[5rem] sm:ml-[-15rem]"
       >
         Forgot password ?
       </Text>
@@ -228,24 +228,18 @@ export default function LoginOnePage() {
     <Button
       color="indigo_A400"
       size="2xl"
-      className="mt-6 w-[60%] rounded-lg font-poppins font-medium text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+      className="mt-6 w-[60%] rounded-lg font-poppins font-medium text-white shadow-lg hover:shadow-xl transition-shadow duration-300 md:w-[80%]"
       style={{ backgroundColor: "#3861FB" }}
     >
       Login
     </Button>
-    <Link
-      href="#"
-      className="mt-[2rem] ml-[8rem] md:ml-[50px] lg:ml-[80px]"
-    >
-      <Text
-        as="p"
-        className="!font-poppins !font-medium !text-gray-400"
-      >
+    <Link href="#" className="mt-[2rem] md:ml-[0]">
+      <Text as="p" className="!font-poppins !font-medium !text-gray-400">
         or continue with
       </Text>
     </Link>
   </form>
-  <div className="mt-6 flex flex-row items-center justify-start w-full gap-[3rem] ml-40 sm:-ml-5 md:-ml-2 lg:-ml-0 sm:justify-center">
+  <div className="mt-6 flex flex-row items-center justify-start w-full gap-[3rem] ml-40 sm:ml-0 sm:justify-center">
     <Image
       src="/images/Facebook2.png"
       width={40}
