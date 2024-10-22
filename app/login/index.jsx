@@ -111,7 +111,7 @@ export default function LoginOnePage() {
   width={262} // Adjust the size here
   height={468} // Adjust the size here
   alt="Saly Image"
-  className="mt-[20px] h-auto w-[36%] md:w-[36%] self-end object-contain block" // 80% width on small screens, 36% on medium screens and above
+  className="mt-[20px] sm:mt-[-10rem] h-auto w-[80%] md:w-[36%] self-end object-contain block" // Negative margin for small screens, width 80% on small screens, 36% on medium screens and above
 />
 
     <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch sm:items-center sm:justify-center">
