@@ -129,7 +129,7 @@ export default function LoginOnePage() {
 
                 <div className="relative h-[72px] self-stretch sm:items-center sm:justify-center">
   {/* Colored div */}
-  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 sm:right-auto sm:left-8 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
+  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 sm:right-auto sm:left-16 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
 
   
   {/* Heading */}
