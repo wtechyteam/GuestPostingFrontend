@@ -125,7 +125,7 @@ export default function LoginOnePage() {
                   <span className="text-adsy_com-black">Generate&nbsp;</span>
                 </Heading>
                 <div className="relative h-[72px] self-stretch">
-                  <div className="absolute bottom-0 right-[18%] top-0 my-auto h-[72px] w-[60%] bg-indigo-a400" />
+                  <div className="absolute bottom-0 right-[14%] top-0 my-auto h-[72px] w-[64%] bg-indigo-a400" />
                   <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start">
                     <Heading
                       size="text13xl"
@@ -215,15 +215,15 @@ export default function LoginOnePage() {
                   {errorMessage}
                 </Text>
               )}
-           <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
-  <Text
-    size="textsm"
-    as="p"
-    className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[10rem] lg:mr-[15rem]"
-  >
-    Forgot password ?
-  </Text>
-</div>
+              <div className="mt-[20px] flex w-[82%] flex-col items-end gap-[18px] md:w-full">
+                <Text
+                  size="textsm"
+                  as="p"
+                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[10rem] lg:mr-[15rem]"
+                >
+                  Forgot password ?
+                </Text>
+              </div>
 
               <Button
                 color="indigo_A400"
@@ -233,38 +233,41 @@ export default function LoginOnePage() {
               >
                 Login
               </Button>
-              <Link href="#" className="mt-[2rem] ml-[10rem] md:ml-[50px] lg:ml-[80px]">
-  <Text as="p" className="!font-poppins !font-medium !text-gray-400">
-    or continue with
-  </Text>
-</Link>
-
+              <Link
+                href="#"
+                className="mt-[2rem] ml-[8rem] md:ml-[50px] lg:ml-[80px]"
+              >
+                <Text
+                  as="p"
+                  className="!font-poppins !font-medium !text-gray-400"
+                >
+                  or continue with
+                </Text>
+              </Link>
             </form>
-            <div className="mt-6 flex flex-row items-center justify-start w-full gap-[3rem] ml-60 sm:-ml-5 md:-ml-2 lg:-ml-0">
-  <Image
-    src="/images/Facebook2.png"
-    width={40}
-    height={40}
-    alt="Facebook Icon"
-    className="h-[40px] w-[40px] object-cover"
-  />
-  <Image
-    src="/images/apple.png"
-    width={40}
-    height={40}
-    alt="Apple Icon"
-    className="h-[40px] w-[40px] object-cover"
-  />
-  <Image
-    src="/images/google.png"
-    width={40}
-    height={40}
-    alt="Google Icon"
-    className="h-[40px] w-[40px] object-cover"
-  />
-</div>
-
-
+            <div className="mt-6 flex flex-row items-center justify-start w-full gap-[3rem] ml-40 sm:-ml-5 md:-ml-2 lg:-ml-0">
+              <Image
+                src="/images/Facebook2.png"
+                width={40}
+                height={40}
+                alt="Facebook Icon"
+                className="h-[40px] w-[40px] object-cover"
+              />
+              <Image
+                src="/images/apple.png"
+                width={40}
+                height={40}
+                alt="Apple Icon"
+                className="h-[40px] w-[40px] object-cover"
+              />
+              <Image
+                src="/images/google.png"
+                width={40}
+                height={40}
+                alt="Google Icon"
+                className="h-[40px] w-[40px] object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
