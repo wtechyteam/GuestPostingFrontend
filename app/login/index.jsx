@@ -171,13 +171,14 @@ export default function LoginOnePage() {
           </div>
 
           <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5 md:items-center sm:w-[90%] sm:px-3 sm:mx-[2rem] sm:mt-[2rem]">
-  <Text
-    size="text7xl"
-    as="p"
-    className="self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center md:text-left"
-  >
-    Log In
-  </Text>
+          <Text
+  size="text7xl"
+  as="p"
+  className="!font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center sm:text-center md:text-left"
+>
+  Log In
+</Text>
+
   <form
     onSubmit={handleLogin}
     className="mt-6 flex w-full flex-col items-start md:items-center"
