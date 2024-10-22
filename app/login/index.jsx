@@ -113,7 +113,7 @@ export default function LoginOnePage() {
                 <Heading
                   size="heading7xl"
                   as="h2"
-                  className="!text-indigo-a400 !text-[48px] font-bold sm:text-[42px] text-center md:text-left"
+                  className="!text-indigo-a400 !text-[48px] font-bold sm:text-[42px] text-center md:text-center md:items-center md:justify-center"
                 >
                   Login in to
                 </Heading>
