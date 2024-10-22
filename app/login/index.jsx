@@ -100,13 +100,14 @@ export default function LoginOnePage() {
         <div className="flex items-start self-stretch md:flex-col">
           <div className="mt-[92px] flex-1 self-end md:self-stretch md:px-5 sm:self-auto">
             <div className="flex items-start md:flex-col">
-              <Image
-                src="/images/Saly-14.png"
-                width={262} // Adjust the size here
-                height={468} // Adjust the size here
-                alt="Saly Image"
-                className="mt-[20px] h-auto w-[36%] self-end object-contain md:w-full md:self-auto" // Adjusted margin and width
-              />
+            <Image
+  src="/images/Saly-14.png"
+  width={262} // Adjust the size here
+  height={468} // Adjust the size here
+  alt="Saly Image"
+  className="mt-[20px] h-auto w-[36%] self-end object-contain block md:hidden lg:w-[36%]" // Hidden on small/medium screens, visible on large screens
+/>
+
 
               <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch">
                 <Heading
