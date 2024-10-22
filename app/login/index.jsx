@@ -111,62 +111,63 @@ export default function LoginOnePage() {
 
 <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch sm:items-center sm:justify-center md:items-center md:justify-center">
 
-                <Heading
-                  size="heading7xl"
-                  as="h2"
-                  className="!text-indigo-a400 !text-[48px] font-bold sm:text-[42px] text-center md:text-center md:items-center md:justify-center"
-                >
-                  Login in to
-                </Heading>
+  <Heading
+    size="heading7xl"
+    as="h2"
+    className="!text-indigo-a400 !text-[48px] font-bold sm:text-[42px] text-center md:text-center"
+  >
+    Login in to
+  </Heading>
 
-                <Heading
-                  size="text9xl"
-                  as="h3"
-                  className="!text-gray-10 mt-16 !text-[34.28px] sm:!text-[30px] text-center md:text-left"
-                >
-                  <span className="text-adsy_com-black">Generate&nbsp;</span>
-                </Heading>
-                <div className="relative h-[72px] self-stretch">
-                  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400" />
-                  <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start">
-                    <Heading
-                      size="text13xl"
-                      as="h4"
-                      className="!text-[46.16px] !text-gray-10 sm:!text-[41px] text-center md:text-left"
-                    >
-                      <span className="text-adsy_com-black">More</span>
-                      <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6">
-                        &nbsp;
-                      </span>
-                      <span className="font-bold underline">
-                        {displayedWord}
-                      </span>
-                    </Heading>
-                  </div>
-                </div>
+  <Heading
+    size="text9xl"
+    as="h3"
+    className="!text-gray-10 mt-16 !text-[34.28px] sm:!text-[30px] text-center md:text-left"
+  >
+    <span className="text-adsy_com-black">Generate&nbsp;</span>
+  </Heading>
 
-                <Text
-                  as="p"
-                  className="ml-1.5 mt-[68px] !font-poppins !text-adsy_com-black md:ml-0 text-center md:text-left"
-                >
-                  If you do not have an account register
-                </Text>
-                <Link href="/signup">
-                  <Text
-                    as="p"
-                    className="ml-1.5 mt-1.5 !font-poppins !text-adsy_com-black md:ml-0 text-center md:text-left"
-                  >
-                    <span className="text-adsy_com-black">You can &nbsp;</span>
-                    <span className="font-semibold text-indigo-a400">
-                      Sign Up here !
-                    </span>
-                  </Text>
-                </Link>
-              </div>
-            </div>
+  <div className="relative h-[72px] self-stretch">
+    <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400" />
+    <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start">
+      <Heading
+        size="text13xl"
+        as="h4"
+        className="!text-[46.16px] sm:!text-[35px] md:!text-[40px] !text-gray-10 text-center md:text-left"
+      >
+        <span className="text-adsy_com-black">More</span>
+        <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6">
+          &nbsp;
+        </span>
+        <span className="font-bold underline">
+          {displayedWord}
+        </span>
+      </Heading>
+    </div>
+  </div>
+
+  <Text
+    as="p"
+    className="ml-1.5 mt-[68px] !font-poppins !text-adsy_com-black md:ml-0 text-center md:text-left"
+  >
+    If you do not have an account register
+  </Text>
+  <Link href="/signup">
+    <Text
+      as="p"
+      className="ml-1.5 mt-1.5 !font-poppins !text-adsy_com-black md:ml-0 text-center md:text-left"
+    >
+      <span className="text-adsy_com-black">You can &nbsp;</span>
+      <span className="font-semibold text-indigo-a400">
+        Sign Up here !
+      </span>
+    </Text>
+  </Link>
+</div>
+
+</div>
           </div>
-          <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch sm:items-center sm:justify-center md:items-center md:justify-center">
-
+          <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5 md:items-center">
   <Text
     size="text7xl"
     as="p"
