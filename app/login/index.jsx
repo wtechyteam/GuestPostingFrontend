@@ -130,7 +130,7 @@ export default function LoginOnePage() {
                     <Heading
                       size="text13xl"
                       as="h4"
-                      className="!text-[50.16px] !text-gray-10 sm:!text-[41px] text-center md:text-left"
+                      className="!text-[46.16px] !text-gray-10 sm:!text-[41px] text-center md:text-left"
                     >
                       <span className="text-adsy_com-black">More</span>
                       <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6">
