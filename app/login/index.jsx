@@ -129,7 +129,8 @@ export default function LoginOnePage() {
 
                 <div className="relative h-[72px] self-stretch sm:items-center sm:justify-center">
   {/* Colored div */}
-  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 sm:right-auto sm:left-1 sm:mx-auto sm:mx-10 sm:w-[50%] md:left-[10%] md:w-[75%]" />
+  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 sm:right-auto sm:left-8 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
+
   
   {/* Heading */}
   <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start sm:items-center">
@@ -174,7 +175,7 @@ export default function LoginOnePage() {
           <Text
   size="text7xl"
   as="p"
-  className="!font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center sm:text-center md:text-left"
+  className="!font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px] text-center sm:text-center md:text-center"
 >
   Log In
 </Text>
