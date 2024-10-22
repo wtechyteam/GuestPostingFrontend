@@ -109,7 +109,8 @@ export default function LoginOnePage() {
 />
 
 
-              <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch">
+<div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch sm:items-center sm:justify-center md:items-center md:justify-center">
+
                 <Heading
                   size="heading7xl"
                   as="h2"
