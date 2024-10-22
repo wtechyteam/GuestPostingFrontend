@@ -125,12 +125,12 @@ export default function LoginOnePage() {
                   <span className="text-adsy_com-black">Generate&nbsp;</span>
                 </Heading>
                 <div className="relative h-[72px] self-stretch">
-                  <div className="absolute bottom-0 right-[14%] top-0 my-auto h-[72px] w-[64%] bg-indigo-a400" />
+                  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[72px] w-[64%] bg-indigo-a400" />
                   <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start">
                     <Heading
                       size="text13xl"
                       as="h4"
-                      className="!text-[55.16px] !text-gray-10 sm:!text-[41px] text-center md:text-left"
+                      className="!text-[50.16px] !text-gray-10 sm:!text-[41px] text-center md:text-left"
                     >
                       <span className="text-adsy_com-black">More</span>
                       <span className="text-gray-10 opacity-30 -z-10 transform translate-x-6">
