@@ -127,7 +127,7 @@ export default function LoginOnePage() {
 
                 <div className="relative h-[72px] self-stretch sm:items-center sm:justify-center">
                   {/* Colored div - hidden on mobile */}
-                  <div className="absolute bottom-0 right-[12%] top-0 my-auto h-[60px] w-[58%] bg-indigo-a400 block sm:hidden md:hidden sm:right-auto sm:left-32 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
+                  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[58%] bg-indigo-a400 block sm:hidden md:hidden sm:right-auto sm:left-32 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
 
                   {/* Heading */}
                   <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start sm:items-center">
