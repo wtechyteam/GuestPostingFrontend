@@ -225,7 +225,7 @@ export default function LoginOnePage() {
                 <Text
                   size="textsm"
                   as="p"
-                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[5rem] md:mr-[5rem] sm:ml-0 sm:text-center"
+                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[6rem] md:mr-[5rem] sm:ml-0 sm:text-center"
                 >
                   Forgot password?
                 </Text>
