@@ -250,7 +250,7 @@ export default function LoginOnePage() {
 
               </Link>
             </form>
-            <div className="mt-6 flex flex-row items-center justify-center w-full gap-[3rem] sm:gap-[2rem] sm:w-[100%] border mr-[6rem] sm:mr-0 ">
+            <div className="mt-6 flex flex-row sm:items-center sm:justify-center w-full gap-[3rem] sm:gap-[2rem] sm:w-[100%] ml-[6rem] sm:ml-0 ">
               <Image
                 src="/images/Facebook2.png"
                 width={40}
