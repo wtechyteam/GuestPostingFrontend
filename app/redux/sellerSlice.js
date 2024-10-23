@@ -12,7 +12,7 @@ export const fetchSellerProducts = createAsyncThunk(
   "products/fetchSellerProducts",
   async (sellerId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${hostedURL}/products/seller/${sellerId}`);
+      const response = await axios.get(`${localbaseURL}/products/seller/${sellerId}`);
       console.log(response.data)
       return response.data;
 
@@ -32,7 +32,7 @@ const initialState = {
 };
 
 // Create product slice
-const productSlice = createSlice({
+const sellerSlice = createSlice({
   name: "products",
   initialState,
   reducers: {},
@@ -40,18 +40,21 @@ const productSlice = createSlice({
     builder
       .addCase(fetchSellerProducts.pending, (state) => {
         state.loading = true;
+        console.log("pending");
         state.error = null;
       })
       .addCase(fetchSellerProducts.fulfilled, (state, action) => {
-         console.log("Fetched Products: ", action.payload); 
         state.loading = false;
-        state.products = action.payload;
+        state.products = action.payload; // Ensure payload is correct
+        console.log("State after fulfilled case:", state);  // Log the entire state after update
       })
+            
       .addCase(fetchSellerProducts.rejected, (state, action) => {
         state.loading = false;
+        console.log("rejected");
         state.error = action.payload || "Failed to fetch seller products";
       });
   },
 });
 
-export default productSlice.reducer;
+export default sellerSlice.reducer;
