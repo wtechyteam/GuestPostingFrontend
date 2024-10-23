@@ -127,14 +127,14 @@ export default function LoginOnePage() {
 
                 <div className="relative h-[72px] self-stretch sm:items-center sm:justify-center">
                   {/* Colored div - hidden on mobile */}
-                  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 block sm:hidden sm:right-auto sm:left-32 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
+                  <div className="absolute bottom-0 right-[10%] top-0 my-auto h-[60px] w-[64%] bg-indigo-a400 block sm:hidden md:hidden sm:right-auto sm:left-32 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
 
                   {/* Heading */}
                   <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start sm:items-center">
                     <Heading
                       size="text13xl"
                       as="h4"
-                      className="!text-[46.16px] sm:!text-[35px] md:!text-[40px] !text-gray-10  sm:!text-adsy_com-black text-center md:text-left"
+                      className="!text-[46.16px] sm:!text-[35px] md:!text-[40px] !text-gray-10  sm:!text-adsy_com-black  md:!text-adsy_com-black text-center md:text-left"
                     >
                       <span className="text-adsy_com-black">More</span>
                       <span className="text-gray-10  sm:text-adsy_com-black opacity-30 -z-10 transform translate-x-6 sm:hidden">
