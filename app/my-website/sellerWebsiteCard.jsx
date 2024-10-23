@@ -463,7 +463,7 @@ export default function UserProfile3({
   // Split tags string into an array
   // const tagArray = productData.tags.split(", ").map((tag) => tag.trim());
 
-  {
+  
     return (
       <div
         {...props}
@@ -517,4 +517,4 @@ export default function UserProfile3({
       </div>
     );
   }
-}
+
