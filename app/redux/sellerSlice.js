@@ -43,6 +43,7 @@ const productSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchSellerProducts.fulfilled, (state, action) => {
+         console.log("Fetched Products: ", action.payload); 
         state.loading = false;
         state.products = action.payload;
       })
