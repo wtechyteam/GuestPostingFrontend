@@ -127,7 +127,7 @@ export default function LoginOnePage() {
 
                 <div className="relative h-[72px] self-stretch sm:items-center sm:justify-center">
                   {/* Colored div - hidden on mobile */}
-                  <div className="absolute bottom-0 right-[14%] top-0 my-auto h-[60px] w-[58%] bg-indigo-a400 block sm:hidden md:hidden sm:right-auto sm:left-32 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
+                  <div className="absolute bottom-0 right-[15%] top-0 my-auto h-[60px] w-[58%] bg-indigo-a400 block sm:hidden md:hidden sm:right-auto sm:left-32 sm:mx-auto sm:w-[50%] md:left-[10%] md:w-[75%]" />
 
                   {/* Heading */}
                   <div className="absolute left-0 right-0 top-[3.47px] m-auto flex flex-1 flex-col items-start sm:items-center">
@@ -225,7 +225,7 @@ export default function LoginOnePage() {
                 <Text
                   size="textsm"
                   as="p"
-                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[10rem] md:mr-[5rem] sm:ml-0 sm:text-center"
+                  className="!font-poppins !font-normal !text-gray-400 text-xs mr-[6rem] md:mr-[5rem] sm:ml-0 sm:text-center"
                 >
                   Forgot password?
                 </Text>
@@ -240,12 +240,14 @@ export default function LoginOnePage() {
                 Login
               </Button>
               <Link href="#" className="mt-[2rem]">
-                <Text
-                  as="p"
-                  className="!font-poppins !font-medium !text-gray-400 items-center justify-center text-center"
-                >
-                  or continue with
-                </Text>
+              <Text
+  as="p"
+  className="!font-poppins !font-medium !text-gray-400 flex md:items-center md:justify-center md:ml-[6rem] sm:items-center sm:justify-center  sm:ml-0 text-center  ml-[5rem]"
+>
+  or continue with
+</Text>
+
+
               </Link>
             </form>
             <div className="mt-6 flex flex-row items-center justify-center w-full gap-[3rem] sm:gap-[2rem] sm:w-[100%]">
