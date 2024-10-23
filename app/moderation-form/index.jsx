@@ -275,7 +275,7 @@ export default function ModerationFormPage(){
                   </div>
 
                   <div className="mt-4">
-                    <Link href="/add-website">
+                    <Link href="/my-website">
                       <button className="bg-blue-600 text-gray-10 font-semibold py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition duration-200">
                         Finish Site Addition
                       </button>

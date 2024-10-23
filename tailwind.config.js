@@ -15,6 +15,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        greenCustom: '#00C807',
         adsy_com: { black: "#000000", lynch: "#6b6b6b" },
         amber: { 500: "#fbbc05", 700: "#f9a000", 900: "#ff7009" },
         black: {

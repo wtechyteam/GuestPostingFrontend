@@ -84,9 +84,6 @@ export default function UserProfile3({
     return <div>Loading...</div>;
   }
 
-
-  
-
   {
     return (
       <div
@@ -98,44 +95,8 @@ export default function UserProfile3({
             <Text size="textxl" as="p" className="text-indigo-a400 mr-[0.5rem]">
               {productData.URL || "URL is hidden"}
             </Text>
-            {/* <div className="flex self-end rounded-[8px] bg-gray-200 p-1.5">
-              {!!contributorText ? (
-                <Text
-                  size="textxs"
-                  as="p"
-                  className="text-adsy_com-black font-semibold text-[8.83px]"
-                >
-                  {contributorText}
-                </Text>
-              ) : null}
-            </div> */}
-
-            {/* <div className="flex flex-1 gap-[9px] px-2.5">
-              {tagArray.map((tag, index) => (
-                <div
-                  key={index}
-                  className="flex rounded-lg border-[0.62px] border-solid border-blue_gray-50 bg-gray-10 p-1.5"
-                >
-                  <Text
-                    size="texts"
-                    as="p"
-                    className="text-adsy_com-black text-[8.83px]"
-                  >
-                    {tag}
-                  </Text>
-                </div>
-              ))}
-            </div> */}
           </div>
           <div className="flex items-center">
-            {/* <Image
-              src="/images/heart1.png"
-              width={22}
-              height={22}
-              alt="Material Symbol"
-              className="ml-4 h-[24px] w-[24px]"
-            />*/}
-
             <Image
               src="/images/dustbin.png"
               width={24}

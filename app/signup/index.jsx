@@ -115,7 +115,7 @@ export default function SignUpPage() {
     }
   };
   return (
-    <div className="w-full h-screen bg-gray-10 flex flex-col">
+    <div className="w-full h-auto bg-gray-10  flex flex-col overflow-hidden">
       <div className="mt-8 flex flex-col items-start gap-28 md:gap-[84px] sm:gap-14">
         <Link href="/">
           <Text
@@ -129,12 +129,12 @@ export default function SignUpPage() {
         <div className="flex items-start self-stretch md:flex-col">
           <div className="mt-[92px] flex-1 self-end md:self-stretch md:px-5 sm:self-auto">
             <div className="flex items-start md:flex-col">
-              <Image
+            <Image
                 src="/images/Saly-14.png"
-                width={362}
-                height={568}
+                width={262} 
+                height={468} 
                 alt="Saly Image"
-                className="mt-[60px] h-[568px] w-[46%] self-end object-contain md:w-full md:self-auto"
+                className="mt-[20px] sm:ml-[-2rem] sm:mt-[-10rem] h-auto w-[36%] md:w-[80%] self-end object-contain block sm:mx-[2rem] lg:mx-0" 
               />
               <div className="flex flex-1 flex-col items-start px-1.5 md:self-stretch">
                 <Heading
@@ -190,10 +190,10 @@ export default function SignUpPage() {
             </div>
           </div>
           <div className="flex w-[44%] flex-col items-center px-14 md:w-full md:px-5">
-            <Text
+          <Text
               size="text7xl"
               as="p"
-              className="ml-[4rem] self-start !font-poppins !font-medium !text-adsy_com-black text-[22px] sm:text-[28px]"
+              className="!font-poppins !font-medium !text-adsy_com-black text-[22px] sm:mr-0 md:mr-0 sm:text-[28px] text-center sm:text-center md:text-center mr-[24rem]  "
             >
               Sign Up
             </Text>
@@ -234,7 +234,7 @@ export default function SignUpPage() {
               <Input
                 color="blue 50"
                 shape="round"
-                type={isPasswordVisible ? "text" : "password"} // Toggle input type
+                type={isPasswordVisible ? "text" : "password"} 
                 name="password"
                 placeholder="Password"
                 suffix={
@@ -243,12 +243,12 @@ export default function SignUpPage() {
                       isPasswordVisible
                         ? "/images/Frame 43967.png"
                         : "/images/invisible.png"
-                    } // Toggle icon
+                    } 
                     width={16}
                     height={16}
                     alt="Visibility Icon"
                     className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
-                    onClick={togglePasswordVisibility} // Toggle password visibility on click
+                    onClick={togglePasswordVisibility} 
                   />
                 }
                 className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
@@ -259,7 +259,7 @@ export default function SignUpPage() {
               <Input
                 color="blue 50"
                 shape="round"
-                type={isConfirmPasswordVisible ? "text" : "password"} // Toggle input type for confirm password
+                type={isConfirmPasswordVisible ? "text" : "password"} 
                 name="confirmPassword"
                 placeholder="Confirm Password"
                 suffix={
@@ -268,12 +268,12 @@ export default function SignUpPage() {
                       isConfirmPasswordVisible
                         ? "/images/Frame 43967.png"
                         : "/images/invisible.png"
-                    } // Toggle icon for confirm password
+                    } 
                     width={16}
                     height={16}
                     alt="Visibility Icon"
                     className="h-[16px] w-[16px] mr-[1rem] cursor-pointer"
-                    onClick={toggleConfirmPasswordVisibility} // Toggle confirm password visibility on click
+                    onClick={toggleConfirmPasswordVisibility}
                   />
                 }
                 className="w-[60%] h-[60px] bg-[#E7ECFF] text-[#3861FB] placeholder-[#3861FB] font-poppins mt-[1rem] text-center"
@@ -291,36 +291,36 @@ export default function SignUpPage() {
               >
                 Register
               </Button>
-              <Link href="#" className="ml-[120px] mt-[2rem] md:ml-0 ">
+              <Link href="#" className="mt-[2rem]">
                 <Text
                   as="p"
-                  className="!font-poppins !font-medium !text-gray-400"
+                  className="!font-poppins !font-medium !text-gray-400 flex md:items-center md:justify-center md:ml-[4rem] sm:items-center sm:justify-center sm:ml-0 text-center  ml-[5rem]"
                 >
                   or continue with
                 </Text>
               </Link>
             </form>
-            <div className="mt-6 flex flex-row items-center justify-center w-full ml-[-15rem]">
+            <div className="mt-6 flex flex-row sm:items-center sm:justify-center w-full gap-[3rem] sm:gap-[2rem] sm:w-[100%] ml-[3rem] sm:ml-0 md:ml-[3rem]">
               <Image
                 src="/images/Facebook2.png"
                 width={40}
                 height={40}
-                alt="Apple Icon"
-                className="ml-[1rem] h-[40px] w-[40px] object-cover"
+                alt="Facebook Icon"
+                className="h-[40px] w-[40px] object-cover"
               />
               <Image
                 src="/images/apple.png"
                 width={40}
                 height={40}
                 alt="Apple Icon"
-                className="ml-[1rem] h-[40px] w-[40px] object-cover"
+                className="h-[40px] w-[40px] object-cover"
               />
               <Image
                 src="/images/google.png"
                 width={40}
                 height={40}
                 alt="Google Icon"
-                className="ml-[1rem] h-[40px] w-[40px] object-cover"
+                className="h-[40px] w-[40px] object-cover"
               />
             </div>
           </div>
