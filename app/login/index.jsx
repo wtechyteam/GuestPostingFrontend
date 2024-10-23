@@ -242,7 +242,7 @@ export default function LoginOnePage() {
               <Link href="#" className="mt-[2rem]">
               <Text
   as="p"
-  className="!font-poppins !font-medium !text-gray-400 flex md:items-center md:justify-center md:ml-[8rem] sm:items-center sm:justify-center  sm:ml-0 text-center  ml-[10rem]"
+  className="!font-poppins !font-medium !text-gray-400 flex md:items-center md:justify-center md:ml-[6rem] sm:items-center sm:justify-center  sm:ml-0 text-center  ml-[5rem]"
 >
   or continue with
 </Text>
