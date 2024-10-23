@@ -172,7 +172,7 @@ export default function LoginOnePage() {
             <Text
               size="text7xl"
               as="p"
-              className="!font-poppins !font-medium !text-adsy_com-black text-[22px] sm:mr-0 md:mr-0 sm:text-[28px] text-center sm:text-center md:text-center mr-[25rem]  "
+              className="!font-poppins !font-medium !text-adsy_com-black text-[22px] sm:mr-0 md:mr-0 sm:text-[28px] text-center sm:text-center md:text-center mr-[24rem]  "
             >
               Log In
             </Text>
