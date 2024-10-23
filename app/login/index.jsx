@@ -240,14 +240,12 @@ export default function LoginOnePage() {
                 Login
               </Button>
               <Link href="#" className="mt-[2rem]">
-              <Text
-  as="p"
-  className="!font-poppins !font-medium !text-gray-400 flex md:items-center md:justify-center md:ml-[4rem] sm:items-center sm:justify-center sm:ml-0 text-center  ml-[5rem]"
->
-  or continue with
-</Text>
-
-
+                <Text
+                  as="p"
+                  className="!font-poppins !font-medium !text-gray-400 flex md:items-center md:justify-center md:ml-[4rem] sm:items-center sm:justify-center sm:ml-0 text-center  ml-[5rem]"
+                >
+                  or continue with
+                </Text>
               </Link>
             </form>
             <div className="mt-6 flex flex-row sm:items-center sm:justify-center w-full gap-[3rem] sm:gap-[2rem] sm:w-[100%] ml-[3rem] sm:ml-0 md:ml-[3rem]">
