@@ -59,7 +59,7 @@ export default function LoginOnePage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${hostedURL}/login`, {
+      const response = await axios.post(`${localbaseURL}/login`, {
         email,
         password,
       });
