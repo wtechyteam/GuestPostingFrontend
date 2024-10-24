@@ -116,7 +116,7 @@ export default function Header({ ...props }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
+                  <Link href="/blogs">
                     <Text
                       size="textmd"
                       as="p"
