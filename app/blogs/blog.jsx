@@ -6,12 +6,10 @@ import Image from "next/image";
 export default function BlogsPage() {
   return (
     <div className="z-[6] mt-[40px]  relative flex justify-center">
-    <div className="container-xs flex flex-row md:flex-col sm:flex-col justify-between px-12 md:px-5 w-full">
+    <div className="container-xs flex flex-row md:flex-col sm:flex-col sm:items-center sm:justify-center justify-between px-12 md:px-5 w-full">
         {/* Left Section - Blog Image and Content */}
-        <div className="w-3/4 md:w-3/4 lg:w-[75%]">
-          {" "}
-          {/* Adjusted width for larger screens */}
-          {/* Blog Image */}
+        <div className="w-3/4 md:w-3/4 lg:w-[75%] ">
+          
           <div className="mb-8 relative">
             <Image
               src="/images/image 4.png"
@@ -20,7 +18,7 @@ export default function BlogsPage() {
               height={400}
               className="rounded-lg"
             />
-            <div className="absolute bottom-4 left-4 bg-blue-600 text-white py-1 px-3 rounded">
+            <div className="absolute bottom-4 left-4 bg-blue-600 text-white py-1 px-3 rounded sm:hidden md:hidden">
               Artificial Intelligence
             </div>
             <div className="absolute bottom-4 right-4 bg-blue-600 text-white py-1 px-3 rounded">
@@ -130,7 +128,7 @@ export default function BlogsPage() {
         </div>
 
         {/* Right Sidebar - Author Info and Other Sections */}
-        <div className="w-1/4 md:w-full sm:w-full lg:w-[25%] md:pl-10 sm:pl-0 sm:ml-2  md:mt-0 ml-8">
+        <div className="w-1/4 md:w-full sm:w-full sm:items-center sm:justify-center lg:w-[25%] md:pl-10 sm:pl-0 sm:ml-2  md:mt-0 ml-8">
          
           <div className="bg-blue-500 text-white p-8 rounded-lg shadow-md text-left">
             <Image
