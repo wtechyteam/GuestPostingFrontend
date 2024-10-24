@@ -9,22 +9,21 @@ export default function ContactCollaborationSection() {
       <div className="flex flex-row md:flex-col items-center justify-between w-full max-w-[1200px]">
         {/* Left Side: Content */}
         <div className="w-full md:w-full sm:flex sm:flex-col sm:items-center sm:justify-center text-center md:text-left">
-  <Heading
-    size="textxl"
-    as="h1"
-    className="sm:text-[34px] md:text-[46px] z-[1] sm:items-center sm:justify-center text-[50px] font-semi-bold !text-gray-10"
-  >
-    Boost Your Traffic
-  </Heading>
-  <Text
-    size="text5xl"
-    as="p"
-    className="text-[26px] sm:text-[15px] md:text-[25px] mt-[30px] font-medium leading-[1.2] sm:leading-[1.6] md:leading-[2] !text-gray-10"
-  >
-    and sales with guest posts on <br /> sites offering do follow links
-  </Text>
-</div>
-
+          <Heading
+            size="textxl"
+            as="h1"
+            className="sm:text-[34px] md:text-[46px] z-[1] sm:items-center sm:justify-center text-[50px] font-semi-bold !text-gray-10"
+          >
+            Boost Your Traffic
+          </Heading>
+          <Text
+            size="text5xl"
+            as="p"
+            className="text-[26px] sm:text-[15px] md:text-[25px] mt-[30px] font-medium leading-[1.2] sm:leading-[1.6] md:leading-[2] !text-gray-10"
+          >
+            and sales with guest posts on <br /> sites offering do follow links
+          </Text>
+        </div>
 
         {/* Right Side: Form */}
         <div className="w-1/2 md:w-full mt-10 md:mt-5 md:pl-0">
@@ -42,23 +41,22 @@ export default function ContactCollaborationSection() {
 
               {/* Phone Input */}
               <div className="w-full md:w-1/2 sm:w-full md:mt-0 sm:mt-4 sm:flex sm:justify-start">
-  <input
-    type="text"
-    id="phone"
-    placeholder="Phone"
-    className="w-full sm:w-auto sm:max-w-[250px] !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md sm:hidden"
-  />
-</div>
-<div>
-              <input
-                type="text"
-                id="phone"
-                placeholder="Phone"
-                className="w-full !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md hidden sm:block "
-              />
+                <input
+                  type="text"
+                  id="phone"
+                  placeholder="Phone"
+                  className="w-full sm:w-auto sm:max-w-[250px] !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md sm:hidden"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="phone"
+                  placeholder="Phone"
+                  className="w-full !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md hidden sm:block "
+                />
+              </div>
             </div>
-            </div>
-           
 
             <div>
               <input

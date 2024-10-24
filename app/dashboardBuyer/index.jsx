@@ -37,7 +37,7 @@ export default function DashboardPage() {
     router.push("/profileDetails");
   };
   const handleSwitch = () => {
-    router.push("/dashboardSeller");
+    router.push("/my-website");
   };
 
   const toggleDropdown = () => {

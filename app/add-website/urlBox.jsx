@@ -27,7 +27,7 @@ const SearchStatusComponent = () => {
         />
         <button
           onClick={handleSubmit}
-          className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200"
+          className="bg-blue-600 text-white text-gray-10 font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200"
         >
           Next
         </button>

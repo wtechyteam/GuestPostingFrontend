@@ -339,35 +339,9 @@ const PostRequestForm = () => {
               </label>
             </div>
 
-            <div className="mt-4 w-full rounded-md">
-              <label className="text-sm font-medium text-gray-700">
-                Add Price for Link Insertion:
-              </label>
+           
 
-              <div className="mb-4 w-full rounded-md flex items-center space-x-4">
-                <div className="w-full max-w-full">
-                  <p className="text-xs text-gray-600 w-full leading-snug tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
-                    State the price you want to get for placing a link.
-                  </p>
-                </div>
-
-                <div className="flex items-center mb-2">
-                 
-                  <input
-                    type="number"
-                    name="priceForLinks"
-                    value={formData.priceForLinks}
-                    onChange={handleChange}
-                    className="border border-gray-300 rounded-md shadow-sm p-1 w-20 ml-2"
-                    min="0"
-                    placeholder="0"
-                  />
-                   <span className="ml-1">$</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-1/2 mb-4 text-gray-600">
+            <div className="w-1/2 mb-4 text-gray-600 mt-4">
               <label className="block text-sm font-medium text-gray-700 w-full whitespace-nowrap">
                 Are Any of the Following Listed on Your Website?
               </label>
@@ -430,7 +404,34 @@ const PostRequestForm = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center mb-2">
+          <div className="mt-4 w-full rounded-md">
+              <label className="text-sm font-medium text-gray-700">
+                Add Price for Link Insertion:
+              </label>
+
+              <div className="mb-4 w-full rounded-md flex items-center space-x-4">
+                <div className="w-full max-w-full">
+                  <p className="text-xs text-gray-600 w-full leading-snug tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
+                    State the price you want to get for placing a link.
+                  </p>
+                </div>
+
+                <div className="flex items-center mb-1">
+                 
+                  <input
+                    type="number"
+                    name="priceForLinks"
+                    value={formData.priceForLinks}
+                    onChange={handleChange}
+                    className="border border-gray-300 rounded-md shadow-sm p-1 w-20 ml-2"
+                    min="0"
+                    placeholder="0"
+                  />
+                   <span className="ml-1">$</span>
+                </div>
+              </div>
+            </div>
+          <div className="flex items-center mb-2 mt-[-0.5rem]">
             <div className="flex flex-col">
               <label className="block text-sm font-medium text-gray-700">
                 Content placement

@@ -300,7 +300,7 @@ export default function AddWebsitePage() {
                       Add URLs as a list, with each URL starting from a new
                       line.
                     </p>
-                    <button className="bg-indigo-700 w-[50%] text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition duration-300">
+                    <button className="bg-indigo-700 w-[50%] text-white  text-gray-10 px-4 py-2 rounded-lg hover:bg-indigo-600 transition duration-300">
                       Next
                     </button>
                   </div>
@@ -332,7 +332,7 @@ export default function AddWebsitePage() {
                         />
                       </div>
                     </div>
-                    <button className="bg-indigo-700 w-[50%] text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition duration-300">
+                    <button className="bg-indigo-700 w-[50%] text-white text-gray-10 px-4 py-2 rounded-lg hover:bg-indigo-600 transition duration-300">
                       Next
                     </button>
                   </div>
