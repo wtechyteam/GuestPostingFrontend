@@ -16,7 +16,7 @@ export default function SellerInfoSection({ ...props }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
- <div className="flex flex-row md:flex-col  md:space-x-12 space-y-16 md:space-y-0">
+ <div className="flex flex-row md:flex-col md:space-x-12 space-y-16 md:space-y-0">
   {/* Left Section */}
   <div className="md:w-1/2 flex flex-col items-center space-y-6 sm:ml-6 md:ml-0">
     <h2 className="text-[28px] md:text-[36px] font-bold">What you get</h2>
