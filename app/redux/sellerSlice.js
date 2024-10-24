@@ -10,31 +10,27 @@ const apiURL = hostedURL || localbaseURL;
 // Async thunk to fetch all products for a specific seller
 export const fetchSellerProducts = createAsyncThunk(
   "products/fetchSellerProducts",
-  async (sellerId, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(`${hostedURL}/products/seller/${sellerId}`);
-      console.log(response.data)
+  async () => {
+      const sellerId = Cookies.get("userId")
+      const response = await axios.get(`${localbaseURL}/products/seller/${sellerId}`);
+      console.log("response = ", response.data);
       return response.data;
-
-    } catch (error) {
-      return rejectWithValue(error.response.data || "Something went wrong");
-    }
   }
 );
 
+
 // Initial state
 const initialState = {
-  products: [],
-  blockedProducts: [],
-  unblockedProducts: [],
+  sellerProducts: [],
   loading: false,
   error: null,
 };
 
-// Create product slice
+// Create seller slice
 const sellerSlice = createSlice({
-  name: "products",
+  name: "sellerProducts",
   initialState,
+  sellerProducts: [],
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -45,7 +41,7 @@ const sellerSlice = createSlice({
       })
       .addCase(fetchSellerProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.products = action.payload; // Ensure payload is correct
+        state.sellerProducts = action.payload; // Ensure payload is correct
         console.log("State after fulfilled case:", state);  // Log the entire state after update
       })
             

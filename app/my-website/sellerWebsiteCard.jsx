@@ -12,37 +12,32 @@ export default function UserProfile3({
 }) {
   const dispatch = useDispatch();
 
-  // Accessing the products, loading, and error states from Redux
-  const { products, loading, error } = useSelector((state) => state.products);
+  // Accessing the sellerProducts, loading, and error states from Redux
+  const { sellerProducts: products, loading, error } = useSelector((state) => state.sellerProducts);
 
   useEffect(() => {
     const sellerId = Cookies.get("userId");
     if (sellerId) {
-      console.log("Fetching products for sellerId: ", sellerId); // Debug sellerId
       dispatch(fetchSellerProducts(sellerId));
+      console.log("Fetching products for sellerId: ", sellerId);
     } else {
       console.error("No seller ID found in cookies");
     }
   }, [dispatch]);
 
-  // Debugging: Log Redux state on each render
   useEffect(() => {
-    console.log("Products from Redux after fetch:", products); // Debugging products after the state updates
+    console.log("Products from Redux after fetch:", products);
   }, [products]);
 
   if (loading) {
-    console.log("Loading products..."); // Debug loading state
     return <p>Loading...</p>;
   }
 
   if (error) {
-    console.log("Error fetching products:", error); // Debug error state
     return <p>Error: {error}</p>;
   }
 
-  // Ensure products are not empty
   if (!products || products.length === 0) {
-    console.log("No products found for the seller"); // Debug empty product array
     return <p>No products found for this seller.</p>;
   }
 
@@ -51,8 +46,7 @@ export default function UserProfile3({
       {...props}
       className={`${props.className} flex flex-col items-center mb-60 justify-center gap-3.5 px-4 border-blue_gray-100_02 border border-solid bg-gray-10 w-[99%] rounded-[14px]`}
     >
-      {/* Rendering fetched products */}
-      {products.map((productData) => (
+      {products.map((productData, index) => (
         <div key={productData._id} className="self-stretch">
           <div className="mr-1.5 mt-1 flex items-center justify-between gap-5 self-stretch md:mr-0 md:flex-col">
             <div className="flex flex-1 items-center justify-left md:self-stretch">
@@ -61,7 +55,6 @@ export default function UserProfile3({
                 as="p"
                 className="text-indigo-a400 mr-[0.5rem]"
               >
-                {/* Show URL or hidden text if URL is not available */}
                 {productData.URL ? productData.URL : urlIsHiddenText}
               </Text>
             </div>
@@ -77,22 +70,18 @@ export default function UserProfile3({
           </div>
           <hr className="mt-[-0.8rem] border-gray-300 w-full" />
 
-          {/* Render other product details here */}
-          {/* Add other product details as needed */}
-
           <div className="flex justify-end mt-4 w-full">
             <Button
               className="min-w-[134px] rounded-xl font-bold text-white bg-gray-600 text-md h-10 mb-[0.3rem] mr-[1rem]"
               size="md"
-              onClick={() => console.log("Deactivate clicked")}
+              onClick={() => console.log(`Deactivate clicked for product ${productData._id}`)}
             >
               Deactivate
             </Button>
-
             <Button
               className="min-w-[134px] rounded-xl font-bold text-white bg-gray-600 text-md h-10 mb-[0.3rem]"
               size="md"
-              onClick={() => console.log("Edit clicked")}
+              onClick={() => console.log(`Edit clicked for product ${productData._id}`)}
             >
               Edit
             </Button>
@@ -102,3 +91,4 @@ export default function UserProfile3({
     </div>
   );
 }
+
