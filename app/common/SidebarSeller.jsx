@@ -55,7 +55,7 @@ export default function Sidebar1({ ...props }) {
         className="flex flex-col flex-grow self-stretch"
       >
         <div className="flex flex-col gap-1">
-          <Link href="/dashboardSeller">
+          {/* <Link href="/dashboardSeller">
             <MenuItem
               icon={
                 <Image
@@ -69,7 +69,7 @@ export default function Sidebar1({ ...props }) {
             >
               Dashboard
             </MenuItem>
-          </Link>
+          </Link> */}
           <Link href="/my-website">
             <MenuItem
               icon={
