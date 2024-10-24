@@ -12,7 +12,7 @@ const apiURL = hostedURL || localbaseURL;
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAll",
   async () => {
-    const response = await axios.get(`${localbaseURL}/products`);
+    const response = await axios.get(`${hostedURL}/products`);
     return response.data;
   }
 );
@@ -21,7 +21,7 @@ export const fetchSearchedProducts = createAsyncThunk(
   "products/fetchSearchedProducts",
   async ({ query, URL, tags, language, country }, thunkAPI) => {
     try {
-      const response = await axios.get(`${localbaseURL}/products/search`, {
+      const response = await axios.get(`${hostedURL}/products/search`, {
         params: {
           query: query || "",
           URL: URL || "",
@@ -44,7 +44,7 @@ export const fetchBlockedProducts = createAsyncThunk(
   async () => {
     const token = Cookies.get("authToken");
     const response = await axios.get(
-      `${localbaseURL}/blockedProducts`,
+      `${hostedURL}/blockedProducts`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -59,7 +59,7 @@ export const fetchUnblockedProducts = createAsyncThunk(
   async () => {
     const token = Cookies.get("authToken");
     const response = await axios.get(
-     `${localbaseURL}/unblockedProducts`,
+     `${hostedURL}/unblockedProducts`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -75,7 +75,7 @@ export const blockProduct = createAsyncThunk(
     const token = Cookies.get("authToken");
     try {
       await axios.post(
-        `${localbaseURL}/block/${productId}` ,
+        `${hostedURL}/block/${productId}` ,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -96,7 +96,7 @@ export const unblockProduct = createAsyncThunk(
 
     try {
       const response = await axios.post(
-        `${localbaseURL}/unblock/${productId}`,
+        `${hostedURL}/unblock/${productId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
