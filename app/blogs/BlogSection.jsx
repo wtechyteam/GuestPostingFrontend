@@ -43,7 +43,7 @@ export default function BlogSection() {
               <Heading
                 size="headinglg"
                 as="h5"
-                className="text-[20px] !font-poppins2 font-semibold !text-adsy_com-black"
+                className="text-[20px] !font-poppins2 font-semibold !text-adsy_com-black sm:hidden"
               >
                 More News
               </Heading>
@@ -52,7 +52,7 @@ export default function BlogSection() {
                 width={28}
                 height={28}
                 alt="Arrow Image"
-                className="h-[28px] ml-2" // Added margin-left
+                className="h-[28px] ml-2 sm:hidden" // Added margin-left
               />
             </div>
           </div>

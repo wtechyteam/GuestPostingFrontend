@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function BlogsPage() {
   return (
-    <div className="z-[6] mt-[40px] sm:flex-col md:flex-col relative flex justify-center">
-      <div className="container-xs flex justify-between px-12 md:px-5 w-full">
+    <div className="z-[6] mt-[40px]  relative flex justify-center">
+    <div className="container-xs flex flex-row md:flex-col sm:flex-col justify-between px-12 md:px-5 w-full">
         {/* Left Section - Blog Image and Content */}
         <div className="w-3/4 md:w-3/4 lg:w-[75%]">
           {" "}
