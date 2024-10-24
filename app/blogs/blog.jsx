@@ -130,7 +130,7 @@ export default function BlogsPage() {
         </div>
 
         {/* Right Sidebar - Author Info and Other Sections */}
-        <div className="w-1/4 md:w-full lg:w-[25%] md:pl-10  md:mt-0 ml-8">
+        <div className="w-1/4 md:w-full sm:w-full lg:w-[25%] md:pl-10  md:mt-0 ml-8">
          
           <div className="bg-blue-500 text-white p-8 rounded-lg shadow-md text-left">
             <Image
