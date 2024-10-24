@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const hostedURL = process.env.NEXT_PUBLIC_HOSTED_URL;
+const localBaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const PostRequestForm = () => {
   const [mounted, setMounted] = useState(false);
@@ -96,7 +97,7 @@ const PostRequestForm = () => {
     const token = Cookies.get("authToken");
     try {
       const res = await axios.post(
-        `${hostedURL}/seller/products?URL=${URL}`,
+        `${localBaseURL}/seller/products?URL=${URL}`,
         finalData, // Use the modified data with boolean value
         {
           headers: {

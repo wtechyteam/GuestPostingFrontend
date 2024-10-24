@@ -12,7 +12,7 @@ export const fetchSellerProducts = createAsyncThunk(
   "products/fetchSellerProducts",
   async () => {
       const sellerId = Cookies.get("userId")
-      const response = await axios.get(`${localbaseURL}/products/seller/${sellerId}`);
+      const response = await axios.get(`${hostedURL}/products/seller/${sellerId}`);
       console.log("response = ", response.data);
       return response.data;
   }
