@@ -8,7 +8,7 @@ export default function ContactCollaborationSection() {
     <div className="bg-[url(/images/ContactComponent.png)] py-[76px] h-[500px] bg-cover bg-no-repeat bg-center md:h-auto md:py-10 px-5 md:px-10 flex items-center justify-center">
       <div className="flex flex-row md:flex-col items-center justify-between w-full max-w-[1200px]">
         {/* Left Side: Content */}
-        <div className="w-1/2 md:w-full text-center md:text-left">
+        <div className="w-1/2 md:w-full sm:items-center sm:justify-center text-center md:text-left">
           <Heading
             size="textxl"
             as="h1"
