@@ -12,14 +12,14 @@ export default function ContactCollaborationSection() {
   <Heading
     size="textxl"
     as="h1"
-    className="sm:text-[36px] md:text-[46px] z-[1] text-[50px] font-semi-bold !text-gray-10"
+    className="sm:text-[30px] md:text-[46px] z-[1] text-[50px] font-semi-bold !text-gray-10"
   >
     Boost Your Traffic
   </Heading>
   <Text
     size="text5xl"
     as="p"
-    className="text-[22px] sm:text-[20px] md:text-[25px] mt-[30px] font-medium leading-[1.2] sm:leading-[1.6] md:leading-[2] !text-gray-10"
+    className="text-[22px] sm:text-[15px] md:text-[25px] mt-[30px] font-medium leading-[1.2] sm:leading-[1.6] md:leading-[2] !text-gray-10"
   >
     and sales with guest posts on <br /> sites offering do follow links
   </Text>
