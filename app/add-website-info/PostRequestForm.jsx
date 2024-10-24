@@ -97,7 +97,7 @@ const PostRequestForm = () => {
     const token = Cookies.get("authToken");
     try {
       const res = await axios.post(
-        `${localBaseURL}/seller/products?URL=${URL}`,
+        `${hostedURL}/seller/products?URL=${URL}`,
         finalData, // Use the modified data with boolean value
         {
           headers: {
