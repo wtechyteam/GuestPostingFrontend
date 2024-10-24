@@ -12,7 +12,7 @@ export default function ContactCollaborationSection() {
   <Heading
     size="textxl"
     as="h1"
-    className="sm:text-[34px] md:text-[46px] z-[1] text-[50px] font-semi-bold !text-gray-10"
+    className="sm:text-[34px] md:text-[46px] z-[1] sm:items-center sm:justify-center text-[50px] font-semi-bold !text-gray-10"
   >
     Boost Your Traffic
   </Heading>
@@ -41,14 +41,15 @@ export default function ContactCollaborationSection() {
               </div>
 
               {/* Phone Input */}
-              <div className="w-full md:w-1/2 sm:w-full  md:mt-0 sm:mt-4 sm:mr-3">
-                <input
-                  type="text"
-                  id="phone"
-                  placeholder="Phone"
-                  className="w-full !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md"
-                />
-              </div>
+              <div className="w-full md:w-1/2 sm:w-full md:mt-0 sm:mt-4 sm:flex sm:justify-start">
+  <input
+    type="text"
+    id="phone"
+    placeholder="Phone"
+    className="w-full sm:w-auto sm:max-w-[250px] !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md"
+  />
+</div>
+
             </div>
 
             <div>
