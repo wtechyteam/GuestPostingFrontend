@@ -4,11 +4,11 @@ const ComparisonTable = () => {
   return (
     <div className="overflow-x-auto p-4 ">
       <div className="rounded-lg overflow-hidden border border-gray-900">
-        <table className="w-[100%] sm:w-[50%] md:w-[50%] min-w-full text-center !text-gray-900 table-auto border-collapse">
+        <table className="w-[100%]  min-w-full text-center !text-gray-900 table-auto border-collapse">
           <thead>
             <tr>
-              <th className="p-8 text-[39px] font-bold rounded-tl-lg border-r border-gray-900">Advertpulse</th>
-              <th className="p-8 text-[39px] font-bold rounded-tr-lg">Other Platforms</th>
+              <th className="p-8 sm:p-4 text-[39px] font-bold rounded-tl-lg border-r border-gray-900">Advertpulse</th>
+              <th className="p-8 sm:p-4 text-[39px] font-bold rounded-tr-lg">Other Platforms</th>
             </tr>
           </thead>
           <tbody>
@@ -16,7 +16,7 @@ const ComparisonTable = () => {
               .fill('')
               .map((_, idx) => (
                 <tr key={idx} className="border-t !border-gray-900">
-                  <td className="p-8 px-16  text-[26px] border border-gray-900 border-l-0">
+                  <td className="p-8  sm:p-4 sm:px-8 px-16  text-[26px] border border-gray-900 border-l-0">
                     <div className="flex items-center justify-center space-x-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

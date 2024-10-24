@@ -9,7 +9,7 @@ export default function SellerInfoSection({ ...props }) {
   return (
     <div
       {...props}
-      className={`flex md:flex-col-reverse flex-row md:flex-col items-center w-full md:w-[80%] relative !text-adsy_com-black sm:hidden
+      className={`flex md:flex-col-reverse flex-row md:flex-col items-center w-full md:w-[80%] relative !text-adsy_com-black sm:hidden md:hidden
                 
                  p-4`}
       style={{ borderColor: "transparent" }}

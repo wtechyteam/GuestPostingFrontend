@@ -46,10 +46,18 @@ export default function ContactCollaborationSection() {
     type="text"
     id="phone"
     placeholder="Phone"
-    className="w-full sm:w-auto sm:max-w-[250px] !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md"
+    className="w-full sm:w-auto sm:max-w-[250px] !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md sm:hidden"
   />
 </div>
 
+            </div>
+            <div>
+              <input
+                type="text"
+                id="phone"
+                placeholder="Phone"
+                className="w-full !bg-gray-10 !px-4 !py-3 !text-gray-900 px-4 py-2 border border-gray-300 !rounded-md hidden sm:block "
+              />
             </div>
 
             <div>
