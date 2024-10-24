@@ -29,9 +29,9 @@ export default function DesktopTwoPage() {
         <div className="mr-[34px] h-[626px] rounded-[20px] border border-solid border-adsy_com-black bg-gray-10 bg-[url(/images/img_group_850.png)] bg-cover bg-no-repeat md:mr-0 md:h-auto">
           <div className="flex items-center justify-between gap-5 md:flex-col">
       
-            <div className="relative h-[626px] w-[42%] content-center rounded-bl-[20px] rounded-tl-[20px] border-b border-l border-t border-solid border-adsy_com-black bg-gray-300 md:h-auto">
+            <div className="relative h-[626px] w-[42%] content-center rounded-bl-[20px] rounded-tl-[20px] border-b border-r  border-solid border-adsy_com-black bg-gray-10 md:h-auto">
               <Image
-                src="/path-to-your-image.jpg" 
+                src="/images/Mesa de trabajo 2.png" 
                 alt="Contact Image"
                 width={500} 
                 height={626} 
