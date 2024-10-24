@@ -30,7 +30,7 @@ export default function ContactCollaborationSection() {
           <form className="space-y-4">
             <div className="flex flex-row md:flex-col space-x-4 md:space-x-4">
               {/* Name Input */}
-              <div className="w-full md:w-1/2">
+              <div className="w-full md:w-1/2 sm:w-full ">
                 <input
                   type="text"
                   id="name"
@@ -40,7 +40,7 @@ export default function ContactCollaborationSection() {
               </div>
 
               {/* Phone Input */}
-              <div className="w-full md:w-1/2  md:mt-0">
+              <div className="w-full md:w-1/2 sm:w-full  md:mt-0 sm:mt-4">
                 <input
                   type="text"
                   id="phone"
