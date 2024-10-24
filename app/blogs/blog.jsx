@@ -18,10 +18,10 @@ export default function BlogsPage() {
               height={400}
               className="rounded-lg"
             />
-            <div className="absolute bottom-4 left-4 bg-blue-600 text-white py-1 px-3 rounded sm:hidden md:hidden">
+            <div className="absolute bottom-4 left-4 bg-blue-600 text-gray-10 py-1 px-3 rounded sm:hidden md:hidden">
               Artificial Intelligence
             </div>
-            <div className="absolute bottom-4 right-4 bg-blue-600 text-white py-1 px-3 rounded">
+            <div className="absolute bottom-4 right-4 bg-blue-600 text-gray-10 py-1 px-3 rounded">
               Oct 19 • 10 min read
             </div>
           </div>
@@ -128,9 +128,9 @@ export default function BlogsPage() {
         </div>
 
         {/* Right Sidebar - Author Info and Other Sections */}
-        <div className="w-1/4 md:w-full sm:w-full sm:items-center sm:justify-center lg:w-[25%] md:pl-10 sm:pl-0 sm:ml-2  md:mt-0 ml-8">
+        <div className="w-1/4 md:w-full sm:w-full sm:items-center sm:justify-center lg:w-[25%] md:pl-0 sm:pl-0 sm:ml-2  md:mt-0 ml-8">
          
-          <div className="bg-blue-500 text-white p-8 rounded-lg shadow-md text-left">
+          <div className="bg-blue-500 text-gray-10 p-8 rounded-lg shadow-md text-left">
             <Image
               src="/images/authorImage.png"
               alt="Tamás Hám-Szabó"
@@ -153,7 +153,7 @@ export default function BlogsPage() {
   
           <div className="mt-8 text-center">
 
-            <div className="bg-blue-500 text-white py-2 px-4 rounded-lg mb-2">
+            <div className="bg-blue-500 text-gray-10 py-2 px-4 rounded-lg mb-2">
               <span>Share with your community!</span>
      
               <div className="flex justify-center items-center space-x-4 mt-2 h-12">
@@ -166,7 +166,7 @@ export default function BlogsPage() {
                     focusable="false"
                     data-prefix="fab"
                     data-icon="facebook-square"
-                    className="w-6 h-6 text-white" 
+                    className="w-6 h-6 text-gray-10" 
                     role="img"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"
@@ -184,7 +184,7 @@ export default function BlogsPage() {
                     focusable="false"
                     data-prefix="fab"
                     data-icon="linkedin"
-                    className="w-6 h-6 text-white" 
+                    className="w-6 h-6 text-gray-10" 
                     role="img"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"
@@ -202,7 +202,7 @@ export default function BlogsPage() {
                     focusable="false"
                     data-prefix="fab"
                     data-icon="twitter"
-                    className="w-6 h-6 text-white" 
+                    className="w-6 h-6 text-gray-10" 
                     role="img"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
