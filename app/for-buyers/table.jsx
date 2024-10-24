@@ -4,7 +4,7 @@ const ComparisonTable = () => {
   return (
     <div className="overflow-x-auto p-4 ">
       <div className="rounded-lg overflow-hidden border border-gray-900">
-        <table className="w-[100%] min-w-full text-center !text-gray-900 table-auto border-collapse">
+        <table className="w-[100%] sm:w-[50%] md:w-[50%] min-w-full text-center !text-gray-900 table-auto border-collapse">
           <thead>
             <tr>
               <th className="p-8 text-[39px] font-bold rounded-tl-lg border-r border-gray-900">Advertpulse</th>
