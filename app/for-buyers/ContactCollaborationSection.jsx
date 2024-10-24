@@ -8,18 +8,18 @@ export default function ContactCollaborationSection() {
     <div className="bg-[url(/images/ContactComponent.png)] py-[76px] h-[500px] bg-cover bg-no-repeat bg-center md:h-auto md:py-10 px-5 md:px-10 flex items-center justify-center">
       <div className="flex flex-row md:flex-col items-center justify-between w-full max-w-[1200px]">
         {/* Left Side: Content */}
-        <div className="w-full md:w-1/2 sm:flex sm:flex-col sm:items-center sm:justify-center text-center md:text-left">
+        <div className="w-full md:w-full sm:flex sm:flex-col sm:items-center sm:justify-center text-center md:text-left">
   <Heading
     size="textxl"
     as="h1"
-    className="sm:text-[30px] md:text-[46px] z-[1] text-[50px] font-semi-bold !text-gray-10"
+    className="sm:text-[34px] md:text-[46px] z-[1] text-[50px] font-semi-bold !text-gray-10"
   >
     Boost Your Traffic
   </Heading>
   <Text
     size="text5xl"
     as="p"
-    className="text-[22px] sm:text-[15px] md:text-[25px] mt-[30px] font-medium leading-[1.2] sm:leading-[1.6] md:leading-[2] !text-gray-10"
+    className="text-[26px] sm:text-[15px] md:text-[25px] mt-[30px] font-medium leading-[1.2] sm:leading-[1.6] md:leading-[2] !text-gray-10"
   >
     and sales with guest posts on <br /> sites offering do follow links
   </Text>
