@@ -87,7 +87,7 @@ export default function SignUpPage() {
     }
 
     try {
-      const response = await axios.post(`${apiUrl}/signup`, {
+      const response = await axios.post(`${hostedURL}/signup`, {
         fullName: formData.fullName,
         email: formData.email,
         password: formData.password,
